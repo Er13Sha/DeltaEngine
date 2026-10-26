@@ -24,6 +24,7 @@ from delta_tools.bridge_matter import matter_tree_from_deltas
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+HAND_INTENT = DATA / "trees" / "intent.json"
 
 # Агрегатное состояние при стандартных условиях → признаки дерева материи.
 STATE_TRAITS = {
@@ -56,12 +57,28 @@ class Concept:
 
 
 class KnowledgeBase:
-    def __init__(self, data_dir: Path = DATA, intent_tree: Path | None = None):
+    """По умолчанию тип вопроса и смысл слова определяют деревья, обученные индуктором
+    на настоящих вопросах (`intent.learned.json`, `sense.learned.json`). Ручное дерево
+    типа вопроса: `KnowledgeBase(intent_tree=HAND_INTENT, sense_tree=False)`.
+    """
+
+    def __init__(self, data_dir: Path = DATA, intent_tree: Path | None = None,
+                 sense_tree: Path | None | bool = None):
         self.trees: dict[str, Tree] = {
             "matter": Tree.from_dict(matter_tree_from_deltas(_load(data_dir / "matter-deltas.json"))),
             "elements": Tree.from_dict(_load(data_dir / "trees" / "elements.json")),
         }
-        self.intent = Tree.from_dict(_load(intent_tree or data_dir / "trees" / "intent.json"))
+        hand = Tree.from_dict(_load(data_dir / "trees" / "intent.json"))
+        learned_intent = data_dir / "trees" / "intent.learned.json"
+        if intent_tree is None:
+            intent_tree = learned_intent if learned_intent.exists() else data_dir / "trees" / "intent.json"
+        self.intent = Tree.from_dict(_load(intent_tree))
+        self.hand_intent = hand  # запасное дерево, когда обученное отвечает UNKNOWN
+        if sense_tree is None:
+            sense_tree = data_dir / "trees" / "sense.learned.json"
+        self.sense: Tree | None = (
+            Tree.from_dict(_load(sense_tree)) if isinstance(sense_tree, Path) and sense_tree.exists() else None
+        )
         self.lexicon = _load(data_dir / "lexicon" / "ru.json")
         self.concepts: dict[str, Concept] = {}
         self._load_classes()
@@ -70,7 +87,27 @@ class KnowledgeBase:
         self.latin_index: dict[str, list[str]] = {}
         self.single_words: dict[str, list[str]] = {}
         self._index_names()
-        self.intent_words = _string_literals(self.intent)
+        # служебные слова типов вопроса не проверяются на опечатки
+        self.intent_words = _string_literals(hand)
+        self.wiki: dict[str, list[dict[str, Any]]] = {}
+        wiki_path = data_dir / "sources" / "razum-wiki" / "terms.json"
+        if wiki_path.exists():
+            for entry in _load(wiki_path)["entries"]:
+                self.wiki.setdefault(normalize(entry["term"]), []).append(entry)
+
+    def definition(self, *names: str) -> dict[str, Any] | None:
+        """Определение из словаря RazumWiki по одному из имён; ссылки «см. X» разворачиваются."""
+        for name in names:
+            seen = set()
+            key = normalize(name)
+            while key in self.wiki and key not in seen:
+                seen.add(key)
+                entry = self.wiki[key][0]
+                ref = re.fullmatch(r"см\.\s*(.+?)\.?", entry["definition"].strip())
+                if ref is None:
+                    return entry
+                key = normalize(ref.group(1))
+        return None
 
     # ------------------------------------------------------------ загрузка
 

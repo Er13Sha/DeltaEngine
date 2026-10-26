@@ -17,6 +17,7 @@ from delta_text.learn_intent import LEARNED
 STATUS = {
     "proven": "доказано ядром",
     "assumed": "с допущениями",
+    "quoted": "цитата из словаря, ядром не проверено",
     "unknown": "нет ответа",
     "clarify": "нужно уточнение",
 }

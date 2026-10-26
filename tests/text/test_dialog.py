@@ -1,15 +1,22 @@
 import unittest
+from functools import lru_cache
 
 from delta_kernel import PROVEN
 from delta_text.dialog import respond
-from delta_text.knowledge import KnowledgeBase, default_knowledge
+from delta_text.knowledge import HAND_INTENT, KnowledgeBase, default_knowledge
 from delta_text.morph import name_pattern
 from delta_text.understand import levenshtein, understand
 
 
+@lru_cache(maxsize=1)
+def hand() -> KnowledgeBase:
+    """Ручное дерево типа вопроса без дерева смысла: строгие статусы проверяются на нём."""
+    return KnowledgeBase(intent_tree=HAND_INTENT, sense_tree=False)
+
+
 class UnderstandingTests(unittest.TestCase):
     def setUp(self):
-        self.kb = default_knowledge()
+        self.kb = hand()
 
     def test_multiword_names_win_over_single_words(self):
         u = understand("Что такое благородные газы?", self.kb)
@@ -38,57 +45,57 @@ class UnderstandingTests(unittest.TestCase):
 
 class DialogTests(unittest.TestCase):
     def test_define_element(self):
-        r = respond("Что такое натрий?")
+        r = respond("Что такое натрий?", hand())
         self.assertEqual(r.status, "proven")
         self.assertIn("щелочной металл", r.text)
         self.assertIn("твёрдое вещество", r.text)
         self.assertEqual([c["status"] for c in r.certificates if "status" in c], ["proven"] * 3)
 
     def test_difference_of_classes_uses_separating_fork(self):
-        r = respond("Чем жидкость отличается от газа?")
+        r = respond("Чем жидкость отличается от газа?", hand())
         self.assertEqual(r.status, "proven")
         self.assertIn("жидкость — сохраняет объём", r.text)
         self.assertIn("газ — не сохраняет объём", r.text)
 
     def test_is_a(self):
-        self.assertTrue(respond("Является ли натрий металлом?").text.startswith("Да"))
-        no = respond("Является ли хлор металлом?")
+        self.assertTrue(respond("Является ли натрий металлом?", hand()).text.startswith("Да"))
+        no = respond("Является ли хлор металлом?", hand())
         self.assertTrue(no.text.startswith("Нет"))
         self.assertIn("галоген", no.text)
 
     def test_unclear_input_is_answered_with_named_assumptions(self):
-        r = respond("натри")
+        r = respond("натри", hand())
         self.assertEqual(r.status, "assumed")
         self.assertTrue(r.text.startswith("Понял так: что такое «натрий»"))
         self.assertEqual(len(r.assumptions), 2)
-        r = respond("жидкость газ")
+        r = respond("жидкость газ", hand())
         self.assertEqual(r.status, "assumed")
         self.assertIn("чем отличаются", r.text)
-        r = respond("натрий металл")
+        r = respond("натрий металл", hand())
         self.assertEqual(r.status, "assumed")
         self.assertIn("Да", r.text)
 
     def test_unverified_data_is_a_caveat_not_a_proof(self):
-        r = respond("Что такое вода?")
+        r = respond("Что такое вода?", hand())
         self.assertEqual(r.status, "assumed")
         self.assertIn("Оговорка", r.text)
-        r = respond("Что такое оганесон?")
+        r = respond("Что такое оганесон?", hand())
         self.assertEqual(r.status, "assumed")
         self.assertIn("ожидаемое", r.text)
 
     def test_unknown_topic(self):
-        r = respond("Как приготовить борщ?")
+        r = respond("Как приготовить борщ?", hand())
         self.assertEqual(r.status, "unknown")
         self.assertIn("«борщ»", r.text)  # известное существительное — не опечатка в «бор»
         self.assertEqual(r.certificates, [])
 
     def test_not_applicable_task_is_explained(self):
-        r = respond("Чем натрий отличается от хлора и аргона?")
+        r = respond("Чем натрий отличается от хлора и аргона?", hand())
         self.assertEqual(r.status, "unknown")
         self.assertIn("ровно два понятия", r.text)
 
     def test_ambiguous_name_produces_one_clarifying_question(self):
-        kb = KnowledgeBase()
+        kb = KnowledgeBase(intent_tree=HAND_INTENT, sense_tree=False)
         kb.patterns.append((name_pattern("натрий"), "element:K"))
         r = respond("Что такое натрий?", kb)
         self.assertEqual(r.status, "clarify")
@@ -98,13 +105,47 @@ class DialogTests(unittest.TestCase):
         """Ложных фактов нет: каждое понятие в кавычках есть в базе знаний."""
         import re
 
-        kb = default_knowledge()
+        kb = hand()
         names = {n for c in kb.concepts.values() for n in c.names} | {c.name for c in kb.concepts.values()}
         for q in ["Что такое галоген?", "Чем металл отличается от неметалла?", "Что такое материя?",
                   "Чем натрий отличается от хлора?", "Является ли хлор металлом?"]:
-            for quoted in re.findall(r"«([^»]+)»", respond(q).text):
+            for quoted in re.findall(r"«([^»]+)»", respond(q, hand()).text):
                 with self.subTest(q=q, quoted=quoted):
                     self.assertIn(quoted.lower(), {n.lower() for n in names})
+
+
+
+
+class LearnedTreesTests(unittest.TestCase):
+    """По умолчанию тип вопроса и смысл слова определяют деревья, обученные на настоящих вопросах."""
+
+    def test_other_sense_is_explained(self):
+        r = respond("что происходит в германии?")
+        self.assertEqual(r.status, "unknown")
+        self.assertIn("не о физике или химии", r.text)
+        self.assertIn("германий", r.text)
+
+    def test_other_question_type_is_declined(self):
+        r = respond("почему вода мокрая?")
+        self.assertEqual(r.status, "unknown")
+        self.assertIn("«почему»", r.text)
+
+    def test_learned_intent_is_an_assumption(self):
+        r = respond("Что такое натрий?")
+        self.assertEqual(r.status, "assumed")
+        self.assertIn("щелочной металл", r.text)
+        self.assertIn("обученным деревом", r.text)
+
+    def test_falls_back_to_hand_tree_when_learned_tree_does_not_know(self):
+        r = respond("жидкость газ")
+        self.assertIn("жидкость — сохраняет объём", r.text)
+        self.assertIn("тип вопроса угадан", r.text)
+
+    def test_default_knowledge_uses_learned_trees(self):
+        kb = default_knowledge()
+        self.assertEqual((kb.intent.id, kb.sense.id), ("intent.learned", "sense.learned"))
+        self.assertEqual(kb.intent.check(), [])
+        self.assertEqual(kb.sense.check(), [])
 
 
 if __name__ == "__main__":

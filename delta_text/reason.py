@@ -50,6 +50,12 @@ def execute(intent: str, keys: list[str], kb: KnowledgeBase) -> TaskResult:
         if len(concepts) != 2:
             raise NotApplicable("для сравнения нужны ровно два понятия")
         return _difference(concepts[0], concepts[1], kb)
+    if intent == "OTHER":
+        names = " или ".join(f"«{c.name}»" for c in concepts)
+        raise NotApplicable(
+            "это вопрос вида «почему», «как», «где», «сколько» и т. п.; такие я пока не умею. "
+            f"Могу объяснить, что такое {names}, сравнить понятия или проверить принадлежность классу"
+        )
     raise NotApplicable("тип вопроса не определён")
 
 
@@ -73,9 +79,19 @@ def _define(c: Concept, kb: KnowledgeBase) -> TaskResult:
         parts = [_division_part(kb, c.tree, node, branch) for branch in (True, False)]
         lines.append(f"Делится на: {parts[0]} и {parts[1]}.")
     lines.append(_path_line(kb, c.tree, c.node))
+    lines += wiki_lines(kb, c.name, *c.names, c.label)
     cert = _structural_certificate(kb, c)
     return TaskResult(lines, f"что такое «{c.name}»", True, certificates=[cert],
                       plan=["найти узел понятия в дереве", "взять род и видовое отличие", "описать деление узла"])
+
+
+def wiki_lines(kb: KnowledgeBase, *names: str) -> list[str]:
+    """Цитата из словаря RazumWiki с указанием источника; ядром не проверяется."""
+    entry = kb.definition(*names)
+    if entry is None:
+        return []
+    return [f"Словарь RazumWiki (цитата, ядром не проверялась): «{entry['term']}» — {entry['definition']} "
+            f"[{entry['url']}]"]
 
 
 def _division_part(kb: KnowledgeBase, tree_id: str, fork: Fork, branch: bool) -> str:
@@ -101,6 +117,7 @@ def _describe_instance(c: Concept, kb: KnowledgeBase, restatement: str) -> TaskR
     lines = [f"«{_cap(c.name)}» — {c.category}; {facts}."]
     result = TaskResult(lines, restatement, True, plan=["взять данные объекта из источника"])
     _add_classifications(c, kb, result)
+    result.lines += wiki_lines(kb, *c.names)
     return result
 
 

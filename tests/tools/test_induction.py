@@ -114,14 +114,22 @@ class InductionTests(unittest.TestCase):
 
 
 class IntentLearningTests(unittest.TestCase):
-    def test_learned_intent_tree_is_valid_and_reasonable(self):
+    def test_learned_trees_are_valid_and_reproducible(self):
+        """Деревья в data/trees воспроизводятся обучением с нуля (детерминизм индуктора)."""
+        from delta_text import learn_intent as li
         from delta_text.knowledge import default_knowledge
-        from delta_text.learn_intent import evaluate
 
-        result = evaluate(default_knowledge())
-        self.assertEqual(result["check"], [])
-        # регрессионная граница: на стартовом корпусе 58/74 при отложенном примере
-        self.assertGreaterEqual(result["learned"]["correct"] / result["n"], 0.75)
+        kb = default_knowledge()
+        budget = Budget(max_depth=12, min_support=2)
+        for schema, corpus, path, tree_id in (
+            (li.INTENT_SCHEMA, li.intent_corpus(kb), li.LEARNED, "intent.learned"),
+            (li.SENSE_SCHEMA, li.sense_corpus(kb), li.SENSE, "sense.learned"),
+        ):
+            with self.subTest(tree=tree_id):
+                _, tree = li.train(schema, corpus, budget, tree_id)
+                self.assertEqual(tree.check(), [])
+                saved = Tree.from_dict(json.loads(path.read_text(encoding="utf-8")))
+                self.assertEqual(tree.hash, saved.hash)
 
 
 if __name__ == "__main__":

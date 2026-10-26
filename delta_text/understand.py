@@ -5,7 +5,9 @@
 2. Незнакомое или не найденное в словаре понятий слово проверяется на опечатку:
    кандидаты — имена на расстоянии правки 1 (2 для длинных слов). Каждая такая
    догадка — допущение.
-3. Для каждой комбинации кандидатов тип вопроса определяет дерево ядра `intent`.
+3. Дерево смысла слова (если есть) отсеивает упоминания не в физико-химическом
+   смысле: «в Германии» — не германий, «щитовидная железа» — не железо.
+4. Для каждой комбинации кандидатов тип вопроса определяет дерево ядра `intent`.
    Вилки-догадки этого дерева помечены как гипотезы, поэтому угаданный тип вопроса
    тоже становится допущением.
 """
@@ -16,7 +18,8 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from delta_text.annotate import Token, annotate
-from delta_text.knowledge import Concept, KnowledgeBase
+from delta_text.features import mention_record, project, utterance_record
+from delta_text.knowledge import KnowledgeBase
 from delta_text.morph import normalize
 
 MAX_HYPOTHESES = 32
@@ -25,6 +28,7 @@ INTENT_NAMES = {
     "DIFFERENCE": "вопрос о различии",
     "IS_A": "вопрос о принадлежности классу",
     "CLASSIFY": "вопрос о классе",
+    "OTHER": "вопрос другого вида («почему», «как», «где»…)",
 }
 
 
@@ -32,6 +36,7 @@ INTENT_NAMES = {
 class Candidate:
     concept: str
     assumption: str = ""  # пусто — точное совпадение
+    typo: bool = False  # догадка об опечатке (а не уточнение прилагательным)
 
 
 @dataclass
@@ -58,13 +63,15 @@ class Understanding:
     mentions: list[Mention]
     unrecognized: list[str]
     hypotheses: list[Hypothesis] = field(default_factory=list)
+    # упоминания, отсеянные деревом смысла: (текст, понятие)
+    other_sense: list[tuple[str, str]] = field(default_factory=list)
 
 
 def understand(text: str, kb: KnowledgeBase) -> Understanding:
     tokens = annotate(text)
     mentions, unrecognized = find_mentions(tokens, kb)
-    result = Understanding(tokens, mentions, unrecognized)
-    lemmas = sorted({lemma for t in tokens if t.kind == "word" for lemma in t.lemmas})
+    result = Understanding(tokens, mentions, unrecognized, other_sense=_other_sense(tokens, mentions, kb))
+    learned = kb.intent.id.endswith(".learned")
     choices = itertools.islice(
         itertools.product(*(range(len(m.candidates)) for m in mentions)), MAX_HYPOTHESES
     )
@@ -72,22 +79,49 @@ def understand(text: str, kb: KnowledgeBase) -> Understanding:
         picked = [m.candidates[i] for m, i in zip(mentions, choice)]
         concepts = list(dict.fromkeys(c.concept for c in picked))
         assumptions = [c.assumption for c in picked if c.assumption]
-        record = {
-            "lemmas": lemmas,
-            "n_concepts": len(concepts),
-            "pair": _pair_kind([kb.concepts[k] for k in concepts]),
-        }
-        cls = kb.intent.classify(record)
-        leaf = kb.intent.nodes[cls.leaf] if cls.leaf else None
+        record = utterance_record(tokens, [kb.concepts[k] for k in concepts])
+        tree = kb.intent
+        cls = tree.classify(project(tree, record))
+        leaf = tree.nodes[cls.leaf] if cls.leaf else None
+        if learned and (leaf is None or leaf.meta.get("unknown")):
+            # обученное дерево не знает (мало примеров) — догадка по ручному дереву
+            tree = kb.hand_intent
+            cls = tree.classify(project(tree, record))
+            leaf = tree.nodes[cls.leaf] if cls.leaf else None
         # ручное дерево хранит тип в meta.intent или id листа, обученное — в meta.class
         intent = (leaf.meta.get("intent") or leaf.meta.get("class") or leaf.id) if leaf is not None else "NONE"
         label = leaf.label if leaf is not None else ""
-        if label == intent or not label:  # у обученного дерева метка листа — сам тип
+        if label == intent or label == "UNKNOWN" or not label:  # у обученного дерева метка листа — сам тип
             label = INTENT_NAMES.get(intent, intent)
         if cls.assumptions:
-            assumptions.append(f"тип вопроса угадан: {label.lower()}")
+            if tree is kb.intent and learned:
+                assumptions.append(f"тип вопроса ({label}) определён обученным деревом, его вилки ещё не приняты человеком")
+            else:
+                assumptions.append(f"тип вопроса угадан: {label.lower()}")
         result.hypotheses.append(Hypothesis(intent, concepts, assumptions, label, cls.certificate, choice))
     return result
+
+
+def _other_sense(tokens: list[Token], mentions: list[Mention], kb: KnowledgeBase) -> list[tuple[str, str]]:
+    """Точные совпадения, которые дерево смысла относит не к нашей области.
+
+    Это догадка обученного дерева, поэтому упоминание не выбрасывается: если на вопрос
+    можно ответить, ответ получает оговорку; если нельзя — отказ объясняется смыслом слова.
+    Догадки об опечатках не проверяются: дерево обучено только на точных совпадениях.
+    """
+    if kb.sense is None:
+        return []
+    out: list[tuple[str, str]] = []
+    for m in mentions:
+        for c in m.candidates:
+            if c.typo:
+                continue
+            record = project(kb.sense, mention_record(tokens, m.start, m.end, c.concept, kb))
+            result = kb.sense.classify(record, certify=False)
+            leaf = kb.sense.nodes[result.leaf] if result.leaf else None
+            if leaf is not None and leaf.meta.get("class") == "other":
+                out.append((m.text, c.concept))
+    return out
 
 
 def find_mentions(tokens: list[Token], kb: KnowledgeBase) -> tuple[list[Mention], list[str]]:
@@ -111,14 +145,27 @@ def find_mentions(tokens: list[Token], kb: KnowledgeBase) -> tuple[list[Mention]
         if match is not None:
             length, keys = match
             text = " ".join(t.text for t in tokens[i : i + length])
-            mentions.append(Mention(i, i + length, text, [Candidate(k) for k in keys]))
+            modifier = _modifier(tokens, i, kb)
+            if modifier is None:
+                candidates = [Candidate(k) for k in keys]
+            else:
+                # «тёмная материя» — частное понятие; дерево знает только «материю»
+                candidates = [
+                    Candidate(k, f"«{modifier.text} {text}» понято как «{kb.concepts[k].name}»: "
+                                 f"уточнение «{modifier.text}» в дереве не описано")
+                    for k in keys
+                ]
+                if modifier.text in unrecognized:
+                    unrecognized.remove(modifier.text)
+            mentions.append(Mention(i, i + length, text, candidates))
             i += length
             continue
         if not tok.is_service and not (set(tok.lemmas) & kb.intent_words):
-            # Известное словарю существительное — это другое понятие, а не опечатка
-            # («борщ» не «бор»). Опечаткой считается незнакомое слово или слово другой
-            # части речи, случайно совпавшее со словарём («натри» — повелительное «натереть»).
-            known_noun = tok.known and tok.pos[:1] == ("NOUN",)
+            # Известное словарю существительное или прилагательное — это другое понятие
+            # или признак, а не опечатка («борщ» не «бор», «серые» не «сера»). Опечаткой
+            # считается незнакомое слово или слово другой части речи, случайно совпавшее
+            # со словарём («натри» — повелительное «натереть»).
+            known_noun = tok.known and tok.pos[:1] in (("NOUN",), ("ADJF",), ("ADJS",))
             typos = [] if known_noun else _typo_candidates(tok, kb)
             if typos:
                 mentions.append(Mention(i, i + 1, tok.text, typos))
@@ -159,10 +206,26 @@ def _typo_candidates(tok: Token, kb: KnowledgeBase) -> list[Candidate]:
                     found[key] = (d, name)
     best = min((d for d, _ in found.values()), default=None)
     return [
-        Candidate(key, f"«{tok.text}» понято как «{name}» (возможная опечатка)")
+        Candidate(key, f"«{tok.text}» понято как «{name}» (возможная опечатка)", typo=True)
         for key, (d, name) in sorted(found.items())
         if d == best
     ]
+
+
+PRONOMINAL = {"какой", "такой", "этот", "тот", "весь", "каждый", "любой", "свой", "мой", "наш", "ваш",
+              "твой", "другой", "сам", "самый", "который", "чей", "некоторый", "иной", "один"}
+
+
+def _modifier(tokens: list[Token], i: int, kb: KnowledgeBase) -> Token | None:
+    """Прилагательное или причастие прямо перед именем понятия, не входящее в имя."""
+    if i == 0:
+        return None
+    prev = tokens[i - 1]
+    if prev.kind != "word" or not prev.pos or prev.pos[0] not in ("ADJF", "PRTF"):
+        return None
+    if set(prev.lemmas) & (PRONOMINAL | kb.intent_words):
+        return None
+    return prev
 
 
 def levenshtein(a: str, b: str, limit: int) -> int:
@@ -178,10 +241,3 @@ def levenshtein(a: str, b: str, limit: int) -> int:
             return limit + 1
         prev = cur
     return min(prev[-1], limit + 1)
-
-
-def _pair_kind(concepts: list[Concept]) -> str:
-    if len(concepts) != 2:
-        return "none"
-    a, b = concepts
-    return "instance_class" if a.kind == "instance" and b.kind == "class" else "other"

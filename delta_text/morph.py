@@ -17,6 +17,7 @@ class Parse:
     lemma: str
     pos: str
     score: float
+    case: str = ""  # падеж (nomn, gent, …); пусто у неизменяемых частей речи
 
 
 @lru_cache(maxsize=1)
@@ -36,11 +37,11 @@ def parses(word: str) -> tuple[Parse, ...]:
     out = []
     seen = set()
     for p in _analyzer().parse(word):
-        key = (normalize(p.normal_form), str(p.tag.POS))
+        key = (normalize(p.normal_form), str(p.tag.POS), str(p.tag.case or ""))
         if key in seen:
             continue
         seen.add(key)
-        out.append(Parse(key[0], key[1], p.score))
+        out.append(Parse(key[0], key[1], p.score, key[2]))
     return tuple(out)
 
 
@@ -54,6 +55,17 @@ def name_pattern(phrase: str) -> tuple[frozenset[str], ...]:
 
     Слово текста совпадает со словом имени, если их варианты лемм пересекаются:
     так «щелочных металлов» совпадает с именем «щелочной металл».
+
+    Имена записаны в начальной форме, поэтому берутся только разборы в именительном
+    падеже (или без падежа) той же части речи, что и самый вероятный разбор.
+    Иначе в образец попадают посторонние леммы: «метан» — краткое причастие
+    от «метать», «поле» — предложный падеж от «пол», «сера» — краткое от «серый».
     """
     words = [w for w in phrase.replace("-", " ").split() if w]
-    return tuple(frozenset({normalize(w)} | {p.lemma for p in parses(w)}) for w in words)
+    pattern = []
+    for w in words:
+        variants = parses(w)
+        top_pos = variants[0].pos if variants else ""
+        lemmas = {p.lemma for p in variants if p.pos == top_pos and p.case in ("nomn", "")}
+        pattern.append(frozenset({normalize(w)} | lemmas))
+    return tuple(pattern)

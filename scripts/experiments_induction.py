@@ -14,8 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from delta_kernel import Tree  # noqa: E402
-from delta_text.knowledge import default_knowledge  # noqa: E402
-from delta_text.learn_intent import evaluate  # noqa: E402
+from delta_text import learn_intent  # noqa: E402
 from delta_tools.bridge_matter import matter_tree_from_deltas  # noqa: E402
 from delta_tools.induction import Budget, Inductor, predict  # noqa: E402
 
@@ -62,12 +61,8 @@ def e2_e3() -> None:
 
 
 def intent() -> None:
-    result = evaluate(default_knowledge())
-    n = result["n"]
-    for name in ("learned", "hand"):
-        s = result[name]
-        print(f"Тип вопроса, {name}: верно {s['correct']}/{n} = {s['correct'] / n:.3f}, ошибок {s['wrong']}, UNKNOWN {s['unknown']}")
-    print(f"Обученное дерево: {result['forks']} вилок, {result['leaves']} листьев")
+    """Тип вопроса и смысл слова: 10-кратная проверка, сохранение деревьев."""
+    learn_intent.main()
 
 
 if __name__ == "__main__":

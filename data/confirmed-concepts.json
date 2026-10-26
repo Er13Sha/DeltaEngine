@@ -900,8 +900,7 @@
         "Cu",
         "Copper",
         "медь",
-        "меди",
-        "проводник"
+        "меди"
       ],
       "verified": {
         "source_id": "pubchem.periodic_table",
