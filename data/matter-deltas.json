@@ -1,0 +1,252 @@
+{
+  "schema_version": "0.1.0",
+  "root_domain": {
+    "domain": "VirtualMatterObject",
+    "definition": "A finite, schema-validated object inside a bounded virtual volume. Each object has total boolean traits used by the local delta where it is classified.",
+    "root_delta": "matter.continuous",
+    "prototype_scope": "Matter taxonomy from the project materials, plus a bounded symbolic unfolding from particle counts to selected atoms, compounds, and functional classes."
+  },
+  "mermaid": "graph TD\n  M[Материя]\n  M -->|Continuous(x)| F[Поле]\n  M -->|not Continuous(x)| P[Частицы]\n  P -->|Grouped(x)| GP[Группы частиц]\n  P -->|not Grouped(x)| FP[Свободные частицы]\n  GP -->|Planetary(x)| SP[Субчастицы]\n  GP -->|not Planetary(x)| S[Вещество]\n  S -->|PreservesShape(x)| SOL[Твердое вещество]\n  S -->|not PreservesShape(x)| FL[Жидкости и газы]\n  FL -->|PreservesVolume(x)| LIQ[Жидкость]\n  FL -->|not PreservesVolume(x)| GAS[Газ]\n  GAS -->|Ionized(x)| PL[Плазма]\n  GAS -->|not Ionized(x)| NG[Нейтральный газ]",
+  "deltas": [
+    {
+      "delta_id": "matter.continuous",
+      "domain": "VirtualMatterObject",
+      "predicate": "Continuous(x)",
+      "exhaustive": true,
+      "exclusive": true,
+      "decider": {
+        "name": "decide_continuous",
+        "kind": "finite_boolean_field",
+        "input": "x.traits.continuous",
+        "termination": "O(1): one schema validation and one boolean read."
+      },
+      "obligations": {
+        "total": "For every x in VirtualMatterObject, x.traits.continuous is present and boolean.",
+        "exclusive": "A boolean value cannot be both true and false.",
+        "termination": "The decider performs a bounded finite read."
+      },
+      "invariants": [
+        "x belongs to VirtualMatterObject.",
+        "x.traits.continuous is a boolean.",
+        "Exactly one branch is appended to the classification path."
+      ],
+      "evidence_source": [
+        {
+          "source_id": "project.user_matter_tree",
+          "kind": "provided_image",
+          "claim": "Материя splits into continuous field and discontinuous particles.",
+          "status": "available_material"
+        }
+      ],
+      "state_transform": {
+        "kind": "classification_path_append",
+        "true_append": "Field",
+        "false_append": "Particles"
+      },
+      "branches": {
+        "true": "Field",
+        "false": "Particles"
+      }
+    },
+    {
+      "delta_id": "particles.grouped",
+      "domain": "Particles = VirtualMatterObject where not Continuous(x)",
+      "predicate": "Grouped(x)",
+      "exhaustive": true,
+      "exclusive": true,
+      "decider": {
+        "name": "decide_grouped",
+        "kind": "finite_boolean_field",
+        "input": "x.traits.grouped",
+        "termination": "O(1): one schema validation and one boolean read."
+      },
+      "obligations": {
+        "total": "For every x in Particles, x.traits.grouped is present and boolean.",
+        "exclusive": "Grouped(x) and not Grouped(x) are complementary boolean cases.",
+        "termination": "The decider performs a bounded finite read."
+      },
+      "invariants": [
+        "x is already classified as Particles.",
+        "x.traits.grouped is a boolean.",
+        "Grouped and not Grouped cannot both be active."
+      ],
+      "evidence_source": [
+        {
+          "source_id": "project.user_matter_tree",
+          "kind": "provided_image",
+          "claim": "Particles split into grouped particle groups and ungrouped free particles.",
+          "status": "available_material"
+        }
+      ],
+      "state_transform": {
+        "kind": "classification_path_append",
+        "true_append": "GroupsOfParticles",
+        "false_append": "FreeParticles"
+      },
+      "branches": {
+        "true": "GroupsOfParticles",
+        "false": "FreeParticles"
+      }
+    },
+    {
+      "delta_id": "groups.planetary",
+      "domain": "GroupsOfParticles = Particles where Grouped(x)",
+      "predicate": "Planetary(x)",
+      "exhaustive": true,
+      "exclusive": true,
+      "decider": {
+        "name": "decide_planetary",
+        "kind": "finite_boolean_field",
+        "input": "x.traits.planetary",
+        "termination": "O(1): one schema validation and one boolean read."
+      },
+      "obligations": {
+        "total": "For every x in GroupsOfParticles, x.traits.planetary is present and boolean.",
+        "exclusive": "Planetary(x) and not Planetary(x) are complementary boolean cases.",
+        "termination": "The decider performs a bounded finite read."
+      },
+      "invariants": [
+        "x is already classified as GroupsOfParticles.",
+        "x.traits.planetary is a boolean.",
+        "Planetary and not Planetary cannot both be active."
+      ],
+      "evidence_source": [
+        {
+          "source_id": "project.user_matter_tree",
+          "kind": "provided_image",
+          "claim": "Grouped particles split into planetary subparticles and non-planetary substance.",
+          "status": "available_material"
+        }
+      ],
+      "state_transform": {
+        "kind": "classification_path_append",
+        "true_append": "Subparticles",
+        "false_append": "Substance"
+      },
+      "branches": {
+        "true": "Subparticles",
+        "false": "Substance"
+      }
+    },
+    {
+      "delta_id": "substance.preserves_shape",
+      "domain": "Substance = GroupsOfParticles where not Planetary(x)",
+      "predicate": "PreservesShape(x)",
+      "exhaustive": true,
+      "exclusive": true,
+      "decider": {
+        "name": "decide_preserves_shape",
+        "kind": "finite_boolean_field",
+        "input": "x.traits.preservesShape",
+        "termination": "O(1): one schema validation and one boolean read."
+      },
+      "obligations": {
+        "total": "For every x in Substance, x.traits.preservesShape is present and boolean.",
+        "exclusive": "PreservesShape(x) and not PreservesShape(x) are complementary boolean cases.",
+        "termination": "The decider performs a bounded finite read."
+      },
+      "invariants": [
+        "x is already classified as Substance.",
+        "x.traits.preservesShape is a boolean.",
+        "PreservesShape and not PreservesShape cannot both be active."
+      ],
+      "evidence_source": [
+        {
+          "source_id": "project.user_matter_tree",
+          "kind": "provided_image",
+          "claim": "Substance splits into solid substance and liquids-or-gases by shape preservation.",
+          "status": "available_material"
+        }
+      ],
+      "state_transform": {
+        "kind": "classification_path_append",
+        "true_append": "Solid",
+        "false_append": "GasOrLiquid"
+      },
+      "branches": {
+        "true": "Solid",
+        "false": "GasOrLiquid"
+      }
+    },
+    {
+      "delta_id": "fluid.preserves_volume",
+      "domain": "GasOrLiquid = Substance where not PreservesShape(x)",
+      "predicate": "PreservesVolume(x)",
+      "exhaustive": true,
+      "exclusive": true,
+      "decider": {
+        "name": "decide_preserves_volume",
+        "kind": "finite_boolean_field",
+        "input": "x.traits.preservesVolume",
+        "termination": "O(1): one schema validation and one boolean read."
+      },
+      "obligations": {
+        "total": "For every x in GasOrLiquid, x.traits.preservesVolume is present and boolean.",
+        "exclusive": "PreservesVolume(x) and not PreservesVolume(x) are complementary boolean cases.",
+        "termination": "The decider performs a bounded finite read."
+      },
+      "invariants": [
+        "x is already classified as GasOrLiquid.",
+        "x.traits.preservesVolume is a boolean.",
+        "PreservesVolume and not PreservesVolume cannot both be active."
+      ],
+      "evidence_source": [
+        {
+          "source_id": "project.user_matter_tree",
+          "kind": "provided_image",
+          "claim": "Liquids and gases split into liquids and gases by volume preservation.",
+          "status": "available_material"
+        }
+      ],
+      "state_transform": {
+        "kind": "classification_path_append",
+        "true_append": "Liquid",
+        "false_append": "Gas"
+      },
+      "branches": {
+        "true": "Liquid",
+        "false": "Gas"
+      }
+    },
+    {
+      "delta_id": "gas.ionized",
+      "domain": "Gas = GasOrLiquid where not PreservesVolume(x)",
+      "predicate": "Ionized(x)",
+      "exhaustive": true,
+      "exclusive": true,
+      "decider": {
+        "name": "decide_ionized",
+        "kind": "finite_boolean_field",
+        "input": "x.traits.ionized",
+        "termination": "O(1): one schema validation and one boolean read."
+      },
+      "obligations": {
+        "total": "For every x in Gas, x.traits.ionized is present and boolean.",
+        "exclusive": "Ionized(x) and not Ionized(x) are complementary boolean cases.",
+        "termination": "The decider performs a bounded finite read."
+      },
+      "invariants": [
+        "x is already classified as Gas.",
+        "x.traits.ionized is a boolean.",
+        "Ionized and not Ionized cannot both be active."
+      ],
+      "evidence_source": [
+        {
+          "source_id": "project.user_matter_tree",
+          "kind": "provided_image",
+          "claim": "Gas splits into plasma and neutral gas by ionization.",
+          "status": "available_material"
+        }
+      ],
+      "state_transform": {
+        "kind": "classification_path_append",
+        "true_append": "Plasma",
+        "false_append": "NeutralGas"
+      },
+      "branches": {
+        "true": "Plasma",
+        "false": "NeutralGas"
+      }
+    }
+  ]
+}

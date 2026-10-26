@@ -1,0 +1,110 @@
+{
+  "schema_version": "forum-topics@0.1",
+  "site": "https://forum.razum.wiki/",
+  "fetched": "2026-10-27",
+  "format": "plain text: post header (author, date) and body; images replaced by [img ...], links in angle brackets; quotes prefixed with '>'",
+  "status": "partial: text only, images (fork diagrams) not downloaded; posts are by pseudonymous forum users",
+  "topics": [
+    {
+      "topic_id": 1708,
+      "file": "t1708.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=10&t=1708",
+      "title": "Логические дельты",
+      "posts": 26,
+      "relevance": "high: practical use of logical forks as a logically verified dictionary; definitions derived from fork chains (Поле/Частицы/Вещество, Объём/Пространство/Место, Количество/Множество/Величина); lexicography web tool and Telegram channel; author acknowledges real-language dichotomies overlap"
+    },
+    {
+      "topic_id": 1734,
+      "file": "t1734.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=10&t=1734",
+      "title": "Функции-характеристики материи",
+      "posts": 5,
+      "relevance": "high as evidence: participants ask whether anyone has content for this section; no generator is presented"
+    },
+    {
+      "topic_id": 406,
+      "file": "t406.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=10&t=406",
+      "title": "Терминология и определения",
+      "posts": 2,
+      "relevance": "high: 43 unique authentic definitions extracted from the monograph (пространство, величина, место, точка, время, сила...), usable as a test corpus for the Definition Checker"
+    },
+    {
+      "topic_id": 1638,
+      "file": "t1638.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=111&t=1638",
+      "title": "Предложение создать словарь",
+      "posts": 3,
+      "relevance": "medium: community dictionary at my.razum.wiki; word vs term distinction; definitions discussed in Telegram and the Encyclopedia section"
+    },
+    {
+      "topic_id": 758,
+      "file": "t758.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=10&t=758",
+      "title": "Интеллект",
+      "posts": 9,
+      "relevance": "low: attempts to define the term 'интеллект'; shows how each candidate fails the genus+differentia test"
+    },
+    {
+      "topic_id": 1608,
+      "file": "t1608.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=114&t=1608",
+      "title": "Интеллект (Энциклопедия)",
+      "posts": 3,
+      "relevance": "low: same term in the Encyclopedia section; candidate definitions listed"
+    },
+    {
+      "topic_id": 1205,
+      "file": "t1205.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=11&t=1205",
+      "title": "Неразглошение информации. Развертка знаний.",
+      "posts": 34,
+      "relevance": "low: discussion about secrecy of the author's knowledge; no technical content"
+    },
+    {
+      "topic_id": 1724,
+      "file": "t1724.txt",
+      "url": "https://forum.razum.wiki/viewtopic.php?f=111&t=1724",
+      "title": "Новая редакция монографии В. Г. Катющика",
+      "posts": 3,
+      "relevance": "low: notes that the DOC and PDF versions of the monograph differ in wording (two versions exist)"
+    }
+  ],
+  "fetched_not_stored": [
+    {
+      "topic_id": 123,
+      "url": "https://forum.razum.wiki/viewtopic.php?f=10&t=123",
+      "title": "Искусственный интеллект",
+      "posts": 356,
+      "note": "2015-2018 community debate about what AI is. The account 'Виктор Катющик' wrote 8 posts on 2015-05-05 (#17, 29, 30, 34, 45, 47, 49, 51), all about the format of valid criticism, none about AI architecture. The word 'дельт' does not occur in the thread. Useful point from user Reegool (#8, #32): the term 'искусственный интеллект' has several definitions and therefore, by the law of identity, none."
+    },
+    {
+      "topic_id": 1215,
+      "url": "https://forum.razum.wiki/viewtopic.php?f=10&t=1215",
+      "title": "Как выбрать корректное определение?",
+      "posts": 110,
+      "note": "2017 debate; no mention of deltas or AI"
+    },
+    {
+      "topic_id": 1046,
+      "url": "https://forum.razum.wiki/viewtopic.php?f=11&t=1046",
+      "title": "А нет ли логической ошибки в определении материи у Катющика?",
+      "posts": 185,
+      "note": "2016 debate about the definition of matter; no mention of deltas or AI"
+    },
+    {
+      "topic_id": 917,
+      "url": "https://forum.razum.wiki/viewtopic.php?f=10&t=917",
+      "title": "(видео) Определения и понятия",
+      "posts": 64,
+      "note": "2016 debate about definitions of 'information' and 'space'; shows how definitional disputes unfold"
+    }
+  ],
+  "external_pointers": [
+    {"what": "community dictionary", "url": "https://my.razum.wiki"},
+    {"what": "dichotomy schemes channel (Telegram)", "url": "https://t.me/logicalforks"},
+    {"what": "lexicography via dichotomy schemes (web app, JSON editing)", "url": "https://ntrib.ru/d/lexiko-graph/"},
+    {"what": "dictionary work group (Telegram)", "url": "https://t.me/VGK18"},
+    {"what": "author's article on screening model of gravity (2003)", "url": "http://www.sciteclibrary.ru/texsts/rus/stat/st727.htm"}
+  ]
+}

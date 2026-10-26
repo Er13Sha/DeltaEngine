@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Приватные данные: не коммитить и не публиковать (экспорт чата с именами частных лиц)
+private/
+
+# Результаты запусков и производные файлы: воспроизводятся командами из README.md
+runs/
+data/computed-compound-space.json
+data/exact-latest.json
+
+# Прочее
+*.log
+Thumbs.db
+.DS_Store

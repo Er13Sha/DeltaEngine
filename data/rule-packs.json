@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "active_default": "reference_science",
+  "rule_packs": [
+    {
+      "rule_pack_id": "reference_science",
+      "label": "Опорная наука",
+      "status": "trusted_prototype",
+      "description": "Воспроизводимый режим прототипа: элемент задается атомным номером, соединения задаются явными стехиометрическими рецептами, био- и техно-классы задаются локальными функциональными шаблонами.",
+      "trusted_core": true,
+      "invariants": [
+        "Particle counters are non-negative integers.",
+        "Element capacity is bounded by available proton, neutron, and electron counts.",
+        "Compound capacity is bounded by available element capacities.",
+        "No floating point arithmetic is required for logical classification."
+      ],
+      "sources": [
+        {
+          "source_id": "local.prototype.elements",
+          "kind": "local_table",
+          "status": "prototype_fixture"
+        },
+        {
+          "source_id": "local.prototype.compounds",
+          "kind": "local_table",
+          "status": "prototype_fixture"
+        }
+      ]
+    },
+    {
+      "rule_pack_id": "katyushchik_hypothesis",
+      "label": "Гипотеза Катющика",
+      "status": "research_hypothesis",
+      "description": "Исследовательский режим для альтернативных положений из материалов. Не смешивается с trusted-core и не используется как единственное основание результата.",
+      "trusted_core": false,
+      "invariants": [
+        "Hypothesis rules must be explicitly marked by rule_pack_id.",
+        "A hypothesis rule cannot silently override a trusted-core rule.",
+        "Outputs produced under this pack must keep provenance in the canonical state hash."
+      ],
+      "sources": [
+        {
+          "source_id": "project.katyushchik_monograph",
+          "kind": "provided_pdf",
+          "status": "available_material"
+        },
+        {
+          "source_id": "project.user_matter_tree",
+          "kind": "provided_image",
+          "status": "available_material"
+        }
+      ]
+    }
+  ]
+}

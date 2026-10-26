@@ -1,0 +1,41 @@
+{
+  "schema_version": "telegram-chat@0.1",
+  "chat": "РАЗУМНАЯ ЦИВИЛИЗАЦИЯ: Научный Дискуссионный Клуб (supergroup, public)",
+  "export_path": "ChatExport_2026-10-27/ (Telegram Desktop HTML export, 53 files messages*.html)",
+  "export_stats": {
+    "files": 53,
+    "bytes": 53085831,
+    "aggregate_sha256": "05c9a30a2027e1267775f7714b65df2b22be56c7e51b1feba5336eb3a4a1d082",
+    "hash_method": "sha256 over lines 'filename:sha256(file)' in natural file order"
+  },
+  "parsed": {
+    "messages": 52175,
+    "service_messages": 1218,
+    "distinct_authors": 495,
+    "date_range": "2023-12-21 .. 2026-10-26",
+    "messages_by_year": {"2023": 1339, "2024": 25670, "2025": 12189, "2026": 12977},
+    "topics_created_by_admin": ["ЛОГИКА", "Катющик Виктор Григорьевич", "ФИЗИКА", "СЛОВАРЬ", "Дефиниции создаем тут", "Логические вилки", "Эфир/ЭФИР (дискретность/атомизм)", "Поле/ПОЛЕ (континуальность/непрерывность)", "Нейронки / ИИ-ПРОСТЫНИ (лонгриды, копии статей и ответы нейросетей)", "Математика", "ЯДЕРНАЯ физика", "ПОЛИТИКА", "ЮМОР (околонаук)"]
+  },
+  "keyword_counts_messages": {
+    "дельт": 27,
+    "вилк / дихотом": 153,
+    "искусственный интеллект / ИИ": 239,
+    "нейро": 167,
+    "GPT / LLM и т.п.": 67,
+    "развёртка": 4,
+    "функция-характеристика": 0,
+    "определени": 1611,
+    "Катющик": 1696
+  },
+  "status": "text parsed only; photos, videos and files are not included in the export; diagrams of forks are therefore not available",
+  "privacy_note": "The raw export contains names and pseudonyms of private persons. It is kept outside the registry and should not be published together with the repository. This manifest holds only aggregate facts and a hash.",
+  "findings": [
+    "No message presents a generator of 'function-characteristic of matter' or a concrete unfolding algorithm; the term does not occur at all, 'развёртка' occurs 4 times in general sense.",
+    "The method of logical deltas is used in practice as 'dichotomous division of concepts' for a logical dictionary (participant al_proz). The same participant states Katyushchik did not formulate deltas as dichotomous division, though the meaning is similar (2024-09-03).",
+    "The recurring dispute is about 'false dichotomy': whether 'A / not-A' is always valid versus pairs of named opposites ('орёл / решка' misses 'ребро'), applicability of the fork to the object (colour fork for a colourless crocodile), antonym vs negation ('анти-крокодил' vs 'не-крокодил'). This is the exact case for a deterministic Fork Linter with a declared universe.",
+    "Participants raised operational vagueness of predicates ('сохраняет форму' - over what time?) and subjectivity of path choice in a fork.",
+    "The tree-building tool of the dictionary project compares concept extents pairwise (LLM judges 'любой квадрат это ромб?'); authors report that the number of pairs does not scale to hundreds or thousands of concepts and ask for other algorithms (2025-10).",
+    "A participant noted (2025-07-01) that the community has not looked at logic programming (Prolog) or expert systems, which are the closest prior art.",
+    "LLMs are used in the chat both as critics and as defenders; their verdicts conflict with each other, and the chat itself notes they follow the framing of the prompt."
+  ]
+}

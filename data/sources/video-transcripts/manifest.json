@@ -1,0 +1,88 @@
+{
+  "schema_version": "video-transcripts@0.1",
+  "caption_type": "youtube automatic captions (ru-orig), cleaned of rolling-window duplicates; timestamps are ~30 s buckets",
+  "status": "partial: no audio verification, recognition errors present",
+  "videos": [
+    {
+      "video_id": "XsPHjlb_FZg",
+      "file": "XsPHjlb_FZg.ru-auto.txt",
+      "title": "Наука технологии 21 век (обзор 1 часть) Катющик",
+      "channel": "Аз есмь физик Виктор Катющик",
+      "duration": "1:00:03",
+      "upload_date": "2014-08-19",
+      "relevance": "high for 06:18-22:06 (AI via logical deltas, chicken example at ~11:05, on-demand path unfolding); rest is off-topic"
+    },
+    {
+      "video_id": "ufII145N7W8",
+      "file": "ufII145N7W8.ru-auto.txt",
+      "title": "Проект искусственный интеллект: технологии созидания",
+      "channel": "Катющик ТВ",
+      "duration": "17:37",
+      "upload_date": "2023-05-05",
+      "relevance": "high: formal investor presentation, six reasons AI is not built, three components, information body pyramid"
+    },
+    {
+      "video_id": "At08288FuLQ",
+      "file": "At08288FuLQ.ru-auto.txt",
+      "title": "Ии през 1",
+      "channel": "Катющик ТВ",
+      "duration": "1:01:01",
+      "upload_date": "2023-05-05",
+      "relevance": "high: same presentation plus 40 min expert Q&A; author states no database was built, no peer-reviewed publications, no executable model shown"
+    },
+    {
+      "video_id": "tw-Z1oYOGds",
+      "file": "tw-Z1oYOGds.ru-auto.txt",
+      "title": "Искусственный интеллект, искусственный разум",
+      "channel": "Катющик ТВ",
+      "duration": "7:00",
+      "upload_date": "2015-12-12",
+      "relevance": "medium: three components (logic base tree, operating system, personification), cutting chaotic variants"
+    },
+    {
+      "video_id": "WNs48pxe2po",
+      "file": "WNs48pxe2po.ru-auto.txt",
+      "title": "Искусственный интеллект! Технологии БГП! Единственный достоверный источник информации",
+      "channel": "Катющик ТВ2",
+      "duration": "22:02",
+      "upload_date": "2023-10-20",
+      "relevance": "medium for 00:01-09:20 (critique of statistical ML, non-chaotic variants as restricted choice space); rest is polemics"
+    },
+    {
+      "video_id": "w7fVrHxUaMk",
+      "file": "w7fVrHxUaMk.ru-auto.txt",
+      "title": "Квантовый компьютер и Искусственный Интеллект",
+      "channel": "Разумная цивилизация",
+      "duration": "2:22",
+      "upload_date": "2020-02-15",
+      "relevance": "low: AI is not a scaled-up calculator, carrier is arbitrary"
+    },
+    {
+      "video_id": "lC5swxhzw38",
+      "file": "lC5swxhzw38.ru-auto.txt",
+      "title": "ChatGPT облажался! Искусственный интеллект тупит? Пояснение про GPS и пространства",
+      "channel": "Катющик ТВ2",
+      "duration": "16:12",
+      "upload_date": "2023-06-14",
+      "relevance": "low: ChatGPT dialogue with a malformed A/not-A question (useful as a negative test case); GPS claims are factually wrong"
+    },
+    {
+      "video_id": "MGe1YBYapzo",
+      "file": "MGe1YBYapzo.ru-auto.txt",
+      "title": "Что не так с GPS? Как попасть в многообразие?",
+      "channel": "Катющик ТВ2",
+      "duration": "17:08",
+      "upload_date": "2023-06-01",
+      "relevance": "none for architecture: polemics; states only-one-logic and anti-manifold positions"
+    },
+    {
+      "video_id": "PG4yJiAho5Q",
+      "file": "PG4yJiAho5Q.ru-auto.txt",
+      "title": "Апгрейд мозга (1-3 серии)",
+      "channel": "Катющик ТВ",
+      "duration": "2:05:38",
+      "upload_date": "2016-02-04",
+      "relevance": "high for 00:00-57:00 (scientific method, four laws of logic, definition rules genus+differentia, theory vs constatation, theory elimination by binary forks, critique format); rest is personal attacks and unverified accusations, excluded"
+    }
+  ]
+}

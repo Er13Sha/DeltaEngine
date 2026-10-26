@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "delta-engine"
+version = "0.0.1"
+description = "Delta Engine: верифицируемый движок понятий на логических дельтах (рабочее название)"
+readme = "README.md"
+requires-python = ">=3.11"
+# Доверенное ядро (delta_kernel) использует только стандартную библиотеку.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["delta_kernel*", "delta_tools*", "delta_app*", "adapters*", "logical_delta_matter*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q --import-mode=importlib"

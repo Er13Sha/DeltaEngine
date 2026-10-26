@@ -1,0 +1,6045 @@
+{
+  "schema_version": "confirmed-concepts@0.1",
+  "metadata": {
+    "generated_by": "scripts/build_confirmed_concepts.py",
+    "sources": {
+      "pubchem.periodic_table": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/periodictable/JSON",
+      "pubchem.compound_property": "https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest"
+    },
+    "notes": [
+      "Verified fields are copied from PubChem PUG-REST.",
+      "Russian aliases and phase/family fields are local prototype metadata.",
+      "model.neutrons is an engineering assumption from rounded atomic mass, not a verified isotope claim.",
+      "The element table is complete for the PubChem periodic table snapshot.",
+      "Compounds are imported from data/compound-seed.json; PubChem as a whole is too large to vendor in the repo."
+    ],
+    "compound_seed": "data/compound-seed.json",
+    "compound_target_count": 82,
+    "compound_failure_count": 0,
+    "compound_failures": []
+  },
+  "elements": [
+    {
+      "symbol": "H",
+      "name_en": "Hydrogen",
+      "atomic_number": 1,
+      "atomic_mass": "1.0080",
+      "standard_state": "Gas",
+      "group_block": "Nonmetal",
+      "aliases": [
+        "H",
+        "Hydrogen",
+        "водород",
+        "водорода",
+        "гидроген"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 1,
+        "neutrons": 0,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "He",
+      "name_en": "Helium",
+      "atomic_number": 2,
+      "atomic_mass": "4.00260",
+      "standard_state": "Gas",
+      "group_block": "Noble gas",
+      "aliases": [
+        "He",
+        "Helium",
+        "гелий",
+        "гелия"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 4,
+        "neutrons": 2,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Li",
+      "name_en": "Lithium",
+      "atomic_number": 3,
+      "atomic_mass": "7.0",
+      "standard_state": "Solid",
+      "group_block": "Alkali metal",
+      "aliases": [
+        "Li",
+        "Lithium",
+        "литий",
+        "лития"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 7,
+        "neutrons": 4,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Be",
+      "name_en": "Beryllium",
+      "atomic_number": 4,
+      "atomic_mass": "9.012183",
+      "standard_state": "Solid",
+      "group_block": "Alkaline earth metal",
+      "aliases": [
+        "Be",
+        "Beryllium",
+        "бериллий",
+        "бериллия"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 9,
+        "neutrons": 5,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "B",
+      "name_en": "Boron",
+      "atomic_number": 5,
+      "atomic_mass": "10.81",
+      "standard_state": "Solid",
+      "group_block": "Metalloid",
+      "aliases": [
+        "B",
+        "Boron",
+        "бор",
+        "бора"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 11,
+        "neutrons": 6,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "C",
+      "name_en": "Carbon",
+      "atomic_number": 6,
+      "atomic_mass": "12.011",
+      "standard_state": "Solid",
+      "group_block": "Nonmetal",
+      "aliases": [
+        "C",
+        "Carbon",
+        "углерод",
+        "углерода"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 12,
+        "neutrons": 6,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "N",
+      "name_en": "Nitrogen",
+      "atomic_number": 7,
+      "atomic_mass": "14.007",
+      "standard_state": "Gas",
+      "group_block": "Nonmetal",
+      "aliases": [
+        "N",
+        "Nitrogen",
+        "азот",
+        "азота"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 14,
+        "neutrons": 7,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "O",
+      "name_en": "Oxygen",
+      "atomic_number": 8,
+      "atomic_mass": "15.999",
+      "standard_state": "Gas",
+      "group_block": "Nonmetal",
+      "aliases": [
+        "O",
+        "Oxygen",
+        "кислород",
+        "кислорода"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 16,
+        "neutrons": 8,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "F",
+      "name_en": "Fluorine",
+      "atomic_number": 9,
+      "atomic_mass": "18.99840316",
+      "standard_state": "Gas",
+      "group_block": "Halogen",
+      "aliases": [
+        "F",
+        "Fluorine",
+        "фтор",
+        "фтора"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 19,
+        "neutrons": 10,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ne",
+      "name_en": "Neon",
+      "atomic_number": 10,
+      "atomic_mass": "20.180",
+      "standard_state": "Gas",
+      "group_block": "Noble gas",
+      "aliases": [
+        "Ne",
+        "Neon",
+        "неон",
+        "неона"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 20,
+        "neutrons": 10,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Na",
+      "name_en": "Sodium",
+      "atomic_number": 11,
+      "atomic_mass": "22.9897693",
+      "standard_state": "Solid",
+      "group_block": "Alkali metal",
+      "aliases": [
+        "Na",
+        "Sodium",
+        "натрий",
+        "натрия"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 23,
+        "neutrons": 12,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Mg",
+      "name_en": "Magnesium",
+      "atomic_number": 12,
+      "atomic_mass": "24.305",
+      "standard_state": "Solid",
+      "group_block": "Alkaline earth metal",
+      "aliases": [
+        "Mg",
+        "Magnesium",
+        "магний",
+        "магния"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 24,
+        "neutrons": 12,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Al",
+      "name_en": "Aluminum",
+      "atomic_number": 13,
+      "atomic_mass": "26.981538",
+      "standard_state": "Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Al",
+        "Aluminum",
+        "алюминий",
+        "алюминия"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 27,
+        "neutrons": 14,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Si",
+      "name_en": "Silicon",
+      "atomic_number": 14,
+      "atomic_mass": "28.085",
+      "standard_state": "Solid",
+      "group_block": "Metalloid",
+      "aliases": [
+        "Si",
+        "Silicon",
+        "кремний",
+        "кремния"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 28,
+        "neutrons": 14,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "P",
+      "name_en": "Phosphorus",
+      "atomic_number": 15,
+      "atomic_mass": "30.97376200",
+      "standard_state": "Solid",
+      "group_block": "Nonmetal",
+      "aliases": [
+        "P",
+        "Phosphorus",
+        "фосфор",
+        "фосфора"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 31,
+        "neutrons": 16,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "S",
+      "name_en": "Sulfur",
+      "atomic_number": 16,
+      "atomic_mass": "32.07",
+      "standard_state": "Solid",
+      "group_block": "Nonmetal",
+      "aliases": [
+        "S",
+        "Sulfur",
+        "сера",
+        "серы",
+        "серу"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 32,
+        "neutrons": 16,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cl",
+      "name_en": "Chlorine",
+      "atomic_number": 17,
+      "atomic_mass": "35.45",
+      "standard_state": "Gas",
+      "group_block": "Halogen",
+      "aliases": [
+        "Cl",
+        "Chlorine",
+        "хлор",
+        "хлора"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 35,
+        "neutrons": 18,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ar",
+      "name_en": "Argon",
+      "atomic_number": 18,
+      "atomic_mass": "39.9",
+      "standard_state": "Gas",
+      "group_block": "Noble gas",
+      "aliases": [
+        "Ar",
+        "Argon",
+        "аргон",
+        "аргона"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 40,
+        "neutrons": 22,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "K",
+      "name_en": "Potassium",
+      "atomic_number": 19,
+      "atomic_mass": "39.0983",
+      "standard_state": "Solid",
+      "group_block": "Alkali metal",
+      "aliases": [
+        "K",
+        "Potassium",
+        "калий",
+        "калия"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 39,
+        "neutrons": 20,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ca",
+      "name_en": "Calcium",
+      "atomic_number": 20,
+      "atomic_mass": "40.08",
+      "standard_state": "Solid",
+      "group_block": "Alkaline earth metal",
+      "aliases": [
+        "Ca",
+        "Calcium",
+        "кальций",
+        "кальция"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 40,
+        "neutrons": 20,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Sc",
+      "name_en": "Scandium",
+      "atomic_number": 21,
+      "atomic_mass": "44.95591",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Sc",
+        "Scandium",
+        "скандий",
+        "скандия"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 45,
+        "neutrons": 24,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ti",
+      "name_en": "Titanium",
+      "atomic_number": 22,
+      "atomic_mass": "47.867",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Ti",
+        "Titanium",
+        "титан",
+        "титана"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 48,
+        "neutrons": 26,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "V",
+      "name_en": "Vanadium",
+      "atomic_number": 23,
+      "atomic_mass": "50.9415",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "V",
+        "Vanadium",
+        "ванадий",
+        "ванадия"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 51,
+        "neutrons": 28,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cr",
+      "name_en": "Chromium",
+      "atomic_number": 24,
+      "atomic_mass": "51.996",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Cr",
+        "Chromium",
+        "хром",
+        "хрома"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 52,
+        "neutrons": 28,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Mn",
+      "name_en": "Manganese",
+      "atomic_number": 25,
+      "atomic_mass": "54.93804",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Mn",
+        "Manganese",
+        "марганец",
+        "марганца"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 55,
+        "neutrons": 30,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Fe",
+      "name_en": "Iron",
+      "atomic_number": 26,
+      "atomic_mass": "55.84",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Fe",
+        "Iron",
+        "железо",
+        "железа",
+        "металл"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 56,
+        "neutrons": 30,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Co",
+      "name_en": "Cobalt",
+      "atomic_number": 27,
+      "atomic_mass": "58.93319",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Co",
+        "Cobalt",
+        "кобальт",
+        "кобальта"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 59,
+        "neutrons": 32,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ni",
+      "name_en": "Nickel",
+      "atomic_number": 28,
+      "atomic_mass": "58.693",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Ni",
+        "Nickel",
+        "никель",
+        "никеля"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 59,
+        "neutrons": 31,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cu",
+      "name_en": "Copper",
+      "atomic_number": 29,
+      "atomic_mass": "63.55",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Cu",
+        "Copper",
+        "медь",
+        "меди",
+        "проводник"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 64,
+        "neutrons": 35,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Zn",
+      "name_en": "Zinc",
+      "atomic_number": 30,
+      "atomic_mass": "65.4",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Zn",
+        "Zinc",
+        "цинк",
+        "цинка"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 65,
+        "neutrons": 35,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ga",
+      "name_en": "Gallium",
+      "atomic_number": 31,
+      "atomic_mass": "69.723",
+      "standard_state": "Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Ga",
+        "Gallium",
+        "галлий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 70,
+        "neutrons": 39,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ge",
+      "name_en": "Germanium",
+      "atomic_number": 32,
+      "atomic_mass": "72.63",
+      "standard_state": "Solid",
+      "group_block": "Metalloid",
+      "aliases": [
+        "Ge",
+        "Germanium",
+        "германий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 73,
+        "neutrons": 41,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "As",
+      "name_en": "Arsenic",
+      "atomic_number": 33,
+      "atomic_mass": "74.92159",
+      "standard_state": "Solid",
+      "group_block": "Metalloid",
+      "aliases": [
+        "As",
+        "Arsenic",
+        "мышьяк"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 75,
+        "neutrons": 42,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Se",
+      "name_en": "Selenium",
+      "atomic_number": 34,
+      "atomic_mass": "78.97",
+      "standard_state": "Solid",
+      "group_block": "Nonmetal",
+      "aliases": [
+        "Se",
+        "Selenium",
+        "селен"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 79,
+        "neutrons": 45,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Br",
+      "name_en": "Bromine",
+      "atomic_number": 35,
+      "atomic_mass": "79.90",
+      "standard_state": "Liquid",
+      "group_block": "Halogen",
+      "aliases": [
+        "Br",
+        "Bromine",
+        "бром"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 80,
+        "neutrons": 45,
+        "phase": "liquid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Kr",
+      "name_en": "Krypton",
+      "atomic_number": 36,
+      "atomic_mass": "83.80",
+      "standard_state": "Gas",
+      "group_block": "Noble gas",
+      "aliases": [
+        "Kr",
+        "Krypton",
+        "криптон"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 84,
+        "neutrons": 48,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Rb",
+      "name_en": "Rubidium",
+      "atomic_number": 37,
+      "atomic_mass": "85.468",
+      "standard_state": "Solid",
+      "group_block": "Alkali metal",
+      "aliases": [
+        "Rb",
+        "Rubidium",
+        "рубидий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 85,
+        "neutrons": 48,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Sr",
+      "name_en": "Strontium",
+      "atomic_number": 38,
+      "atomic_mass": "87.62",
+      "standard_state": "Solid",
+      "group_block": "Alkaline earth metal",
+      "aliases": [
+        "Sr",
+        "Strontium",
+        "стронций"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 88,
+        "neutrons": 50,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Y",
+      "name_en": "Yttrium",
+      "atomic_number": 39,
+      "atomic_mass": "88.90584",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Y",
+        "Yttrium",
+        "иттрий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 89,
+        "neutrons": 50,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Zr",
+      "name_en": "Zirconium",
+      "atomic_number": 40,
+      "atomic_mass": "91.22",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Zr",
+        "Zirconium",
+        "цирконий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 91,
+        "neutrons": 51,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Nb",
+      "name_en": "Niobium",
+      "atomic_number": 41,
+      "atomic_mass": "92.90637",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Nb",
+        "Niobium",
+        "ниобий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 93,
+        "neutrons": 52,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Mo",
+      "name_en": "Molybdenum",
+      "atomic_number": 42,
+      "atomic_mass": "95.95",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Mo",
+        "Molybdenum",
+        "молибден"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 96,
+        "neutrons": 54,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Tc",
+      "name_en": "Technetium",
+      "atomic_number": 43,
+      "atomic_mass": "96.90636",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Tc",
+        "Technetium",
+        "технеций"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 97,
+        "neutrons": 54,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ru",
+      "name_en": "Ruthenium",
+      "atomic_number": 44,
+      "atomic_mass": "101.1",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Ru",
+        "Ruthenium",
+        "рутений"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 101,
+        "neutrons": 57,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Rh",
+      "name_en": "Rhodium",
+      "atomic_number": 45,
+      "atomic_mass": "102.9055",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Rh",
+        "Rhodium",
+        "родий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 103,
+        "neutrons": 58,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Pd",
+      "name_en": "Palladium",
+      "atomic_number": 46,
+      "atomic_mass": "106.42",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Pd",
+        "Palladium",
+        "палладий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 106,
+        "neutrons": 60,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ag",
+      "name_en": "Silver",
+      "atomic_number": 47,
+      "atomic_mass": "107.868",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Ag",
+        "Silver",
+        "серебро",
+        "серебра"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 108,
+        "neutrons": 61,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cd",
+      "name_en": "Cadmium",
+      "atomic_number": 48,
+      "atomic_mass": "112.41",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Cd",
+        "Cadmium",
+        "кадмий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 112,
+        "neutrons": 64,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "In",
+      "name_en": "Indium",
+      "atomic_number": 49,
+      "atomic_mass": "114.818",
+      "standard_state": "Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "In",
+        "Indium",
+        "индий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 115,
+        "neutrons": 66,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Sn",
+      "name_en": "Tin",
+      "atomic_number": 50,
+      "atomic_mass": "118.71",
+      "standard_state": "Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Sn",
+        "Tin",
+        "олово"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 119,
+        "neutrons": 69,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Sb",
+      "name_en": "Antimony",
+      "atomic_number": 51,
+      "atomic_mass": "121.760",
+      "standard_state": "Solid",
+      "group_block": "Metalloid",
+      "aliases": [
+        "Sb",
+        "Antimony",
+        "сурьма"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 122,
+        "neutrons": 71,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Te",
+      "name_en": "Tellurium",
+      "atomic_number": 52,
+      "atomic_mass": "127.6",
+      "standard_state": "Solid",
+      "group_block": "Metalloid",
+      "aliases": [
+        "Te",
+        "Tellurium",
+        "теллур"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 128,
+        "neutrons": 76,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "I",
+      "name_en": "Iodine",
+      "atomic_number": 53,
+      "atomic_mass": "126.9045",
+      "standard_state": "Solid",
+      "group_block": "Halogen",
+      "aliases": [
+        "I",
+        "Iodine",
+        "йод",
+        "иод"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 127,
+        "neutrons": 74,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Xe",
+      "name_en": "Xenon",
+      "atomic_number": 54,
+      "atomic_mass": "131.29",
+      "standard_state": "Gas",
+      "group_block": "Noble gas",
+      "aliases": [
+        "Xe",
+        "Xenon",
+        "ксенон"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 131,
+        "neutrons": 77,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cs",
+      "name_en": "Cesium",
+      "atomic_number": 55,
+      "atomic_mass": "132.9054520",
+      "standard_state": "Solid",
+      "group_block": "Alkali metal",
+      "aliases": [
+        "Cs",
+        "Cesium",
+        "цезий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 133,
+        "neutrons": 78,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ba",
+      "name_en": "Barium",
+      "atomic_number": 56,
+      "atomic_mass": "137.33",
+      "standard_state": "Solid",
+      "group_block": "Alkaline earth metal",
+      "aliases": [
+        "Ba",
+        "Barium",
+        "барий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 137,
+        "neutrons": 81,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "La",
+      "name_en": "Lanthanum",
+      "atomic_number": 57,
+      "atomic_mass": "138.9055",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "La",
+        "Lanthanum",
+        "лантан"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 139,
+        "neutrons": 82,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ce",
+      "name_en": "Cerium",
+      "atomic_number": 58,
+      "atomic_mass": "140.116",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Ce",
+        "Cerium",
+        "церий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 140,
+        "neutrons": 82,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Pr",
+      "name_en": "Praseodymium",
+      "atomic_number": 59,
+      "atomic_mass": "140.90766",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Pr",
+        "Praseodymium",
+        "празеодим"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 141,
+        "neutrons": 82,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Nd",
+      "name_en": "Neodymium",
+      "atomic_number": 60,
+      "atomic_mass": "144.24",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Nd",
+        "Neodymium",
+        "неодим"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 144,
+        "neutrons": 84,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Pm",
+      "name_en": "Promethium",
+      "atomic_number": 61,
+      "atomic_mass": "144.91276",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Pm",
+        "Promethium",
+        "прометий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 145,
+        "neutrons": 84,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Sm",
+      "name_en": "Samarium",
+      "atomic_number": 62,
+      "atomic_mass": "150.4",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Sm",
+        "Samarium",
+        "самарий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 150,
+        "neutrons": 88,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Eu",
+      "name_en": "Europium",
+      "atomic_number": 63,
+      "atomic_mass": "151.964",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Eu",
+        "Europium",
+        "европий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 152,
+        "neutrons": 89,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Gd",
+      "name_en": "Gadolinium",
+      "atomic_number": 64,
+      "atomic_mass": "157.25",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Gd",
+        "Gadolinium",
+        "гадолиний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 157,
+        "neutrons": 93,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Tb",
+      "name_en": "Terbium",
+      "atomic_number": 65,
+      "atomic_mass": "158.92535",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Tb",
+        "Terbium",
+        "тербий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 159,
+        "neutrons": 94,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Dy",
+      "name_en": "Dysprosium",
+      "atomic_number": 66,
+      "atomic_mass": "162.500",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Dy",
+        "Dysprosium",
+        "диспрозий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 162,
+        "neutrons": 96,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ho",
+      "name_en": "Holmium",
+      "atomic_number": 67,
+      "atomic_mass": "164.93033",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Ho",
+        "Holmium",
+        "гольмий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 165,
+        "neutrons": 98,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Er",
+      "name_en": "Erbium",
+      "atomic_number": 68,
+      "atomic_mass": "167.26",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Er",
+        "Erbium",
+        "эрбий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 167,
+        "neutrons": 99,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Tm",
+      "name_en": "Thulium",
+      "atomic_number": 69,
+      "atomic_mass": "168.93422",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Tm",
+        "Thulium",
+        "тулий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 169,
+        "neutrons": 100,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Yb",
+      "name_en": "Ytterbium",
+      "atomic_number": 70,
+      "atomic_mass": "173.05",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Yb",
+        "Ytterbium",
+        "иттербий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 173,
+        "neutrons": 103,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Lu",
+      "name_en": "Lutetium",
+      "atomic_number": 71,
+      "atomic_mass": "174.9667",
+      "standard_state": "Solid",
+      "group_block": "Lanthanide",
+      "aliases": [
+        "Lu",
+        "Lutetium",
+        "лютеций"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 175,
+        "neutrons": 104,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Hf",
+      "name_en": "Hafnium",
+      "atomic_number": 72,
+      "atomic_mass": "178.49",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Hf",
+        "Hafnium",
+        "гафний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 178,
+        "neutrons": 106,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ta",
+      "name_en": "Tantalum",
+      "atomic_number": 73,
+      "atomic_mass": "180.9479",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Ta",
+        "Tantalum",
+        "тантал"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 181,
+        "neutrons": 108,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "W",
+      "name_en": "Tungsten",
+      "atomic_number": 74,
+      "atomic_mass": "183.84",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "W",
+        "Tungsten",
+        "вольфрам"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 184,
+        "neutrons": 110,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Re",
+      "name_en": "Rhenium",
+      "atomic_number": 75,
+      "atomic_mass": "186.207",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Re",
+        "Rhenium",
+        "рений"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 186,
+        "neutrons": 111,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Os",
+      "name_en": "Osmium",
+      "atomic_number": 76,
+      "atomic_mass": "190.2",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Os",
+        "Osmium",
+        "осмий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 190,
+        "neutrons": 114,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ir",
+      "name_en": "Iridium",
+      "atomic_number": 77,
+      "atomic_mass": "192.22",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Ir",
+        "Iridium",
+        "иридий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 192,
+        "neutrons": 115,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Pt",
+      "name_en": "Platinum",
+      "atomic_number": 78,
+      "atomic_mass": "195.08",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Pt",
+        "Platinum",
+        "платина"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 195,
+        "neutrons": 117,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Au",
+      "name_en": "Gold",
+      "atomic_number": 79,
+      "atomic_mass": "196.96657",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Au",
+        "Gold",
+        "золото",
+        "золота"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 197,
+        "neutrons": 118,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Hg",
+      "name_en": "Mercury",
+      "atomic_number": 80,
+      "atomic_mass": "200.59",
+      "standard_state": "Liquid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Hg",
+        "Mercury",
+        "ртуть"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 201,
+        "neutrons": 121,
+        "phase": "liquid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Tl",
+      "name_en": "Thallium",
+      "atomic_number": 81,
+      "atomic_mass": "204.383",
+      "standard_state": "Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Tl",
+        "Thallium",
+        "таллий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 204,
+        "neutrons": 123,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Pb",
+      "name_en": "Lead",
+      "atomic_number": 82,
+      "atomic_mass": "207",
+      "standard_state": "Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Pb",
+        "Lead",
+        "свинец",
+        "свинца"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 207,
+        "neutrons": 125,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Bi",
+      "name_en": "Bismuth",
+      "atomic_number": 83,
+      "atomic_mass": "208.98040",
+      "standard_state": "Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Bi",
+        "Bismuth",
+        "висмут"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 209,
+        "neutrons": 126,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Po",
+      "name_en": "Polonium",
+      "atomic_number": 84,
+      "atomic_mass": "208.98243",
+      "standard_state": "Solid",
+      "group_block": "Metalloid",
+      "aliases": [
+        "Po",
+        "Polonium",
+        "полоний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 209,
+        "neutrons": 125,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "At",
+      "name_en": "Astatine",
+      "atomic_number": 85,
+      "atomic_mass": "209.98715",
+      "standard_state": "Solid",
+      "group_block": "Halogen",
+      "aliases": [
+        "At",
+        "Astatine",
+        "астат"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 210,
+        "neutrons": 125,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Rn",
+      "name_en": "Radon",
+      "atomic_number": 86,
+      "atomic_mass": "222.01758",
+      "standard_state": "Gas",
+      "group_block": "Noble gas",
+      "aliases": [
+        "Rn",
+        "Radon",
+        "радон"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 222,
+        "neutrons": 136,
+        "phase": "gas",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Fr",
+      "name_en": "Francium",
+      "atomic_number": 87,
+      "atomic_mass": "223.01973",
+      "standard_state": "Solid",
+      "group_block": "Alkali metal",
+      "aliases": [
+        "Fr",
+        "Francium",
+        "франций"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 223,
+        "neutrons": 136,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ra",
+      "name_en": "Radium",
+      "atomic_number": 88,
+      "atomic_mass": "226.02541",
+      "standard_state": "Solid",
+      "group_block": "Alkaline earth metal",
+      "aliases": [
+        "Ra",
+        "Radium",
+        "радий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 226,
+        "neutrons": 138,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ac",
+      "name_en": "Actinium",
+      "atomic_number": 89,
+      "atomic_mass": "227.02775",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Ac",
+        "Actinium",
+        "актиний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 227,
+        "neutrons": 138,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Th",
+      "name_en": "Thorium",
+      "atomic_number": 90,
+      "atomic_mass": "232.038",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Th",
+        "Thorium",
+        "торий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 232,
+        "neutrons": 142,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Pa",
+      "name_en": "Protactinium",
+      "atomic_number": 91,
+      "atomic_mass": "231.03588",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Pa",
+        "Protactinium",
+        "протактиний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 231,
+        "neutrons": 140,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "U",
+      "name_en": "Uranium",
+      "atomic_number": 92,
+      "atomic_mass": "238.0289",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "U",
+        "Uranium",
+        "уран"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 238,
+        "neutrons": 146,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Np",
+      "name_en": "Neptunium",
+      "atomic_number": 93,
+      "atomic_mass": "237.048172",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Np",
+        "Neptunium",
+        "нептуний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 237,
+        "neutrons": 144,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Pu",
+      "name_en": "Plutonium",
+      "atomic_number": 94,
+      "atomic_mass": "244.06420",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Pu",
+        "Plutonium",
+        "плутоний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 244,
+        "neutrons": 150,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Am",
+      "name_en": "Americium",
+      "atomic_number": 95,
+      "atomic_mass": "243.061380",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Am",
+        "Americium",
+        "америций"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 243,
+        "neutrons": 148,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cm",
+      "name_en": "Curium",
+      "atomic_number": 96,
+      "atomic_mass": "247.07035",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Cm",
+        "Curium",
+        "кюрий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 247,
+        "neutrons": 151,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Bk",
+      "name_en": "Berkelium",
+      "atomic_number": 97,
+      "atomic_mass": "247.07031",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Bk",
+        "Berkelium",
+        "берклий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 247,
+        "neutrons": 150,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cf",
+      "name_en": "Californium",
+      "atomic_number": 98,
+      "atomic_mass": "251.07959",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Cf",
+        "Californium",
+        "калифорний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 251,
+        "neutrons": 153,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Es",
+      "name_en": "Einsteinium",
+      "atomic_number": 99,
+      "atomic_mass": "252.0830",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Es",
+        "Einsteinium",
+        "эйнштейний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 252,
+        "neutrons": 153,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Fm",
+      "name_en": "Fermium",
+      "atomic_number": 100,
+      "atomic_mass": "257.09511",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Fm",
+        "Fermium",
+        "фермий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 257,
+        "neutrons": 157,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Md",
+      "name_en": "Mendelevium",
+      "atomic_number": 101,
+      "atomic_mass": "258.09843",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Md",
+        "Mendelevium",
+        "менделевий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 258,
+        "neutrons": 157,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "No",
+      "name_en": "Nobelium",
+      "atomic_number": 102,
+      "atomic_mass": "259.10100",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "No",
+        "Nobelium",
+        "нобелий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 259,
+        "neutrons": 157,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Lr",
+      "name_en": "Lawrencium",
+      "atomic_number": 103,
+      "atomic_mass": "266.120",
+      "standard_state": "Solid",
+      "group_block": "Actinide",
+      "aliases": [
+        "Lr",
+        "Lawrencium",
+        "лоуренсий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 266,
+        "neutrons": 163,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Rf",
+      "name_en": "Rutherfordium",
+      "atomic_number": 104,
+      "atomic_mass": "267.122",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Rf",
+        "Rutherfordium",
+        "резерфордий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 267,
+        "neutrons": 163,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Db",
+      "name_en": "Dubnium",
+      "atomic_number": 105,
+      "atomic_mass": "268.126",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Db",
+        "Dubnium",
+        "дубний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 268,
+        "neutrons": 163,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Sg",
+      "name_en": "Seaborgium",
+      "atomic_number": 106,
+      "atomic_mass": "269.128",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Sg",
+        "Seaborgium",
+        "сиборгий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 269,
+        "neutrons": 163,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Bh",
+      "name_en": "Bohrium",
+      "atomic_number": 107,
+      "atomic_mass": "270.133",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Bh",
+        "Bohrium",
+        "борий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 270,
+        "neutrons": 163,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Hs",
+      "name_en": "Hassium",
+      "atomic_number": 108,
+      "atomic_mass": "269.1336",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Hs",
+        "Hassium",
+        "хассий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 269,
+        "neutrons": 161,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Mt",
+      "name_en": "Meitnerium",
+      "atomic_number": 109,
+      "atomic_mass": "277.154",
+      "standard_state": "Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Mt",
+        "Meitnerium",
+        "мейтнерий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 277,
+        "neutrons": 168,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ds",
+      "name_en": "Darmstadtium",
+      "atomic_number": 110,
+      "atomic_mass": "282.166",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Ds",
+        "Darmstadtium",
+        "дармштадтий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 282,
+        "neutrons": 172,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Rg",
+      "name_en": "Roentgenium",
+      "atomic_number": 111,
+      "atomic_mass": "282.169",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Rg",
+        "Roentgenium",
+        "рентгений"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 282,
+        "neutrons": 171,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Cn",
+      "name_en": "Copernicium",
+      "atomic_number": 112,
+      "atomic_mass": "286.179",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Transition metal",
+      "aliases": [
+        "Cn",
+        "Copernicium",
+        "коперниций"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 286,
+        "neutrons": 174,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Nh",
+      "name_en": "Nihonium",
+      "atomic_number": 113,
+      "atomic_mass": "286.182",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Nh",
+        "Nihonium",
+        "нихоний"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 286,
+        "neutrons": 173,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Fl",
+      "name_en": "Flerovium",
+      "atomic_number": 114,
+      "atomic_mass": "290.192",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Fl",
+        "Flerovium",
+        "флеровий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 290,
+        "neutrons": 176,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Mc",
+      "name_en": "Moscovium",
+      "atomic_number": 115,
+      "atomic_mass": "290.196",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Mc",
+        "Moscovium",
+        "московий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 290,
+        "neutrons": 175,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Lv",
+      "name_en": "Livermorium",
+      "atomic_number": 116,
+      "atomic_mass": "293.205",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Post-transition metal",
+      "aliases": [
+        "Lv",
+        "Livermorium",
+        "ливерморий"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 293,
+        "neutrons": 177,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Ts",
+      "name_en": "Tennessine",
+      "atomic_number": 117,
+      "atomic_mass": "294.211",
+      "standard_state": "Expected to be a Solid",
+      "group_block": "Halogen",
+      "aliases": [
+        "Ts",
+        "Tennessine",
+        "теннессин"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 294,
+        "neutrons": 177,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    },
+    {
+      "symbol": "Og",
+      "name_en": "Oganesson",
+      "atomic_number": 118,
+      "atomic_mass": "295.216",
+      "standard_state": "Expected to be a Gas",
+      "group_block": "Noble gas",
+      "aliases": [
+        "Og",
+        "Oganesson",
+        "оганесон"
+      ],
+      "verified": {
+        "source_id": "pubchem.periodic_table",
+        "fields": [
+          "atomic_number",
+          "symbol",
+          "name_en",
+          "atomic_mass",
+          "standard_state",
+          "group_block"
+        ]
+      },
+      "model": {
+        "mass_number": 295,
+        "neutrons": 177,
+        "phase": "solid",
+        "status": "engineering_assumption_from_rounded_atomic_mass"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "cid": 962,
+      "query": "water",
+      "formula": "H2O",
+      "pubchem_molecular_formula": "H2O",
+      "iupac_name": "oxidane",
+      "canonical_smiles": "",
+      "inchi_key": "XLYOFNOQVPJJNP-UHFFFAOYSA-N",
+      "aliases": [
+        "water",
+        "H2O",
+        "вода",
+        "воды",
+        "воду",
+        "жидкая вода"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 783,
+      "query": "hydrogen",
+      "formula": "H2",
+      "pubchem_molecular_formula": "H2",
+      "iupac_name": "molecular hydrogen",
+      "canonical_smiles": "",
+      "inchi_key": "UFHFLCQGNIYNRP-UHFFFAOYSA-N",
+      "aliases": [
+        "hydrogen",
+        "H2",
+        "молекулярный водород"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "simple",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 977,
+      "query": "oxygen",
+      "formula": "O2",
+      "pubchem_molecular_formula": "O2",
+      "iupac_name": "molecular oxygen",
+      "canonical_smiles": "",
+      "inchi_key": "MYMOFIZGZYHOMD-UHFFFAOYSA-N",
+      "aliases": [
+        "oxygen",
+        "O2",
+        "молекулярный кислород"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "simple",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 947,
+      "query": "nitrogen",
+      "formula": "N2",
+      "pubchem_molecular_formula": "N2",
+      "iupac_name": "molecular nitrogen",
+      "canonical_smiles": "",
+      "inchi_key": "IJGRMHOSHXDMSA-UHFFFAOYSA-N",
+      "aliases": [
+        "nitrogen",
+        "N2",
+        "молекулярный азот"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "simple",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24823,
+      "query": "ozone",
+      "formula": "O3",
+      "pubchem_molecular_formula": "O3",
+      "iupac_name": "ozone",
+      "canonical_smiles": "",
+      "inchi_key": "CBENFWSGALASAD-UHFFFAOYSA-N",
+      "aliases": [
+        "ozone",
+        "O3",
+        "озон"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "simple",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24526,
+      "query": "chlorine",
+      "formula": "Cl2",
+      "pubchem_molecular_formula": "Cl2",
+      "iupac_name": "molecular chlorine",
+      "canonical_smiles": "",
+      "inchi_key": "KZBUYRJDOAKODT-UHFFFAOYSA-N",
+      "aliases": [
+        "chlorine",
+        "Cl2",
+        "молекулярный хлор"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "simple",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 280,
+      "query": "carbon dioxide",
+      "formula": "CO2",
+      "pubchem_molecular_formula": "CO2",
+      "iupac_name": "carbon dioxide",
+      "canonical_smiles": "",
+      "inchi_key": "CURLTUGMZLYLDI-UHFFFAOYSA-N",
+      "aliases": [
+        "carbon dioxide",
+        "CO2",
+        "диоксид углерода",
+        "углекислый газ",
+        "углекислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 281,
+      "query": "carbon monoxide",
+      "formula": "CO",
+      "pubchem_molecular_formula": "CO",
+      "iupac_name": "carbon monoxide",
+      "canonical_smiles": "",
+      "inchi_key": "UGFAIRIUMAVXCW-UHFFFAOYSA-N",
+      "aliases": [
+        "carbon monoxide",
+        "CO",
+        "монооксид углерода",
+        "угарный газ"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 297,
+      "query": "methane",
+      "formula": "CH4",
+      "pubchem_molecular_formula": "CH4",
+      "iupac_name": "methane",
+      "canonical_smiles": "",
+      "inchi_key": "VNWKTOKETHGBQD-UHFFFAOYSA-N",
+      "aliases": [
+        "methane",
+        "CH4",
+        "метан",
+        "метана"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 222,
+      "query": "ammonia",
+      "formula": "NH3",
+      "pubchem_molecular_formula": "H3N",
+      "iupac_name": "azane",
+      "canonical_smiles": "",
+      "inchi_key": "QGZKDVFQNNGYKY-UHFFFAOYSA-N",
+      "aliases": [
+        "ammonia",
+        "NH3",
+        "H3N",
+        "аммиак",
+        "аммиака"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 784,
+      "query": "hydrogen peroxide",
+      "formula": "H2O2",
+      "pubchem_molecular_formula": "H2O2",
+      "iupac_name": "hydrogen peroxide",
+      "canonical_smiles": "",
+      "inchi_key": "MHAJPDPJQMAIIY-UHFFFAOYSA-N",
+      "aliases": [
+        "hydrogen peroxide",
+        "H2O2",
+        "перекись водорода",
+        "пероксид водорода"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 402,
+      "query": "hydrogen sulfide",
+      "formula": "H2S",
+      "pubchem_molecular_formula": "H2S",
+      "iupac_name": "sulfane",
+      "canonical_smiles": "",
+      "inchi_key": "RWSOTUBLDIXVET-UHFFFAOYSA-N",
+      "aliases": [
+        "hydrogen sulfide",
+        "H2S",
+        "сероводород"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 1119,
+      "query": "sulfur dioxide",
+      "formula": "SO2",
+      "pubchem_molecular_formula": "O2S",
+      "iupac_name": "sulfur dioxide",
+      "canonical_smiles": "",
+      "inchi_key": "RAHZWNYVWXNFOC-UHFFFAOYSA-N",
+      "aliases": [
+        "sulfur dioxide",
+        "SO2",
+        "O2S",
+        "диоксид серы",
+        "сернистый газ"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 3032552,
+      "query": "nitrogen dioxide",
+      "formula": "NO2",
+      "pubchem_molecular_formula": "NO2",
+      "iupac_name": "",
+      "canonical_smiles": "",
+      "inchi_key": "JCXJVPUVTGWSNB-UHFFFAOYSA-N",
+      "aliases": [
+        "nitrogen dioxide",
+        "NO2",
+        "диоксид азота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "gas",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5234,
+      "query": "sodium chloride",
+      "formula": "NaCl",
+      "pubchem_molecular_formula": "ClNa",
+      "iupac_name": "sodium chloride",
+      "canonical_smiles": "",
+      "inchi_key": "FAPWRFPIFSIZLT-UHFFFAOYSA-M",
+      "aliases": [
+        "sodium chloride",
+        "NaCl",
+        "ClNa",
+        "хлорид натрия",
+        "соль",
+        "поваренная соль"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 4873,
+      "query": "potassium chloride",
+      "formula": "KCl",
+      "pubchem_molecular_formula": "ClK",
+      "iupac_name": "potassium chloride",
+      "canonical_smiles": "",
+      "inchi_key": "WCUXLLCKKVVCTQ-UHFFFAOYSA-M",
+      "aliases": [
+        "potassium chloride",
+        "KCl",
+        "ClK",
+        "хлорид калия"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 10112,
+      "query": "calcium carbonate",
+      "formula": "CaCO3",
+      "pubchem_molecular_formula": "CCaO3",
+      "iupac_name": "calcium carbonate",
+      "canonical_smiles": "",
+      "inchi_key": "VTYYLEPIZMXCLO-UHFFFAOYSA-L",
+      "aliases": [
+        "calcium carbonate",
+        "CaCO3",
+        "CCaO3",
+        "карбонат кальция",
+        "мел",
+        "известняк"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 10340,
+      "query": "sodium carbonate",
+      "formula": "Na2CO3",
+      "pubchem_molecular_formula": "CNa2O3",
+      "iupac_name": "disodium;carbonate",
+      "canonical_smiles": "",
+      "inchi_key": "CDBYLPFSWZWCQE-UHFFFAOYSA-L",
+      "aliases": [
+        "sodium carbonate",
+        "Na2CO3",
+        "CNa2O3",
+        "карбонат натрия",
+        "сода кальцинированная"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 516892,
+      "query": "sodium bicarbonate",
+      "formula": "NaHCO3",
+      "pubchem_molecular_formula": "CHNaO3",
+      "iupac_name": "sodium hydrogen carbonate",
+      "canonical_smiles": "",
+      "inchi_key": "UIIMBOGNXHQVGW-UHFFFAOYSA-M",
+      "aliases": [
+        "sodium bicarbonate",
+        "NaHCO3",
+        "CHNaO3",
+        "бикарбонат натрия",
+        "пищевая сода"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 14792,
+      "query": "magnesium oxide",
+      "formula": "MgO",
+      "pubchem_molecular_formula": "MgO",
+      "iupac_name": "oxomagnesium",
+      "canonical_smiles": "",
+      "inchi_key": "CPLXHLVBOLITMK-UHFFFAOYSA-N",
+      "aliases": [
+        "magnesium oxide",
+        "MgO",
+        "оксид магния"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 518696,
+      "query": "ferric oxide",
+      "formula": "Fe2O3",
+      "pubchem_molecular_formula": "Fe2O3",
+      "iupac_name": "oxo(oxoferriooxy)iron",
+      "canonical_smiles": "",
+      "inchi_key": "JEIPFZHSYJVQDO-UHFFFAOYSA-N",
+      "aliases": [
+        "ferric oxide",
+        "Fe2O3",
+        "оксид железа",
+        "оксид железа iii",
+        "ржавчина"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 449809,
+      "query": "ferrous oxide",
+      "formula": "FeO",
+      "pubchem_molecular_formula": "FeO",
+      "iupac_name": "iron(2+);oxygen(2-)",
+      "canonical_smiles": "",
+      "inchi_key": "VBMVTYDPPZVILR-UHFFFAOYSA-N",
+      "aliases": [
+        "ferrous oxide",
+        "FeO",
+        "оксид железа ii"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 9989226,
+      "query": "aluminum oxide",
+      "formula": "Al2O3",
+      "pubchem_molecular_formula": "Al2O3",
+      "iupac_name": "dialuminum;tris(oxygen(2-))",
+      "canonical_smiles": "",
+      "inchi_key": "PNEYBMLMFCGWSK-UHFFFAOYSA-N",
+      "aliases": [
+        "aluminum oxide",
+        "Al2O3",
+        "оксид алюминия",
+        "глинозем"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24261,
+      "query": "silicon dioxide",
+      "formula": "SiO2",
+      "pubchem_molecular_formula": "O2Si",
+      "iupac_name": "dioxosilane",
+      "canonical_smiles": "",
+      "inchi_key": "VYPSYNLAJGMNEJ-UHFFFAOYSA-N",
+      "aliases": [
+        "silicon dioxide",
+        "SiO2",
+        "O2Si",
+        "диоксид кремния",
+        "кремнезем",
+        "силикатная база"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 26042,
+      "query": "titanium dioxide",
+      "formula": "TiO2",
+      "pubchem_molecular_formula": "O2Ti",
+      "iupac_name": "dioxotitanium",
+      "canonical_smiles": "",
+      "inchi_key": "GWEVSGVZZGPLCZ-UHFFFAOYSA-N",
+      "aliases": [
+        "titanium dioxide",
+        "TiO2",
+        "O2Ti",
+        "диоксид титана"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24462,
+      "query": "copper(II) sulfate",
+      "formula": "CuSO4",
+      "pubchem_molecular_formula": "CuO4S",
+      "iupac_name": "copper sulfate",
+      "canonical_smiles": "",
+      "inchi_key": "ARUVKPQLZAKDPS-UHFFFAOYSA-L",
+      "aliases": [
+        "copper(II) sulfate",
+        "CuSO4",
+        "CuO4S",
+        "сульфат меди",
+        "медный купорос"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24083,
+      "query": "magnesium sulfate",
+      "formula": "MgSO4",
+      "pubchem_molecular_formula": "MgO4S",
+      "iupac_name": "magnesium sulfate",
+      "canonical_smiles": "",
+      "inchi_key": "CSNNHWWHGAXBCP-UHFFFAOYSA-L",
+      "aliases": [
+        "magnesium sulfate",
+        "MgSO4",
+        "MgO4S",
+        "сульфат магния"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24436,
+      "query": "sodium sulfate",
+      "formula": "Na2SO4",
+      "pubchem_molecular_formula": "Na2O4S",
+      "iupac_name": "disodium;sulfate",
+      "canonical_smiles": "",
+      "inchi_key": "PMZURENOXWZQFD-UHFFFAOYSA-L",
+      "aliases": [
+        "sodium sulfate",
+        "Na2SO4",
+        "Na2O4S",
+        "сульфат натрия"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24268,
+      "query": "sodium nitrate",
+      "formula": "NaNO3",
+      "pubchem_molecular_formula": "NNaO3",
+      "iupac_name": "sodium nitrate",
+      "canonical_smiles": "",
+      "inchi_key": "VWDWKYIASSYTQR-UHFFFAOYSA-N",
+      "aliases": [
+        "sodium nitrate",
+        "NaNO3",
+        "NNaO3",
+        "нитрат натрия"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24434,
+      "query": "potassium nitrate",
+      "formula": "KNO3",
+      "pubchem_molecular_formula": "KNO3",
+      "iupac_name": "potassium nitrate",
+      "canonical_smiles": "",
+      "inchi_key": "FGIUAXJPYTZDNR-UHFFFAOYSA-N",
+      "aliases": [
+        "potassium nitrate",
+        "KNO3",
+        "нитрат калия",
+        "селитра калиевая"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 22985,
+      "query": "ammonium nitrate",
+      "formula": "NH4NO3",
+      "pubchem_molecular_formula": "H4N2O3",
+      "iupac_name": "azanium nitrate",
+      "canonical_smiles": "",
+      "inchi_key": "DVARTQFDIMZBAA-UHFFFAOYSA-O",
+      "aliases": [
+        "ammonium nitrate",
+        "NH4NO3",
+        "H4N2O3",
+        "нитрат аммония"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 24456,
+      "query": "calcium phosphate",
+      "formula": "Ca3(PO4)2",
+      "pubchem_molecular_formula": "Ca3O8P2",
+      "iupac_name": "tricalcium diphosphate",
+      "canonical_smiles": "",
+      "inchi_key": "QORWJWZARLRLPR-UHFFFAOYSA-H",
+      "aliases": [
+        "calcium phosphate",
+        "Ca3(PO4)2",
+        "Ca3O8P2",
+        "фосфат кальция"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 313,
+      "query": "hydrochloric acid",
+      "formula": "HCl",
+      "pubchem_molecular_formula": "ClH",
+      "iupac_name": "chlorane",
+      "canonical_smiles": "",
+      "inchi_key": "VEXZGXHMUGYJMC-UHFFFAOYSA-N",
+      "aliases": [
+        "hydrochloric acid",
+        "HCl",
+        "ClH",
+        "соляная кислота",
+        "хлороводородная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 1118,
+      "query": "sulfuric acid",
+      "formula": "H2SO4",
+      "pubchem_molecular_formula": "H2O4S",
+      "iupac_name": "sulfuric acid",
+      "canonical_smiles": "",
+      "inchi_key": "QAOWNCQODCNURD-UHFFFAOYSA-N",
+      "aliases": [
+        "sulfuric acid",
+        "H2SO4",
+        "H2O4S",
+        "серная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 944,
+      "query": "nitric acid",
+      "formula": "HNO3",
+      "pubchem_molecular_formula": "HNO3",
+      "iupac_name": "nitric acid",
+      "canonical_smiles": "",
+      "inchi_key": "GRYLNZFGIOXLOG-UHFFFAOYSA-N",
+      "aliases": [
+        "nitric acid",
+        "HNO3",
+        "азотная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 1004,
+      "query": "phosphoric acid",
+      "formula": "H3PO4",
+      "pubchem_molecular_formula": "H3O4P",
+      "iupac_name": "phosphoric acid",
+      "canonical_smiles": "",
+      "inchi_key": "NBIIXXVUZAFLBC-UHFFFAOYSA-N",
+      "aliases": [
+        "phosphoric acid",
+        "H3PO4",
+        "H3O4P",
+        "фосфорная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 767,
+      "query": "carbonic acid",
+      "formula": "H2CO3",
+      "pubchem_molecular_formula": "CH2O3",
+      "iupac_name": "carbonic acid",
+      "canonical_smiles": "",
+      "inchi_key": "BVKZGUZCCUSVTD-UHFFFAOYSA-N",
+      "aliases": [
+        "carbonic acid",
+        "H2CO3",
+        "CH2O3",
+        "угольная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 14798,
+      "query": "sodium hydroxide",
+      "formula": "NaOH",
+      "pubchem_molecular_formula": "HNaO",
+      "iupac_name": "sodium hydroxide",
+      "canonical_smiles": "",
+      "inchi_key": "HEMHJVSKTPXQMS-UHFFFAOYSA-M",
+      "aliases": [
+        "sodium hydroxide",
+        "NaOH",
+        "HNaO",
+        "гидроксид натрия",
+        "едкий натр"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 14797,
+      "query": "potassium hydroxide",
+      "formula": "KOH",
+      "pubchem_molecular_formula": "HKO",
+      "iupac_name": "potassium hydroxide",
+      "canonical_smiles": "",
+      "inchi_key": "KWYUFKZDYYNOTN-UHFFFAOYSA-M",
+      "aliases": [
+        "potassium hydroxide",
+        "KOH",
+        "HKO",
+        "гидроксид калия",
+        "едкое кали"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6093208,
+      "query": "calcium hydroxide",
+      "formula": "Ca(OH)2",
+      "pubchem_molecular_formula": "CaH2O2",
+      "iupac_name": "calcium dihydroxide",
+      "canonical_smiles": "",
+      "inchi_key": "AXCZMVOFGPJBDE-UHFFFAOYSA-L",
+      "aliases": [
+        "calcium hydroxide",
+        "Ca(OH)2",
+        "CaH2O2",
+        "гидроксид кальция",
+        "гашеная известь"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5793,
+      "query": "glucose",
+      "formula": "C6H12O6",
+      "pubchem_molecular_formula": "C6H12O6",
+      "iupac_name": "(3R,4S,5S,6R)-6-(hydroxymethyl)oxane-2,3,4,5-tetrol",
+      "canonical_smiles": "",
+      "inchi_key": "WQZGKKKJIJFFOK-GASJEMHNSA-N",
+      "aliases": [
+        "glucose",
+        "C6H12O6",
+        "глюкоза",
+        "глюкозу",
+        "сахар"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 2723872,
+      "query": "fructose",
+      "formula": "C6H12O6",
+      "pubchem_molecular_formula": "C6H12O6",
+      "iupac_name": "(3S,4R,5R)-2-(hydroxymethyl)oxane-2,3,4,5-tetrol",
+      "canonical_smiles": "",
+      "inchi_key": "LKDRXBCSQODPBY-VRPWFDPXSA-N",
+      "aliases": [
+        "fructose",
+        "C6H12O6",
+        "фруктоза"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5988,
+      "query": "sucrose",
+      "formula": "C12H22O11",
+      "pubchem_molecular_formula": "C12H22O11",
+      "iupac_name": "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+      "canonical_smiles": "",
+      "inchi_key": "CZMRCDWAGMRECN-UGDNZRGBSA-N",
+      "aliases": [
+        "sucrose",
+        "C12H22O11",
+        "сахароза"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 10975657,
+      "query": "ribose",
+      "formula": "C5H10O5",
+      "pubchem_molecular_formula": "C5H10O5",
+      "iupac_name": "(3R,4R,5R)-oxane-2,3,4,5-tetrol",
+      "canonical_smiles": "",
+      "inchi_key": "SRBFZHDQGSBBOR-SOOFDHNKSA-N",
+      "aliases": [
+        "ribose",
+        "C5H10O5",
+        "рибоза"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5460005,
+      "query": "2-deoxy-D-ribose",
+      "formula": "C5H10O4",
+      "pubchem_molecular_formula": "C5H10O4",
+      "iupac_name": "(3S,4R)-3,4,5-trihydroxypentanal",
+      "canonical_smiles": "",
+      "inchi_key": "ASJSAQIRZKANQN-CRCLSJGQSA-N",
+      "aliases": [
+        "2-deoxy-D-ribose",
+        "C5H10O4",
+        "дезоксирибоза"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 753,
+      "query": "glycerol",
+      "formula": "C3H8O3",
+      "pubchem_molecular_formula": "C3H8O3",
+      "iupac_name": "propane-1,2,3-triol",
+      "canonical_smiles": "",
+      "inchi_key": "PEDCQBHIVMGVHV-UHFFFAOYSA-N",
+      "aliases": [
+        "glycerol",
+        "C3H8O3",
+        "глицерин",
+        "глицерол"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 702,
+      "query": "ethanol",
+      "formula": "C2H6O",
+      "pubchem_molecular_formula": "C2H6O",
+      "iupac_name": "ethanol",
+      "canonical_smiles": "",
+      "inchi_key": "LFQSCWFLJHTTHZ-UHFFFAOYSA-N",
+      "aliases": [
+        "ethanol",
+        "C2H6O",
+        "этанол",
+        "спирт",
+        "этиловый спирт"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 887,
+      "query": "methanol",
+      "formula": "CH4O",
+      "pubchem_molecular_formula": "CH4O",
+      "iupac_name": "methanol",
+      "canonical_smiles": "",
+      "inchi_key": "OKKJLVBELUTLKV-UHFFFAOYSA-N",
+      "aliases": [
+        "methanol",
+        "CH4O",
+        "метанол",
+        "метиловый спирт"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "tech",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 176,
+      "query": "acetic acid",
+      "formula": "C2H4O2",
+      "pubchem_molecular_formula": "C2H4O2",
+      "iupac_name": "acetic acid",
+      "canonical_smiles": "",
+      "inchi_key": "QTBSBXVTEAMEQO-UHFFFAOYSA-N",
+      "aliases": [
+        "acetic acid",
+        "C2H4O2",
+        "уксусная кислота",
+        "ацетатная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 311,
+      "query": "citric acid",
+      "formula": "C6H8O7",
+      "pubchem_molecular_formula": "C6H8O7",
+      "iupac_name": "2-hydroxypropane-1,2,3-tricarboxylic acid",
+      "canonical_smiles": "",
+      "inchi_key": "KRKNYBCHXYNGOX-UHFFFAOYSA-N",
+      "aliases": [
+        "citric acid",
+        "C6H8O7",
+        "лимонная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 612,
+      "query": "lactic acid",
+      "formula": "C3H6O3",
+      "pubchem_molecular_formula": "C3H6O3",
+      "iupac_name": "2-hydroxypropanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "JVTAAEKCZFNVCJ-UHFFFAOYSA-N",
+      "aliases": [
+        "lactic acid",
+        "C3H6O3",
+        "молочная кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 1176,
+      "query": "urea",
+      "formula": "CH4N2O",
+      "pubchem_molecular_formula": "CH4N2O",
+      "iupac_name": "urea",
+      "canonical_smiles": "",
+      "inchi_key": "XSQUKJJJFZCRTK-UHFFFAOYSA-N",
+      "aliases": [
+        "urea",
+        "CH4N2O",
+        "мочевина",
+        "карбамид"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 985,
+      "query": "palmitic acid",
+      "formula": "C16H32O2",
+      "pubchem_molecular_formula": "C16H32O2",
+      "iupac_name": "hexadecanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "IPCSVZSSVZVIGE-UHFFFAOYSA-N",
+      "aliases": [
+        "palmitic acid",
+        "C16H32O2",
+        "пальмитиновая кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 445639,
+      "query": "oleic acid",
+      "formula": "C18H34O2",
+      "pubchem_molecular_formula": "C18H34O2",
+      "iupac_name": "(Z)-octadec-9-enoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "ZQPPMHVWECSIRJ-KTKRTIGZSA-N",
+      "aliases": [
+        "oleic acid",
+        "C18H34O2",
+        "олеиновая кислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "liquid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 750,
+      "query": "glycine",
+      "formula": "C2H5NO2",
+      "pubchem_molecular_formula": "C2H5NO2",
+      "iupac_name": "2-aminoacetic acid",
+      "canonical_smiles": "",
+      "inchi_key": "DHMQDGOQFOQNFH-UHFFFAOYSA-N",
+      "aliases": [
+        "glycine",
+        "C2H5NO2",
+        "глицин",
+        "глицина",
+        "аминокислота"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5950,
+      "query": "alanine",
+      "formula": "C3H7NO2",
+      "pubchem_molecular_formula": "C3H7NO2",
+      "iupac_name": "(2S)-2-aminopropanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "QNAYBMKLOCPYGJ-REOHCLBHSA-N",
+      "aliases": [
+        "alanine",
+        "C3H7NO2",
+        "аланин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6287,
+      "query": "valine",
+      "formula": "C5H11NO2",
+      "pubchem_molecular_formula": "C5H11NO2",
+      "iupac_name": "(2S)-2-amino-3-methylbutanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "KZSNJWFQEVHDMF-BYPYZUCNSA-N",
+      "aliases": [
+        "valine",
+        "C5H11NO2",
+        "валин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6106,
+      "query": "leucine",
+      "formula": "C6H13NO2",
+      "pubchem_molecular_formula": "C6H13NO2",
+      "iupac_name": "(2S)-2-amino-4-methylpentanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "ROHFNLRQFUQHCH-YFKPBYRVSA-N",
+      "aliases": [
+        "leucine",
+        "C6H13NO2",
+        "лейцин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6306,
+      "query": "isoleucine",
+      "formula": "C6H13NO2",
+      "pubchem_molecular_formula": "C6H13NO2",
+      "iupac_name": "(2S,3S)-2-amino-3-methylpentanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "AGPKZVBTJJNPAG-WHFBIAKZSA-N",
+      "aliases": [
+        "isoleucine",
+        "C6H13NO2",
+        "изолейцин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5951,
+      "query": "serine",
+      "formula": "C3H7NO3",
+      "pubchem_molecular_formula": "C3H7NO3",
+      "iupac_name": "(2S)-2-amino-3-hydroxypropanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "MTCFGRXMJLQNBG-REOHCLBHSA-N",
+      "aliases": [
+        "serine",
+        "C3H7NO3",
+        "серин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6288,
+      "query": "threonine",
+      "formula": "C4H9NO3",
+      "pubchem_molecular_formula": "C4H9NO3",
+      "iupac_name": "(2S,3R)-2-amino-3-hydroxybutanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "AYFVYJQAPQTCCC-GBXIJSLDSA-N",
+      "aliases": [
+        "threonine",
+        "C4H9NO3",
+        "треонин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5862,
+      "query": "cysteine",
+      "formula": "C3H7NO2S",
+      "pubchem_molecular_formula": "C3H7NO2S",
+      "iupac_name": "(2R)-2-amino-3-sulfanylpropanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "XUJNEKJLAYXESH-REOHCLBHSA-N",
+      "aliases": [
+        "cysteine",
+        "C3H7NO2S",
+        "цистеин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6137,
+      "query": "methionine",
+      "formula": "C5H11NO2S",
+      "pubchem_molecular_formula": "C5H11NO2S",
+      "iupac_name": "(2S)-2-amino-4-methylsulfanylbutanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "FFEARJCKVFRZRR-BYPYZUCNSA-N",
+      "aliases": [
+        "methionine",
+        "C5H11NO2S",
+        "метионин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5960,
+      "query": "aspartic acid",
+      "formula": "C4H7NO4",
+      "pubchem_molecular_formula": "C4H7NO4",
+      "iupac_name": "(2S)-2-aminobutanedioic acid",
+      "canonical_smiles": "",
+      "inchi_key": "CKLJMWTZIZZHCS-REOHCLBHSA-N",
+      "aliases": [
+        "aspartic acid",
+        "C4H7NO4",
+        "аспарагиновая кислота",
+        "аспартат"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 33032,
+      "query": "glutamic acid",
+      "formula": "C5H9NO4",
+      "pubchem_molecular_formula": "C5H9NO4",
+      "iupac_name": "(2S)-2-aminopentanedioic acid",
+      "canonical_smiles": "",
+      "inchi_key": "WHUUTDBJXJRKMK-VKHMYHEASA-N",
+      "aliases": [
+        "glutamic acid",
+        "C5H9NO4",
+        "глутаминовая кислота",
+        "глутамат"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6267,
+      "query": "asparagine",
+      "formula": "C4H8N2O3",
+      "pubchem_molecular_formula": "C4H8N2O3",
+      "iupac_name": "(2S)-2,4-diamino-4-oxobutanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "DCXYFEDJOCDNAF-REOHCLBHSA-N",
+      "aliases": [
+        "asparagine",
+        "C4H8N2O3",
+        "аспарагин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5961,
+      "query": "glutamine",
+      "formula": "C5H10N2O3",
+      "pubchem_molecular_formula": "C5H10N2O3",
+      "iupac_name": "(2S)-2,5-diamino-5-oxopentanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "ZDXPYRJPNDTMRX-VKHMYHEASA-N",
+      "aliases": [
+        "glutamine",
+        "C5H10N2O3",
+        "глутамин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5962,
+      "query": "lysine",
+      "formula": "C6H14N2O2",
+      "pubchem_molecular_formula": "C6H14N2O2",
+      "iupac_name": "(2S)-2,6-diaminohexanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "KDXKERNSBIXSRK-YFKPBYRVSA-N",
+      "aliases": [
+        "lysine",
+        "C6H14N2O2",
+        "лизин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6322,
+      "query": "arginine",
+      "formula": "C6H14N4O2",
+      "pubchem_molecular_formula": "C6H14N4O2",
+      "iupac_name": "(2S)-2-amino-5-(diaminomethylideneamino)pentanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "ODKSFYDXXFIFQN-BYPYZUCNSA-N",
+      "aliases": [
+        "arginine",
+        "C6H14N4O2",
+        "аргинин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6274,
+      "query": "histidine",
+      "formula": "C6H9N3O2",
+      "pubchem_molecular_formula": "C6H9N3O2",
+      "iupac_name": "(2S)-2-amino-3-(1H-imidazol-5-yl)propanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "HNDVDQJCIGZPNO-YFKPBYRVSA-N",
+      "aliases": [
+        "histidine",
+        "C6H9N3O2",
+        "гистидин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6140,
+      "query": "phenylalanine",
+      "formula": "C9H11NO2",
+      "pubchem_molecular_formula": "C9H11NO2",
+      "iupac_name": "(2S)-2-amino-3-phenylpropanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "COLNVLDHVKWLRT-QMMMGPOBSA-N",
+      "aliases": [
+        "phenylalanine",
+        "C9H11NO2",
+        "фенилаланин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6057,
+      "query": "tyrosine",
+      "formula": "C9H11NO3",
+      "pubchem_molecular_formula": "C9H11NO3",
+      "iupac_name": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "OUYCCCASQSFEME-QMMMGPOBSA-N",
+      "aliases": [
+        "tyrosine",
+        "C9H11NO3",
+        "тирозин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6305,
+      "query": "tryptophan",
+      "formula": "C11H12N2O2",
+      "pubchem_molecular_formula": "C11H12N2O2",
+      "iupac_name": "(2S)-2-amino-3-(1H-indol-3-yl)propanoic acid",
+      "canonical_smiles": "",
+      "inchi_key": "QIVBCDIJIAJPQS-VIFPVBQESA-N",
+      "aliases": [
+        "tryptophan",
+        "C11H12N2O2",
+        "триптофан"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 145742,
+      "query": "proline",
+      "formula": "C5H9NO2",
+      "pubchem_molecular_formula": "C5H9NO2",
+      "iupac_name": "(2S)-pyrrolidine-2-carboxylic acid",
+      "canonical_smiles": "",
+      "inchi_key": "ONIBWKKTOPOVIA-BYPYZUCNSA-N",
+      "aliases": [
+        "proline",
+        "C5H9NO2",
+        "пролин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 190,
+      "query": "adenine",
+      "formula": "C5H5N5",
+      "pubchem_molecular_formula": "C5H5N5",
+      "iupac_name": "7H-purin-6-amine",
+      "canonical_smiles": "",
+      "inchi_key": "GFFGJBXGBJISGV-UHFFFAOYSA-N",
+      "aliases": [
+        "adenine",
+        "C5H5N5",
+        "аденин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 135398634,
+      "query": "guanine",
+      "formula": "C5H5N5O",
+      "pubchem_molecular_formula": "C5H5N5O",
+      "iupac_name": "2-amino-1,7-dihydropurin-6-one",
+      "canonical_smiles": "",
+      "inchi_key": "UYTPUPDQBNUYGX-UHFFFAOYSA-N",
+      "aliases": [
+        "guanine",
+        "C5H5N5O",
+        "гуанин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 597,
+      "query": "cytosine",
+      "formula": "C4H5N3O",
+      "pubchem_molecular_formula": "C4H5N3O",
+      "iupac_name": "6-amino-1H-pyrimidin-2-one",
+      "canonical_smiles": "",
+      "inchi_key": "OPTASPLRGRRNAP-UHFFFAOYSA-N",
+      "aliases": [
+        "cytosine",
+        "C4H5N3O",
+        "цитозин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 1135,
+      "query": "thymine",
+      "formula": "C5H6N2O2",
+      "pubchem_molecular_formula": "C5H6N2O2",
+      "iupac_name": "5-methyl-1H-pyrimidine-2,4-dione",
+      "canonical_smiles": "",
+      "inchi_key": "RWQNBRDOKXIBIV-UHFFFAOYSA-N",
+      "aliases": [
+        "thymine",
+        "C5H6N2O2",
+        "тимин"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 1174,
+      "query": "uracil",
+      "formula": "C4H4N2O2",
+      "pubchem_molecular_formula": "C4H4N2O2",
+      "iupac_name": "1H-pyrimidine-2,4-dione",
+      "canonical_smiles": "",
+      "inchi_key": "ISAKRJDGNUQOIC-UHFFFAOYSA-N",
+      "aliases": [
+        "uracil",
+        "C4H4N2O2",
+        "урацил"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 5957,
+      "query": "adenosine triphosphate",
+      "formula": "C10H16N5O13P3",
+      "pubchem_molecular_formula": "C10H16N5O13P3",
+      "iupac_name": "[[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-3,4-dihydroxyoxolan-2-yl]methoxy-hydroxyphosphoryl] phosphono hydrogen phosphate",
+      "canonical_smiles": "",
+      "inchi_key": "ZKHQWZAMYRWXGA-KQYNXXCUSA-N",
+      "aliases": [
+        "adenosine triphosphate",
+        "C10H16N5O13P3",
+        "атф",
+        "аденозинтрифосфат"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6022,
+      "query": "adenosine diphosphate",
+      "formula": "C10H15N5O10P2",
+      "pubchem_molecular_formula": "C10H15N5O10P2",
+      "iupac_name": "[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-3,4-dihydroxyoxolan-2-yl]methyl phosphono hydrogen phosphate",
+      "canonical_smiles": "",
+      "inchi_key": "XTWYTFMLZFPYCI-KQYNXXCUSA-N",
+      "aliases": [
+        "adenosine diphosphate",
+        "C10H15N5O10P2",
+        "адф",
+        "аденозиндифосфат"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    },
+    {
+      "cid": 6083,
+      "query": "adenosine monophosphate",
+      "formula": "C10H14N5O7P",
+      "pubchem_molecular_formula": "C10H14N5O7P",
+      "iupac_name": "[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-3,4-dihydroxyoxolan-2-yl]methyl dihydrogen phosphate",
+      "canonical_smiles": "",
+      "inchi_key": "UDMBCSSLTHHNCD-KQYNXXCUSA-N",
+      "aliases": [
+        "adenosine monophosphate",
+        "C10H14N5O7P",
+        "амф",
+        "аденозинмонофосфат"
+      ],
+      "verified": {
+        "source_id": "pubchem.compound_property",
+        "fields": [
+          "cid",
+          "pubchem_molecular_formula",
+          "iupac_name",
+          "canonical_smiles",
+          "inchi_key"
+        ]
+      },
+      "model": {
+        "phase": "solid",
+        "family": "bio",
+        "status": "local_prototype_phase_family"
+      }
+    }
+  ]
+}
