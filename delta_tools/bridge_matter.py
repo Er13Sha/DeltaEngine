@@ -13,6 +13,7 @@ from typing import Any
 from delta_kernel.tree import TREE_FORMAT
 
 _EDGE = re.compile(r"-->\|(not )?(\w+)\(x\)\|\s*\w+\[([^\]]+)\]")
+_ROOT = re.compile(r"^\s*\w+\[([^\]]+)\]\s*$", re.M)
 
 
 def _labels(mermaid: str) -> dict[tuple[str, bool], str]:
@@ -65,6 +66,9 @@ def matter_tree_from_deltas(data: dict[str, Any]) -> dict[str, Any]:
         return node
 
     root_node = build(root, "")
+    root_label = _ROOT.search(data.get("mermaid", ""))
+    if root_label:
+        root_node["label"] = root_label.group(1)
     return {
         "format": TREE_FORMAT,
         "id": "matter",

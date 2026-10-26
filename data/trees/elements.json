@@ -1,0 +1,203 @@
+{
+ "format": "delta-tree@0.1",
+ "id": "elements",
+ "version": "0.1.0",
+ "schema": {
+  "name": "ChemicalElement",
+  "version": "0.1.0",
+  "attributes": [
+   {
+    "name": "z",
+    "type": {
+     "kind": "int"
+    },
+    "defining": false,
+    "doc": "Атомный номер (PubChem)"
+   },
+   {
+    "name": "group_block",
+    "type": {
+     "kind": "enum",
+     "values": [
+      "Alkali metal",
+      "Alkaline earth metal",
+      "Transition metal",
+      "Lanthanide",
+      "Actinide",
+      "Post-transition metal",
+      "Metalloid",
+      "Noble gas",
+      "Halogen",
+      "Nonmetal"
+     ]
+    },
+    "doc": "Класс элемента по PubChem (group_block)"
+   }
+  ]
+ },
+ "root": {
+  "id": "element.is_metal",
+  "label": "Химический элемент",
+  "predicate": "group_block in {\"Alkali metal\", \"Alkaline earth metal\", \"Transition metal\", \"Lanthanide\", \"Actinide\", \"Post-transition metal\"}",
+  "knowledge": "constatation",
+  "evidence": [
+   {
+    "source_id": "pubchem.periodic_table",
+    "field": "group_block",
+    "status": "verified"
+   }
+  ],
+  "true": {
+   "id": "metal.is_alkali",
+   "label": "Металл",
+   "predicate": "group_block == \"Alkali metal\"",
+   "knowledge": "constatation",
+   "evidence": [
+    {
+     "source_id": "pubchem.periodic_table",
+     "field": "group_block",
+     "status": "verified"
+    }
+   ],
+   "true": {
+    "id": "element.alkali",
+    "label": "Щелочной металл"
+   },
+   "false": {
+    "id": "metal.is_alkaline_earth",
+    "label": "Металл, кроме: щелочной металл",
+    "predicate": "group_block == \"Alkaline earth metal\"",
+    "knowledge": "constatation",
+    "evidence": [
+     {
+      "source_id": "pubchem.periodic_table",
+      "field": "group_block",
+      "status": "verified"
+     }
+    ],
+    "true": {
+     "id": "element.alkaline_earth",
+     "label": "Щёлочноземельный металл"
+    },
+    "false": {
+     "id": "metal.is_transition",
+     "label": "Металл, кроме: щелочной металл, щёлочноземельный металл",
+     "predicate": "group_block == \"Transition metal\"",
+     "knowledge": "constatation",
+     "evidence": [
+      {
+       "source_id": "pubchem.periodic_table",
+       "field": "group_block",
+       "status": "verified"
+      }
+     ],
+     "true": {
+      "id": "element.transition",
+      "label": "Переходный металл"
+     },
+     "false": {
+      "id": "metal.is_lanthanide",
+      "label": "Металл, кроме: щелочной металл, щёлочноземельный металл, переходный металл",
+      "predicate": "group_block == \"Lanthanide\"",
+      "knowledge": "constatation",
+      "evidence": [
+       {
+        "source_id": "pubchem.periodic_table",
+        "field": "group_block",
+        "status": "verified"
+       }
+      ],
+      "true": {
+       "id": "element.lanthanide",
+       "label": "Лантаноид"
+      },
+      "false": {
+       "id": "metal.is_actinide",
+       "label": "Металл, кроме: щелочной металл, щёлочноземельный металл, переходный металл, лантаноид",
+       "predicate": "group_block == \"Actinide\"",
+       "knowledge": "constatation",
+       "evidence": [
+        {
+         "source_id": "pubchem.periodic_table",
+         "field": "group_block",
+         "status": "verified"
+        }
+       ],
+       "true": {
+        "id": "element.actinide",
+        "label": "Актиноид"
+       },
+       "false": {
+        "id": "element.post_transition",
+        "label": "Постпереходный металл"
+       },
+       "synthetic": true
+      },
+      "synthetic": true
+     },
+     "synthetic": true
+    },
+    "synthetic": true
+   },
+   "synthetic": false
+  },
+  "false": {
+   "id": "nonmetal.is_metalloid",
+   "label": "Не металл",
+   "predicate": "group_block == \"Metalloid\"",
+   "knowledge": "constatation",
+   "evidence": [
+    {
+     "source_id": "pubchem.periodic_table",
+     "field": "group_block",
+     "status": "verified"
+    }
+   ],
+   "true": {
+    "id": "element.metalloid",
+    "label": "Полуметалл"
+   },
+   "false": {
+    "id": "nonmetal.is_noble_gas",
+    "label": "Неметалл",
+    "predicate": "group_block == \"Noble gas\"",
+    "knowledge": "constatation",
+    "evidence": [
+     {
+      "source_id": "pubchem.periodic_table",
+      "field": "group_block",
+      "status": "verified"
+     }
+    ],
+    "true": {
+     "id": "element.noble_gas",
+     "label": "Благородный газ"
+    },
+    "false": {
+     "id": "nonmetal.is_halogen",
+     "label": "Неметалл, кроме: благородный газ",
+     "predicate": "group_block == \"Halogen\"",
+     "knowledge": "constatation",
+     "evidence": [
+      {
+       "source_id": "pubchem.periodic_table",
+       "field": "group_block",
+       "status": "verified"
+      }
+     ],
+     "true": {
+      "id": "element.halogen",
+      "label": "Галоген"
+     },
+     "false": {
+      "id": "element.other_nonmetal",
+      "label": "Прочий неметалл"
+     },
+     "synthetic": true
+    },
+    "synthetic": false
+   },
+   "synthetic": false
+  }
+ }
+}
