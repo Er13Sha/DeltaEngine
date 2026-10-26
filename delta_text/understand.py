@@ -20,6 +20,12 @@ from delta_text.knowledge import Concept, KnowledgeBase
 from delta_text.morph import normalize
 
 MAX_HYPOTHESES = 32
+INTENT_NAMES = {
+    "DEFINE": "вопрос «что это»",
+    "DIFFERENCE": "вопрос о различии",
+    "IS_A": "вопрос о принадлежности классу",
+    "CLASSIFY": "вопрос о классе",
+}
 
 
 @dataclass(frozen=True)
@@ -73,8 +79,11 @@ def understand(text: str, kb: KnowledgeBase) -> Understanding:
         }
         cls = kb.intent.classify(record)
         leaf = kb.intent.nodes[cls.leaf] if cls.leaf else None
-        intent = leaf.meta.get("intent", leaf.id) if leaf is not None else "NONE"
+        # ручное дерево хранит тип в meta.intent или id листа, обученное — в meta.class
+        intent = (leaf.meta.get("intent") or leaf.meta.get("class") or leaf.id) if leaf is not None else "NONE"
         label = leaf.label if leaf is not None else ""
+        if label == intent or not label:  # у обученного дерева метка листа — сам тип
+            label = INTENT_NAMES.get(intent, intent)
         if cls.assumptions:
             assumptions.append(f"тип вопроса угадан: {label.lower()}")
         result.hypotheses.append(Hypothesis(intent, concepts, assumptions, label, cls.certificate, choice))

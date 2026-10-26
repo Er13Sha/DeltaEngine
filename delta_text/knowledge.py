@@ -56,12 +56,12 @@ class Concept:
 
 
 class KnowledgeBase:
-    def __init__(self, data_dir: Path = DATA):
+    def __init__(self, data_dir: Path = DATA, intent_tree: Path | None = None):
         self.trees: dict[str, Tree] = {
             "matter": Tree.from_dict(matter_tree_from_deltas(_load(data_dir / "matter-deltas.json"))),
             "elements": Tree.from_dict(_load(data_dir / "trees" / "elements.json")),
         }
-        self.intent = Tree.from_dict(_load(data_dir / "trees" / "intent.json"))
+        self.intent = Tree.from_dict(_load(intent_tree or data_dir / "trees" / "intent.json"))
         self.lexicon = _load(data_dir / "lexicon" / "ru.json")
         self.concepts: dict[str, Concept] = {}
         self._load_classes()
