@@ -2,27 +2,20 @@
 
 Запуск из любого каталога: python scripts/build_source_registry.py
 
-В реестр входят первичные источники и курируемые данные. Производные файлы
-(data/computed-compound-space.json, data/exact-latest.json) и документы проекта не входят:
-первые воспроизводятся командами из README.md, вторые меняются постоянно.
-
-Отличие от версии в LogicalDeltaCorrect: отсутствующий источник — ошибка, а не молчаливый пропуск;
-пути записываются с прямыми слэшами.
+Только стандартная библиотека. В реестр входят первичные источники и курируемые данные;
+документы проекта (docs/*.md) и производные файлы в него не входят. Отсутствующий источник —
+ошибка, а не молчаливый пропуск. Пути записываются с прямыми слэшами.
 
 TODO (этап M0): расширить запись полями status и anchor (source-registry@0.2).
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import os
 from pathlib import Path
-import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from logical_delta_matter.source_registry import SourceRegistry
-from logical_delta_matter.storage import write_json
 
 FIXED_SOURCES = [
     ("source.deep_research_report", "docs/research/deep-research-report.md"),
@@ -33,8 +26,6 @@ FIXED_SOURCES = [
     ("data.matter_deltas", "data/matter-deltas.json"),
     ("data.rule_packs", "data/rule-packs.json"),
     ("data.confirmed_concepts", "data/confirmed-concepts.json"),
-    ("data.compound_seed", "data/compound-seed.json"),
-    ("data.compound_space_config", "data/compound-space-config.json"),
 ]
 
 # (префикс идентификатора, каталог, шаблон файлов, как получить суффикс идентификатора)
@@ -46,25 +37,45 @@ GLOBBED_SOURCES = [
 ]
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def main() -> int:
     os.chdir(ROOT)
-    registry = SourceRegistry()
+    records: list[dict[str, object]] = []
+    seen: set[str] = set()
+
+    def add(source_id: str, path: Path) -> None:
+        if source_id in seen:
+            raise SystemExit(f"Повторяющийся идентификатор источника: {source_id}")
+        seen.add(source_id)
+        records.append({
+            "source_id": source_id,
+            "path": path.as_posix(),
+            "sha256": sha256_file(path),
+            "size_bytes": path.stat().st_size,
+        })
 
     for source_id, rel in FIXED_SOURCES:
         path = Path(rel)
         if not path.exists():
             raise SystemExit(f"Отсутствует источник: {rel}")
-        registry.register_file(source_id, path)
+        add(source_id, path)
 
     for prefix, directory, pattern, suffix in GLOBBED_SOURCES:
         for path in sorted(Path(directory).glob(pattern)):
-            registry.register_file(prefix + suffix(path), path)
+            add(prefix + suffix(path), path)
 
-    manifest = registry.to_manifest()
-    for record in manifest["records"]:
-        record["path"] = record["path"].replace("\\", "/")
-    write_json("data/source-registry.json", manifest)
-    print(f"Записей в реестре: {len(manifest['records'])}")
+    manifest = {"schema_version": "source-registry@0.1", "hash_algorithm": "sha256", "records": records}
+    Path("data/source-registry.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    print(f"Записей в реестре: {len(records)}")
     return 0
 
 

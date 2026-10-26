@@ -15,7 +15,7 @@ dependencies = []
 dev = ["pytest>=8"]
 
 [tool.setuptools.packages.find]
-include = ["delta_kernel*", "delta_tools*", "delta_app*", "adapters*", "logical_delta_matter*"]
+include = ["delta_kernel*", "delta_tools*", "delta_app*", "adapters*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

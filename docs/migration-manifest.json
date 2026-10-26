@@ -1,0 +1,1275 @@
+{
+ "schema_version": "migration-manifest@0.1",
+ "date": "2026-10-27",
+ "source_project": "C:\\IT\\ML\\LogicalDeltaCorrect",
+ "target_project": "C:\\IT\\ML\\DeltaEngine",
+ "method": "copy (originals untouched); sha256 verified after copy; legacy code removed from the target on the owner's instruction",
+ "copied_total": 178,
+ "kept_in_target": 134,
+ "removed_after_copy": 44,
+ "kept_by_group": {
+  "docs": 5,
+  "sources": 28,
+  "data": 3,
+  "legacy-code": 1,
+  "private": 97
+ },
+ "removed_by_group": {
+  "data": 2,
+  "legacy-code": 27,
+  "legacy-tests": 12,
+  "legacy-web": 3
+ },
+ "files": [
+  {
+   "src": "docs/architecture.md",
+   "dst": "docs/architecture.md",
+   "group": "docs",
+   "src_sha256": "e89f8a4e71b988f6a8437a0caefd4736ce7154c0a3c07d96a42ede91e0fe5ffb",
+   "dst_sha256": "7bdcd3829942036d9d7690c13691794c62a5cb48f183e3104e736ae5d8fecfa6",
+   "modified_after_copy": true
+  },
+  {
+   "src": "docs/delta-engine-spec.md",
+   "dst": "docs/delta-engine-spec.md",
+   "group": "docs",
+   "src_sha256": "cf2185e867fa4c36b56c421b7699d1e10cec435891285fa920052bca8609e7fa",
+   "dst_sha256": "cbed439f28bb5008a0b7f3ce6ddf4d1ef4b0794e16840a09c27ba11b25492429",
+   "modified_after_copy": true
+  },
+  {
+   "src": "docs/delta-engine-plan.md",
+   "dst": "docs/delta-engine-plan.md",
+   "group": "docs",
+   "src_sha256": "504ebfe55e4cc3e93b2be865e28ef0eb76e4a64589cfac7b4cf2fba9df44c95f",
+   "dst_sha256": "d8187b777802728a13a802c53cfc0d94eb584573724b52f0aaa7791db97f2063",
+   "modified_after_copy": true
+  },
+  {
+   "src": "deep-research-report.md",
+   "dst": "docs/research/deep-research-report.md",
+   "group": "docs",
+   "src_sha256": "7e5bf65aa0696ea16f8146eeabe66557884ea26c1f0157c8cd4d694787d6cea2",
+   "dst_sha256": "7e5bf65aa0696ea16f8146eeabe66557884ea26c1f0157c8cd4d694787d6cea2",
+   "modified_after_copy": false
+  },
+  {
+   "src": "README.md",
+   "dst": "docs/legacy/README-logical-delta-matter.md",
+   "group": "docs",
+   "src_sha256": "f5e41d191ae3fe4698d7ee0956ccb061bf94e7a51ac5f74e49440f4791cc7ece",
+   "dst_sha256": "37c0f3375dd93a4abb6d69b4b2a4fd27711698c250a6b384f28d662a650c6050",
+   "modified_after_copy": true
+  },
+  {
+   "src": "monografia__katyuschik_v_g.pdf",
+   "dst": "data/sources/documents/monografia__katyuschik_v_g.pdf",
+   "group": "sources",
+   "src_sha256": "47106af7bfe06379dbcb72fdc813a0b65e8304684b929aecc192f9cd892b1519",
+   "dst_sha256": "47106af7bfe06379dbcb72fdc813a0b65e8304684b929aecc192f9cd892b1519",
+   "modified_after_copy": false
+  },
+  {
+   "src": "Архитектура ИИ на логических дельтах.pdf",
+   "dst": "data/sources/documents/Архитектура ИИ на логических дельтах.pdf",
+   "group": "sources",
+   "src_sha256": "5b9871d5d7bfbac96caf3923e093bf277d169eeb76f87a01276026096b595e17",
+   "dst_sha256": "5b9871d5d7bfbac96caf3923e093bf277d169eeb76f87a01276026096b595e17",
+   "modified_after_copy": false
+  },
+  {
+   "src": "Моделирование галактики по теории Катющика.pdf",
+   "dst": "data/sources/documents/Моделирование галактики по теории Катющика.pdf",
+   "group": "sources",
+   "src_sha256": "e9bf08b737618a18a6bfe8b84b4692bc88530287a0530471aaea7f262400e12d",
+   "dst_sha256": "e9bf08b737618a18a6bfe8b84b4692bc88530287a0530471aaea7f262400e12d",
+   "modified_after_copy": false
+  },
+  {
+   "src": "Улучшение расчетов гравитационного взаимодействия.pdf",
+   "dst": "data/sources/documents/Улучшение расчетов гравитационного взаимодействия.pdf",
+   "group": "sources",
+   "src_sha256": "2451438b431430a2a5dd72b916ed145ab9bd0b4e11cacceec580ba375a5a22c0",
+   "dst_sha256": "2451438b431430a2a5dd72b916ed145ab9bd0b4e11cacceec580ba375a5a22c0",
+   "modified_after_copy": false
+  },
+  {
+   "src": "photo_2024-01-15_00-51-59.jpg",
+   "dst": "data/sources/images/photo_2024-01-15_00-51-59.jpg",
+   "group": "sources",
+   "src_sha256": "10e0a965ad411c233807d76c07bb6ea8c654536ddfa650b493d6e44c3064d36f",
+   "dst_sha256": "10e0a965ad411c233807d76c07bb6ea8c654536ddfa650b493d6e44c3064d36f",
+   "modified_after_copy": false
+  },
+  {
+   "src": "photo_2026-04-25_18-54-10.jpg",
+   "dst": "data/sources/images/photo_2026-04-25_18-54-10.jpg",
+   "group": "sources",
+   "src_sha256": "731fe066d84b40e47ab2774eacda5b621ede290bafcc3b5c54ba5792487fecb3",
+   "dst_sha256": "731fe066d84b40e47ab2774eacda5b621ede290bafcc3b5c54ba5792487fecb3",
+   "modified_after_copy": false
+  },
+  {
+   "src": "photo_2026-04-28_20-49-29.jpg",
+   "dst": "data/sources/images/photo_2026-04-28_20-49-29.jpg",
+   "group": "sources",
+   "src_sha256": "9c5b515279d07f7b6a8a80adf14d8ae8a13a6ad60f6167019354ab9a8eb00d76",
+   "dst_sha256": "9c5b515279d07f7b6a8a80adf14d8ae8a13a6ad60f6167019354ab9a8eb00d76",
+   "modified_after_copy": false
+  },
+  {
+   "src": "photo_2026-04-28_20-50-02.jpg",
+   "dst": "data/sources/images/photo_2026-04-28_20-50-02.jpg",
+   "group": "sources",
+   "src_sha256": "741b3ff55f1babf429ffbb8354bf65258f2365020bc26593924649c833fe660a",
+   "dst_sha256": "741b3ff55f1babf429ffbb8354bf65258f2365020bc26593924649c833fe660a",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/manifest.json",
+   "dst": "data/sources/forum-topics/manifest.json",
+   "group": "sources",
+   "src_sha256": "5c57cc4c6079cbc60d662ee23e5a12bf77ee93c490a7c4c816f446f511a562f5",
+   "dst_sha256": "5c57cc4c6079cbc60d662ee23e5a12bf77ee93c490a7c4c816f446f511a562f5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t1205.txt",
+   "dst": "data/sources/forum-topics/t1205.txt",
+   "group": "sources",
+   "src_sha256": "6edb2a4e37d79372e95bf889ffbd98035cde8f6200b6bbd3bbef1c9f4b69aa4c",
+   "dst_sha256": "6edb2a4e37d79372e95bf889ffbd98035cde8f6200b6bbd3bbef1c9f4b69aa4c",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t1608.txt",
+   "dst": "data/sources/forum-topics/t1608.txt",
+   "group": "sources",
+   "src_sha256": "57bb8a15a85803570352b823d1d4d15bfc21e3a0ec397014e603d01629a7a382",
+   "dst_sha256": "57bb8a15a85803570352b823d1d4d15bfc21e3a0ec397014e603d01629a7a382",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t1638.txt",
+   "dst": "data/sources/forum-topics/t1638.txt",
+   "group": "sources",
+   "src_sha256": "a6e66e1b44d5e83668a21e33853f7ccccdb55da6ed5e8af7ee5c8b61bec574d2",
+   "dst_sha256": "a6e66e1b44d5e83668a21e33853f7ccccdb55da6ed5e8af7ee5c8b61bec574d2",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t1708.txt",
+   "dst": "data/sources/forum-topics/t1708.txt",
+   "group": "sources",
+   "src_sha256": "0c3ea0748b465e728d3bda6238ef65fb8325871da5bd1809b73c747c792819c7",
+   "dst_sha256": "0c3ea0748b465e728d3bda6238ef65fb8325871da5bd1809b73c747c792819c7",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t1724.txt",
+   "dst": "data/sources/forum-topics/t1724.txt",
+   "group": "sources",
+   "src_sha256": "11ed37f5297fa1a9dfe49c46f23ffcd172b461869afa9de6364049c064d27a9c",
+   "dst_sha256": "11ed37f5297fa1a9dfe49c46f23ffcd172b461869afa9de6364049c064d27a9c",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t1734.txt",
+   "dst": "data/sources/forum-topics/t1734.txt",
+   "group": "sources",
+   "src_sha256": "e6e9b5e4f329681326d3af8dc7753b3e1c5208b2f8ee00435297f42c71bbc2b1",
+   "dst_sha256": "e6e9b5e4f329681326d3af8dc7753b3e1c5208b2f8ee00435297f42c71bbc2b1",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t406.txt",
+   "dst": "data/sources/forum-topics/t406.txt",
+   "group": "sources",
+   "src_sha256": "61aa9069a84373660ce3a583c8807f2664f1c389335c17765478f0c1cb132b1b",
+   "dst_sha256": "61aa9069a84373660ce3a583c8807f2664f1c389335c17765478f0c1cb132b1b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/forum-topics/t758.txt",
+   "dst": "data/sources/forum-topics/t758.txt",
+   "group": "sources",
+   "src_sha256": "2b084e773aa2c8f86b927cc6c29484c0d05c69958ac311c05a831e1f56ac9ba3",
+   "dst_sha256": "2b084e773aa2c8f86b927cc6c29484c0d05c69958ac311c05a831e1f56ac9ba3",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/telegram-chat/manifest.json",
+   "dst": "data/sources/telegram-chat/manifest.json",
+   "group": "sources",
+   "src_sha256": "b52677ff6cec9cd3f16833762ffbef2cce36839520373c48e87e03b2afce3dec",
+   "dst_sha256": "13b450184f6b021b930eea9271ca8f392a2456ca9e27092279a8798437a8a6ad",
+   "modified_after_copy": true
+  },
+  {
+   "src": "data/sources/video-transcripts/At08288FuLQ.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/At08288FuLQ.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "c91289c8002e589312a96291a33672a39713cc78ee9562997584232f675937d0",
+   "dst_sha256": "c91289c8002e589312a96291a33672a39713cc78ee9562997584232f675937d0",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/lC5swxhzw38.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/lC5swxhzw38.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "b9e3300f3a867d683b411e0fc9f5867368505ea274d3bc26f095e4f4f0ef4d2d",
+   "dst_sha256": "b9e3300f3a867d683b411e0fc9f5867368505ea274d3bc26f095e4f4f0ef4d2d",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/manifest.json",
+   "dst": "data/sources/video-transcripts/manifest.json",
+   "group": "sources",
+   "src_sha256": "28a94666f8ce3495f0cec1357e579e4fc021b47076e62872b45acd44abf6aa3b",
+   "dst_sha256": "28a94666f8ce3495f0cec1357e579e4fc021b47076e62872b45acd44abf6aa3b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/MGe1YBYapzo.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/MGe1YBYapzo.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "4d1a3ed4d2bf5f0e6fb81199d2263e1654a466c90d3e68d9fc5debb05803b9b1",
+   "dst_sha256": "4d1a3ed4d2bf5f0e6fb81199d2263e1654a466c90d3e68d9fc5debb05803b9b1",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/PG4yJiAho5Q.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/PG4yJiAho5Q.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "518d7618f32be1ad4104ffdb77cdb8cdc9e03c847684ebe553ab18c5b84e2710",
+   "dst_sha256": "518d7618f32be1ad4104ffdb77cdb8cdc9e03c847684ebe553ab18c5b84e2710",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/tw-Z1oYOGds.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/tw-Z1oYOGds.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "24a9be07ae823cce81656f572669980eb939aa80f8e0d6ddb77273bafbb3979c",
+   "dst_sha256": "24a9be07ae823cce81656f572669980eb939aa80f8e0d6ddb77273bafbb3979c",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/ufII145N7W8.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/ufII145N7W8.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "afcb26810102e2a20cba2f6c4041b4661e24435ce6f1871248203cbfdafcba8b",
+   "dst_sha256": "afcb26810102e2a20cba2f6c4041b4661e24435ce6f1871248203cbfdafcba8b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/w7fVrHxUaMk.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/w7fVrHxUaMk.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "be4f33d2094ff3b88d801084246973c7f3b66f66d805718b7e2d0e45d8c4ef72",
+   "dst_sha256": "be4f33d2094ff3b88d801084246973c7f3b66f66d805718b7e2d0e45d8c4ef72",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/WNs48pxe2po.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/WNs48pxe2po.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "ef6ecde9f23c3a0b650c2c83bab62369b41719a85a7523b372b04437e1502369",
+   "dst_sha256": "ef6ecde9f23c3a0b650c2c83bab62369b41719a85a7523b372b04437e1502369",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/sources/video-transcripts/XsPHjlb_FZg.ru-auto.txt",
+   "dst": "data/sources/video-transcripts/XsPHjlb_FZg.ru-auto.txt",
+   "group": "sources",
+   "src_sha256": "5983104a06ebb9b63a12f5a2c9d4e971f42e7447dd11455edbbb55957074e1de",
+   "dst_sha256": "5983104a06ebb9b63a12f5a2c9d4e971f42e7447dd11455edbbb55957074e1de",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/matter-deltas.json",
+   "dst": "data/matter-deltas.json",
+   "group": "data",
+   "src_sha256": "fc334a479e1d9c3cfbb39dbc94105538c4e99dc3c42a690ade829b3737deba18",
+   "dst_sha256": "fc334a479e1d9c3cfbb39dbc94105538c4e99dc3c42a690ade829b3737deba18",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/rule-packs.json",
+   "dst": "data/rule-packs.json",
+   "group": "data",
+   "src_sha256": "a568a2b2a4829a429d34ce6e398ccd5c4c7e506b7b868b720dd1a93f06c59457",
+   "dst_sha256": "a568a2b2a4829a429d34ce6e398ccd5c4c7e506b7b868b720dd1a93f06c59457",
+   "modified_after_copy": false
+  },
+  {
+   "src": "data/confirmed-concepts.json",
+   "dst": "data/confirmed-concepts.json",
+   "group": "data",
+   "src_sha256": "82cae3b20c7898c97a4cf66412944757b66bb0f0c171e64ba4464ba1d62a06f5",
+   "dst_sha256": "82cae3b20c7898c97a4cf66412944757b66bb0f0c171e64ba4464ba1d62a06f5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "scripts/build_source_registry.py",
+   "dst": "scripts/build_source_registry.py",
+   "group": "legacy-code",
+   "src_sha256": "74f1a831c2a3d3d87fd241ee1fdf4206a945d3db04e4a806fc27c289796d26d7",
+   "dst_sha256": "08e08495be5c4c269d802004e2c194f65a32f0e0a1ba2c90f60783c09ef1b200",
+   "modified_after_copy": true
+  },
+  {
+   "src": "ChatExport_2026-10-27/css/style.css",
+   "dst": "private/ChatExport_2026-10-27/css/style.css",
+   "group": "private",
+   "src_sha256": "1d70127586462ce7996aad2749e7994aca9dee615c3d8d38e2acd4d2a00ca611",
+   "dst_sha256": "1d70127586462ce7996aad2749e7994aca9dee615c3d8d38e2acd4d2a00ca611",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/back.png",
+   "dst": "private/ChatExport_2026-10-27/images/back.png",
+   "group": "private",
+   "src_sha256": "929933067c1d751fed025884b85804818342f7560dd9a36d3a058c36a04676eb",
+   "dst_sha256": "929933067c1d751fed025884b85804818342f7560dd9a36d3a058c36a04676eb",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/back@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/back@2x.png",
+   "group": "private",
+   "src_sha256": "961cfe303deab8f2939257d1b2bb7d0ec14e4f32c3b6a4a673a9fc55ad0053bb",
+   "dst_sha256": "961cfe303deab8f2939257d1b2bb7d0ec14e4f32c3b6a4a673a9fc55ad0053bb",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_call.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_call.png",
+   "group": "private",
+   "src_sha256": "83014bb735c810fef0c0bfb6e9dad93e5575a06db20ea0e22e45ab810868a478",
+   "dst_sha256": "83014bb735c810fef0c0bfb6e9dad93e5575a06db20ea0e22e45ab810868a478",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_call@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_call@2x.png",
+   "group": "private",
+   "src_sha256": "6f23d3955f028037ac038d21adbec952537b1c7a4862dcc9478615d2977147b5",
+   "dst_sha256": "6f23d3955f028037ac038d21adbec952537b1c7a4862dcc9478615d2977147b5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_contact.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_contact.png",
+   "group": "private",
+   "src_sha256": "37462001aa3f02db4821532e4a62bdf5747987f9d0c479d3fddc7dc1e8e0c6a7",
+   "dst_sha256": "37462001aa3f02db4821532e4a62bdf5747987f9d0c479d3fddc7dc1e8e0c6a7",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_contact@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_contact@2x.png",
+   "group": "private",
+   "src_sha256": "ece7f7e5485a4b2bcf50ed758ec9748501b231b7558078d15c3e1f69b55d0cba",
+   "dst_sha256": "ece7f7e5485a4b2bcf50ed758ec9748501b231b7558078d15c3e1f69b55d0cba",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_file.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_file.png",
+   "group": "private",
+   "src_sha256": "da791938383c24ccc7ac7bba638470e53753df256609e1bfa5c3c7bb4e241f6b",
+   "dst_sha256": "da791938383c24ccc7ac7bba638470e53753df256609e1bfa5c3c7bb4e241f6b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_file@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_file@2x.png",
+   "group": "private",
+   "src_sha256": "2fc5b871d9e40d8dfbd2eacc27300c98bd7f3205d57b1b4cb59b86e6a176087e",
+   "dst_sha256": "2fc5b871d9e40d8dfbd2eacc27300c98bd7f3205d57b1b4cb59b86e6a176087e",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_game.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_game.png",
+   "group": "private",
+   "src_sha256": "36354c347f0cad06dae45bc6451ea875714bcf33f7b3175394d16a64faa225c7",
+   "dst_sha256": "36354c347f0cad06dae45bc6451ea875714bcf33f7b3175394d16a64faa225c7",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_game@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_game@2x.png",
+   "group": "private",
+   "src_sha256": "521b1874fd20c0c05619342d9fb11c0f24d9f7dbc6a6bbec28b5b09c17b8c12f",
+   "dst_sha256": "521b1874fd20c0c05619342d9fb11c0f24d9f7dbc6a6bbec28b5b09c17b8c12f",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_location.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_location.png",
+   "group": "private",
+   "src_sha256": "17ac2dfdbb87f3b53010eaad731bbdf8a619eabd6df87e33e4c06df06959bdc5",
+   "dst_sha256": "17ac2dfdbb87f3b53010eaad731bbdf8a619eabd6df87e33e4c06df06959bdc5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_location@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_location@2x.png",
+   "group": "private",
+   "src_sha256": "5d67983d47374ada4eb55697a8cc2abf93743b9f22866a6a6ba26f75f28b3582",
+   "dst_sha256": "5d67983d47374ada4eb55697a8cc2abf93743b9f22866a6a6ba26f75f28b3582",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_music.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_music.png",
+   "group": "private",
+   "src_sha256": "6779336f0362a73da8b7ea33dce0e73fe83bce17597378445c117e07dd6020b3",
+   "dst_sha256": "6779336f0362a73da8b7ea33dce0e73fe83bce17597378445c117e07dd6020b3",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_music@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_music@2x.png",
+   "group": "private",
+   "src_sha256": "f6b15ff44a9d49e72c1ca58ce297e514eb686a724c1792a13b877cc25647151a",
+   "dst_sha256": "f6b15ff44a9d49e72c1ca58ce297e514eb686a724c1792a13b877cc25647151a",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_photo.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_photo.png",
+   "group": "private",
+   "src_sha256": "68c3ad119b7f075c74fb1297ed6f81309dba5262274c98cc99da9c3a2d2accff",
+   "dst_sha256": "68c3ad119b7f075c74fb1297ed6f81309dba5262274c98cc99da9c3a2d2accff",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_photo@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_photo@2x.png",
+   "group": "private",
+   "src_sha256": "a995f172ad5eea6fcd6d4357eec864cead122642eeef3aa86b01a9026085bdb5",
+   "dst_sha256": "a995f172ad5eea6fcd6d4357eec864cead122642eeef3aa86b01a9026085bdb5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_shop.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_shop.png",
+   "group": "private",
+   "src_sha256": "950a9f3eb7e7ced0467702565e682cc8c72d9808c2a1b0c14fb585ba5e388d2f",
+   "dst_sha256": "950a9f3eb7e7ced0467702565e682cc8c72d9808c2a1b0c14fb585ba5e388d2f",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_shop@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_shop@2x.png",
+   "group": "private",
+   "src_sha256": "ddb88b92f1bd8f6b04f561ac52afd54ab5f4840381afd0809251d8d85b58a200",
+   "dst_sha256": "ddb88b92f1bd8f6b04f561ac52afd54ab5f4840381afd0809251d8d85b58a200",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_video.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_video.png",
+   "group": "private",
+   "src_sha256": "6053dad4203b7c611298c91f7db337b24dd9e520f2f139ed02d6141553de12c3",
+   "dst_sha256": "6053dad4203b7c611298c91f7db337b24dd9e520f2f139ed02d6141553de12c3",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_video@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_video@2x.png",
+   "group": "private",
+   "src_sha256": "1e67c221afa14b6ad28cb747fe919227f6b842059c65bc191269263afbc7c529",
+   "dst_sha256": "1e67c221afa14b6ad28cb747fe919227f6b842059c65bc191269263afbc7c529",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_voice.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_voice.png",
+   "group": "private",
+   "src_sha256": "531d7e79c2ff8260f99f48e197ed4ff105fb3d395bd6e4be22dca048f698df4b",
+   "dst_sha256": "531d7e79c2ff8260f99f48e197ed4ff105fb3d395bd6e4be22dca048f698df4b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/media_voice@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/media_voice@2x.png",
+   "group": "private",
+   "src_sha256": "b37c63673d99d3a9167bcfe7045c27dfea29970d8aa5ce4f80083646dcb59ac6",
+   "dst_sha256": "b37c63673d99d3a9167bcfe7045c27dfea29970d8aa5ce4f80083646dcb59ac6",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_calls.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_calls.png",
+   "group": "private",
+   "src_sha256": "b347d0bb33954aac124506d9ce9a0e556f235cb579ab853ebfd562617ce9a7c3",
+   "dst_sha256": "b347d0bb33954aac124506d9ce9a0e556f235cb579ab853ebfd562617ce9a7c3",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_calls@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_calls@2x.png",
+   "group": "private",
+   "src_sha256": "decd35472a556fe7ec6a1f2dbe3a9442d125e0922854b785476227a376d02cf8",
+   "dst_sha256": "decd35472a556fe7ec6a1f2dbe3a9442d125e0922854b785476227a376d02cf8",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_chats.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_chats.png",
+   "group": "private",
+   "src_sha256": "ca9e5266de6dc1c49dead1e1a1686f52c89b94c9904d0952fac607d1e3ed16b8",
+   "dst_sha256": "ca9e5266de6dc1c49dead1e1a1686f52c89b94c9904d0952fac607d1e3ed16b8",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_chats@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_chats@2x.png",
+   "group": "private",
+   "src_sha256": "929d283917cce08418ca2ee8f6355ca431f4877aa8804bd3819676b8343fb2a9",
+   "dst_sha256": "929d283917cce08418ca2ee8f6355ca431f4877aa8804bd3819676b8343fb2a9",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_contacts.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_contacts.png",
+   "group": "private",
+   "src_sha256": "47245024ccc91fad0f56df360abf699e84df2c45b3b866c3f25d0bae422752b8",
+   "dst_sha256": "47245024ccc91fad0f56df360abf699e84df2c45b3b866c3f25d0bae422752b8",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_contacts@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_contacts@2x.png",
+   "group": "private",
+   "src_sha256": "5281f4cf58c26149509e649e490a949941ac494b41e66dffc94e535cb2f57fc8",
+   "dst_sha256": "5281f4cf58c26149509e649e490a949941ac494b41e66dffc94e535cb2f57fc8",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_frequent.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_frequent.png",
+   "group": "private",
+   "src_sha256": "260eee3b8cfc4169a085e4a3e22e699ad30f24fe6a4854655a27da83f6580fd4",
+   "dst_sha256": "260eee3b8cfc4169a085e4a3e22e699ad30f24fe6a4854655a27da83f6580fd4",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_frequent@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_frequent@2x.png",
+   "group": "private",
+   "src_sha256": "dd4b5697712bbe2adce7cfc56ca8af2498c07d072b8b7d3fd01bbba30b316101",
+   "dst_sha256": "dd4b5697712bbe2adce7cfc56ca8af2498c07d072b8b7d3fd01bbba30b316101",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_music.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_music.png",
+   "group": "private",
+   "src_sha256": "5006eab0a00fb29115c10ff2f5e3d06c1d498bcce18ab42c45b1de1467679a50",
+   "dst_sha256": "5006eab0a00fb29115c10ff2f5e3d06c1d498bcce18ab42c45b1de1467679a50",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_music@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_music@2x.png",
+   "group": "private",
+   "src_sha256": "73fae04760c427ef863edeb1bbe450e2c62a6b03e1ea4562236cb9e12fee13a1",
+   "dst_sha256": "73fae04760c427ef863edeb1bbe450e2c62a6b03e1ea4562236cb9e12fee13a1",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_other.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_other.png",
+   "group": "private",
+   "src_sha256": "3b294027c2b4ac851bdef44311abff17273cae69b2b58aa663fa7ec1ff2d0f53",
+   "dst_sha256": "3b294027c2b4ac851bdef44311abff17273cae69b2b58aa663fa7ec1ff2d0f53",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_other@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_other@2x.png",
+   "group": "private",
+   "src_sha256": "44c9a8fffb338c7d9b8d55a9af0d51dbe2ec0551d0f518126b8f9993034e4c61",
+   "dst_sha256": "44c9a8fffb338c7d9b8d55a9af0d51dbe2ec0551d0f518126b8f9993034e4c61",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_photos.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_photos.png",
+   "group": "private",
+   "src_sha256": "c71b8548036a5765377680d679a8f7d422dee5de03caf3580e1faca3ea9e06e5",
+   "dst_sha256": "c71b8548036a5765377680d679a8f7d422dee5de03caf3580e1faca3ea9e06e5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_photos@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_photos@2x.png",
+   "group": "private",
+   "src_sha256": "eea894213dc76077cffdd94155250b7a17562bffe0bfb9ee38651e325468ab33",
+   "dst_sha256": "eea894213dc76077cffdd94155250b7a17562bffe0bfb9ee38651e325468ab33",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_sessions.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_sessions.png",
+   "group": "private",
+   "src_sha256": "16aae7c60f3f52fad87c6483d3af62a01fca63457e06661aa460749e336781de",
+   "dst_sha256": "16aae7c60f3f52fad87c6483d3af62a01fca63457e06661aa460749e336781de",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_sessions@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_sessions@2x.png",
+   "group": "private",
+   "src_sha256": "ed6f50d210cc6663b8ae3684537de8209dc4115918f7ab7eb6c9abb5d974438f",
+   "dst_sha256": "ed6f50d210cc6663b8ae3684537de8209dc4115918f7ab7eb6c9abb5d974438f",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_stories.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_stories.png",
+   "group": "private",
+   "src_sha256": "eb121c176f732f5b41043291044fe594e1760c04d30d029da54af069fd0eef95",
+   "dst_sha256": "eb121c176f732f5b41043291044fe594e1760c04d30d029da54af069fd0eef95",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_stories@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_stories@2x.png",
+   "group": "private",
+   "src_sha256": "6a17c90b58fd18511e4389422189f7ea860a35ce9bb84e0e4be21a2749718aff",
+   "dst_sha256": "6a17c90b58fd18511e4389422189f7ea860a35ce9bb84e0e4be21a2749718aff",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_web.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_web.png",
+   "group": "private",
+   "src_sha256": "7216e849566eecc3ba8830ee80b1a0bda9aa21bad1ab65b204e353d63dbdccd6",
+   "dst_sha256": "7216e849566eecc3ba8830ee80b1a0bda9aa21bad1ab65b204e353d63dbdccd6",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/images/section_web@2x.png",
+   "dst": "private/ChatExport_2026-10-27/images/section_web@2x.png",
+   "group": "private",
+   "src_sha256": "8eb4e4f0952b60ad6305a46d5580ce4767522bc958cd5847eeec626f2d27d6ff",
+   "dst_sha256": "8eb4e4f0952b60ad6305a46d5580ce4767522bc958cd5847eeec626f2d27d6ff",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/js/script.js",
+   "dst": "private/ChatExport_2026-10-27/js/script.js",
+   "group": "private",
+   "src_sha256": "93beb620191fcb10db4d129446970d710db08d8c2f1883f6282ead49753b1ce4",
+   "dst_sha256": "93beb620191fcb10db4d129446970d710db08d8c2f1883f6282ead49753b1ce4",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages.html",
+   "dst": "private/ChatExport_2026-10-27/messages.html",
+   "group": "private",
+   "src_sha256": "45cb292a34731b510e3634a4e9ee9ab629333595f7819ff5eb64d4e8379e799a",
+   "dst_sha256": "45cb292a34731b510e3634a4e9ee9ab629333595f7819ff5eb64d4e8379e799a",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages10.html",
+   "dst": "private/ChatExport_2026-10-27/messages10.html",
+   "group": "private",
+   "src_sha256": "87c8046262766d079ac3dd032a4d0c4da3061f968201f66454914298afafbc71",
+   "dst_sha256": "87c8046262766d079ac3dd032a4d0c4da3061f968201f66454914298afafbc71",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages11.html",
+   "dst": "private/ChatExport_2026-10-27/messages11.html",
+   "group": "private",
+   "src_sha256": "366d891a4a5f416c167f365fd0c42ea99d6ef5e0363de75a00491d4a0d9975f7",
+   "dst_sha256": "366d891a4a5f416c167f365fd0c42ea99d6ef5e0363de75a00491d4a0d9975f7",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages12.html",
+   "dst": "private/ChatExport_2026-10-27/messages12.html",
+   "group": "private",
+   "src_sha256": "d2434a38da42a28242e790071bd7cfc65af405d5c7ad919dca4b88a4ce800752",
+   "dst_sha256": "d2434a38da42a28242e790071bd7cfc65af405d5c7ad919dca4b88a4ce800752",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages13.html",
+   "dst": "private/ChatExport_2026-10-27/messages13.html",
+   "group": "private",
+   "src_sha256": "3450cc7ed5f6adb4c58c0108d69a2c4c928dc3e6dd33c1b87836b0b88787a689",
+   "dst_sha256": "3450cc7ed5f6adb4c58c0108d69a2c4c928dc3e6dd33c1b87836b0b88787a689",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages14.html",
+   "dst": "private/ChatExport_2026-10-27/messages14.html",
+   "group": "private",
+   "src_sha256": "9e049a88adc6cbe8c7a30409d0ac7be5f7b2742a1a1fbf5288e9baaa57836f1b",
+   "dst_sha256": "9e049a88adc6cbe8c7a30409d0ac7be5f7b2742a1a1fbf5288e9baaa57836f1b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages15.html",
+   "dst": "private/ChatExport_2026-10-27/messages15.html",
+   "group": "private",
+   "src_sha256": "672b248090e1dc7d8238660113daaae078ecdefb454b37ce4d665fe310670b8f",
+   "dst_sha256": "672b248090e1dc7d8238660113daaae078ecdefb454b37ce4d665fe310670b8f",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages16.html",
+   "dst": "private/ChatExport_2026-10-27/messages16.html",
+   "group": "private",
+   "src_sha256": "db7c5162f5d3de3e0a7beea4f65bc8b8aa78907f893e06d60c8ba775d00eab44",
+   "dst_sha256": "db7c5162f5d3de3e0a7beea4f65bc8b8aa78907f893e06d60c8ba775d00eab44",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages17.html",
+   "dst": "private/ChatExport_2026-10-27/messages17.html",
+   "group": "private",
+   "src_sha256": "447d91e3f18885811e647725921d37aead0bb1b7f9f035fadaf4b7d7804c60c4",
+   "dst_sha256": "447d91e3f18885811e647725921d37aead0bb1b7f9f035fadaf4b7d7804c60c4",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages18.html",
+   "dst": "private/ChatExport_2026-10-27/messages18.html",
+   "group": "private",
+   "src_sha256": "b602d38acbf6d181072749ad13a2040aaf9a2d49ca01f499e8adc4cd4d57336b",
+   "dst_sha256": "b602d38acbf6d181072749ad13a2040aaf9a2d49ca01f499e8adc4cd4d57336b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages19.html",
+   "dst": "private/ChatExport_2026-10-27/messages19.html",
+   "group": "private",
+   "src_sha256": "8283dc757e032c94311f7df6b79846cb85ad857af00e0130018fa8ac75fc66d9",
+   "dst_sha256": "8283dc757e032c94311f7df6b79846cb85ad857af00e0130018fa8ac75fc66d9",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages2.html",
+   "dst": "private/ChatExport_2026-10-27/messages2.html",
+   "group": "private",
+   "src_sha256": "7b9dd2b7ada6764eec611d5402b5e89372823d54310934f609236acc1c923b56",
+   "dst_sha256": "7b9dd2b7ada6764eec611d5402b5e89372823d54310934f609236acc1c923b56",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages20.html",
+   "dst": "private/ChatExport_2026-10-27/messages20.html",
+   "group": "private",
+   "src_sha256": "a6890eaf20b08cdb235521b045e291248809cebf0c488efd743779f9298736c3",
+   "dst_sha256": "a6890eaf20b08cdb235521b045e291248809cebf0c488efd743779f9298736c3",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages21.html",
+   "dst": "private/ChatExport_2026-10-27/messages21.html",
+   "group": "private",
+   "src_sha256": "b47bcaf6327f5f74f42a855dcea18e34c584da7f72709ccf07579698822643b7",
+   "dst_sha256": "b47bcaf6327f5f74f42a855dcea18e34c584da7f72709ccf07579698822643b7",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages22.html",
+   "dst": "private/ChatExport_2026-10-27/messages22.html",
+   "group": "private",
+   "src_sha256": "04d587c2be18168ccbad7ff8433b6a2a7a0de391b2b72f273bdf5600045878b5",
+   "dst_sha256": "04d587c2be18168ccbad7ff8433b6a2a7a0de391b2b72f273bdf5600045878b5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages23.html",
+   "dst": "private/ChatExport_2026-10-27/messages23.html",
+   "group": "private",
+   "src_sha256": "2abb89581e6f1be9debb9de63fdc0e18817acc60da39f933afcfadfb880c5549",
+   "dst_sha256": "2abb89581e6f1be9debb9de63fdc0e18817acc60da39f933afcfadfb880c5549",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages24.html",
+   "dst": "private/ChatExport_2026-10-27/messages24.html",
+   "group": "private",
+   "src_sha256": "7965a5c8ef43fd00c8e2772c80df960fd80e0001d66bd05ccf373b94c56c8cc7",
+   "dst_sha256": "7965a5c8ef43fd00c8e2772c80df960fd80e0001d66bd05ccf373b94c56c8cc7",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages25.html",
+   "dst": "private/ChatExport_2026-10-27/messages25.html",
+   "group": "private",
+   "src_sha256": "4c2ac9ef6e437530796a9c2355d57e06eda92b3566458718fbe841da6f05e3c2",
+   "dst_sha256": "4c2ac9ef6e437530796a9c2355d57e06eda92b3566458718fbe841da6f05e3c2",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages26.html",
+   "dst": "private/ChatExport_2026-10-27/messages26.html",
+   "group": "private",
+   "src_sha256": "7f7b2f1328be518d617d13be32c3b8340018cf5f09361d9ea5a243d17e5ea6ad",
+   "dst_sha256": "7f7b2f1328be518d617d13be32c3b8340018cf5f09361d9ea5a243d17e5ea6ad",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages27.html",
+   "dst": "private/ChatExport_2026-10-27/messages27.html",
+   "group": "private",
+   "src_sha256": "49871f1a1e493ac25c118edc18b394e88cc042dcf8fc7180402673f6e06f55b0",
+   "dst_sha256": "49871f1a1e493ac25c118edc18b394e88cc042dcf8fc7180402673f6e06f55b0",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages28.html",
+   "dst": "private/ChatExport_2026-10-27/messages28.html",
+   "group": "private",
+   "src_sha256": "13d1cf31f9b8743fbf4d9ff735da8f8ca6e8b6202b6fadc1fff7ae5020b7e389",
+   "dst_sha256": "13d1cf31f9b8743fbf4d9ff735da8f8ca6e8b6202b6fadc1fff7ae5020b7e389",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages29.html",
+   "dst": "private/ChatExport_2026-10-27/messages29.html",
+   "group": "private",
+   "src_sha256": "6ed002de9da68d6dc875fbee93627baf82002e152635f0e47ef28cc4bbb88d6c",
+   "dst_sha256": "6ed002de9da68d6dc875fbee93627baf82002e152635f0e47ef28cc4bbb88d6c",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages3.html",
+   "dst": "private/ChatExport_2026-10-27/messages3.html",
+   "group": "private",
+   "src_sha256": "a15f79c014b50ab559d39a5eb2c8149a52dd49d3940b2992213082fa8da9578b",
+   "dst_sha256": "a15f79c014b50ab559d39a5eb2c8149a52dd49d3940b2992213082fa8da9578b",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages30.html",
+   "dst": "private/ChatExport_2026-10-27/messages30.html",
+   "group": "private",
+   "src_sha256": "d45da45425d1e4a3163e36d9eed551f87f3fdff65148909e9031693c74b2fd2f",
+   "dst_sha256": "d45da45425d1e4a3163e36d9eed551f87f3fdff65148909e9031693c74b2fd2f",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages31.html",
+   "dst": "private/ChatExport_2026-10-27/messages31.html",
+   "group": "private",
+   "src_sha256": "69ac3d688ce49340e36ff81d8b1cd1ec8add9c202c4ddace44b33a51eba37ebc",
+   "dst_sha256": "69ac3d688ce49340e36ff81d8b1cd1ec8add9c202c4ddace44b33a51eba37ebc",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages32.html",
+   "dst": "private/ChatExport_2026-10-27/messages32.html",
+   "group": "private",
+   "src_sha256": "0f5852a8689a898d02aa83abe4d0c3dac1e224235fe33211690996bdfd81da39",
+   "dst_sha256": "0f5852a8689a898d02aa83abe4d0c3dac1e224235fe33211690996bdfd81da39",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages33.html",
+   "dst": "private/ChatExport_2026-10-27/messages33.html",
+   "group": "private",
+   "src_sha256": "fca9f2093ab3f7d47c7c9941acc5b70854b347835a7f6772e81e4b99b2f27e2c",
+   "dst_sha256": "fca9f2093ab3f7d47c7c9941acc5b70854b347835a7f6772e81e4b99b2f27e2c",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages34.html",
+   "dst": "private/ChatExport_2026-10-27/messages34.html",
+   "group": "private",
+   "src_sha256": "eca855c3560800b7c982a8552fecebe124921c76fd1c770237344a2e27cac65c",
+   "dst_sha256": "eca855c3560800b7c982a8552fecebe124921c76fd1c770237344a2e27cac65c",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages35.html",
+   "dst": "private/ChatExport_2026-10-27/messages35.html",
+   "group": "private",
+   "src_sha256": "697364587a9a08793da8a05db97581c19cdb43f398364ecb8ecc3457ff82fefa",
+   "dst_sha256": "697364587a9a08793da8a05db97581c19cdb43f398364ecb8ecc3457ff82fefa",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages36.html",
+   "dst": "private/ChatExport_2026-10-27/messages36.html",
+   "group": "private",
+   "src_sha256": "3da72dacbe4c1d2b59b7c02fa3aedb11a7f93c3ed56f779305ccd08973c3e55d",
+   "dst_sha256": "3da72dacbe4c1d2b59b7c02fa3aedb11a7f93c3ed56f779305ccd08973c3e55d",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages37.html",
+   "dst": "private/ChatExport_2026-10-27/messages37.html",
+   "group": "private",
+   "src_sha256": "1c8cd2bb5cf5c3af2ae5506b1014ae1fb7b3abdac1d2a45f94463987550493ba",
+   "dst_sha256": "1c8cd2bb5cf5c3af2ae5506b1014ae1fb7b3abdac1d2a45f94463987550493ba",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages38.html",
+   "dst": "private/ChatExport_2026-10-27/messages38.html",
+   "group": "private",
+   "src_sha256": "a8eaa2c5a79fac62dcd0ee5ed81f41072b2cde13f8de904971575104d5b56e19",
+   "dst_sha256": "a8eaa2c5a79fac62dcd0ee5ed81f41072b2cde13f8de904971575104d5b56e19",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages39.html",
+   "dst": "private/ChatExport_2026-10-27/messages39.html",
+   "group": "private",
+   "src_sha256": "37df5fcd691b942dc578f7052e6c3edadb9ecb5d8e163e4115edf434185c5308",
+   "dst_sha256": "37df5fcd691b942dc578f7052e6c3edadb9ecb5d8e163e4115edf434185c5308",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages4.html",
+   "dst": "private/ChatExport_2026-10-27/messages4.html",
+   "group": "private",
+   "src_sha256": "58d0e00f890918af07735424fcc96d612cbe13bbe1ce655a5ec77e99b2db9629",
+   "dst_sha256": "58d0e00f890918af07735424fcc96d612cbe13bbe1ce655a5ec77e99b2db9629",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages40.html",
+   "dst": "private/ChatExport_2026-10-27/messages40.html",
+   "group": "private",
+   "src_sha256": "1399489892a710458e7dbaa443d70ef029ccc9f95f23a52c5f83e507c7539de3",
+   "dst_sha256": "1399489892a710458e7dbaa443d70ef029ccc9f95f23a52c5f83e507c7539de3",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages41.html",
+   "dst": "private/ChatExport_2026-10-27/messages41.html",
+   "group": "private",
+   "src_sha256": "652f3a82591b6656d061d107941cf0d572339fd49d6182e5ee27ee037f76012e",
+   "dst_sha256": "652f3a82591b6656d061d107941cf0d572339fd49d6182e5ee27ee037f76012e",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages42.html",
+   "dst": "private/ChatExport_2026-10-27/messages42.html",
+   "group": "private",
+   "src_sha256": "c9fd7d114a454b55d3c215a1e90cb6e475085b964ce3fddf0d4297c4323bd61e",
+   "dst_sha256": "c9fd7d114a454b55d3c215a1e90cb6e475085b964ce3fddf0d4297c4323bd61e",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages43.html",
+   "dst": "private/ChatExport_2026-10-27/messages43.html",
+   "group": "private",
+   "src_sha256": "e7451b93f22e4b1b544de71a1770998adf1025d9fc4c5be41dcb1932a40d1aff",
+   "dst_sha256": "e7451b93f22e4b1b544de71a1770998adf1025d9fc4c5be41dcb1932a40d1aff",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages44.html",
+   "dst": "private/ChatExport_2026-10-27/messages44.html",
+   "group": "private",
+   "src_sha256": "bb2d9ae542e63df5f367261534a7c37652f9cf2fb48d4bc36c414c73f13544ce",
+   "dst_sha256": "bb2d9ae542e63df5f367261534a7c37652f9cf2fb48d4bc36c414c73f13544ce",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages45.html",
+   "dst": "private/ChatExport_2026-10-27/messages45.html",
+   "group": "private",
+   "src_sha256": "ac4c80fd1f14af0945857210caedcfd803e26e4be337a0a37e4631dffa4c8f62",
+   "dst_sha256": "ac4c80fd1f14af0945857210caedcfd803e26e4be337a0a37e4631dffa4c8f62",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages46.html",
+   "dst": "private/ChatExport_2026-10-27/messages46.html",
+   "group": "private",
+   "src_sha256": "f013688c458a9cf947cef2f2ce7fb1d7e6c36f6836a6b09674fdb7f4f2442efa",
+   "dst_sha256": "f013688c458a9cf947cef2f2ce7fb1d7e6c36f6836a6b09674fdb7f4f2442efa",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages47.html",
+   "dst": "private/ChatExport_2026-10-27/messages47.html",
+   "group": "private",
+   "src_sha256": "f754192ff9714e670e3b5236605423c420c6b8e33de9e1eb8d78b2c484a2faff",
+   "dst_sha256": "f754192ff9714e670e3b5236605423c420c6b8e33de9e1eb8d78b2c484a2faff",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages48.html",
+   "dst": "private/ChatExport_2026-10-27/messages48.html",
+   "group": "private",
+   "src_sha256": "c007243bacbe0139af57044703179e0f36a60a31522c38a35184593fe5d9e8ab",
+   "dst_sha256": "c007243bacbe0139af57044703179e0f36a60a31522c38a35184593fe5d9e8ab",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages49.html",
+   "dst": "private/ChatExport_2026-10-27/messages49.html",
+   "group": "private",
+   "src_sha256": "816a9c8375054727e0df30e6303ff8b48c3d1930163ff1e06d4287065c9eeb4a",
+   "dst_sha256": "816a9c8375054727e0df30e6303ff8b48c3d1930163ff1e06d4287065c9eeb4a",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages5.html",
+   "dst": "private/ChatExport_2026-10-27/messages5.html",
+   "group": "private",
+   "src_sha256": "2d5f3ed864176ee7875893285782ab8f3255754a4b30351cc5b026c2dd297c57",
+   "dst_sha256": "2d5f3ed864176ee7875893285782ab8f3255754a4b30351cc5b026c2dd297c57",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages50.html",
+   "dst": "private/ChatExport_2026-10-27/messages50.html",
+   "group": "private",
+   "src_sha256": "05b3a74eccbcbefb3674fb3c6a4f4480afe45f36571a396e0f6416403e4b8650",
+   "dst_sha256": "05b3a74eccbcbefb3674fb3c6a4f4480afe45f36571a396e0f6416403e4b8650",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages51.html",
+   "dst": "private/ChatExport_2026-10-27/messages51.html",
+   "group": "private",
+   "src_sha256": "568aff76131ed7009b3eb0bddc317b7ee57c28c18dba50f5641726cfb9149145",
+   "dst_sha256": "568aff76131ed7009b3eb0bddc317b7ee57c28c18dba50f5641726cfb9149145",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages52.html",
+   "dst": "private/ChatExport_2026-10-27/messages52.html",
+   "group": "private",
+   "src_sha256": "c09c63bd99f4c5d0be8b21874babbbf8db86f1f11550614595a44a83f2c854ad",
+   "dst_sha256": "c09c63bd99f4c5d0be8b21874babbbf8db86f1f11550614595a44a83f2c854ad",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages53.html",
+   "dst": "private/ChatExport_2026-10-27/messages53.html",
+   "group": "private",
+   "src_sha256": "c42338f70972ed917de283094f93aee7fcbea072cd0b829edc547bac505144bb",
+   "dst_sha256": "c42338f70972ed917de283094f93aee7fcbea072cd0b829edc547bac505144bb",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages6.html",
+   "dst": "private/ChatExport_2026-10-27/messages6.html",
+   "group": "private",
+   "src_sha256": "3bbb324ebee452d6dd6aaacc967b87c435e017ac5cb1f5477ae6f3be568c6c98",
+   "dst_sha256": "3bbb324ebee452d6dd6aaacc967b87c435e017ac5cb1f5477ae6f3be568c6c98",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages7.html",
+   "dst": "private/ChatExport_2026-10-27/messages7.html",
+   "group": "private",
+   "src_sha256": "b172870ffb3500d5ba0bf0058c2560c46913c2cf17ef3b33dc0d59d3f154a6ee",
+   "dst_sha256": "b172870ffb3500d5ba0bf0058c2560c46913c2cf17ef3b33dc0d59d3f154a6ee",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages8.html",
+   "dst": "private/ChatExport_2026-10-27/messages8.html",
+   "group": "private",
+   "src_sha256": "c2f5e410a486bc5a1909abac59e70ee54afc2bd277b023cc09a15aad60e37ae5",
+   "dst_sha256": "c2f5e410a486bc5a1909abac59e70ee54afc2bd277b023cc09a15aad60e37ae5",
+   "modified_after_copy": false
+  },
+  {
+   "src": "ChatExport_2026-10-27/messages9.html",
+   "dst": "private/ChatExport_2026-10-27/messages9.html",
+   "group": "private",
+   "src_sha256": "acea63925c84e96e888352951e92e7d12185160669f6685a3d0e7b19556bea42",
+   "dst_sha256": "acea63925c84e96e888352951e92e7d12185160669f6685a3d0e7b19556bea42",
+   "modified_after_copy": false
+  }
+ ],
+ "removed": [
+  {
+   "src": "data/compound-seed.json",
+   "group": "data"
+  },
+  {
+   "src": "data/compound-space-config.json",
+   "group": "data"
+  },
+  {
+   "src": "logical_delta_matter/__init__.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/aggregate.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/app_streamlit.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/chemistry.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/cli.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/compound_cli.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/compound_space.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/delta_core.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/exact_algebra.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/exact_polynomial.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/formal_cli.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/formal_domains.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/galaxy_shadow.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/gui_app.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/proof_engine.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/runner.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/smt_certificates.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/source_registry.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/storage.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/templates.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/vispy_viewer.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/viz.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "logical_delta_matter/world_exact.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "tests/test_aggregate.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_chemistry.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_compound_space.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_delta_core.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_exact_algebra.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_exact_polynomial.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_formal_domains.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_galaxy_shadow.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_proof_engine.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_runner.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_source_registry.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "tests/test_world_exact.py",
+   "group": "legacy-tests"
+  },
+  {
+   "src": "scripts/build_confirmed_concepts.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "configs/exact_mvp.json",
+   "group": "legacy-code"
+  },
+  {
+   "src": "cuda/galaxy_shadow_direct.cu",
+   "group": "legacy-code"
+  },
+  {
+   "src": "example_run.py",
+   "group": "legacy-code"
+  },
+  {
+   "src": "index.html",
+   "group": "legacy-web"
+  },
+  {
+   "src": "src/app.js",
+   "group": "legacy-web"
+  },
+  {
+   "src": "src/styles.css",
+   "group": "legacy-web"
+  }
+ ]
+}

@@ -1,0 +1,204 @@
+{
+  "schema_version": "source-registry@0.1",
+  "hash_algorithm": "sha256",
+  "records": [
+    {
+      "source_id": "source.deep_research_report",
+      "path": "docs/research/deep-research-report.md",
+      "sha256": "7e5bf65aa0696ea16f8146eeabe66557884ea26c1f0157c8cd4d694787d6cea2",
+      "size_bytes": 54632
+    },
+    {
+      "source_id": "source.katyushchik_monograph",
+      "path": "data/sources/documents/monografia__katyuschik_v_g.pdf",
+      "sha256": "47106af7bfe06379dbcb72fdc813a0b65e8304684b929aecc192f9cd892b1519",
+      "size_bytes": 2245281
+    },
+    {
+      "source_id": "source.delta_ai_pdf",
+      "path": "data/sources/documents/Архитектура ИИ на логических дельтах.pdf",
+      "sha256": "5b9871d5d7bfbac96caf3923e093bf277d169eeb76f87a01276026096b595e17",
+      "size_bytes": 267585
+    },
+    {
+      "source_id": "source.galaxy_model_pdf",
+      "path": "data/sources/documents/Моделирование галактики по теории Катющика.pdf",
+      "sha256": "e9bf08b737618a18a6bfe8b84b4692bc88530287a0530471aaea7f262400e12d",
+      "size_bytes": 334854
+    },
+    {
+      "source_id": "source.gravity_calculation_pdf",
+      "path": "data/sources/documents/Улучшение расчетов гравитационного взаимодействия.pdf",
+      "sha256": "2451438b431430a2a5dd72b916ed145ab9bd0b4e11cacceec580ba375a5a22c0",
+      "size_bytes": 306008
+    },
+    {
+      "source_id": "data.matter_deltas",
+      "path": "data/matter-deltas.json",
+      "sha256": "fc334a479e1d9c3cfbb39dbc94105538c4e99dc3c42a690ade829b3737deba18",
+      "size_bytes": 9676
+    },
+    {
+      "source_id": "data.rule_packs",
+      "path": "data/rule-packs.json",
+      "sha256": "a568a2b2a4829a429d34ce6e398ccd5c4c7e506b7b868b720dd1a93f06c59457",
+      "size_bytes": 2367
+    },
+    {
+      "source_id": "data.confirmed_concepts",
+      "path": "data/confirmed-concepts.json",
+      "sha256": "82cae3b20c7898c97a4cf66412944757b66bb0f0c171e64ba4464ba1d62a06f5",
+      "size_bytes": 146788
+    },
+    {
+      "source_id": "source.video.At08288FuLQ",
+      "path": "data/sources/video-transcripts/At08288FuLQ.ru-auto.txt",
+      "sha256": "c91289c8002e589312a96291a33672a39713cc78ee9562997584232f675937d0",
+      "size_bytes": 69681
+    },
+    {
+      "source_id": "source.video.lC5swxhzw38",
+      "path": "data/sources/video-transcripts/lC5swxhzw38.ru-auto.txt",
+      "sha256": "b9e3300f3a867d683b411e0fc9f5867368505ea274d3bc26f095e4f4f0ef4d2d",
+      "size_bytes": 21085
+    },
+    {
+      "source_id": "source.video.MGe1YBYapzo",
+      "path": "data/sources/video-transcripts/MGe1YBYapzo.ru-auto.txt",
+      "sha256": "4d1a3ed4d2bf5f0e6fb81199d2263e1654a466c90d3e68d9fc5debb05803b9b1",
+      "size_bytes": 22728
+    },
+    {
+      "source_id": "source.video.PG4yJiAho5Q",
+      "path": "data/sources/video-transcripts/PG4yJiAho5Q.ru-auto.txt",
+      "sha256": "518d7618f32be1ad4104ffdb77cdb8cdc9e03c847684ebe553ab18c5b84e2710",
+      "size_bytes": 152367
+    },
+    {
+      "source_id": "source.video.tw-Z1oYOGds",
+      "path": "data/sources/video-transcripts/tw-Z1oYOGds.ru-auto.txt",
+      "sha256": "24a9be07ae823cce81656f572669980eb939aa80f8e0d6ddb77273bafbb3979c",
+      "size_bytes": 7713
+    },
+    {
+      "source_id": "source.video.ufII145N7W8",
+      "path": "data/sources/video-transcripts/ufII145N7W8.ru-auto.txt",
+      "sha256": "afcb26810102e2a20cba2f6c4041b4661e24435ce6f1871248203cbfdafcba8b",
+      "size_bytes": 18510
+    },
+    {
+      "source_id": "source.video.w7fVrHxUaMk",
+      "path": "data/sources/video-transcripts/w7fVrHxUaMk.ru-auto.txt",
+      "sha256": "be4f33d2094ff3b88d801084246973c7f3b66f66d805718b7e2d0e45d8c4ef72",
+      "size_bytes": 2200
+    },
+    {
+      "source_id": "source.video.WNs48pxe2po",
+      "path": "data/sources/video-transcripts/WNs48pxe2po.ru-auto.txt",
+      "sha256": "ef6ecde9f23c3a0b650c2c83bab62369b41719a85a7523b372b04437e1502369",
+      "size_bytes": 29449
+    },
+    {
+      "source_id": "source.video.XsPHjlb_FZg",
+      "path": "data/sources/video-transcripts/XsPHjlb_FZg.ru-auto.txt",
+      "sha256": "5983104a06ebb9b63a12f5a2c9d4e971f42e7447dd11455edbbb55957074e1de",
+      "size_bytes": 59458
+    },
+    {
+      "source_id": "source.forum.t1205",
+      "path": "data/sources/forum-topics/t1205.txt",
+      "sha256": "6edb2a4e37d79372e95bf889ffbd98035cde8f6200b6bbd3bbef1c9f4b69aa4c",
+      "size_bytes": 35144
+    },
+    {
+      "source_id": "source.forum.t1608",
+      "path": "data/sources/forum-topics/t1608.txt",
+      "sha256": "57bb8a15a85803570352b823d1d4d15bfc21e3a0ec397014e603d01629a7a382",
+      "size_bytes": 2743
+    },
+    {
+      "source_id": "source.forum.t1638",
+      "path": "data/sources/forum-topics/t1638.txt",
+      "sha256": "a6e66e1b44d5e83668a21e33853f7ccccdb55da6ed5e8af7ee5c8b61bec574d2",
+      "size_bytes": 2507
+    },
+    {
+      "source_id": "source.forum.t1708",
+      "path": "data/sources/forum-topics/t1708.txt",
+      "sha256": "0c3ea0748b465e728d3bda6238ef65fb8325871da5bd1809b73c747c792819c7",
+      "size_bytes": 18951
+    },
+    {
+      "source_id": "source.forum.t1724",
+      "path": "data/sources/forum-topics/t1724.txt",
+      "sha256": "11ed37f5297fa1a9dfe49c46f23ffcd172b461869afa9de6364049c064d27a9c",
+      "size_bytes": 1600
+    },
+    {
+      "source_id": "source.forum.t1734",
+      "path": "data/sources/forum-topics/t1734.txt",
+      "sha256": "e6e9b5e4f329681326d3af8dc7753b3e1c5208b2f8ee00435297f42c71bbc2b1",
+      "size_bytes": 7295
+    },
+    {
+      "source_id": "source.forum.t406",
+      "path": "data/sources/forum-topics/t406.txt",
+      "sha256": "61aa9069a84373660ce3a583c8807f2664f1c389335c17765478f0c1cb132b1b",
+      "size_bytes": 15520
+    },
+    {
+      "source_id": "source.forum.t758",
+      "path": "data/sources/forum-topics/t758.txt",
+      "sha256": "2b084e773aa2c8f86b927cc6c29484c0d05c69958ac311c05a831e1f56ac9ba3",
+      "size_bytes": 7539
+    },
+    {
+      "source_id": "source.image.photo_2024-01-15_00-51-59",
+      "path": "data/sources/images/photo_2024-01-15_00-51-59.jpg",
+      "sha256": "10e0a965ad411c233807d76c07bb6ea8c654536ddfa650b493d6e44c3064d36f",
+      "size_bytes": 120818
+    },
+    {
+      "source_id": "source.image.photo_2026-04-25_18-54-10",
+      "path": "data/sources/images/photo_2026-04-25_18-54-10.jpg",
+      "sha256": "731fe066d84b40e47ab2774eacda5b621ede290bafcc3b5c54ba5792487fecb3",
+      "size_bytes": 158901
+    },
+    {
+      "source_id": "source.image.photo_2026-04-28_20-49-29",
+      "path": "data/sources/images/photo_2026-04-28_20-49-29.jpg",
+      "sha256": "9c5b515279d07f7b6a8a80adf14d8ae8a13a6ad60f6167019354ab9a8eb00d76",
+      "size_bytes": 105422
+    },
+    {
+      "source_id": "source.image.photo_2026-04-28_20-50-02",
+      "path": "data/sources/images/photo_2026-04-28_20-50-02.jpg",
+      "sha256": "741b3ff55f1babf429ffbb8354bf65258f2365020bc26593924649c833fe660a",
+      "size_bytes": 37453
+    },
+    {
+      "source_id": "source.manifest.forum-topics",
+      "path": "data/sources/forum-topics/manifest.json",
+      "sha256": "5c57cc4c6079cbc60d662ee23e5a12bf77ee93c490a7c4c816f446f511a562f5",
+      "size_bytes": 5584
+    },
+    {
+      "source_id": "source.manifest.images",
+      "path": "data/sources/images/manifest.json",
+      "sha256": "6fcf46c0f748f85d2453bf209d9d56c47b9d8090b0f8b0612a0a1bc7f3bbb849",
+      "size_bytes": 6122
+    },
+    {
+      "source_id": "source.manifest.telegram-chat",
+      "path": "data/sources/telegram-chat/manifest.json",
+      "sha256": "13b450184f6b021b930eea9271ca8f392a2456ca9e27092279a8798437a8a6ad",
+      "size_bytes": 3814
+    },
+    {
+      "source_id": "source.manifest.video-transcripts",
+      "path": "data/sources/video-transcripts/manifest.json",
+      "sha256": "28a94666f8ce3495f0cec1357e579e4fc021b47076e62872b45acd44abf6aa3b",
+      "size_bytes": 4267
+    }
+  ]
+}
