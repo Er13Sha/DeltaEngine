@@ -368,6 +368,10 @@ class Language:
     def compile_term(self, text: str) -> Node:
         return self._check(parse(text), {})
 
+    def derived_value(self, name: str, record: dict[str, Any]) -> Any:
+        """Значение производного атрибута на приведённой записи (или OUT_OF_DOMAIN)."""
+        return _eval(self.derived[name], _Ctx(self, record, self.schema.budget), {})
+
     # Возвращает узел с проставленным типом; поля enum-литералов приводятся к enum.
     def _check(self, node: Node, scope: dict[str, AttrType]) -> Node:
         k = node.kind

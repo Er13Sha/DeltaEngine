@@ -78,6 +78,8 @@ class Inductor:
         self.version = version
         self.auto_accept = auto_accept  # только для тестовых пакетов (G7)
         self.examples: list[tuple[Record, str]] = []
+        # запись + значения производных атрибутов (для быстрых кандидатов; ядро считает их само)
+        self.views: list[Record] = []
         self.root: dict[str, Any] | None = None
         self.report = InductionReport()
         self._ids: Counter = Counter()
@@ -86,6 +88,7 @@ class Inductor:
 
     def fit(self, examples: list[Example]) -> Tree:
         self.examples = [(self.schema.coerce_record(r), label) for r, label in examples]
+        self.views = [self._view(r) for r, _ in self.examples]
         self.report = InductionReport()
         self._ids = Counter()
         self.root = self._build(list(range(len(self.examples))), 0, frozenset(), "root")
@@ -97,6 +100,7 @@ class Inductor:
             return self.fit([(record, label)])
         before = self.tree()
         self.examples.append((self.schema.coerce_record(record), label))
+        self.views.append(self._view(self.examples[-1][0]))
         new_index = len(self.examples) - 1
         leaf_id = before.classify(self.examples[new_index][0], certify=False).leaf
         holder, key, leaf = _find(self.root, leaf_id)
@@ -122,6 +126,14 @@ class Inductor:
 
     def tree(self) -> Tree:
         return Tree.from_dict(self.tree_dict())
+
+    def _view(self, record: Record) -> Record:
+        view = dict(record)
+        for d in self.schema.derived:
+            value = self.language.derived_value(d.name, record)
+            if value is not OUT_OF_DOMAIN:
+                view[d.name] = value
+        return view
 
     def tree_dict(self) -> dict[str, Any]:
         assert self.root is not None
@@ -149,7 +161,7 @@ class Inductor:
         yes, no = [], []
         for i in members:
             value = predicate.evaluate(self.examples[i][0]).value
-            if value is OUT_OF_DOMAIN or value != best.fn(self.examples[i][0]):
+            if value is OUT_OF_DOMAIN or value != best.fn(self.views[i]):
                 raise AssertionError(f"G5: ядро и кандидат расходятся на {best.text}")
             (yes if value else no).append(i)
         self.report.forks += 1
@@ -186,7 +198,7 @@ class Inductor:
     # ------------------------------------------------------------ кандидаты
 
     def _best_candidate(self, members: list[int], present: frozenset[str]) -> Candidate | None:
-        records = [self.examples[i][0] for i in members]
+        records = [self.views[i] for i in members]
         labels = [self.examples[i][1] for i in members]
         firsts = []
         for cand in self._first_order(records, present):
@@ -221,18 +233,24 @@ class Inductor:
 
     def _first_order(self, records: list[Record], present: frozenset[str]):
         required = {a.name for a in self.schema.attributes.values() if a.required}
-        for attr in self.schema.attributes.values():
-            name = attr.name
+        features = [(a.name, a.type, a.name in required or a.name in present, True)
+                    for a in self.schema.attributes.values()]
+        # производные атрибуты (в том числе построенные `delta_tools.featurize`)
+        features += [(d.name, self.language.derived[d.name].type,
+                      self.language.derived_unguarded[d.name] <= required | present, False)
+                     for d in self.schema.derived]
+        for name, attr_type, safe, base in features:
             have = [r for r in records if name in r]
-            safe = name in required or name in present
             if not safe:
+                if not base:
+                    continue
                 # G1: без гарантии присутствия атрибут можно только проверить на наличие
                 if have and len(have) < len(records):
                     yield Candidate(f"has({name})", 1, (lambda n: lambda r: n in r)(name))
                 else:
                     self.report.rejected["G1: атрибут не гарантирован на пути"] += 1
                 continue
-            kind = attr.type.kind
+            kind = attr_type.kind
             values = sorted({r[name] for r in records}, key=_order_key) if kind != "set" else []
             if kind == "bool":
                 yield Candidate(name, 1, (lambda n: lambda r: r[n])(name))

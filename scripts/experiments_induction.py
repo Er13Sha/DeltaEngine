@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 from delta_kernel import Tree  # noqa: E402
 from delta_text import learn_intent  # noqa: E402
 from delta_tools.bridge_matter import matter_tree_from_deltas  # noqa: E402
+from delta_tools.featurize import segment_schema, select_boundaries  # noqa: E402
 from delta_tools.induction import Budget, Inductor, predict  # noqa: E402
 
 
@@ -60,6 +61,28 @@ def e2_e3() -> None:
                   f"листьев {full.report.leaves}, {time.time() - t0:.0f} с")
 
 
+def e2_features() -> None:
+    """E2 с признаками, построенными индуктором: границы отбираются внутри каждого прогона."""
+    data = json.loads((ROOT / "data" / "confirmed-concepts.json").read_text(encoding="utf-8"))
+    examples = [({"z": e["atomic_number"]}, e["group_block"]) for e in data["elements"]]
+    base = {"name": "e", "version": "1", "attributes": [{"name": "z", "type": {"kind": "int"}}]}
+    t0 = time.time()
+    correct = unknown = 0
+    for i in range(len(examples)):
+        train = examples[:i] + examples[i + 1:]
+        bounds = select_boundaries([(r["z"], label) for r, label in train])
+        tree = Inductor(segment_schema(base, "z", bounds, 1, 118), Budget()).fit(train)
+        label, _ = predict(tree, examples[i][0])
+        correct += label == examples[i][1]
+        unknown += label is None
+    bounds = select_boundaries([(r["z"], label) for r, label in examples])
+    full = Inductor(segment_schema(base, "z", bounds, 1, 118), Budget())
+    full.fit(examples)
+    n = len(examples)
+    print(f"E2 с построенными признаками: границы {bounds}, верно {correct / n:.3f}, UNKNOWN {unknown}, "
+          f"листьев {full.report.leaves}, {time.time() - t0:.0f} с")
+
+
 def intent() -> None:
     """Тип вопроса и смысл слова: 10-кратная проверка, сохранение деревьев."""
     learn_intent.main()
@@ -68,4 +91,5 @@ def intent() -> None:
 if __name__ == "__main__":
     e1()
     e2_e3()
+    e2_features()
     intent()

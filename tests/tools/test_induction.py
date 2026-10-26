@@ -113,6 +113,35 @@ class InductionTests(unittest.TestCase):
         self.assertEqual(Inductor(BOOL_SCHEMA).fit(shuffled).root.predicate.text, a.root.predicate.text)
 
 
+class FeaturizeTests(unittest.TestCase):
+    def test_boundaries_reveal_repeating_structure(self):
+        from delta_tools.featurize import consistency_errors, select_boundaries
+
+        # метки повторяются отрезками разной длины: 1–3, 4–8, 9–15
+        pattern = ["a", "b", "c", "a", "x", "y", "b", "c", "a", "x", "y", "x", "y", "b", "c"]
+        pairs = list(zip(range(1, 16), pattern))
+        bounds = select_boundaries(pairs)
+        self.assertTrue(bounds)
+        self.assertLess(consistency_errors(pairs, bounds, 1, 15), consistency_errors(pairs, [], 1, 15))
+        self.assertLess(consistency_errors(pairs, [3, 8], 1, 15), consistency_errors(pairs, [], 1, 15))
+
+    def test_constructed_features_are_kernel_derived_attributes(self):
+        from delta_tools.featurize import segment_schema
+
+        base = {"name": "e", "version": "1", "attributes": [{"name": "z", "type": {"kind": "int"}}]}
+        pattern = ["a", "b", "c", "a", "x", "y", "b", "c", "a", "x", "y", "x", "y", "b", "c"]
+        examples = [({"z": z}, label) for z, label in zip(range(1, 16), pattern)]
+        schema = segment_schema(base, "z", [3, 8], 1, 15)
+        ind = Inductor(schema)
+        tree = ind.fit(examples)
+        self.assertEqual(tree.check(), [])
+        self.assertTrue(any(f.predicate.text.startswith("z_off") for f in tree.forks()))
+        for record, label in examples:
+            self.assertEqual(predict(tree, record)[0], label)
+        # запись содержит только z: производные признаки вычисляет ядро
+        self.assertEqual(tree.classify({"z": 4}).path[0].predicate.split()[0][:5], "z_off")
+
+
 class IntentLearningTests(unittest.TestCase):
     def test_learned_trees_are_valid_and_reproducible(self):
         """Деревья в data/trees воспроизводятся обучением с нуля (детерминизм индуктора)."""
