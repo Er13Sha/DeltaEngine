@@ -13,6 +13,8 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+# Языковой слой Delta LM (вне доверенного ядра): морфология русского языка.
+text = ["pymorphy3>=2", "pymorphy3-dicts-ru"]
 
 [tool.setuptools.packages.find]
 include = ["delta_kernel*", "delta_tools*", "delta_app*", "adapters*", "logical_delta_matter*"]
