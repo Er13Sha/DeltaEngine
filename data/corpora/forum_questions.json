@@ -1,0 +1,1199 @@
+{
+ "format": "delta-corpus@0.2",
+ "task": "intent+sense",
+ "doc": "Вопросительные предложения из сообщений форума forum.razum.wiki (разделы «Вопрос Виктору Катющику» и «Научно / Ненаучно», первые скачанные темы), в которых встречаются имена понятий базы знаний. Цитаты (строки с '>') и имена авторов исключены, bb-коды и обрывки ссылок вычищены. Разметка — ассистентом, по тем же правилам, что mailru_questions.json.",
+ "source": "https://forum.razum.wiki/",
+ "labels_by": "assistant",
+ "status": "real_questions_assistant_labels",
+ "partial": "скачано 101 из 438 тем выбранных разделов; остальные темы загружаются отдельно",
+ "examples": [
+  {
+   "text": "Вопрос о распределении материи?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1002"
+  },
+  {
+   "text": "Трансмутация химических элементов биохимическим способом.?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1075"
+  },
+  {
+   "text": "Типа из какой материи этот персик?",
+   "intent": "CLASSIFY",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1270"
+  },
+  {
+   "text": "Из какой материи ваша обувь?",
+   "intent": "CLASSIFY",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1270"
+  },
+  {
+   "text": "А как же накопленные физической наукой знания об энергии и материи?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1342"
+  },
+  {
+   "text": "Поле зрения на угловой размер подменяем?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1365"
+  },
+  {
+   "text": "высота наблюдателя над водоемом 0.3 м, Расстояние между обьектами 3.481 км, длина до горизонта 0 км, невидимая часть под водой 0 Калькулятор барахлит?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1365"
+  },
+  {
+   "text": "а могут ли руки человека быть тем веществом, которые отсекают гравитационное поле в нужном спектре?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1371"
+  },
+  {
+   "text": "Отсечение полей?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Надеюсь это применимо Вы помните что поле распространяется во всех направлениях?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Так вы в ноль хотели поля отсечь?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Например железо Fe(в основном) и прочие добавки?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "пишите у кого какие мысли А какие у нас поля бывают?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Вы можете в рамках логики обосновать: почему как-либо воздействовать на поле, мы можем лишь только при помощи вещественной материи?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Как Вы можете взаимодействовать с полем, не состоя, допустим из вещественной материи?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Частички нити, имеющие массу, крутятся в поле (поле неподвижно)?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Или поле крутится вместе с частичками, имеющими массу (поле подвижно)?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Если поле подвижно, то что собственно движется?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Если поле подвижно, то что собственно движется?Почему Вы спрашиваете ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Вы рассматриваете гайку как набор частей или как как частное поле, как другие характеристики поля в данном движущемся \"объеме\" ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Может намудрил: короче можно ли назвать \"движением поля\" изменение напряжений в поле в разных точках пространства?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Частицы- вещество - звезды одно и тоже?",
+   "intent": "DIFFERENCE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "это вещество или частицы?",
+   "intent": "CLASSIFY",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Материя это то, что имеет свойства и находится в пространстве?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Например: материей или даже той же пустотой если считать пустоту НЕ пространством Логично?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Как насчёт материи?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Материя может ограничить пространство?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Объемная величина - это что тогда по Вашему, количество материи в кубике?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Вы можете установить место в пространстве, в котором не было бы материи - частиц, нейтрино, фотонов и проч, проч..?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "В котором не было бы поля?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Ну так читайте дальше, после двоеточия сплошь материей заполнен, где пространству тогда быть?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Подключайте дедукцию мистер Холмс, у Вас пространство (материальное НИЧТО) взаимодействует с материей?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Опять двойка.Возьмем микрогляд и зазырим чо там унутрях материи?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "Может ли существовать любое вещество вне гравитации?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1385"
+  },
+  {
+   "text": "А Хром показывает ?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1397"
+  },
+  {
+   "text": "Вопрос технического отсечения грав. поля.?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1400"
+  },
+  {
+   "text": "Я ж для чего видео с заморозкой воды в вакууме показывал?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1414"
+  },
+  {
+   "text": "Если это не волны, то как Вы эти, движущиеся на воде, штуки называете?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Это я к чему… Зачем пытаетесь отделить колебание поверхности воды от воды?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "А так же зачем пишите про колебательные движения воды?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "это понятия, придуманные человеком, чтобы описывать материю и её взаимодействие.Ок, давайте по другому, вектор что показывает?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Ещё вопрос, какую материю или взаимодействия описывает ВЕКТОР?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Со спирали лампы ничего не срывается, в каких диапазонах у вольфрама есть возможность, в том диапазоне и излучает Вольфрам излучает что ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Зачем выдумывать частицы в виде мелких кубиков?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Фотоны - это у нас частицы?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Я правильно понял, что есть такая материя, которая называется электровеществом?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Все взаимодействия в природе мгновенны.то есть свет это поле?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "а как поле?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=1426"
+  },
+  {
+   "text": "Теории поля нет?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=149"
+  },
+  {
+   "text": "Возможно ли вообще создание, внятной теории поля, на данном этапе развития технологии , науки и человека?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=149"
+  },
+  {
+   "text": "Вопросы для размышления: каким образом меняется размер \"базового\" элемента \"Всерод\"?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Скажите, накопление электричества в жидких и твёрдых телах - это не тоже самое, что зарядка жидких и твёрдых тел?",
+   "intent": "DIFFERENCE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "В-десятых, \"Вопросы для размышления: каким образом меняется размер \"базового\" элемента \"Всерод\"?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Есть вопросы: Всерод - вещество?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Очень хорошо, что Вы появились, теперь у меня в два раза больше шансов разобраться в следующем вопросе: Всерод - вещество?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Какой именно вид материи?",
+   "intent": "CLASSIFY",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "куда делся свинец?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "если заряженный электролит проверить на наличие в нем свинца или того вещества которым покрыта свинцовая пластина?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "представляешь сколько водорода надо , что бы обеспечить подъемную силу более 10% веса аккумулятора?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Это у него такая теория поля ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Как будет выглядеть под ним водород (то, что называют водородом, (ему ж мешают старые названия наверно (плохому танцору...)) по рыбникову ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "<http://forum.razum.wiki/viewtopic.php?p=42652#p42652> viewtopic.php?p=42652#p42652 Как выглядит вещество в реальности или в модели ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Между атомами есть тоже материя \"другого типа\" Как выглядит вещество в реальности или в модели ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Как ни странно от меня прозвучит рыбник как бы прав в одном (одну частицу он правильно нарисовал, не скажу какую , ...(как такая сво...чь смогла догадаться?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Применимо ли это к единичному атому газа?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Какие данные в вашей задаче - температура газа, давление, объём сосуда?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "То, из чего состоит материя сложилось?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Ну так как себя ведет атом водорода в сосуде согласно фактам и вашим наблюдениям?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "В другой Галактике относительная атомная масса у элементов станет другой, если ее относительность завязана друг за друга?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Если поле формирует обьект, то граница где?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "И почему вообще само по себе поле что то формирует без обьектов среди \"пустого\" пространства, не возмущенного ни чем?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "вы путаете атомную массу вещества с весом тела на планете?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "7rcBDOaY2g Почему вещество куда-то СТРЕМИТСЯ без действия на него внешних сил?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Гелий делится только на 4 части ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "4 - Путём чего происходит взаимодействие между этими частицами?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Ноль - нисколько Вопрос 4: Путём чего происходит взаимодействие между этими частицами?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Геометрия и закон Архимеда передают взаимодействия между этими частицами Всё верно? У тебя ж в акб разные атомы в разные стороны идут, где ж \"все нейтрально\" ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Чем он получен, и что именно перемещается в двух соединяющихся сосудах с газом?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Дискретный объект формирует поле?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Поле объекта повторяет дискретную структуру и форму объекта?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Поле безконечно?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Дискретный объект, имеющий дискретную структуру и форму является веществом?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Есть объект и поле объекта?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Протяжённость поля объекта безСконечна?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Дискретный объект, имеющий дискретную структуру и форму является веществом (Кат.)?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Есть объект, обладающий плотностью и габаритами, есть поле объекта?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Протяжённость поля объекта безконечна?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "А ещё можно спросить - вот наука нам сообщает о неком \"спине\" у частицы, зачем такие сложные изучения производятся, если все так просто у вас в природе?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "И то это все надо проверять, потому что я с полями не дружу Чем?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Если у атома нет тела, а есть плотность поля, то как можно описать происходящее с инерцией обьектов?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Соответственно в балоне с газом молекулы расперли стенки балона и не перемещаются, или двигаются?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Если это поле, то почему оно вообще в этом месте существует?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Или нужно создать новую таблицу элементов, с другими обозначениями?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "H2SO4 + H2O = Горение?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Процесс и результат это лирика или по Вашему сначала образуется вода, а потом по пятницам или вторникам появляются излучения?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "<https://youtu.be/jxvW8t5wo9c> https://youtu.be/jxvW8t5wo9c H2SO4 + H2O = Горение?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Вы что не поняли что это не вещество и не частица его ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Каков объём ртути при полном заполнении данной ёмкости?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Более того, если бы необходимо было узнать сколько килограммов ртути поместится в ёмкости, да ещё и размеры были бы не целыми числами, то была бы вовсе беда?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Если нужно, то каков радиус тела атома по отношению к радиусу поля?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "В вакууме атом газа расширяется, при том объём его материала остаётся неизменным, а концентрация его в пространстве уменьшается?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Дождя ввиде капелек воды, разделяющихся от облака не видели?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Вы видите зависимость скорости потока от перепада, ширины русла и вязкости жидкости ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Что есть наше поле?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Тогда каким образом производится дальнодействие полей на расстоянии?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "И чем Ваше определение поля отличается от определения НЕ поля, кроме галлюцинаций?",
+   "intent": "DIFFERENCE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Теперь у Вас уже два вещества?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "А кстати, что такое вкусный и почему соль добавляют, чтобы вкуснее было?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Ой какая прэлесть Поле говоришь это электровещество ?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Да, уже месяца 2 как перешли к модели внутреннего устройства вещественного объекта (например куска металла) Вы до сих пор не в курсе ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Или у вас вещество уже не состоит из атомов ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Если \"электроплотность\" воды будет равна \"электроплотности\" тела, а \"базовая электроплотнось\" будет 60, что тогда?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "об «атоме» — неделимой частице вещества, обладающей истинным бытием, не разрушающейся и не возникающей Ничего подозрительного нет ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Я выделил определение, где там про вещество ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "И так для любого встретившегося атома в этом поле?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Металл более прочный почему?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "вы заменили слово вещество, на электровещество?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Почему не все металлы являются катализаторами?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Перенос заряда сопряженный с известным сопротивлением проводника, даст повышение температуры вещества.Бывает перенос вообще без повышения..Это чево?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "У него нет.....электронов, Частицы какие то у него , надеюсь, есть ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Вы, когда считаете теорему Пифагора, бегает по полю со штанами?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Выделяю порцию вещества, например необходимую порцию ЭВ для открытия p-n перехода Куда подевался Даниель океаннический?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Плотность ртути в колбочке?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Не, ну млекопитающееся чрезмерно напрягло булки...А ртуть, что заставило изменить ее объем?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Что изменило объем ртути?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Фундамент вашего дома состоит из бетонных блоков, которые состоят их песка, цемента, щебня и воды..Дальше продолжать?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Алюминий, понятно- ничо себе так..., но мог бы и получше, а мрамор?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Я уже сравнивал плотности алюминия и мрамора- они одинаковы,и чо?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "А если рядом с проводом кусок меди а с другой стороны кусок железа, - просто накрутите вола стрелками других направлений ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "При увеличении плотности значит должен увеличится размер атома, и изменится расстояние между атомами и размеры вещества?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Надо полагать, у вас поле = вещество?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Поле у вас имеет полярность?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Так, на каких основаниях целая куча молекул прореагировала одинаково и слепилась в газ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Если у вас случится ответ на первый вопрос, то вот вам и второй- поле у вас имеет начало?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "А если материя нежная, мягкая, скользкая, то она физическая?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Из электричества и вещества?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Что такое вещество?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Из электричества, магнита и поля?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "А поле что такое?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "А Вы хотите о поле рассуждать...А возведение в n степень, это уже не умножение?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "О каких видах материи речь?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "По теме будет что ни будь, кроме выдумывания новых названий для вещества , кроме бельметания о плотности, мозга не хватает на большее ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "А чем отличается расчет семян томата в поле от расчета для выплавления из металла изделия, или расчет режимов резания для станочного оборудования?",
+   "intent": "DIFFERENCE",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Газ и свет функционируют?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Воду перекрывать?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Что дальше происходит с зарядом частицы, он накапливается от времени для того что бы она стала собственным \"Солнцем\"?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Вопрос - что бы заряд накапливался частицей, он должен к ней постоянно приходить порциями, и она его должна не расходовать?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "То есть у света есть скорость \"путешествия\" в пространстве, а уж потом только время накопления частицей?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Чо вы имеете против пространства, вещества, поля?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "И про трение я не понял если честно - если нет твердого тела, а заряд отталкивает или притягивает заряд, то откуда берётся трение?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Вы пукаете, значит вы - газ?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "На каком основании выбраны именно 4 элемента, а не 3 или 10?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Что именно множится для получения системы из 4 элементов?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Я же говорил, что не получится...Сколько будет элементов в попарной дихотомии?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Это серьезное испытание которое посылается людям Так что там насчет внутренней структуры вещества ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=16"
+  },
+  {
+   "text": "Частицы - это поля или нет?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1612"
+  },
+  {
+   "text": "Вода в кастрюле и пар над кастрюлей - это один объект или 2?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1612"
+  },
+  {
+   "text": "(Вода, пар (пар над кострюлей), кастрюля это вещества) А как понять, что это 2 объекта?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=1612"
+  },
+  {
+   "text": "Интересно, через какую нору происходит наполнение Вселенной веществом?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=17"
+  },
+  {
+   "text": "Что же такое поле?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=322"
+  },
+  {
+   "text": "Где поле берет на это энергию?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=322"
+  },
+  {
+   "text": "Какие процессы протекают внутри поля?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=322"
+  },
+  {
+   "text": "Как мы определяем, разреженность вещества?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=338"
+  },
+  {
+   "text": "То что всё больше вещества проделывает необратимый путь от карьера до помойки разве является прогрессом?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=399"
+  },
+  {
+   "text": "Как Вы не понимаете какое имеет отношение золото к деньгам и к экономике ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=399"
+  },
+  {
+   "text": "элементы состоят атомов и т.д., для Вас это новость?, если нет, то накой этот вопрос?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=399"
+  },
+  {
+   "text": "Но если уже \"все есть\" как вы говорили, то почему все еще нет тем по - теории поля, теории волновых взаимодействий, массы, квантовой модели вселенной..?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=421"
+  },
+  {
+   "text": "Волновая теория вещества Сергея Сумарокова?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=456"
+  },
+  {
+   "text": "Вы утверждаете, что частицы, заряды, поля, нематериальны?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=456"
+  },
+  {
+   "text": "А в предыдущих видео жидкость в магнитном поле тоже ионизированная?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=456"
+  },
+  {
+   "text": "Какова природа поля (базового гравитационного) БГП)?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=748"
+  },
+  {
+   "text": "И как объяснить, что он имеет свойства и волны, и частицы??",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=876"
+  },
+  {
+   "text": "Все ли живое вещественно (состоит из вещества)?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=896"
+  },
+  {
+   "text": "Альтернативные энергоносители.водород.холодный ядерный синтез.?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=903"
+  },
+  {
+   "text": "Постулаты Бора.?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=929"
+  },
+  {
+   "text": "Можно ли доверять постулатом Бора?",
+   "intent": "OTHER",
+   "domain_sense": false,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=929"
+  },
+  {
+   "text": "Атом вещества может поглощать и излучать свет?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=929"
+  },
+  {
+   "text": "А если разместить воду в невесомости и она там станет шариком и тудой засунуть , скажем, гвоздь...чево будит?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=965"
+  },
+  {
+   "text": "Есть, родной, ой есть сомнения...погляди еще раз кино и палец, который воду шмунькает...Где там абсолютная упругость сидит?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=26&t=965"
+  },
+  {
+   "text": "Вы поле от частицы отличаете?",
+   "intent": "DIFFERENCE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Что по вашему поле?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Что поле от магнита можно зафиксировать на разных расстояниях от источника поля?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "не смогли обнаружить поле от магнита, то поле от магнита туда еже не \"доходит\"?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Что по Вашему свет, это поле?",
+   "intent": "IS_A",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Где подробное описание Вашего \"поля\" ?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Поле передает взаимодействие\". Каким образом поле передаёт взаимодействие?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "И как эти частицы взаимодействуют друг с другом?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Теперь Вы ответьте: Что такое поле?",
+   "intent": "DEFINE",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Ваша цитата: \"Так, что вихри создаются в СРЕДЕ, заполненной частицами, а не Вашем полем.\" ЧТО ЗА СРЕДА, которую заполняют частицы?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Частицы эфира в чем находятся?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Какое относительное расстояние (в отношении к диаметру этих частиц), по-Вашему, между ними в среднем?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "И как можно такие частицы собирать в направленные потоки?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "\"И как можно такие частицы собирать в направленные потоки?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "А если \"нет\", то поясните, как эфиринки взаимодействуют с иными частицами?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "А теперь Вы всё же опишите механизм собирания эфиринок в кучки, из которых формируются следующие по сложности частицы Вашей системы?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "В реальности для собирания газа в кучу бильярдные стенки или клей не нужны, так?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Вы имеете ввиду, что молекулы жидкости соединены с окружающими их \"сёстрами\" непосредственно своими поверхностями?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  },
+  {
+   "text": "Итак, будут ли у Вас ещё какие-то варианты объяснения эффекта несжимаемости жидкости, кроме уже опровергнутого экспериментально?",
+   "intent": "OTHER",
+   "domain_sense": true,
+   "url": "https://forum.razum.wiki/viewtopic.php?f=24&t=981"
+  }
+ ]
+}

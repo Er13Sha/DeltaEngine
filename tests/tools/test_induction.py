@@ -149,7 +149,7 @@ class IntentLearningTests(unittest.TestCase):
         from delta_text.knowledge import default_knowledge
 
         kb = default_knowledge()
-        budget = Budget(max_depth=12, min_support=2)
+        budget = li.BUDGET
         for schema, corpus, path, tree_id in (
             (li.INTENT_SCHEMA, li.intent_corpus(kb), li.LEARNED, "intent.learned"),
             (li.SENSE_SCHEMA, li.sense_corpus(kb), li.SENSE, "sense.learned"),

@@ -3,7 +3,8 @@
 Корпуса:
 - `data/corpora/intent_examples.json` — стартовые фразы, составленные ассистентом;
 - `data/corpora/mailru_questions.json` — настоящие вопросы «Ответов Mail.ru» с разметкой
-  типа вопроса (в том числе OTHER: «почему», «как», «где») и смысла найденного слова.
+  типа вопроса (в том числе OTHER: «почему», «как», «где») и смысла найденного слова;
+- `data/corpora/forum_questions.json` — вопросы с форума forum.razum.wiki, та же разметка.
 
 Деревья:
 - тип вопроса — признаки: леммы, первое слово, знак вопроса, число понятий, вид пары;
@@ -30,10 +31,16 @@ from delta_text.understand import find_mentions
 from delta_tools.induction import Budget, Inductor, predict
 
 SEED = DATA / "corpora" / "intent_examples.json"
-REAL = DATA / "corpora" / "mailru_questions.json"
+REAL = {
+    "mailru": DATA / "corpora" / "mailru_questions.json",
+    "forum": DATA / "corpora" / "forum_questions.json",
+}
 LEARNED = DATA / "trees" / "intent.learned.json"
 SENSE = DATA / "trees" / "sense.learned.json"
 FOLDS = 10
+# Глубина 30: обученные деревья — длинные цепочки «это слово не наше?»; при глубине 12
+# остаток в конце цепочки становится UNKNOWN (см. docs/report-induction.md).
+BUDGET = Budget(max_depth=30, min_support=2)
 
 INTENT_SCHEMA = {
     "name": "Utterance",
@@ -81,24 +88,26 @@ def hand_record(record: dict[str, Any]) -> dict[str, Any]:
 def intent_corpus(kb: KnowledgeBase) -> list[tuple[dict[str, Any], str, str, str]]:
     """(признаки, метка, текст, источник)."""
     seed = json.loads(SEED.read_text(encoding="utf-8"))["examples"]
-    real = json.loads(REAL.read_text(encoding="utf-8"))["examples"]
     out = [(intent_features(text, kb), label, text, "seed") for text, label in seed]
-    out += [(intent_features(e["text"], kb), e["intent"], e["text"], "real") for e in real]
+    for source, path in REAL.items():
+        for e in json.loads(path.read_text(encoding="utf-8"))["examples"]:
+            out.append((intent_features(e["text"], kb), e["intent"], e["text"], source))
     return out
 
 
 def sense_corpus(kb: KnowledgeBase) -> list[tuple[dict[str, Any], str, str, str]]:
     """Упоминания понятий в настоящих вопросах с меткой смысла всего вопроса."""
-    real = json.loads(REAL.read_text(encoding="utf-8"))["examples"]
+    real = [(source, e) for source, path in REAL.items()
+            for e in json.loads(path.read_text(encoding="utf-8"))["examples"]]
     out = []
-    for e in real:
+    for source, e in real:
         tokens = annotate(e["text"])
         mentions, _ = find_mentions(tokens, kb)
         for m in mentions:
             if m.candidates[0].typo:  # догадки об опечатках не размечены
                 continue
             features = mention_record(tokens, m.start, m.end, m.candidates[0].concept, kb)
-            out.append((features, "domain" if e["domain_sense"] else "other", e["text"], "real"))
+            out.append((features, "domain" if e["domain_sense"] else "other", e["text"], source))
     return out
 
 
@@ -152,12 +161,12 @@ def _line(name: str, stats: Counter, n: int, source: str = "") -> str:
 
 def main() -> int:
     kb = default_knowledge()
-    budget = Budget(max_depth=12, min_support=2)
+    budget = BUDGET
 
     corpus = intent_corpus(kb)
     stats = cross_validate(INTENT_SCHEMA, corpus, budget, lambda r: hand_label(kb.hand_intent, r))
     print(f"Тип вопроса: {len(corpus)} фраз ({Counter(l for _, l, _, _ in corpus)})")
-    for source in ("", "real", "seed"):
+    for source in ("", "mailru", "forum", "seed"):
         print(f" {source or 'все'}:")
         print(_line("обученное", stats["learned"], len(corpus), source))
         print(_line("ручное", stats["baseline"], len(corpus), source))
@@ -169,8 +178,10 @@ def main() -> int:
     majority = Counter(label for _, label, _, _ in corpus).most_common(1)[0][0]
     stats = cross_validate(SENSE_SCHEMA, corpus, budget, lambda r: majority)
     print(f"Смысл слова: {len(corpus)} упоминаний ({Counter(l for _, l, _, _ in corpus)})")
-    print(_line("обученное", stats["learned"], len(corpus)))
-    print(_line(f"всегда {majority}", stats["baseline"], len(corpus)))
+    for source in ("", "mailru", "forum"):
+        print(f" {source or 'все'}:")
+        print(_line("обученное", stats["learned"], len(corpus), source))
+        print(_line(f"всегда {majority}", stats["baseline"], len(corpus), source))
     inductor, tree = train(SENSE_SCHEMA, corpus, budget, "sense.learned")
     print(f"  дерево: {inductor.report.forks} вилок, {inductor.report.leaves} листьев, проверки ядра: {tree.check() or 'ok'}")
     SENSE.write_text(json.dumps(inductor.tree_dict(), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

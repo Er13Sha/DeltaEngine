@@ -133,7 +133,12 @@ def find_mentions(tokens: list[Token], kb: KnowledgeBase) -> tuple[list[Mention]
         if tok.kind == "latin":
             keys = kb.latin_index.get(tok.text) or kb.latin_index.get(tok.text.lower()) or []
             if keys:
-                mentions.append(Mention(i, i + 1, tok.text, [Candidate(k) for k in keys]))
+                # Короткий символ часто не химия: «F = m*a», «P/S», «Re:». Это допущение.
+                short = len(tok.text) <= 2 and tok.text.isalpha()
+                mentions.append(Mention(i, i + 1, tok.text, [
+                    Candidate(k, f"«{tok.text}» понято как символ «{kb.concepts[k].name}»" if short else "")
+                    for k in keys
+                ]))
             else:
                 unrecognized.append(tok.text)
             i += 1
