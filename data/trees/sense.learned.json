@@ -43,426 +43,592 @@
    {
     "source": "induction",
     "status": "candidate",
-    "examples": 352,
+    "examples": 586,
     "labels": {
-     "domain": 289,
-     "other": 63
+     "domain": 509,
+     "other": 77
     },
-    "score": "13667/168"
+    "score": "62383/570"
    }
   ],
   "true": {
    "id": "fork.t#1",
-   "predicate": "not word in {\"германию\", \"железу\"} and not word in {\"франции\", \"элемент\"}",
+   "predicate": "not word in {\"бора\", \"элемента\"} and not word in {\"элемент\", \"элемента\"}",
    "knowledge": "hypothesis",
    "evidence": [
     {
      "source": "induction",
      "status": "candidate",
-     "examples": 336,
+     "examples": 570,
      "labels": {
-      "domain": 289,
-      "other": 47
+      "domain": 509,
+      "other": 61
      },
-     "score": "113189/1630"
+     "score": "92801/946"
     }
    ],
    "true": {
     "id": "fork.t#2",
-    "predicate": "not word in {\"железа\", \"железо\"} and not word in {\"железа\", \"плазма\"}",
+    "predicate": "not word in {\"германию\", \"железу\"} and not word in {\"франции\", \"хром\"}",
     "knowledge": "hypothesis",
     "evidence": [
      {
       "source": "induction",
       "status": "candidate",
-      "examples": 326,
+      "examples": 559,
       "labels": {
-       "domain": 288,
-       "other": 38
+       "domain": 507,
+       "other": 52
       },
-      "score": "688457/11666"
+      "score": "89783/1102"
      }
     ],
     "true": {
      "id": "fork.t#3",
-     "predicate": "not (any w in context: w == \"водка-живать\") and not word in {\"газ\", \"элементов\"}",
+     "predicate": "not word in {\"железа\", \"железо\"} and not word in {\"плазма\", \"элементов\"}",
      "knowledge": "hypothesis",
      "evidence": [
       {
        "source": "induction",
        "status": "candidate",
-       "examples": 307,
+       "examples": 551,
        "labels": {
-        "domain": 280,
-        "other": 27
+        "domain": 507,
+        "other": 44
        },
-       "score": "77569/1806"
+       "score": "253387/3661"
       }
      ],
      "true": {
       "id": "fork.t#4",
-      "predicate": "not (any w in context: w == \"игра\") and not (any w in context: w == \"слово\")",
+      "predicate": "not (any w in context: w == \"водка-живать\") and not (any w in context: w == \"считать\")",
       "knowledge": "hypothesis",
       "evidence": [
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 301,
+        "examples": 523,
         "labels": {
-         "domain": 279,
-         "other": 22
+         "domain": 494,
+         "other": 29
         },
-        "score": "755/22"
+        "score": "148705/3102"
        }
       ],
       "true": {
        "id": "fork.t#5",
-       "predicate": "not word in {\"полей\", \"уран\"} and not word in {\"флюиды\", \"франция\"}",
+       "predicate": "not (any w in context: w == \"выплавление\") and not word in {\"уран\", \"флюиды\"}",
        "knowledge": "hypothesis",
        "evidence": [
         {
          "source": "induction",
          "status": "candidate",
-         "examples": 297,
+         "examples": 517,
          "labels": {
-          "domain": 279,
-          "other": 18
+          "domain": 493,
+          "other": 24
          },
-         "score": "15917/586"
+         "score": "39953/1026"
         }
        ],
        "true": {
         "id": "fork.t#6",
-        "predicate": "not (any w in context: w == \"альтернатива\") and not word in {\"хром\", \"элементах\"}",
+        "predicate": "not (any w in context: w == \"зрение\") and not word in {\"франция\", \"элементах\"}",
         "knowledge": "hypothesis",
         "evidence": [
          {
           "source": "induction",
           "status": "candidate",
-          "examples": 293,
+          "examples": 513,
           "labels": {
-           "domain": 279,
-           "other": 14
+           "domain": 493,
+           "other": 20
           },
-          "score": "6283/290"
+          "score": "42027/1270"
          }
         ],
         "true": {
          "id": "fork.t#7",
-         "predicate": "not (any w in context: w == \"арсенал\") and not (any w in context: w == \"бг\")",
+         "predicate": "not (any w in context: w == \"аватарий\") and not (any w in context: w == \"слово\")",
          "knowledge": "hypothesis",
          "evidence": [
           {
            "source": "induction",
            "status": "candidate",
-           "examples": 290,
+           "examples": 508,
            "labels": {
-            "domain": 279,
-            "other": 11
+            "domain": 492,
+            "other": 16
            },
-           "score": "287/16"
+           "score": "6887/252"
           }
          ],
          "true": {
           "id": "fork.t#8",
-          "predicate": "not (any w in context: w == \"выводить\") and not (any w in context: w == \"духитуалетная\")",
+          "predicate": "not (any w in context: w == \"альтернатива\") and not (any w in context: w == \"бг\")",
           "knowledge": "hypothesis",
           "evidence": [
            {
             "source": "induction",
             "status": "candidate",
-            "examples": 288,
+            "examples": 504,
             "labels": {
-             "domain": 279,
-             "other": 9
+             "domain": 491,
+             "other": 13
             },
-            "score": "4049/286"
+            "score": "11053/502"
            }
           ],
           "true": {
            "id": "fork.t#9",
-           "predicate": "not (any w in context: w == \"жесткий\") and not (any w in context: w == \"жесткость\")",
+           "predicate": "not (any w in context: w == \"венгрия\") and not (any w in context: w == \"выводить\")",
            "knowledge": "hypothesis",
            "evidence": [
             {
              "source": "induction",
              "status": "candidate",
-             "examples": 286,
+             "examples": 502,
              "labels": {
-              "domain": 279,
-              "other": 7
+              "domain": 491,
+              "other": 11
              },
-             "score": "733/71"
+             "score": "2272/125"
             }
            ],
            "true": {
             "id": "fork.t#10",
-            "predicate": "not (any w in context: w == \"играть\") and not (any w in context: w == \"кк\")",
+            "predicate": "not (any w in context: w == \"деловой\") and not (any w in context: w == \"духитуалетная\")",
             "knowledge": "hypothesis",
             "evidence": [
              {
               "source": "induction",
               "status": "candidate",
-              "examples": 284,
+              "examples": 500,
               "labels": {
-               "domain": 279,
-               "other": 5
+               "domain": 491,
+               "other": 9
               },
-              "score": "605/94"
+              "score": "7123/498"
              }
             ],
             "true": {
              "id": "fork.t#11",
-             "predicate": "not (any w in context: w == \"любимый\") and not (any w in context: w == \"начальство\")",
+             "predicate": "not (any w in context: w == \"жесткий\") and not (any w in context: w == \"играть\")",
              "knowledge": "hypothesis",
              "evidence": [
               {
                "source": "induction",
                "status": "candidate",
-               "examples": 282,
+               "examples": 498,
                "labels": {
-                "domain": 279,
-                "other": 3
+                "domain": 491,
+                "other": 7
                },
-               "score": "349/140"
+               "score": "2579/248"
               }
              ],
              "true": {
-              "id": "UNKNOWN#1",
-              "label": "UNKNOWN",
-              "class": null,
-              "unknown": "исчерпан бюджет глубины",
-              "counts": {
-               "domain": 279,
-               "other": 1
+              "id": "fork.t#12",
+              "predicate": "not (any w in context: w == \"любимый\") and not (any w in context: w == \"начальство\")",
+              "knowledge": "hypothesis",
+              "evidence": [
+               {
+                "source": "induction",
+                "status": "candidate",
+                "examples": 496,
+                "labels": {
+                 "domain": 491,
+                 "other": 5
+                },
+                "score": "3193/494"
+               }
+              ],
+              "true": {
+               "id": "fork.t#13",
+               "predicate": "not (any w in context: w == \"обувь\") and not (any w in context: w == \"персик\")",
+               "knowledge": "hypothesis",
+               "evidence": [
+                {
+                 "source": "induction",
+                 "status": "candidate",
+                 "examples": 494,
+                 "labels": {
+                  "domain": 491,
+                  "other": 3
+                 },
+                 "score": "307/123"
+                }
+               ],
+               "true": {
+                "id": "fork.t#14",
+                "predicate": "any w in context: w == \"утечь\"",
+                "knowledge": "hypothesis",
+                "evidence": [
+                 {
+                  "source": "induction",
+                  "status": "candidate",
+                  "examples": 492,
+                  "labels": {
+                   "domain": 491,
+                   "other": 1
+                  },
+                  "score": "0"
+                 }
+                ],
+                "true": {
+                 "id": "UNKNOWN#1",
+                 "label": "UNKNOWN",
+                 "class": null,
+                 "unknown": "мало примеров",
+                 "counts": {
+                  "other": 1
+                 }
+                },
+                "false": {
+                 "id": "domain#1",
+                 "label": "domain",
+                 "class": "domain",
+                 "support": 491
+                }
+               },
+               "false": {
+                "id": "other#1",
+                "label": "other",
+                "class": "other",
+                "support": 2
+               }
+              },
+              "false": {
+               "id": "other#2",
+               "label": "other",
+               "class": "other",
+               "support": 2
               }
              },
              "false": {
-              "id": "other#1",
+              "id": "other#3",
               "label": "other",
               "class": "other",
               "support": 2
              }
             },
             "false": {
-             "id": "other#2",
+             "id": "other#4",
              "label": "other",
              "class": "other",
              "support": 2
             }
            },
            "false": {
-            "id": "other#3",
+            "id": "other#5",
             "label": "other",
             "class": "other",
             "support": 2
            }
           },
           "false": {
-           "id": "other#4",
+           "id": "other#6",
            "label": "other",
            "class": "other",
            "support": 2
           }
          },
          "false": {
-          "id": "other#5",
-          "label": "other",
-          "class": "other",
-          "support": 2
+          "id": "fork.f#1",
+          "predicate": "any w in context: w == \"вы\"",
+          "knowledge": "hypothesis",
+          "evidence": [
+           {
+            "source": "induction",
+            "status": "candidate",
+            "examples": 4,
+            "labels": {
+             "domain": 1,
+             "other": 3
+            },
+            "score": "0"
+           }
+          ],
+          "true": {
+           "id": "UNKNOWN#2",
+           "label": "UNKNOWN",
+           "class": null,
+           "unknown": "мало примеров",
+           "counts": {
+            "domain": 1
+           }
+          },
+          "false": {
+           "id": "other#7",
+           "label": "other",
+           "class": "other",
+           "support": 3
+          }
          }
         },
         "false": {
-         "id": "other#6",
-         "label": "other",
-         "class": "other",
-         "support": 3
+         "id": "fork.f#2",
+         "predicate": "any w in context: w == \"два\"",
+         "knowledge": "hypothesis",
+         "evidence": [
+          {
+           "source": "induction",
+           "status": "candidate",
+           "examples": 5,
+           "labels": {
+            "domain": 1,
+            "other": 4
+           },
+           "score": "0"
+          }
+         ],
+         "true": {
+          "id": "UNKNOWN#3",
+          "label": "UNKNOWN",
+          "class": null,
+          "unknown": "мало примеров",
+          "counts": {
+           "domain": 1
+          }
+         },
+         "false": {
+          "id": "other#8",
+          "label": "other",
+          "class": "other",
+          "support": 4
+         }
         }
        },
        "false": {
-        "id": "other#7",
+        "id": "other#9",
         "label": "other",
         "class": "other",
         "support": 4
        }
       },
       "false": {
-       "id": "other#8",
-       "label": "other",
-       "class": "other",
-       "support": 4
-      }
-     },
-     "false": {
-      "id": "fork.f#1",
-      "predicate": "any w in context: w == \"изотоп\"",
-      "knowledge": "hypothesis",
-      "evidence": [
-       {
-        "source": "induction",
-        "status": "candidate",
-        "examples": 6,
-        "labels": {
-         "domain": 1,
-         "other": 5
-        },
-        "score": "0"
-       }
-      ],
-      "true": {
-       "id": "UNKNOWN#2",
-       "label": "UNKNOWN",
-       "class": null,
-       "unknown": "мало примеров",
-       "counts": {
-        "domain": 1
-       }
-      },
-      "false": {
-       "id": "other#9",
-       "label": "other",
-       "class": "other",
-       "support": 5
-      }
-     }
-    },
-    "false": {
-     "id": "fork.f#2",
-     "predicate": "not (any w in context: w == \"вид\") and not (any w in context: w == \"как\")",
-     "knowledge": "hypothesis",
-     "evidence": [
-      {
-       "source": "induction",
-       "status": "candidate",
-       "examples": 19,
-       "labels": {
-        "domain": 8,
-        "other": 11
-       },
-       "score": "547/70"
-      }
-     ],
-     "true": {
-      "id": "fork.t#12",
-      "predicate": "not (any w in context: w == \"если\") and not (any w in context: w == \"свинец\")",
-      "knowledge": "hypothesis",
-      "evidence": [
-       {
-        "source": "induction",
-        "status": "candidate",
-        "examples": 14,
-        "labels": {
-         "domain": 4,
-         "other": 10
-        },
-        "score": "23/6"
-       }
-      ],
-      "true": {
-       "id": "fork.t#13",
-       "predicate": "(any w in context: w == \"такой\") and not word == \"железа\"",
+       "id": "fork.f#3",
+       "predicate": "any w in context: w == \"даже\"",
        "knowledge": "hypothesis",
        "evidence": [
         {
          "source": "induction",
          "status": "candidate",
-         "examples": 12,
+         "examples": 6,
          "labels": {
-          "domain": 2,
-          "other": 10
+          "domain": 1,
+          "other": 5
          },
-         "score": "1/2"
+         "score": "0"
         }
        ],
        "true": {
-        "id": "domain#1",
-        "label": "domain",
-        "class": "domain",
-        "support": 2
+        "id": "UNKNOWN#4",
+        "label": "UNKNOWN",
+        "class": null,
+        "unknown": "мало примеров",
+        "counts": {
+         "domain": 1
+        }
        },
        "false": {
         "id": "other#10",
         "label": "other",
         "class": "other",
-        "support": 10
+        "support": 5
        }
-      },
-      "false": {
-       "id": "domain#2",
-       "label": "domain",
-       "class": "domain",
-       "support": 2
       }
      },
      "false": {
-      "id": "fork.f#3",
-      "predicate": "any w in context: w == \"длить\"",
+      "id": "fork.f#4",
+      "predicate": "not (any w in context: w == \"если\") and not (any w in context: w == \"с\")",
       "knowledge": "hypothesis",
       "evidence": [
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 5,
+        "examples": 28,
         "labels": {
-         "domain": 4,
-         "other": 1
+         "domain": 13,
+         "other": 15
         },
-        "score": "0"
+        "score": "485/42"
        }
       ],
       "true": {
-       "id": "UNKNOWN#3",
-       "label": "UNKNOWN",
-       "class": null,
-       "unknown": "мало примеров",
-       "counts": {
-        "other": 1
+       "id": "fork.t#15",
+       "predicate": "not (any w in context: w == \"а\") and not (any w in context: w == \"вид\")",
+       "knowledge": "hypothesis",
+       "evidence": [
+        {
+         "source": "induction",
+         "status": "candidate",
+         "examples": 21,
+         "labels": {
+          "domain": 7,
+          "other": 14
+         },
+         "score": "299/38"
+        }
+       ],
+       "true": {
+        "id": "fork.t#16",
+        "predicate": "not (any w in context: w == \"вод\") and not (any w in context: w == \"добавка\")",
+        "knowledge": "hypothesis",
+        "evidence": [
+         {
+          "source": "induction",
+          "status": "candidate",
+          "examples": 19,
+          "labels": {
+           "domain": 5,
+           "other": 14
+          },
+          "score": "185/34"
+         }
+        ],
+        "true": {
+         "id": "fork.t#17",
+         "predicate": "not (any w in context: w == \"интиресно\") and not (any w in context: w == \"свинец\")",
+         "knowledge": "hypothesis",
+         "evidence": [
+          {
+           "source": "induction",
+           "status": "candidate",
+           "examples": 17,
+           "labels": {
+            "domain": 3,
+            "other": 14
+           },
+           "score": "71/30"
+          }
+         ],
+         "true": {
+          "id": "fork.t#18",
+          "predicate": "(any w in context: w == \"такой\") and not word in {\"железа\", \"элементов\"}",
+          "knowledge": "hypothesis",
+          "evidence": [
+           {
+            "source": "induction",
+            "status": "candidate",
+            "examples": 15,
+            "labels": {
+             "domain": 1,
+             "other": 14
+            },
+            "score": "1/2"
+           }
+          ],
+          "true": {
+           "id": "UNKNOWN#5",
+           "label": "UNKNOWN",
+           "class": null,
+           "unknown": "мало примеров",
+           "counts": {
+            "domain": 1
+           }
+          },
+          "false": {
+           "id": "other#11",
+           "label": "other",
+           "class": "other",
+           "support": 14
+          }
+         },
+         "false": {
+          "id": "domain#2",
+          "label": "domain",
+          "class": "domain",
+          "support": 2
+         }
+        },
+        "false": {
+         "id": "domain#3",
+         "label": "domain",
+         "class": "domain",
+         "support": 2
+        }
+       },
+       "false": {
+        "id": "domain#4",
+        "label": "domain",
+        "class": "domain",
+        "support": 2
        }
       },
       "false": {
-       "id": "domain#3",
-       "label": "domain",
-       "class": "domain",
-       "support": 4
+       "id": "fork.f#5",
+       "predicate": "any w in context: w == \"гадкий\"",
+       "knowledge": "hypothesis",
+       "evidence": [
+        {
+         "source": "induction",
+         "status": "candidate",
+         "examples": 7,
+         "labels": {
+          "domain": 6,
+          "other": 1
+         },
+         "score": "0"
+        }
+       ],
+       "true": {
+        "id": "UNKNOWN#6",
+        "label": "UNKNOWN",
+        "class": null,
+        "unknown": "мало примеров",
+        "counts": {
+         "other": 1
+        }
+       },
+       "false": {
+        "id": "domain#5",
+        "label": "domain",
+        "class": "domain",
+        "support": 6
+       }
       }
      }
+    },
+    "false": {
+     "id": "other#12",
+     "label": "other",
+     "class": "other",
+     "support": 8
     }
    },
    "false": {
-    "id": "fork.f#4",
-    "predicate": "any w in context: w == \"ветеринария\"",
+    "id": "fork.f#6",
+    "predicate": "not (any w in context: w == \"атом\") and not (any w in context: w == \"ветеринария\")",
     "knowledge": "hypothesis",
     "evidence": [
      {
       "source": "induction",
       "status": "candidate",
-      "examples": 10,
+      "examples": 11,
       "labels": {
-       "domain": 1,
+       "domain": 2,
        "other": 9
       },
-      "score": "0"
+      "score": "1/2"
      }
     ],
     "true": {
-     "id": "UNKNOWN#4",
-     "label": "UNKNOWN",
-     "class": null,
-     "unknown": "мало примеров",
-     "counts": {
-      "domain": 1
-     }
-    },
-    "false": {
-     "id": "other#11",
+     "id": "other#13",
      "label": "other",
      "class": "other",
      "support": 9
+    },
+    "false": {
+     "id": "domain#6",
+     "label": "domain",
+     "class": "domain",
+     "support": 2
     }
    }
   },
   "false": {
-   "id": "other#12",
+   "id": "other#14",
    "label": "other",
    "class": "other",
    "support": 16

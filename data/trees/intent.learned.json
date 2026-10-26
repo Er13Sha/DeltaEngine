@@ -51,332 +51,415 @@
  },
  "root": {
   "id": "fork.root#1",
-  "predicate": "not (any w in lemmas: w == \"от\") and not (any w in lemmas: w == \"чем\")",
+  "predicate": "not (any w in lemmas: w == \"отличаться\") and not (any w in lemmas: w == \"такой\")",
   "knowledge": "hypothesis",
   "evidence": [
    {
     "source": "induction",
     "status": "candidate",
-    "examples": 394,
+    "examples": 592,
     "labels": {
-     "CLASSIFY": 19,
-     "DEFINE": 78,
-     "DIFFERENCE": 92,
-     "IS_A": 30,
-     "OTHER": 175
+     "CLASSIFY": 23,
+     "DEFINE": 87,
+     "DIFFERENCE": 97,
+     "IS_A": 47,
+     "OTHER": 338
     },
-    "score": "11528193/51626"
+    "score": "885227/2886"
    }
   ],
   "true": {
    "id": "fork.t#1",
-   "predicate": "any w in lemmas: w == \"такой\"",
+   "predicate": "not (any w in lemmas: w == \"отличить\") and not (any w in lemmas: w == \"разница\")",
    "knowledge": "hypothesis",
    "evidence": [
     {
      "source": "induction",
      "status": "candidate",
-     "examples": 311,
+     "examples": 481,
      "labels": {
-      "CLASSIFY": 19,
-      "DEFINE": 78,
-      "DIFFERENCE": 22,
-      "IS_A": 29,
-      "OTHER": 163
+      "CLASSIFY": 21,
+      "DEFINE": 27,
+      "DIFFERENCE": 58,
+      "IS_A": 46,
+      "OTHER": 329
      },
-     "score": "1128271/7530"
+     "score": "1013259/5066"
     }
    ],
    "true": {
     "id": "fork.t#2",
-    "predicate": "not (any w in lemmas: w == \"атмосфера\") and not first in {\"громко\", \"почему\"}",
+    "predicate": "not first in {\"все\", \"являться\"} and not first in {\"натрий\", \"являться\"}",
     "knowledge": "hypothesis",
     "evidence": [
      {
       "source": "induction",
       "status": "candidate",
-      "examples": 60,
+      "examples": 447,
       "labels": {
-       "CLASSIFY": 2,
-       "DEFINE": 55,
-       "OTHER": 3
+       "CLASSIFY": 21,
+       "DEFINE": 27,
+       "DIFFERENCE": 25,
+       "IS_A": 46,
+       "OTHER": 328
       },
-      "score": "497/114"
+      "score": "1299569/7310"
      }
     ],
     "true": {
      "id": "fork.t#3",
-     "predicate": "(any w in lemmas: w == \"вещество\") and (any w in lemmas: w == \"или\")",
+     "predicate": "not (any w in lemmas: w == \"отличие\") and qmark",
      "knowledge": "hypothesis",
      "evidence": [
       {
        "source": "induction",
        "status": "candidate",
-       "examples": 57,
+       "examples": 430,
        "labels": {
-        "CLASSIFY": 2,
-        "DEFINE": 55
+        "CLASSIFY": 21,
+        "DEFINE": 26,
+        "DIFFERENCE": 24,
+        "IS_A": 31,
+        "OTHER": 328
        },
-       "score": "1/2"
+       "score": "1314367/8734"
       }
      ],
      "true": {
-      "id": "CLASSIFY#1",
-      "label": "CLASSIFY",
-      "class": "CLASSIFY",
-      "support": 2
-     },
-     "false": {
-      "id": "DEFINE#1",
-      "label": "DEFINE",
-      "class": "DEFINE",
-      "support": 55
-     }
-    },
-    "false": {
-     "id": "OTHER#1",
-     "label": "OTHER",
-     "class": "OTHER",
-     "support": 3
-    }
-   },
-   "false": {
-    "id": "fork.f#1",
-    "predicate": "not first in {\"аргон\", \"являться\"} and not first in {\"натрий\", \"являться\"}",
-    "knowledge": "hypothesis",
-    "evidence": [
-     {
-      "source": "induction",
-      "status": "candidate",
-      "examples": 251,
-      "labels": {
-       "CLASSIFY": 17,
-       "DEFINE": 23,
-       "DIFFERENCE": 22,
-       "IS_A": 29,
-       "OTHER": 160
-      },
-      "score": "36992/295"
-     }
-    ],
-    "true": {
-     "id": "fork.t#4",
-     "predicate": "not (any w in lemmas: w == \"разница\") and qmark",
-     "knowledge": "hypothesis",
-     "evidence": [
-      {
-       "source": "induction",
-       "status": "candidate",
-       "examples": 236,
-       "labels": {
-        "CLASSIFY": 17,
-        "DEFINE": 22,
-        "DIFFERENCE": 21,
-        "IS_A": 16,
-        "OTHER": 160
-       },
-       "score": "1325483/12710"
-      }
-     ],
-     "true": {
-      "id": "fork.t#5",
-      "predicate": "not (any w in lemmas: w == \"класс\") and not first in {\"к\", \"кислород\"}",
+      "id": "fork.t#4",
+      "predicate": "n_concepts <= 3/2 and not first in {\"к\", \"что\"}",
       "knowledge": "hypothesis",
       "evidence": [
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 205,
+        "examples": 397,
         "labels": {
-         "CLASSIFY": 14,
-         "DEFINE": 12,
-         "DIFFERENCE": 7,
-         "IS_A": 16,
-         "OTHER": 156
+         "CLASSIFY": 18,
+         "DEFINE": 16,
+         "DIFFERENCE": 8,
+         "IS_A": 31,
+         "OTHER": 324
         },
-        "score": "28173/394"
+        "score": "3150289/27630"
        }
       ],
       "true": {
-       "id": "fork.t#6",
-       "predicate": "not first in {\"плазма\", \"что\"} and not pair == \"instance_class\"",
+       "id": "fork.t#5",
+       "predicate": "not first in {\"глина\", \"дискретный\"} and not first in {\"движение\", \"дискретный\"}",
        "knowledge": "hypothesis",
        "evidence": [
         {
          "source": "induction",
          "status": "candidate",
-         "examples": 197,
+         "examples": 307,
          "labels": {
-          "CLASSIFY": 6,
-          "DEFINE": 12,
-          "DIFFERENCE": 7,
-          "IS_A": 16,
-          "OTHER": 156
+          "CLASSIFY": 8,
+          "DEFINE": 4,
+          "DIFFERENCE": 3,
+          "IS_A": 13,
+          "OTHER": 279
          },
-         "score": "5557/90"
+         "score": "71921/1510"
         }
        ],
        "true": {
-        "id": "fork.t#7",
-        "predicate": "not (any w in lemmas: w == \"отличие\") and not first in {\"жидкость\", \"керосин\"}",
+        "id": "fork.t#6",
+        "predicate": "not first in {\"жесткость\", \"очень\"} and not first in {\"ой\", \"сено\"}",
         "knowledge": "hypothesis",
         "evidence": [
          {
           "source": "induction",
           "status": "candidate",
-          "examples": 162,
+          "examples": 302,
           "labels": {
-           "CLASSIFY": 6,
-           "DEFINE": 1,
-           "DIFFERENCE": 7,
-           "IS_A": 7,
-           "OTHER": 141
+           "CLASSIFY": 8,
+           "DEFINE": 4,
+           "DIFFERENCE": 3,
+           "IS_A": 9,
+           "OTHER": 278
           },
-          "score": "393/13"
+          "score": "11555/298"
          }
         ],
         "true": {
-         "id": "fork.t#8",
-         "predicate": "not first in {\"глина\", \"движение\"} and not first in {\"жесткость\", \"сено\"}",
+         "id": "fork.t#7",
+         "predicate": "not first in {\"жидкость\", \"керосин\"} and not first in {\"объемный\", \"плазма\"}",
          "knowledge": "hypothesis",
          "evidence": [
           {
            "source": "induction",
            "status": "candidate",
-           "examples": 156,
+           "examples": 298,
            "labels": {
-            "CLASSIFY": 6,
-            "DEFINE": 1,
-            "DIFFERENCE": 2,
-            "IS_A": 6,
-            "OTHER": 141
+            "CLASSIFY": 8,
+            "DEFINE": 4,
+            "DIFFERENCE": 3,
+            "IS_A": 5,
+            "OTHER": 278
            },
-           "score": "1627/76"
+           "score": "1399/42"
           }
          ],
          "true": {
-          "id": "fork.t#9",
-          "predicate": "not (any w in lemmas: w == \"состояние\") and not first in {\"в\", \"куда\"}",
+          "id": "fork.t#8",
+          "predicate": "not first in {\"материя\", \"фотон\"} and not first in {\"сталкер\", \"тип\"}",
           "knowledge": "hypothesis",
           "evidence": [
            {
             "source": "induction",
             "status": "candidate",
-            "examples": 152,
+            "examples": 294,
             "labels": {
-             "CLASSIFY": 6,
-             "DEFINE": 1,
-             "DIFFERENCE": 2,
-             "IS_A": 2,
-             "OTHER": 141
+             "CLASSIFY": 8,
+             "DEFINE": 2,
+             "DIFFERENCE": 1,
+             "IS_A": 5,
+             "OTHER": 278
             },
-            "score": "2215/146"
+            "score": "76877/2890"
            }
           ],
           "true": {
-           "id": "fork.t#10",
-           "predicate": "not (any w in lemmas: w == \"вид\") and not (any w in lemmas: w == \"кремний\")",
+           "id": "fork.t#9",
+           "predicate": "not (any w in lemmas: w == \"бгп\") and not (any w in lemmas: w == \"содержание\")",
            "knowledge": "hypothesis",
            "evidence": [
             {
              "source": "induction",
              "status": "candidate",
-             "examples": 146,
+             "examples": 289,
              "labels": {
-              "CLASSIFY": 2,
-              "DIFFERENCE": 2,
+              "CLASSIFY": 7,
+              "DEFINE": 2,
+              "DIFFERENCE": 1,
               "IS_A": 2,
-              "OTHER": 140
+              "OTHER": 277
              },
-             "score": "25/3"
+             "score": "1637/82"
             }
            ],
            "true": {
-            "id": "fork.t#11",
-            "predicate": "not (any w in lemmas: w == \"отличить\") and not (any w in lemmas: w == \"понятие\")",
+            "id": "fork.t#10",
+            "predicate": "not (any w in lemmas: w == \"агрегатный\") and not (any w in lemmas: w == \"аргон\")",
             "knowledge": "hypothesis",
             "evidence": [
              {
               "source": "induction",
               "status": "candidate",
-              "examples": 144,
+              "examples": 287,
               "labels": {
-               "DIFFERENCE": 2,
+               "CLASSIFY": 7,
+               "DIFFERENCE": 1,
                "IS_A": 2,
-               "OTHER": 140
+               "OTHER": 277
               },
-              "score": "631/142"
+              "score": "9217/570"
              }
             ],
             "true": {
-             "id": "fork.t#12",
-             "predicate": "not (any w in lemmas: w == \"попутчик\") and not (any w in lemmas: w == \"среди\")",
+             "id": "fork.t#11",
+             "predicate": "not (any w in lemmas: w == \"класс\") and not (any w in lemmas: w == \"обувь\")",
              "knowledge": "hypothesis",
              "evidence": [
               {
                "source": "induction",
                "status": "candidate",
-               "examples": 142,
+               "examples": 285,
                "labels": {
+                "CLASSIFY": 5,
+                "DIFFERENCE": 1,
                 "IS_A": 2,
-                "OTHER": 140
+                "OTHER": 277
                },
-               "score": "1/2"
+               "score": "6975/566"
               }
              ],
              "true": {
-              "id": "OTHER#2",
-              "label": "OTHER",
-              "class": "OTHER",
-              "support": 140
+              "id": "fork.t#12",
+              "predicate": "not (any w in lemmas: w == \"отнести\") and not (any w in lemmas: w == \"фтор\")",
+              "knowledge": "hypothesis",
+              "evidence": [
+               {
+                "source": "induction",
+                "status": "candidate",
+                "examples": 283,
+                "labels": {
+                 "CLASSIFY": 3,
+                 "DIFFERENCE": 1,
+                 "IS_A": 2,
+                 "OTHER": 277
+                },
+                "score": "4733/562"
+               }
+              ],
+              "true": {
+               "id": "fork.t#13",
+               "predicate": "not (any w in lemmas: w == \"жидкий\") and not (any w in lemmas: w == \"пукаета\")",
+               "knowledge": "hypothesis",
+               "evidence": [
+                {
+                 "source": "induction",
+                 "status": "candidate",
+                 "examples": 281,
+                 "labels": {
+                  "CLASSIFY": 1,
+                  "DIFFERENCE": 1,
+                  "IS_A": 2,
+                  "OTHER": 277
+                 },
+                 "score": "1019/186"
+                }
+               ],
+               "true": {
+                "id": "fork.t#14",
+                "predicate": "(any w in lemmas: w == \"вид\") and (any w in lemmas: w == \"именно\")",
+                "knowledge": "hypothesis",
+                "evidence": [
+                 {
+                  "source": "induction",
+                  "status": "candidate",
+                  "examples": 279,
+                  "labels": {
+                   "CLASSIFY": 1,
+                   "IS_A": 1,
+                   "OTHER": 277
+                  },
+                  "score": "693/278"
+                 }
+                ],
+                "true": {
+                 "id": "UNKNOWN#1",
+                 "label": "UNKNOWN",
+                 "class": null,
+                 "unknown": "мало примеров",
+                 "counts": {
+                  "CLASSIFY": 1
+                 }
+                },
+                "false": {
+                 "id": "fork.f#1",
+                 "predicate": "(any w in lemmas: w == \"всерод\") and first == \"есть\"",
+                 "knowledge": "hypothesis",
+                 "evidence": [
+                  {
+                   "source": "induction",
+                   "status": "candidate",
+                   "examples": 278,
+                   "labels": {
+                    "IS_A": 1,
+                    "OTHER": 277
+                   },
+                   "score": "1/2"
+                  }
+                 ],
+                 "true": {
+                  "id": "UNKNOWN#2",
+                  "label": "UNKNOWN",
+                  "class": null,
+                  "unknown": "мало примеров",
+                  "counts": {
+                   "IS_A": 1
+                  }
+                 },
+                 "false": {
+                  "id": "OTHER#1",
+                  "label": "OTHER",
+                  "class": "OTHER",
+                  "support": 277
+                 }
+                }
+               },
+               "false": {
+                "id": "fork.f#2",
+                "predicate": "any w in lemmas: w == \"в\"",
+                "knowledge": "hypothesis",
+                "evidence": [
+                 {
+                  "source": "induction",
+                  "status": "candidate",
+                  "examples": 2,
+                  "labels": {
+                   "DIFFERENCE": 1,
+                   "IS_A": 1
+                  },
+                  "score": "0"
+                 }
+                ],
+                "true": {
+                 "id": "UNKNOWN#3",
+                 "label": "UNKNOWN",
+                 "class": null,
+                 "unknown": "мало примеров",
+                 "counts": {
+                  "DIFFERENCE": 1
+                 }
+                },
+                "false": {
+                 "id": "UNKNOWN#4",
+                 "label": "UNKNOWN",
+                 "class": null,
+                 "unknown": "мало примеров",
+                 "counts": {
+                  "IS_A": 1
+                 }
+                }
+               }
+              },
+              "false": {
+               "id": "CLASSIFY#1",
+               "label": "CLASSIFY",
+               "class": "CLASSIFY",
+               "support": 2
+              }
              },
              "false": {
-              "id": "IS_A#1",
-              "label": "IS_A",
-              "class": "IS_A",
+              "id": "CLASSIFY#2",
+              "label": "CLASSIFY",
+              "class": "CLASSIFY",
               "support": 2
              }
             },
             "false": {
-             "id": "DIFFERENCE#1",
-             "label": "DIFFERENCE",
-             "class": "DIFFERENCE",
+             "id": "CLASSIFY#3",
+             "label": "CLASSIFY",
+             "class": "CLASSIFY",
              "support": 2
             }
            },
            "false": {
-            "id": "CLASSIFY#2",
-            "label": "CLASSIFY",
-            "class": "CLASSIFY",
+            "id": "DEFINE#1",
+            "label": "DEFINE",
+            "class": "DEFINE",
             "support": 2
            }
           },
           "false": {
-           "id": "fork.f#2",
-           "predicate": "not (any w in lemmas: w == \"вод\") and not (any w in lemmas: w == \"плотность\")",
+           "id": "fork.f#3",
+           "predicate": "any w in lemmas: w == \"это\"",
            "knowledge": "hypothesis",
            "evidence": [
             {
              "source": "induction",
              "status": "candidate",
-             "examples": 6,
+             "examples": 5,
              "labels": {
-              "CLASSIFY": 4,
-              "DEFINE": 1,
+              "CLASSIFY": 1,
+              "IS_A": 3,
               "OTHER": 1
              },
-             "score": "3/2"
+             "score": "1"
             }
            ],
            "true": {
-            "id": "CLASSIFY#3",
-            "label": "CLASSIFY",
-            "class": "CLASSIFY",
-            "support": 4
+            "id": "IS_A#1",
+            "label": "IS_A",
+            "class": "IS_A",
+            "support": 3
            },
            "false": {
-            "id": "fork.f#3",
-            "predicate": "any w in lemmas: w == \"вещество\"",
+            "id": "fork.f#4",
+            "predicate": "any w in lemmas: w == \"из\"",
             "knowledge": "hypothesis",
             "evidence": [
              {
@@ -384,23 +467,23 @@
               "status": "candidate",
               "examples": 2,
               "labels": {
-               "DEFINE": 1,
+               "CLASSIFY": 1,
                "OTHER": 1
               },
               "score": "0"
              }
             ],
             "true": {
-             "id": "UNKNOWN#1",
+             "id": "UNKNOWN#5",
              "label": "UNKNOWN",
              "class": null,
              "unknown": "мало примеров",
              "counts": {
-              "DEFINE": 1
+              "CLASSIFY": 1
              }
             },
             "false": {
-             "id": "UNKNOWN#2",
+             "id": "UNKNOWN#6",
              "label": "UNKNOWN",
              "class": null,
              "unknown": "мало примеров",
@@ -412,228 +495,503 @@
           }
          },
          "false": {
-          "id": "IS_A#2",
-          "label": "IS_A",
-          "class": "IS_A",
-          "support": 4
-         }
-        },
-        "false": {
-         "id": "fork.f#4",
-         "predicate": "any w in lemmas: w == \"и\"",
-         "knowledge": "hypothesis",
-         "evidence": [
-          {
-           "source": "induction",
-           "status": "candidate",
-           "examples": 6,
-           "labels": {
-            "DIFFERENCE": 5,
-            "IS_A": 1
-           },
-           "score": "0"
-          }
-         ],
-         "true": {
-          "id": "DIFFERENCE#2",
-          "label": "DIFFERENCE",
-          "class": "DIFFERENCE",
-          "support": 5
-         },
-         "false": {
-          "id": "UNKNOWN#3",
-          "label": "UNKNOWN",
-          "class": null,
-          "unknown": "мало примеров",
-          "counts": {
-           "IS_A": 1
-          }
-         }
-        }
-       },
-       "false": {
-        "id": "fork.f#5",
-        "predicate": "not first in {\"венгрия\", \"что\"} and not first in {\"вода\", \"что\"}",
-        "knowledge": "hypothesis",
-        "evidence": [
-         {
-          "source": "induction",
-          "status": "candidate",
-          "examples": 35,
-          "labels": {
-           "DEFINE": 11,
-           "IS_A": 9,
-           "OTHER": 15
-          },
-          "score": "1031/66"
-         }
-        ],
-        "true": {
-         "id": "fork.t#13",
-         "predicate": "any w in lemmas: w == \"а\"",
-         "knowledge": "hypothesis",
-         "evidence": [
-          {
-           "source": "induction",
-           "status": "candidate",
-           "examples": 11,
-           "labels": {
-            "DEFINE": 1,
-            "IS_A": 9,
-            "OTHER": 1
-           },
-           "score": "9/5"
-          }
-         ],
-         "true": {
-          "id": "UNKNOWN#4",
-          "label": "UNKNOWN",
-          "class": null,
-          "unknown": "мало примеров",
-          "counts": {
-           "OTHER": 1
-          }
-         },
-         "false": {
-          "id": "fork.f#6",
-          "predicate": "n_concepts <= 3/2",
+          "id": "fork.f#5",
+          "predicate": "any w in lemmas: w == \"и\"",
           "knowledge": "hypothesis",
           "evidence": [
            {
             "source": "induction",
             "status": "candidate",
-            "examples": 10,
+            "examples": 4,
             "labels": {
-             "DEFINE": 1,
-             "IS_A": 9
+             "DEFINE": 2,
+             "DIFFERENCE": 2
             },
             "score": "0"
            }
           ],
           "true": {
-           "id": "UNKNOWN#5",
-           "label": "UNKNOWN",
-           "class": null,
-           "unknown": "мало примеров",
-           "counts": {
-            "DEFINE": 1
-           }
+           "id": "DIFFERENCE#1",
+           "label": "DIFFERENCE",
+           "class": "DIFFERENCE",
+           "support": 2
           },
           "false": {
-           "id": "IS_A#3",
-           "label": "IS_A",
-           "class": "IS_A",
-           "support": 9
-          }
-         }
-        },
-        "false": {
-         "id": "fork.f#7",
-         "predicate": "(any w in lemmas: w == \"значить\") and not (any w in lemmas: w == \"-\")",
-         "knowledge": "hypothesis",
-         "evidence": [
-          {
-           "source": "induction",
-           "status": "candidate",
-           "examples": 24,
-           "labels": {
-            "DEFINE": 10,
-            "OTHER": 14
-           },
-           "score": "185/34"
-          }
-         ],
-         "true": {
-          "id": "DEFINE#2",
-          "label": "DEFINE",
-          "class": "DEFINE",
-          "support": 7
-         },
-         "false": {
-          "id": "fork.f#8",
-          "predicate": "not (any w in lemmas: w == \"железо\") and not (any w in lemmas: w == \"известно\")",
-          "knowledge": "hypothesis",
-          "evidence": [
-           {
-            "source": "induction",
-            "status": "candidate",
-            "examples": 17,
-            "labels": {
-             "DEFINE": 3,
-             "OTHER": 14
-            },
-            "score": "71/30"
-           }
-          ],
-          "true": {
-           "id": "fork.t#14",
-           "predicate": "any w in lemmas: w == \"лантаноид\"",
-           "knowledge": "hypothesis",
-           "evidence": [
-            {
-             "source": "induction",
-             "status": "candidate",
-             "examples": 15,
-             "labels": {
-              "DEFINE": 1,
-              "OTHER": 14
-             },
-             "score": "0"
-            }
-           ],
-           "true": {
-            "id": "UNKNOWN#6",
-            "label": "UNKNOWN",
-            "class": null,
-            "unknown": "мало примеров",
-            "counts": {
-             "DEFINE": 1
-            }
-           },
-           "false": {
-            "id": "OTHER#3",
-            "label": "OTHER",
-            "class": "OTHER",
-            "support": 14
-           }
-          },
-          "false": {
-           "id": "DEFINE#3",
+           "id": "DEFINE#2",
            "label": "DEFINE",
            "class": "DEFINE",
            "support": 2
           }
          }
+        },
+        "false": {
+         "id": "IS_A#2",
+         "label": "IS_A",
+         "class": "IS_A",
+         "support": 4
+        }
+       },
+       "false": {
+        "id": "fork.f#6",
+        "predicate": "any w in lemmas: w == \"пол\"",
+        "knowledge": "hypothesis",
+        "evidence": [
+         {
+          "source": "induction",
+          "status": "candidate",
+          "examples": 5,
+          "labels": {
+           "IS_A": 4,
+           "OTHER": 1
+          },
+          "score": "0"
+         }
+        ],
+        "true": {
+         "id": "UNKNOWN#7",
+         "label": "UNKNOWN",
+         "class": null,
+         "unknown": "мало примеров",
+         "counts": {
+          "OTHER": 1
+         }
+        },
+        "false": {
+         "id": "IS_A#3",
+         "label": "IS_A",
+         "class": "IS_A",
+         "support": 4
         }
        }
       },
       "false": {
-       "id": "CLASSIFY#4",
-       "label": "CLASSIFY",
-       "class": "CLASSIFY",
-       "support": 8
+       "id": "fork.f#7",
+       "predicate": "not first in {\"к\", \"какой\"} and not first in {\"к\", \"кислород\"}",
+       "knowledge": "hypothesis",
+       "evidence": [
+        {
+         "source": "induction",
+         "status": "candidate",
+         "examples": 90,
+         "labels": {
+          "CLASSIFY": 10,
+          "DEFINE": 12,
+          "DIFFERENCE": 5,
+          "IS_A": 18,
+          "OTHER": 45
+         },
+         "score": "8807/166"
+        }
+       ],
+       "true": {
+        "id": "fork.t#15",
+        "predicate": "any w in lemmas: w == \"значить\"",
+        "knowledge": "hypothesis",
+        "evidence": [
+         {
+          "source": "induction",
+          "status": "candidate",
+          "examples": 83,
+          "labels": {
+           "CLASSIFY": 3,
+           "DEFINE": 12,
+           "DIFFERENCE": 5,
+           "IS_A": 18,
+           "OTHER": 45
+          },
+          "score": "15634/333"
+         }
+        ],
+        "true": {
+         "id": "fork.t#16",
+         "predicate": "not (any w in lemmas: w == \"-\") and not (any w in lemmas: w == \"болеть\")",
+         "knowledge": "hypothesis",
+         "evidence": [
+          {
+           "source": "induction",
+           "status": "candidate",
+           "examples": 9,
+           "labels": {
+            "DEFINE": 7,
+            "OTHER": 2
+           },
+           "score": "1/2"
+          }
+         ],
+         "true": {
+          "id": "DEFINE#3",
+          "label": "DEFINE",
+          "class": "DEFINE",
+          "support": 7
+         },
+         "false": {
+          "id": "OTHER#2",
+          "label": "OTHER",
+          "class": "OTHER",
+          "support": 2
+         }
+        },
+        "false": {
+         "id": "fork.f#8",
+         "predicate": "not (any w in lemmas: w == \"в\") and not pair in {\"none\", \"other\"}",
+         "knowledge": "hypothesis",
+         "evidence": [
+          {
+           "source": "induction",
+           "status": "candidate",
+           "examples": 74,
+           "labels": {
+            "CLASSIFY": 3,
+            "DEFINE": 5,
+            "DIFFERENCE": 5,
+            "IS_A": 18,
+            "OTHER": 43
+           },
+           "score": "17495/462"
+          }
+         ],
+         "true": {
+          "id": "fork.t#17",
+          "predicate": "any w in lemmas: w == \"а\"",
+          "knowledge": "hypothesis",
+          "evidence": [
+           {
+            "source": "induction",
+            "status": "candidate",
+            "examples": 11,
+            "labels": {
+             "IS_A": 9,
+             "OTHER": 2
+            },
+            "score": "0"
+           }
+          ],
+          "true": {
+           "id": "OTHER#3",
+           "label": "OTHER",
+           "class": "OTHER",
+           "support": 2
+          },
+          "false": {
+           "id": "IS_A#4",
+           "label": "IS_A",
+           "class": "IS_A",
+           "support": 9
+          }
+         },
+         "false": {
+          "id": "fork.f#9",
+          "predicate": "not (any w in lemmas: w == \"поля\") and not first in {\"можно\", \"чем\"}",
+          "knowledge": "hypothesis",
+          "evidence": [
+           {
+            "source": "induction",
+            "status": "candidate",
+            "examples": 63,
+            "labels": {
+             "CLASSIFY": 3,
+             "DEFINE": 5,
+             "DIFFERENCE": 5,
+             "IS_A": 9,
+             "OTHER": 41
+            },
+            "score": "1376/47"
+           }
+          ],
+          "true": {
+           "id": "fork.t#18",
+           "predicate": "not first in {\"есть\", \"жидкость\"} and not first in {\"плазма\", \"частица\"}",
+           "knowledge": "hypothesis",
+           "evidence": [
+            {
+             "source": "induction",
+             "status": "candidate",
+             "examples": 47,
+             "labels": {
+              "CLASSIFY": 3,
+              "DEFINE": 3,
+              "DIFFERENCE": 1,
+              "IS_A": 3,
+              "OTHER": 37
+             },
+             "score": "548/43"
+            }
+           ],
+           "true": {
+            "id": "fork.t#19",
+            "predicate": "not (any w in lemmas: w == \"класс\") and not first in {\"металл\", \"это\"}",
+            "knowledge": "hypothesis",
+            "evidence": [
+             {
+              "source": "induction",
+              "status": "candidate",
+              "examples": 43,
+              "labels": {
+               "CLASSIFY": 3,
+               "DEFINE": 3,
+               "OTHER": 37
+              },
+              "score": "121/20"
+             }
+            ],
+            "true": {
+             "id": "fork.t#20",
+             "predicate": "not (any w in lemmas: w == \"знаешь\") and not (any w in lemmas: w == \"известно\")",
+             "knowledge": "hypothesis",
+             "evidence": [
+              {
+               "source": "induction",
+               "status": "candidate",
+               "examples": 40,
+               "labels": {
+                "DEFINE": 3,
+                "OTHER": 37
+               },
+               "score": "93/38"
+              }
+             ],
+             "true": {
+              "id": "fork.t#21",
+              "predicate": "any w in lemmas: w == \"лантаноид\"",
+              "knowledge": "hypothesis",
+              "evidence": [
+               {
+                "source": "induction",
+                "status": "candidate",
+                "examples": 38,
+                "labels": {
+                 "DEFINE": 1,
+                 "OTHER": 37
+                },
+                "score": "0"
+               }
+              ],
+              "true": {
+               "id": "UNKNOWN#8",
+               "label": "UNKNOWN",
+               "class": null,
+               "unknown": "мало примеров",
+               "counts": {
+                "DEFINE": 1
+               }
+              },
+              "false": {
+               "id": "OTHER#4",
+               "label": "OTHER",
+               "class": "OTHER",
+               "support": 37
+              }
+             },
+             "false": {
+              "id": "DEFINE#4",
+              "label": "DEFINE",
+              "class": "DEFINE",
+              "support": 2
+             }
+            },
+            "false": {
+             "id": "CLASSIFY#4",
+             "label": "CLASSIFY",
+             "class": "CLASSIFY",
+             "support": 3
+            }
+           },
+           "false": {
+            "id": "fork.f#10",
+            "predicate": "any w in lemmas: w == \"-\"",
+            "knowledge": "hypothesis",
+            "evidence": [
+             {
+              "source": "induction",
+              "status": "candidate",
+              "examples": 4,
+              "labels": {
+               "DIFFERENCE": 1,
+               "IS_A": 3
+              },
+              "score": "0"
+             }
+            ],
+            "true": {
+             "id": "UNKNOWN#9",
+             "label": "UNKNOWN",
+             "class": null,
+             "unknown": "мало примеров",
+             "counts": {
+              "DIFFERENCE": 1
+             }
+            },
+            "false": {
+             "id": "IS_A#5",
+             "label": "IS_A",
+             "class": "IS_A",
+             "support": 3
+            }
+           }
+          },
+          "false": {
+           "id": "fork.f#11",
+           "predicate": "any w in lemmas: w == \"поле\"",
+           "knowledge": "hypothesis",
+           "evidence": [
+            {
+             "source": "induction",
+             "status": "candidate",
+             "examples": 16,
+             "labels": {
+              "DEFINE": 2,
+              "DIFFERENCE": 4,
+              "IS_A": 6,
+              "OTHER": 4
+             },
+             "score": "112/13"
+            }
+           ],
+           "true": {
+            "id": "fork.t#22",
+            "predicate": "not (any w in lemmas: w == \"на\") and not first in {\"доказать\", \"что\"}",
+            "knowledge": "hypothesis",
+            "evidence": [
+             {
+              "source": "induction",
+              "status": "candidate",
+              "examples": 13,
+              "labels": {
+               "DEFINE": 2,
+               "DIFFERENCE": 1,
+               "IS_A": 6,
+               "OTHER": 4
+              },
+              "score": "37/6"
+             }
+            ],
+            "true": {
+             "id": "fork.t#23",
+             "predicate": "any w in lemmas: w == \"от\"",
+             "knowledge": "hypothesis",
+             "evidence": [
+              {
+               "source": "induction",
+               "status": "candidate",
+               "examples": 6,
+               "labels": {
+                "DIFFERENCE": 1,
+                "IS_A": 5
+               },
+               "score": "0"
+              }
+             ],
+             "true": {
+              "id": "UNKNOWN#10",
+              "label": "UNKNOWN",
+              "class": null,
+              "unknown": "мало примеров",
+              "counts": {
+               "DIFFERENCE": 1
+              }
+             },
+             "false": {
+              "id": "IS_A#6",
+              "label": "IS_A",
+              "class": "IS_A",
+              "support": 5
+             }
+            },
+            "false": {
+             "id": "fork.f#12",
+             "predicate": "not (any w in lemmas: w == \"быть\") and not (any w in lemmas: w == \"ваш\")",
+             "knowledge": "hypothesis",
+             "evidence": [
+              {
+               "source": "induction",
+               "status": "candidate",
+               "examples": 7,
+               "labels": {
+                "DEFINE": 2,
+                "IS_A": 1,
+                "OTHER": 4
+               },
+               "score": "11/6"
+              }
+             ],
+             "true": {
+              "id": "OTHER#5",
+              "label": "OTHER",
+              "class": "OTHER",
+              "support": 4
+             },
+             "false": {
+              "id": "fork.f#13",
+              "predicate": "any w in lemmas: w == \"свет\"",
+              "knowledge": "hypothesis",
+              "evidence": [
+               {
+                "source": "induction",
+                "status": "candidate",
+                "examples": 3,
+                "labels": {
+                 "DEFINE": 2,
+                 "IS_A": 1
+                },
+                "score": "0"
+               }
+              ],
+              "true": {
+               "id": "UNKNOWN#11",
+               "label": "UNKNOWN",
+               "class": null,
+               "unknown": "мало примеров",
+               "counts": {
+                "IS_A": 1
+               }
+              },
+              "false": {
+               "id": "DEFINE#5",
+               "label": "DEFINE",
+               "class": "DEFINE",
+               "support": 2
+              }
+             }
+            }
+           },
+           "false": {
+            "id": "DIFFERENCE#2",
+            "label": "DIFFERENCE",
+            "class": "DIFFERENCE",
+            "support": 3
+           }
+          }
+         }
+        }
+       },
+       "false": {
+        "id": "CLASSIFY#5",
+        "label": "CLASSIFY",
+        "class": "CLASSIFY",
+        "support": 7
+       }
       }
      },
      "false": {
-      "id": "fork.f#9",
-      "predicate": "not (any w in lemmas: w == \"и\") and not (any w in lemmas: w == \"разница\")",
+      "id": "fork.f#14",
+      "predicate": "not (any w in lemmas: w == \"и\") and not (any w in lemmas: w == \"отличие\")",
       "knowledge": "hypothesis",
       "evidence": [
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 31,
+        "examples": 33,
         "labels": {
          "CLASSIFY": 3,
          "DEFINE": 10,
-         "DIFFERENCE": 14,
+         "DIFFERENCE": 16,
          "OTHER": 4
         },
-        "score": "173/14"
+        "score": "99/8"
        }
       ],
       "true": {
-       "id": "fork.t#15",
+       "id": "fork.t#24",
        "predicate": "n_concepts <= 3/2 and not first in {\"классификация\", \"классифицировать\"}",
        "knowledge": "hypothesis",
        "evidence": [
@@ -651,7 +1009,7 @@
         }
        ],
        "true": {
-        "id": "fork.t#16",
+        "id": "fork.t#25",
         "predicate": "any w in lemmas: w == \"железа\"",
         "knowledge": "hypothesis",
         "evidence": [
@@ -667,7 +1025,7 @@
          }
         ],
         "true": {
-         "id": "UNKNOWN#7",
+         "id": "UNKNOWN#12",
          "label": "UNKNOWN",
          "class": null,
          "unknown": "мало примеров",
@@ -676,14 +1034,14 @@
          }
         },
         "false": {
-         "id": "DEFINE#4",
+         "id": "DEFINE#6",
          "label": "DEFINE",
          "class": "DEFINE",
          "support": 10
         }
        },
        "false": {
-        "id": "fork.f#10",
+        "id": "fork.f#15",
         "predicate": "first in {\"как\", \"почему\"}",
         "knowledge": "hypothesis",
         "evidence": [
@@ -700,13 +1058,13 @@
          }
         ],
         "true": {
-         "id": "OTHER#4",
+         "id": "OTHER#6",
          "label": "OTHER",
          "class": "OTHER",
          "support": 2
         },
         "false": {
-         "id": "fork.f#11",
+         "id": "fork.f#16",
          "predicate": "any w in lemmas: w == \"газ\"",
          "knowledge": "hypothesis",
          "evidence": [
@@ -722,7 +1080,7 @@
           }
          ],
          "true": {
-          "id": "UNKNOWN#8",
+          "id": "UNKNOWN#13",
           "label": "UNKNOWN",
           "class": null,
           "unknown": "мало примеров",
@@ -731,7 +1089,7 @@
           }
          },
          "false": {
-          "id": "CLASSIFY#5",
+          "id": "CLASSIFY#6",
           "label": "CLASSIFY",
           "class": "CLASSIFY",
           "support": 3
@@ -740,23 +1098,23 @@
        }
       },
       "false": {
-       "id": "fork.f#12",
-       "predicate": "any w in lemmas: w == \"вкус\"",
+       "id": "fork.f#17",
+       "predicate": "any w in lemmas: w == \"длить\"",
        "knowledge": "hypothesis",
        "evidence": [
         {
          "source": "induction",
          "status": "candidate",
-         "examples": 14,
+         "examples": 16,
          "labels": {
-          "DIFFERENCE": 13,
+          "DIFFERENCE": 15,
           "OTHER": 1
          },
          "score": "0"
         }
        ],
        "true": {
-        "id": "UNKNOWN#9",
+        "id": "UNKNOWN#14",
         "label": "UNKNOWN",
         "class": null,
         "unknown": "мало примеров",
@@ -768,30 +1126,30 @@
         "id": "DIFFERENCE#3",
         "label": "DIFFERENCE",
         "class": "DIFFERENCE",
-        "support": 13
+        "support": 15
        }
       }
      }
     },
     "false": {
-     "id": "fork.f#13",
+     "id": "fork.f#18",
      "predicate": "pair == \"other\"",
      "knowledge": "hypothesis",
      "evidence": [
       {
        "source": "induction",
        "status": "candidate",
-       "examples": 15,
+       "examples": 17,
        "labels": {
         "DEFINE": 1,
         "DIFFERENCE": 1,
-        "IS_A": 13
+        "IS_A": 15
        },
-       "score": "13/7"
+       "score": "15/8"
       }
      ],
      "true": {
-      "id": "UNKNOWN#10",
+      "id": "UNKNOWN#15",
       "label": "UNKNOWN",
       "class": null,
       "unknown": "мало примеров",
@@ -800,23 +1158,23 @@
       }
      },
      "false": {
-      "id": "fork.f#14",
+      "id": "fork.f#19",
       "predicate": "(any w in lemmas: w == \"натрий\") and n_concepts <= 3/2",
       "knowledge": "hypothesis",
       "evidence": [
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 14,
+        "examples": 16,
         "labels": {
          "DEFINE": 1,
-         "IS_A": 13
+         "IS_A": 15
         },
         "score": "1/2"
        }
       ],
       "true": {
-       "id": "UNKNOWN#11",
+       "id": "UNKNOWN#16",
        "label": "UNKNOWN",
        "class": null,
        "unknown": "мало примеров",
@@ -825,139 +1183,205 @@
        }
       },
       "false": {
-       "id": "IS_A#4",
+       "id": "IS_A#7",
        "label": "IS_A",
        "class": "IS_A",
-       "support": 13
+       "support": 15
       }
      }
     }
-   }
-  },
-  "false": {
-   "id": "fork.f#15",
-   "predicate": "not first in {\"да\", \"почему\"} and not first in {\"если\", \"почему\"}",
-   "knowledge": "hypothesis",
-   "evidence": [
-    {
-     "source": "induction",
-     "status": "candidate",
-     "examples": 83,
-     "labels": {
-      "DIFFERENCE": 70,
-      "IS_A": 1,
-      "OTHER": 12
-     },
-     "score": "391/26"
-    }
-   ],
-   "true": {
-    "id": "fork.t#17",
-    "predicate": "not first in {\"магнитный\", \"помочь\"} and not first in {\"сколько\", \"являться\"}",
+   },
+   "false": {
+    "id": "fork.f#20",
+    "predicate": "any w in lemmas: w == \"делать\"",
     "knowledge": "hypothesis",
     "evidence": [
      {
       "source": "induction",
       "status": "candidate",
-      "examples": 78,
+      "examples": 34,
       "labels": {
-       "DIFFERENCE": 70,
-       "IS_A": 1,
-       "OTHER": 7
+       "DIFFERENCE": 33,
+       "OTHER": 1
       },
-      "score": "354/37"
+      "score": "0"
      }
     ],
     "true": {
-     "id": "fork.t#18",
-     "predicate": "not (any w in lemmas: w == \"болеть\") and not (any w in lemmas: w == \"грызть\")",
+     "id": "UNKNOWN#17",
+     "label": "UNKNOWN",
+     "class": null,
+     "unknown": "мало примеров",
+     "counts": {
+      "OTHER": 1
+     }
+    },
+    "false": {
+     "id": "DIFFERENCE#4",
+     "label": "DIFFERENCE",
+     "class": "DIFFERENCE",
+     "support": 33
+    }
+   }
+  },
+  "false": {
+   "id": "fork.f#21",
+   "predicate": "any w in lemmas: w == \"отличаться\"",
+   "knowledge": "hypothesis",
+   "evidence": [
+    {
+     "source": "induction",
+     "status": "candidate",
+     "examples": 111,
+     "labels": {
+      "CLASSIFY": 2,
+      "DEFINE": 60,
+      "DIFFERENCE": 39,
+      "IS_A": 1,
+      "OTHER": 9
+     },
+     "score": "749/36"
+    }
+   ],
+   "true": {
+    "id": "DIFFERENCE#5",
+    "label": "DIFFERENCE",
+    "class": "DIFFERENCE",
+    "support": 39
+   },
+   "false": {
+    "id": "fork.f#22",
+    "predicate": "(any w in lemmas: w == \"что\") and not first in {\"громко\", \"почему\"}",
+    "knowledge": "hypothesis",
+    "evidence": [
+     {
+      "source": "induction",
+      "status": "candidate",
+      "examples": 72,
+      "labels": {
+       "CLASSIFY": 2,
+       "DEFINE": 60,
+       "IS_A": 1,
+       "OTHER": 9
+      },
+      "score": "139/14"
+     }
+    ],
+    "true": {
+     "id": "fork.t#26",
+     "predicate": "not (any w in lemmas: w == \"атмосфера\") and not (any w in lemmas: w == \"который\")",
      "knowledge": "hypothesis",
      "evidence": [
       {
        "source": "induction",
        "status": "candidate",
-       "examples": 74,
+       "examples": 63,
        "labels": {
-        "DIFFERENCE": 70,
-        "OTHER": 4
+        "CLASSIFY": 2,
+        "DEFINE": 59,
+        "IS_A": 1,
+        "OTHER": 1
        },
-       "score": "79/18"
+       "score": "655/122"
       }
      ],
      "true": {
-      "id": "fork.t#19",
-      "predicate": "not (any w in lemmas: w == \"опасный\") and not (any w in lemmas: w == \"очистить\")",
+      "id": "fork.t#27",
+      "predicate": "(any w in lemmas: w == \"вещество\") and (any w in lemmas: w == \"или\")",
       "knowledge": "hypothesis",
       "evidence": [
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 72,
+        "examples": 61,
         "labels": {
-         "DIFFERENCE": 70,
-         "OTHER": 2
+         "CLASSIFY": 2,
+         "DEFINE": 59
         },
         "score": "1/2"
        }
       ],
       "true": {
-       "id": "DIFFERENCE#4",
-       "label": "DIFFERENCE",
-       "class": "DIFFERENCE",
-       "support": 70
+       "id": "CLASSIFY#7",
+       "label": "CLASSIFY",
+       "class": "CLASSIFY",
+       "support": 2
       },
       "false": {
-       "id": "OTHER#5",
-       "label": "OTHER",
-       "class": "OTHER",
-       "support": 2
+       "id": "DEFINE#7",
+       "label": "DEFINE",
+       "class": "DEFINE",
+       "support": 59
       }
      },
      "false": {
-      "id": "OTHER#6",
-      "label": "OTHER",
-      "class": "OTHER",
-      "support": 2
+      "id": "fork.f#23",
+      "predicate": "any w in lemmas: w == \"атмосфера\"",
+      "knowledge": "hypothesis",
+      "evidence": [
+       {
+        "source": "induction",
+        "status": "candidate",
+        "examples": 2,
+        "labels": {
+         "IS_A": 1,
+         "OTHER": 1
+        },
+        "score": "0"
+       }
+      ],
+      "true": {
+       "id": "UNKNOWN#18",
+       "label": "UNKNOWN",
+       "class": null,
+       "unknown": "мало примеров",
+       "counts": {
+        "OTHER": 1
+       }
+      },
+      "false": {
+       "id": "UNKNOWN#19",
+       "label": "UNKNOWN",
+       "class": null,
+       "unknown": "мало примеров",
+       "counts": {
+        "IS_A": 1
+       }
+      }
      }
     },
     "false": {
-     "id": "fork.f#16",
-     "predicate": "any w in lemmas: w == \"глист\"",
+     "id": "fork.f#24",
+     "predicate": "any w in lemmas: w == \"кто\"",
      "knowledge": "hypothesis",
      "evidence": [
       {
        "source": "induction",
        "status": "candidate",
-       "examples": 4,
+       "examples": 9,
        "labels": {
-        "IS_A": 1,
-        "OTHER": 3
+        "DEFINE": 1,
+        "OTHER": 8
        },
        "score": "0"
       }
      ],
      "true": {
-      "id": "UNKNOWN#12",
+      "id": "UNKNOWN#20",
       "label": "UNKNOWN",
       "class": null,
       "unknown": "мало примеров",
       "counts": {
-       "IS_A": 1
+       "DEFINE": 1
       }
      },
      "false": {
       "id": "OTHER#7",
       "label": "OTHER",
       "class": "OTHER",
-      "support": 3
+      "support": 8
      }
     }
-   },
-   "false": {
-    "id": "OTHER#8",
-    "label": "OTHER",
-    "class": "OTHER",
-    "support": 5
    }
   }
  }
