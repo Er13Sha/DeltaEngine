@@ -20,10 +20,11 @@
      "values": [
       "class",
       "element",
-      "compound"
+      "compound",
+      "term"
      ]
     },
-    "doc": "Вид понятия: класс дерева, химический элемент, соединение"
+    "doc": "Вид понятия: класс дерева, химический элемент, соединение, термин"
    },
    {
     "name": "context",
@@ -43,12 +44,12 @@
    {
     "source": "induction",
     "status": "candidate",
-    "examples": 586,
+    "examples": 613,
     "labels": {
-     "domain": 509,
+     "domain": 536,
      "other": 77
     },
-    "score": "62383/570"
+    "score": "131381/1194"
    }
   ],
   "true": {
@@ -59,12 +60,12 @@
     {
      "source": "induction",
      "status": "candidate",
-     "examples": 570,
+     "examples": 597,
      "labels": {
-      "domain": 509,
+      "domain": 536,
       "other": 61
      },
-     "score": "92801/946"
+     "score": "635215/6446"
     }
    ],
    "true": {
@@ -75,12 +76,12 @@
      {
       "source": "induction",
       "status": "candidate",
-      "examples": 559,
+      "examples": 586,
       "labels": {
-       "domain": 507,
+       "domain": 534,
        "other": 52
       },
-      "score": "89783/1102"
+      "score": "47281/578"
      }
     ],
     "true": {
@@ -91,12 +92,12 @@
       {
        "source": "induction",
        "status": "candidate",
-       "examples": 551,
+       "examples": 578,
        "labels": {
-        "domain": 507,
+        "domain": 534,
         "other": 44
        },
-       "score": "253387/3661"
+       "score": "133538/1925"
       }
      ],
      "true": {
@@ -107,12 +108,12 @@
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 523,
+        "examples": 550,
         "labels": {
-         "domain": 494,
+         "domain": 521,
          "other": 29
         },
-        "score": "148705/3102"
+        "score": "4901/102"
        }
       ],
       "true": {
@@ -123,12 +124,12 @@
         {
          "source": "induction",
          "status": "candidate",
-         "examples": 517,
+         "examples": 544,
          "labels": {
-          "domain": 493,
+          "domain": 520,
           "other": 24
          },
-         "score": "39953/1026"
+         "score": "2107/54"
         }
        ],
        "true": {
@@ -139,12 +140,12 @@
          {
           "source": "induction",
           "status": "candidate",
-          "examples": 513,
+          "examples": 540,
           "labels": {
-           "domain": 493,
+           "domain": 520,
            "other": 20
           },
-          "score": "42027/1270"
+          "score": "35463/1070"
          }
         ],
         "true": {
@@ -155,12 +156,12 @@
           {
            "source": "induction",
            "status": "candidate",
-           "examples": 508,
+           "examples": 535,
            "labels": {
-            "domain": 492,
+            "domain": 519,
             "other": 16
            },
-           "score": "6887/252"
+           "score": "14530/531"
           }
          ],
          "true": {
@@ -171,12 +172,12 @@
            {
             "source": "induction",
             "status": "candidate",
-            "examples": 504,
+            "examples": 531,
             "labels": {
-             "domain": 491,
+             "domain": 518,
              "other": 13
             },
-            "score": "11053/502"
+            "score": "23321/1058"
            }
           ],
           "true": {
@@ -187,12 +188,12 @@
             {
              "source": "induction",
              "status": "candidate",
-             "examples": 502,
+             "examples": 529,
              "labels": {
-              "domain": 491,
+              "domain": 518,
               "other": 11
              },
-             "score": "2272/125"
+             "score": "19175/1054"
             }
            ],
            "true": {
@@ -203,12 +204,12 @@
              {
               "source": "induction",
               "status": "candidate",
-              "examples": 500,
+              "examples": 527,
               "labels": {
-               "domain": 491,
+               "domain": 518,
                "other": 9
               },
-              "score": "7123/498"
+              "score": "2147/150"
              }
             ],
             "true": {
@@ -219,12 +220,12 @@
               {
                "source": "induction",
                "status": "candidate",
-               "examples": 498,
+               "examples": 525,
                "labels": {
-                "domain": 491,
+                "domain": 518,
                 "other": 7
                },
-               "score": "2579/248"
+               "score": "10883/1046"
               }
              ],
              "true": {
@@ -235,12 +236,12 @@
                {
                 "source": "induction",
                 "status": "candidate",
-                "examples": 496,
+                "examples": 523,
                 "labels": {
-                 "domain": 491,
+                 "domain": 518,
                  "other": 5
                 },
-                "score": "3193/494"
+                "score": "6737/1042"
                }
               ],
               "true": {
@@ -251,12 +252,12 @@
                 {
                  "source": "induction",
                  "status": "candidate",
-                 "examples": 494,
+                 "examples": 521,
                  "labels": {
-                  "domain": 491,
+                  "domain": 518,
                   "other": 3
                  },
-                 "score": "307/123"
+                 "score": "2591/1038"
                 }
                ],
                "true": {
@@ -267,9 +268,9 @@
                  {
                   "source": "induction",
                   "status": "candidate",
-                  "examples": 492,
+                  "examples": 519,
                   "labels": {
-                   "domain": 491,
+                   "domain": 518,
                    "other": 1
                   },
                   "score": "0"
@@ -288,7 +289,7 @@
                  "id": "domain#1",
                  "label": "domain",
                  "class": "domain",
-                 "support": 491
+                 "support": 518
                 }
                },
                "false": {
