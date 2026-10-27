@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and not {"--scan", "--screening", "--drag"} & set(sys.argv):
+if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -350,3 +350,14 @@ if __name__ == "__main__" and "--drag" in sys.argv:
     earth = result["earth"]
     print("торможение и нагрев: u ≥", f"{earth['u_min_over_c']:.2e}", "c; нагрев Земли ≥",
           f"{earth['earth_heat_min_W']:.2e}", "Вт")
+
+
+if __name__ == "__main__" and "--unified" in sys.argv:
+    from adapters.field_lattice.unified import experiment as unified_experiment
+
+    result = {"protocol_hash": protocol_hash(), **unified_experiment()}
+    (OUT / "unified.json").write_text(json.dumps(result, ensure_ascii=False, indent=1, default=str) + "\n",
+                                      encoding="utf-8")
+    nuclear = result["nuclear"]
+    print("ядро: показатель данных", round(nuclear["data_exponent_B_vs_A"], 3), "лучший r0", nuclear["best"]["r0_fm"],
+          "ошибка формулы без затухания", round(nuclear["fits"][-1]["rms_relative_error"], 3))

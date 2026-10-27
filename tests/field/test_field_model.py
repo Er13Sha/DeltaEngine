@@ -155,3 +155,39 @@ class DragTests(unittest.TestCase):
         self.assertGreater(earth["u_min_over_c"], 1e9)
         self.assertGreater(earth["excess"], 1e30)
         self.assertLess(earth["if_u_is_c"]["stopping_time_days"], 365)
+
+
+class UnifiedSchemeTests(unittest.TestCase):
+    """Тезис: магнитные и ядерные силы — эффекты одного поля с законом W = Q·N."""
+
+    def test_magnetism_follows_from_static_law_and_finite_speed(self):
+        from fractions import Fraction
+
+        from adapters.field_lattice.unified import magnetic_over_electric
+
+        for beta in (Fraction(1, 10), Fraction(1, 2), Fraction(9, 10)):
+            self.assertEqual(magnetic_over_electric(beta), beta * beta)
+
+    def test_magnetism_is_carried_by_charge_not_mass(self):
+        from adapters.field_lattice.unified import wires_check
+
+        wires = wires_check()
+        self.assertAlmostEqual(wires["ampere_force_N_per_m"], 2e-7, delta=1e-15)
+        self.assertLess(wires["mass_over_charge"], 1e-42)
+
+    def test_nuclear_binding_needs_short_range(self):
+        saved = json.loads((FIELD / "unified.json").read_text(encoding="utf-8"))
+        nuclear = saved["nuclear"]
+        self.assertEqual(len(nuclear["nuclei"]), 20)
+        self.assertAlmostEqual(nuclear["data_exponent_B_vs_A"], 1.0, delta=0.06)
+        errors = [f["rms_relative_error"] for f in nuclear["fits"]]
+        self.assertEqual(errors, sorted(errors))  # чем длиннее радиус, тем хуже
+        self.assertGreater(nuclear["fits"][-1]["rms_relative_error"], 0.5)  # формула без затухания
+        self.assertLess(nuclear["best"]["rms_relative_error"], 0.1)
+
+    def test_deuteron_binding_dwarfs_gravity(self):
+        from adapters.field_lattice.unified import deuteron
+
+        d = deuteron()
+        self.assertAlmostEqual(d["binding_MeV"], 2.22457, delta=1e-4)
+        self.assertGreater(d["ratio"], 1e36)

@@ -197,6 +197,15 @@ def build() -> dict[str, Any]:
         f"на орбите за {earth['if_u_is_c']['stopping_time_days']:.0f} суток, а чтобы орбита выжила, нагрев "
         f"должен превышать наблюдаемый в {earth['excess']:.0e} раз; упругое переизлучение убирает само притяжение."
     )
+    unified = json.loads((ROOT / "data" / "experiments" / "field" / "unified.json").read_text(encoding="utf-8"))
+    nuclear = unified["nuclear"]
+    field_note.append(
+        "Единая схема: магнетизм выводится из того же закона при конечной скорости передачи (F_маг/F_эл = v²/c²), "
+        f"но несёт его заряд, а не масса (масса слабее в {1 / unified['magnetism']['wires']['mass_over_charge']:.0e} раз). "
+        f"Ядро: энергия связи 20 ядер растёт как A^{nuclear['data_exponent_B_vs_A']:.2f}; формула без затухания "
+        f"ошибается на {nuclear['fits'][-1]['rms_relative_error']:.0%}, с затуханием k_пр = e^(−r/r₀) при r₀ ≲ 1 фм — "
+        f"на {nuclear['best']['rms_relative_error']:.0%}."
+    )
     for band in BANDS:
         if band["id"] == "field":
             band["note"] = field_note
