@@ -68,7 +68,7 @@ PAGE = r"""<!DOCTYPE html>
   <div id="view"></div>
   <div id="panel">
     <h1>Пятно в шаре радиуса 4</h1>
-    <p>Закон между квантами 1/r², P = 0. Стенка отражает вышедших за радиус 4. Кадры каждые 0,1 до t = 10.</p>
+    <p>Закон между квантами 1/r², P = 0. Стенка отражает вышедших за радиус 4. На рисунке квант — диполь своей длины. Длина задана номером и в силу не входит. Кадры каждые 0,1 до t = 10.</p>
     <label>Сцена
       <select id="scene">
         <option value="empty">Пустая, 8 квантов</option>
@@ -131,7 +131,20 @@ PAGE = r"""<!DOCTYPE html>
     );
     scene.add(wall);
 
-    const dot = new THREE.SphereGeometry(0.12, 16, 12);
+    function dipoleLength(i) {
+      return 0.28 + 0.62 * ((i * 7 + 3) % 11) / 10;
+    }
+    function dipoleAxis(i, target) {
+      const yaw = ((i * 17) % 360) * Math.PI / 180;
+      const pitch = ((i * 29) % 180) * Math.PI / 180;
+      target.set(
+        Math.sin(pitch) * Math.cos(yaw),
+        Math.cos(pitch),
+        Math.sin(pitch) * Math.sin(yaw)
+      );
+    }
+
+    const dot = new THREE.SphereGeometry(1, 14, 10);
     let meshes = [];
     let frames = DATA.sea;
     let frame = 0;
@@ -154,11 +167,17 @@ PAGE = r"""<!DOCTYPE html>
       legend.replaceChildren();
       for (const group of groups) {
         const count = group.to - group.from;
-        const material = new THREE.MeshStandardMaterial({ color: group.color, roughness: 0.45 });
-        const mesh = new THREE.InstancedMesh(dot, material, count);
-        mesh.userData.group = group;
-        scene.add(mesh);
-        meshes.push(mesh);
+        const headMat = new THREE.MeshStandardMaterial({ color: group.color, roughness: 0.35 });
+        const tailMat = new THREE.MeshStandardMaterial({ color: group.color, roughness: 0.75 });
+        const head = new THREE.InstancedMesh(dot, headMat, count);
+        const tail = new THREE.InstancedMesh(dot, tailMat, count);
+        head.userData.group = group;
+        head.userData.pole = 1;
+        tail.userData.group = group;
+        tail.userData.pole = -1;
+        scene.add(head);
+        scene.add(tail);
+        meshes.push(head, tail);
         const line = document.createElement("div");
         const mark = document.createElement("span");
         mark.className = "swatch";
@@ -171,13 +190,24 @@ PAGE = r"""<!DOCTYPE html>
     }
 
     const dummy = new THREE.Object3D();
+    const axis = new THREE.Vector3();
     function show(index) {
       const positions = frames[index];
       for (const mesh of meshes) {
         const group = mesh.userData.group;
+        const pole = mesh.userData.pole;
         for (let i = group.from; i < group.to; i += 1) {
           const p = positions[i];
-          dummy.position.set(p[0], p[1], p[2]);
+          const length = dipoleLength(i);
+          dipoleAxis(i, axis);
+          const radius = pole > 0 ? length * 0.42 : length * 0.22;
+          dummy.position.set(
+            p[0] + axis.x * pole * length * 0.45,
+            p[1] + axis.y * pole * length * 0.45,
+            p[2] + axis.z * pole * length * 0.45
+          );
+          dummy.scale.setScalar(radius);
+          dummy.rotation.set(0, 0, 0);
           dummy.updateMatrix();
           mesh.setMatrixAt(i - group.from, dummy.matrix);
         }
