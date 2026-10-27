@@ -37,7 +37,13 @@ PAIR_PROTOCOL = {
     "separations": [8, 10, 12, 14, 16],
     "control": {"separation": 32, "expectation": "|a| много меньше, чем при d = 16"},
     "phases": ["in", "anti"],
-    "measurement": "D(t) по центрам энергии половин; a — из подгонки D = D₀ + v₀t + a·t²/2 на [0, t_max]; f = E·a/2",
+    "measurement": "D(t) по центрам энергии частиц в окне ρ < 6, |z − z_c| < 6 вокруг прежнего центра; "
+                   "a — из подгонки D = D₀ + v₀t + a·t²/2 на [0, t_max]; f = E·a/2",
+    "window": 6.0,
+    "version": 2,
+    "revision": "v1 (sha256:f412b682…) мерил центры энергии половин z > 0 и z < 0; пилот d = 12 в фазе показал "
+                "D: 11,8 → 23,3 — излучение, уходящее от частиц, уносит центр половины. Изменено только "
+                "определение центра (окно вокруг частицы) до основного расчёта; пилот записан в отчёте.",
     "law_fit": "f(d) = g·(1 + κd)·e^(−κd)/d² по разделённым d, отдельно для фаз",
     "prediction_before_run": "κ = √(1 − ω²) при ω = частота частицы; в фазе — притяжение, в противофазе — отталкивание",
     "alpha_model": "g/S, S = E/ω",
@@ -80,8 +86,8 @@ def prepare_particle() -> dict:
 
 
 @njit(cache=True, parallel=True)
-def _step_axisym(phi, pi, h, dt, damp, steps, n_rho, n_z, z0_index, out):
-    """Чехарда в (ρ, z); out[k] = (центр энергии z > 0, центр энергии z < 0)."""
+def _step_axisym(phi, pi, h, dt, damp, steps, n_rho, n_z, z0_index, out, z_start, window):
+    """Чехарда в (ρ, z); out[k] = (центр верхней частицы, центр нижней частицы)."""
     lap = np.empty_like(phi)
     for step in range(steps):
         for i in prange(n_rho):
@@ -98,27 +104,24 @@ def _step_axisym(phi, pi, h, dt, damp, steps, n_rho, n_z, z0_index, out):
                 c = phi[i, j]
                 pi[i, j] += dt * (lap[i, j] - 0.5 * c * (c * c - 1) - damp[i, j] * pi[i, j])
                 phi[i, j] += dt * pi[i, j]
-        # центры энергии половин
-        wu = 0.0
-        zu = 0.0
-        wd = 0.0
-        zd = 0.0
-        for i in range(n_rho - 1):
-            rho = (i + 0.5) * h
-            for j in range(n_z - 1):
-                c = phi[i, j]
-                gr = (phi[i + 1, j] - c) / h
-                gz = (phi[i, j + 1] - c) / h
-                e = (0.5 * pi[i, j] ** 2 + 0.5 * (gr * gr + gz * gz) + (c * c - 1) ** 2 / 8) * rho
-                z = (j - z0_index) * h
-                if z > 0:
-                    wu += e
-                    zu += e * z
-                else:
-                    wd += e
-                    zd += e * z
-        out[step, 0] = zu / wu
-        out[step, 1] = zd / wd
+        # центры энергии частиц: окно ρ < W, |z − z_c| < W вокруг прежнего центра (излучение не учитывается)
+        for half in range(2):
+            zc = out[step - 1, half] if step > 0 else (z_start if half == 0 else -z_start)
+            wsum = 0.0
+            zsum = 0.0
+            jlo = max(0, int((zc - window) / h) + z0_index)
+            jhi = min(n_z - 1, int((zc + window) / h) + z0_index + 1)
+            ihi = min(n_rho - 1, int(window / h))
+            for i in range(ihi):
+                rho = (i + 0.5) * h
+                for j in range(jlo, jhi):
+                    c = phi[i, j]
+                    gr = (phi[i + 1, j] - c) / h
+                    gz = (phi[i, j + 1] - c) / h
+                    e = (0.5 * pi[i, j] ** 2 + 0.5 * (gr * gr + gz * gz) + (c * c - 1) ** 2 / 8) * rho
+                    wsum += e
+                    zsum += e * (j - z0_index) * h
+            out[step, half] = zsum / wsum
 
 
 def pair_run(particle: dict, d: float, phase: str) -> dict:
@@ -144,7 +147,7 @@ def pair_run(particle: dict, d: float, phase: str) -> dict:
     damp = 2.0 * edge ** 2
     steps = int(num["t_max"] / dt)
     out = np.empty((steps, 2))
-    _step_axisym(phi, pi, h, dt, damp, steps, n_rho, n_z, n_z // 2, out)
+    _step_axisym(phi, pi, h, dt, damp, steps, n_rho, n_z, n_z // 2, out, d / 2, PAIR_PROTOCOL["window"])
     t = (np.arange(steps) + 1) * dt
     sep = out[:, 0] - out[:, 1]
     coef = np.polyfit(t, sep, 2)  # D = c2·t² + c1·t + c0
