@@ -51,12 +51,20 @@ def reflect(pos: np.ndarray, vel: np.ndarray) -> int:
     return hits
 
 
-def march_box(pos: np.ndarray, vel: np.ndarray) -> tuple[float, float, int, int]:
+def march_box(
+    pos: np.ndarray,
+    vel: np.ndarray,
+    samples: list[list[list[float]]] | None = None,
+    sample_dt: float = 0.1,
+) -> tuple[float, float, int, int]:
     closest = 1.0e300
     t = 0.0
     steps = 0
     hits = 0
     n = pos.shape[0]
+    next_sample = sample_dt
+    if samples is not None:
+        samples.append(np.round(pos, 4).tolist())
     while t < T_END and steps < STEP_CAP:
         acc, _, _, _, _ = accelerations(pos, SKY, 0.0, True)
         acc = add_missed(pos, SKY, 0.0, acc)
@@ -98,6 +106,10 @@ def march_box(pos: np.ndarray, vel: np.ndarray) -> tuple[float, float, int, int]
         hits += reflect(pos, vel)
         t += h
         steps += 1
+        if samples is not None:
+            while next_sample <= t + 1.0e-9 and next_sample <= T_END + 1.0e-9:
+                samples.append(np.round(pos, 4).tolist())
+                next_sample += sample_dt
     return closest, t, steps, hits
 
 
