@@ -1,0 +1,46 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-element-n100-protocol-2026-10-28.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "row": {
+    "n": 100,
+    "pressure": 1.0,
+    "h_cap": 0.02,
+    "step_cap": 20000,
+    "orbiting": 0,
+    "inside_ratio": 0,
+    "max_abs_phi": 0.14687047119159455,
+    "max_radius_ratio": 8.46540218496169,
+    "min_pair": 0.3090427561036747,
+    "t_done": 1.2264423438935033,
+    "steps": 341,
+    "steps_exhausted": false,
+    "accepted": false
+  },
+  "element_starts": false
+}
