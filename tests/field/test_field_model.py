@@ -216,3 +216,23 @@ class UniversalFluxTests(unittest.TestCase):
         sink = sink_bounds()
         self.assertAlmostEqual(sink["inflow_speed_min_m_s"] / sink["g_times_age_m_s"], 1.0, delta=1e-9)
         self.assertGreater(sink["inflow_over_c"], 1e9)
+
+
+class InstantGravityTests(unittest.TestCase):
+    """Тезис заказчика: тяготение мгновенно, свет ограничен средой."""
+
+    def test_instant_carriers_pass_c6_only_without_energy(self):
+        from adapters.field_lattice.drag import instant_carriers
+
+        inst = instant_carriers()
+        self.assertLess(inst["e_over_p_max_m_s"], 1e-12)  # импульс почти без энергии
+        self.assertGreater(inst["superluminal_u_min_over_c"], 1e21)
+        self.assertLess(inst["orbit_change_over_age"], 1e-10)  # торможение тогда ничтожно
+
+    def test_instant_gravity_vs_gw170817_and_binary_pulsar(self):
+        from adapters.field_lattice.drag import instant_vs_observations
+
+        obs = instant_vs_observations()
+        self.assertGreater(obs["gw170817"]["instant_lead_years"], 1e8)
+        self.assertLess(obs["gw170817"]["instant_tidal_over_wave"], 1e-70)
+        self.assertGreater(obs["psr_b1913_16"]["deviation_sigma"], 600)

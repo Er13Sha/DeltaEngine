@@ -147,6 +147,59 @@ def sink_bounds() -> dict:
     }
 
 
+def instant_carriers() -> dict:
+    """Тезис заказчика: тяготение действует мгновенно (u → ∞), свет ограничен средой.
+
+    Торможение ∝ 1/u исчезает. Нагрев равен поглощённому импульсу 4π·I·N, умноженному на
+    отношение энергии к импульсу носителя E/p: P = 4π·G·λ·M·(E/p). У массивных носителей
+    Ньютона E/p = u/2 — нагрев растёт с u. Выжить D может, только если носитель несёт импульс
+    почти без энергии; в механике Эйнштейна так ведёт себя частица быстрее света: E/p = c²/u.
+    """
+    m = EARTH["mass_kg"]
+    age = EARTH["age_yr"] * YEAR
+    lam = earth_bounds()["lambda_min_kg_m2"]
+    per_unit = 4 * math.pi * G_NEWTON * lam * m  # Вт на 1 м/с отношения E/p
+    e_over_p_max = EARTH["heat_flow_W"] / per_unit  # даже весь тепловой поток Земли отдан потоку
+    u_min = C_LIGHT ** 2 / e_over_p_max
+    rate = 4 * math.pi / 3 * G_NEWTON * lam
+    return {
+        "heat_per_unit_e_over_p_W": per_unit,
+        "e_over_p_max_m_s": e_over_p_max,
+        "newtonian_carriers_u_max_m_s": 2 * e_over_p_max,  # E/p = u/2: противоречит торможению
+        "superluminal_u_min_over_c": u_min / C_LIGHT,
+        "orbit_change_over_age": rate * age / u_min,
+    }
+
+
+# Наблюдения, которые мгновенное тяготение должно объяснить
+GW170817 = {"distance_Mpc": 40, "gamma_after_gw_s": 1.74,  # Abbott et al. 2017, ApJL 848 L13
+            "speed_bound": "−3·10⁻¹⁵ ≤ (v_gw − c)/c ≤ 7·10⁻¹⁶", "f_gw_Hz": 100}
+PSR_B1913_16 = {"pbdot_observed_over_gr": 0.9983, "sigma": 0.0016,  # Weisberg & Huang 2016, ApJ 829 55
+                "pbdot_gr": -2.40263e-12}
+MPC = 3.0857e22  # м
+
+
+def instant_vs_observations() -> dict:
+    """Что предсказывает мгновенное тяготение (D, u → ∞) для двух измерений.
+
+    GW170817: слияние двух нейтронных звёзд. При мгновенном действии изменение поля пришло бы
+    одновременно со слиянием, то есть за d/c до света, а не за 1,74 с; кроме того, мгновенное
+    приливное поле двойной звезды убывает как 1/d⁵ против 1/d у волны, и на 40 Мпк его
+    отношение к измеренному сигналу ≈ (c/(ωd))⁴.
+    PSR B1913+16: мгновенное поле без излучения не уносит энергию — период орбиты не
+    уменьшается (торможение потоком ∝ 1/u → 0), а измерено уменьшение, совпадающее с
+    излучением волн со скоростью c до 0,2 %.
+    """
+    d = GW170817["distance_Mpc"] * MPC
+    omega = 2 * math.pi * GW170817["f_gw_Hz"]
+    return {
+        "gw170817": {**GW170817, "instant_lead_s": d / C_LIGHT, "instant_lead_years": d / C_LIGHT / YEAR,
+                     "instant_tidal_over_wave": (C_LIGHT / (omega * d)) ** 4},
+        "psr_b1913_16": {**PSR_B1913_16, "instant_prediction_over_gr": 0.0,
+                         "deviation_sigma": PSR_B1913_16["pbdot_observed_over_gr"] / PSR_B1913_16["sigma"]},
+    }
+
+
 def experiment() -> dict:
     s_values = [1e-4, 1e-3, 1e-2, 0.1]
     drag = [{"s": s, "K": drag_integral(s), "K_over_minus_s_3": drag_integral(s) / (-s / 3)} for s in s_values]
@@ -161,4 +214,6 @@ def experiment() -> dict:
         "big_and_small": big_and_small(),
         "universal_over_local": universal_over_local(),
         "sink_medium": sink_bounds(),
+        "instant_carriers": instant_carriers(),
+        "instant_vs_observations": instant_vs_observations(),
     }

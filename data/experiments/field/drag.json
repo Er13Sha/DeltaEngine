@@ -141,5 +141,30 @@
   "g_times_age_m_s": 1.4069694793080105e+18,
   "absorbed_mass_rate_per_kg_s": 6.97975502511651e-18,
   "kinetic_power_per_kg_W": 6.908432802186033e+18
+ },
+ "instant_carriers": {
+  "heat_per_unit_e_over_p_W": 3.5189285613934656e+26,
+  "e_over_p_max_m_s": 1.3356338209204338e-13,
+  "newtonian_carriers_u_max_m_s": 2.6712676418408676e-13,
+  "superluminal_u_min_over_c": 2.2445707296735127e+21,
+  "orbit_change_over_age": 4.181775117463609e-12
+ },
+ "instant_vs_observations": {
+  "gw170817": {
+   "distance_Mpc": 40,
+   "gamma_after_gw_s": 1.74,
+   "speed_bound": "−3·10⁻¹⁵ ≤ (v_gw − c)/c ≤ 7·10⁻¹⁶",
+   "f_gw_Hz": 100,
+   "instant_lead_s": 4117114914211751.0,
+   "instant_lead_years": 130463498.94199023,
+   "instant_tidal_over_wave": 2.233102053519375e-74
+  },
+  "psr_b1913_16": {
+   "pbdot_observed_over_gr": 0.9983,
+   "sigma": 0.0016,
+   "pbdot_gr": -2.40263e-12,
+   "instant_prediction_over_gr": 0.0,
+   "deviation_sigma": 623.9375
+  }
  }
 }

@@ -197,6 +197,12 @@ def build() -> dict[str, Any]:
         f"на орбите за {earth['if_u_is_c']['stopping_time_days']:.0f} суток, а чтобы орбита выжила, нагрев "
         f"должен превышать наблюдаемый в {earth['excess']:.0e} раз; упругое переизлучение убирает само притяжение."
     )
+    instant = json.loads((ROOT / "data" / "experiments" / "field" / "drag.json").read_text(encoding="utf-8"))
+    field_note.append(
+        f"Вариант заказчика «тяготение мгновенно» проходит C6, если носитель несёт импульс почти без энергии "
+        f"(скорость ≥ {instant['instant_carriers']['superluminal_u_min_over_c']:.1e} c); тогда волны тяготения "
+        f"(GW170817, двойной пульсар — скорость c) должны быть отдельным явлением среды."
+    )
     unified = json.loads((ROOT / "data" / "experiments" / "field" / "unified.json").read_text(encoding="utf-8"))
     nuclear = unified["nuclear"]
     field_note.append(
