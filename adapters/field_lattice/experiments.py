@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light"} & set(sys.argv):
+if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light", "--frequency"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -370,3 +370,13 @@ if __name__ == "__main__" and "--light" in sys.argv:
     (OUT / "light.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("свет: отклонение", {k: round(v, 4) for k, v in result["deflection_at_limb_arcsec"].items()},
           "задержка, мкс", {k: round(v, 1) for k, v in result["shapiro_round_trip_us"].items()})
+
+
+if __name__ == "__main__" and "--frequency" in sys.argv:
+    from adapters.field_lattice.frequency import experiment as frequency_experiment
+
+    result = {"protocol_hash": protocol_hash(), **frequency_experiment()}
+    (OUT / "frequency.json").write_text(json.dumps(result, ensure_ascii=False, indent=1, default=float) + "\n",
+                                        encoding="utf-8")
+    print("частота ядра по дейтрону:", f"{result['fine_best']['frequency_Hz']:.3e}", "Гц; пион:",
+          f"{result['pion']['frequency_Hz']:.3e}", "Гц; отношение", round(result["deuteron_frequency_over_pion"], 3))

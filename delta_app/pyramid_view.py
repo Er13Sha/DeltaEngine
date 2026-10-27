@@ -216,6 +216,13 @@ def build() -> dict[str, Any]:
         f"(часы GPS: {speed['gps_us_per_day']['net']:+.1f} мкс/сут; у края Солнца c' = "
         f"{speed['speed_at_sun_limb_over_c']:.7f} c). Сводка схемы: docs/track-e-field-scheme.md."
     )
+    freq = json.loads((ROOT / "data" / "experiments" / "field" / "frequency.json").read_text(encoding="utf-8"))
+    field_note.append(
+        "Сила одна, отличается частотой колебания поля: F = ħc·(f₁f₂/F²)·e^(−2πf_п·r/c)/r². Тяготение — точно из "
+        f"частот масс; частота ядерного колебания по одному дейтрону {freq['fine_best']['frequency_Hz']:.3e} Гц "
+        f"совпала с частотой пиона {freq['pion']['frequency_Hz']:.3e} Гц "
+        f"({abs(1 - freq['deuteron_frequency_over_pion']):.1%})."
+    )
     unified = json.loads((ROOT / "data" / "experiments" / "field" / "unified.json").read_text(encoding="utf-8"))
     nuclear = unified["nuclear"]
     field_note.append(

@@ -267,3 +267,26 @@ class LightInFieldTests(unittest.TestCase):
         self.assertAlmostEqual(split["total"], 1.7512, delta=1e-3)
         self.assertAlmostEqual(s["pound_snider"]["predicted_shift"], 2.45e-15, delta=0.01e-15)
         self.assertAlmostEqual(s["gps_us_per_day"]["net"], 38.6, delta=0.3)  # заводская поправка часов GPS
+
+
+class FrequencyTests(unittest.TestCase):
+    """Гипотеза: сила одна, силы отличаются частотой колебания поля."""
+
+    def test_gravity_is_product_of_mass_frequencies(self):
+        from adapters.field_lattice.frequency import strength_frequencies
+
+        s = strength_frequencies(0.36)
+        self.assertAlmostEqual(s["gravity"]["alpha_from_frequencies"] / s["gravity"]["alpha"], 1.0, delta=1e-12)
+        self.assertAlmostEqual(s["electric_over_gravity"] / 1.2355e36, 1.0, delta=1e-3)
+
+    def test_deuteron_alone_finds_pion_frequency(self):
+        saved = json.loads((FIELD / "frequency.json").read_text(encoding="utf-8"))
+        self.assertAlmostEqual(saved["deuteron_frequency_over_pion"], 1.0, delta=0.02)
+        self.assertLess(saved["fine_best"]["rms_relative_error"], 0.005)
+
+    def test_deuteron_fit_is_reproducible(self):
+        from adapters.field_lattice.frequency import HBARC, PION_MEV, deuteron_fit
+
+        row = deuteron_fit(HBARC / PION_MEV)
+        self.assertAlmostEqual(row["scattering_length_fm"], 5.414, delta=0.01)
+        self.assertAlmostEqual(row["structure_radius_fm"], 1.966, delta=0.01)
