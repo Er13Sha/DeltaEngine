@@ -44,12 +44,12 @@
    {
     "source": "induction",
     "status": "candidate",
-    "examples": 613,
+    "examples": 614,
     "labels": {
-     "domain": 536,
+     "domain": 537,
      "other": 77
     },
-    "score": "131381/1194"
+    "score": "65813/598"
    }
   ],
   "true": {
@@ -60,12 +60,12 @@
     {
      "source": "induction",
      "status": "candidate",
-     "examples": 597,
+     "examples": 598,
      "labels": {
-      "domain": 536,
+      "domain": 537,
       "other": 61
      },
-     "score": "635215/6446"
+     "score": "1272801/12914"
     }
    ],
    "true": {
@@ -76,12 +76,12 @@
      {
       "source": "induction",
       "status": "candidate",
-      "examples": 586,
+      "examples": 587,
       "labels": {
-       "domain": 534,
+       "domain": 535,
        "other": 52
       },
-      "score": "47281/578"
+      "score": "94739/1158"
      }
     ],
     "true": {
@@ -92,12 +92,12 @@
       {
        "source": "induction",
        "status": "candidate",
-       "examples": 578,
+       "examples": 579,
        "labels": {
-        "domain": 534,
+        "domain": 535,
         "other": 44
        },
-       "score": "133538/1925"
+       "score": "9227/133"
       }
      ],
      "true": {
@@ -108,12 +108,12 @@
        {
         "source": "induction",
         "status": "candidate",
-        "examples": 550,
+        "examples": 551,
         "labels": {
-         "domain": 521,
+         "domain": 522,
          "other": 29
         },
-        "score": "4901/102"
+        "score": "157133/3270"
        }
       ],
       "true": {
@@ -124,12 +124,12 @@
         {
          "source": "induction",
          "status": "candidate",
-         "examples": 544,
+         "examples": 545,
          "labels": {
-          "domain": 520,
+          "domain": 521,
           "other": 24
          },
-         "score": "2107/54"
+         "score": "42221/1082"
         }
        ],
        "true": {
@@ -140,12 +140,12 @@
          {
           "source": "induction",
           "status": "candidate",
-          "examples": 540,
+          "examples": 541,
           "labels": {
-           "domain": 520,
+           "domain": 521,
            "other": 20
           },
-          "score": "35463/1070"
+          "score": "22207/670"
          }
         ],
         "true": {
@@ -156,12 +156,12 @@
           {
            "source": "induction",
            "status": "candidate",
-           "examples": 535,
+           "examples": 536,
            "labels": {
-            "domain": 519,
+            "domain": 520,
             "other": 16
            },
-           "score": "14530/531"
+           "score": "7279/266"
           }
          ],
          "true": {
@@ -172,12 +172,12 @@
            {
             "source": "induction",
             "status": "candidate",
-            "examples": 531,
+            "examples": 532,
             "labels": {
-             "domain": 518,
+             "domain": 519,
              "other": 13
             },
-            "score": "23321/1058"
+            "score": "11683/530"
            }
           ],
           "true": {
@@ -188,12 +188,12 @@
             {
              "source": "induction",
              "status": "candidate",
-             "examples": 529,
+             "examples": 530,
              "labels": {
-              "domain": 518,
+              "domain": 519,
               "other": 11
              },
-             "score": "19175/1054"
+             "score": "1601/88"
             }
            ],
            "true": {
@@ -204,12 +204,12 @@
              {
               "source": "induction",
               "status": "candidate",
-              "examples": 527,
+              "examples": 528,
               "labels": {
-               "domain": 518,
+               "domain": 519,
                "other": 9
               },
-              "score": "2147/150"
+              "score": "7529/526"
              }
             ],
             "true": {
@@ -220,12 +220,12 @@
               {
                "source": "induction",
                "status": "candidate",
-               "examples": 525,
+               "examples": 526,
                "labels": {
-                "domain": 518,
+                "domain": 519,
                 "other": 7
                },
-               "score": "10883/1046"
+               "score": "1363/131"
               }
              ],
              "true": {
@@ -236,12 +236,12 @@
                {
                 "source": "induction",
                 "status": "candidate",
-                "examples": 523,
+                "examples": 524,
                 "labels": {
-                 "domain": 518,
+                 "domain": 519,
                  "other": 5
                 },
-                "score": "6737/1042"
+                "score": "375/58"
                }
               ],
               "true": {
@@ -252,12 +252,12 @@
                 {
                  "source": "induction",
                  "status": "candidate",
-                 "examples": 521,
+                 "examples": 522,
                  "labels": {
-                  "domain": 518,
+                  "domain": 519,
                   "other": 3
                  },
-                 "score": "2591/1038"
+                 "score": "649/260"
                 }
                ],
                "true": {
@@ -268,9 +268,9 @@
                  {
                   "source": "induction",
                   "status": "candidate",
-                  "examples": 519,
+                  "examples": 520,
                   "labels": {
-                   "domain": 518,
+                   "domain": 519,
                    "other": 1
                   },
                   "score": "0"
@@ -289,7 +289,7 @@
                  "id": "domain#1",
                  "label": "domain",
                  "class": "domain",
-                 "support": 518
+                 "support": 519
                 }
                },
                "false": {
