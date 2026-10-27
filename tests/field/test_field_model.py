@@ -191,3 +191,28 @@ class UnifiedSchemeTests(unittest.TestCase):
         d = deuteron()
         self.assertAlmostEqual(d["binding_MeV"], 2.22457, delta=1e-4)
         self.assertGreater(d["ratio"], 1e36)
+
+
+class UniversalFluxTests(unittest.TestCase):
+    """Уточнение заказчика: экранирует большее тело, поток Вселенной сильнее местного тяготения."""
+
+    def test_big_body_screens_small_with_third_law(self):
+        saved = json.loads((FIELD / "drag.json").read_text(encoding="utf-8"))["big_and_small"]
+        self.assertAlmostEqual(saved["third_law_ratio"], 1.0, delta=0.002)
+        self.assertAlmostEqual(saved["on_small_over_formula"], 1.0, delta=0.005)
+
+    def test_stronger_universal_flux_makes_heating_worse(self):
+        from adapters.field_lattice.drag import universal_over_local
+
+        rows = universal_over_local()
+        self.assertGreater(rows[0]["universal_over_local"], 1)  # условие выполняется само
+        heats = [r["heat_excess"] for r in rows]
+        self.assertEqual(heats, sorted(heats))
+        self.assertGreater(heats[0], 1e30)
+
+    def test_sink_medium_needs_superluminal_inflow(self):
+        from adapters.field_lattice.drag import sink_bounds
+
+        sink = sink_bounds()
+        self.assertAlmostEqual(sink["inflow_speed_min_m_s"] / sink["g_times_age_m_s"], 1.0, delta=1e-9)
+        self.assertGreater(sink["inflow_over_c"], 1e9)

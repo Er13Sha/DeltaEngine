@@ -94,6 +94,59 @@ def earth_bounds() -> dict:
     }
 
 
+def big_and_small(d: float = 24, r_big: float = 3, r_small: float = 1, mu: float = 0.01) -> dict:
+    """Большое тело экранирует малое: сила на малое, сила на большое и формула I·N_A·N_B/d²."""
+    grid = dict(n_theta=48, n_phi=36, n_rho=24, n_psi=24)
+    on_small = shadow_force(d, r_big, r_small, mu, mu, **grid)
+    on_big = shadow_force(d, r_small, r_big, mu, mu, **grid)
+    formula = absorbing_section(r_big, mu) * absorbing_section(r_small, mu) / d ** 2
+    return {"r_big": r_big, "r_small": r_small, "on_small": on_small, "on_big": on_big,
+            "third_law_ratio": on_small / on_big, "on_small_over_formula": on_small / formula}
+
+
+def universal_over_local() -> list[dict]:
+    """Условие заказчика: поток Вселенной с одной стороны сильнее местного тяготения.
+
+    Поток с полусферы давит на тело силой π·I·N = π·G·λ·m, местное тяготение у поверхности
+    Земли — G·M·m/R². Отношение X = π·λ·R²/M. Чем оно больше, тем больше λ, а торможение
+    и нагрев растут с λ (нагрев — как X²).
+    """
+    m, r = EARTH["mass_kg"], EARTH["radius_m"]
+    age = EARTH["age_yr"] * YEAR
+    lam_min = earth_bounds()["lambda_min_kg_m2"]
+    x_min = math.pi * lam_min * r * r / m
+    rows = []
+    for x in (x_min, 10.0, 1e3, 1e6):
+        lam = x * m / (math.pi * r * r)
+        rate = 4 * math.pi / 3 * G_NEWTON * lam
+        heat = 8 * math.pi ** 2 / 3 * G_NEWTON ** 2 * lam ** 2 * age * m
+        rows.append({"universal_over_local": x, "lambda_kg_m2": lam, "stopping_days_if_u_is_c": C_LIGHT / rate / 86400,
+                     "u_min_over_c": rate * age / C_LIGHT, "heat_excess": heat / EARTH["heat_flow_W"]})
+    return rows
+
+
+def sink_bounds() -> dict:
+    """Другой вариант того же механизма: давит не поток частиц, а среда, которую тела поглощают
+    (стоки в идеальной жидкости плотности ρ). Два стока Q_A, Q_B притягиваются силой
+    ρ·Q_A·Q_B/(4πd²) (теорема Лагалли), поэтому Q/m = √(4πG/ρ). Сток, движущийся со скоростью v,
+    поглощает неподвижную среду и тормозится: a = ρ·Q·v/m = √(4πGρ)·v. Орбита выживает за
+    время t при ρ ≤ 1/(4πG t²); тогда скорость втекания у поверхности Земли ≥ g·t."""
+    m, r = EARTH["mass_kg"], EARTH["radius_m"]
+    age = EARTH["age_yr"] * YEAR
+    rho_max = 1 / (4 * math.pi * G_NEWTON * age ** 2)
+    q_per_kg = math.sqrt(4 * math.pi * G_NEWTON / rho_max)
+    inflow = m * q_per_kg / (4 * math.pi * r * r)
+    g = G_NEWTON * m / r ** 2
+    return {
+        "rho_max_kg_m3": rho_max,
+        "inflow_speed_min_m_s": inflow,
+        "inflow_over_c": inflow / C_LIGHT,
+        "g_times_age_m_s": g * age,
+        "absorbed_mass_rate_per_kg_s": rho_max * q_per_kg,  # = 1/t: масса растёт в e раз за возраст Земли
+        "kinetic_power_per_kg_W": inflow ** 2 / (2 * age),
+    }
+
+
 def experiment() -> dict:
     s_values = [1e-4, 1e-3, 1e-2, 0.1]
     drag = [{"s": s, "K": drag_integral(s), "K_over_minus_s_3": drag_integral(s) / (-s / 3)} for s in s_values]
@@ -105,4 +158,7 @@ def experiment() -> dict:
         "drag": drag,
         "reemission": balance,
         "earth": earth_bounds(),
+        "big_and_small": big_and_small(),
+        "universal_over_local": universal_over_local(),
+        "sink_medium": sink_bounds(),
     }
