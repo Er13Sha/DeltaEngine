@@ -19,6 +19,8 @@ from pathlib import Path
 from typing import Any
 
 from delta_kernel import Tree
+from delta_science.bonds import compound_structure, main_bond, simple_substance
+from delta_science.smiles import parse_formula
 from delta_kernel.tree import Fork
 from delta_text.morph import name_pattern, normalize
 from delta_tools.bridge_matter import matter_tree_from_deltas
@@ -73,6 +75,8 @@ class KnowledgeBase:
             "matter": Tree.from_dict(matter_tree_from_deltas(_load(data_dir / "matter-deltas.json"))),
             "elements": Tree.from_dict(_load(data_dir / "trees" / "elements.json")),
             "bonds": Tree.from_dict(_load(data_dir / "trees" / "bonds.json")),
+            "particles": Tree.from_dict(_load(data_dir / "trees" / "particles.json")),
+            "substances": Tree.from_dict(_load(data_dir / "trees" / "substances.json")),
         }
         hand = Tree.from_dict(_load(data_dir / "trees" / "intent.json"))
         learned_intent = data_dir / "trees" / "intent.learned.json"
@@ -137,7 +141,12 @@ class KnowledgeBase:
                 self.concepts[key] = Concept(key, "class", label, names, tree=tree_id, node=node.id)
 
     def _load_terms(self, data: dict[str, Any]) -> None:
+        by_name = {normalize(n): c for c in self.concepts.values() if c.kind == "class" for n in c.names}
         for t in data["terms"]:
+            node = by_name.get(normalize(t["names"][0]))
+            if node is not None:  # термин уже есть как узел дерева: определение — к узлу
+                node.definition = t["definition"]
+                continue
             key = f"term:{t['id']}"
             self.concepts[key] = Concept(key, "term", t["names"][0], t["names"], definition=t["definition"])
 
@@ -167,6 +176,8 @@ class KnowledgeBase:
                         f"агрегатное состояние «{state}» в PubChem — ожидаемое, а не измеренное"
                     ]
             self.concepts[concept.key] = concept
+            bond = simple_substance(e["atomic_number"])
+            concept.records["substances"] = {"n_elements": 1, "bond": "none" if bond is None else bond.kind or "none"}
         for c in data["compounds"]:
             ru = [a for a in c["aliases"] if _CYRILLIC.search(a)]
             key = f"compound:{c['cid']}"
@@ -181,6 +192,10 @@ class KnowledgeBase:
                 smiles=smiles.get(c["cid"]),
                 phase=c.get("model", {}).get("phase"),
             )
+            if concept.smiles:
+                _, bonds = compound_structure(concept.smiles)
+                concept.records["substances"] = {"n_elements": len(parse_formula(c["formula"])),
+                                                 "bond": main_bond(bonds) or "none"}
             phase = concept.phase
             if phase in STATE_TRAITS:
                 concept.records["matter"] = dict(STATE_TRAITS[phase])
@@ -226,7 +241,14 @@ class KnowledgeBase:
             return phrases["true" if branch else "false"]
         fork = self.trees[tree_id].nodes[fork_id]
         assert isinstance(fork, Fork)
-        return fork.predicate.text if branch else f"не ({fork.predicate.text})"
+        text = fork.predicate.text
+        for attr, words in sorted(self.lexicon.get("attributes", {}).items(), key=lambda kv: -len(kv[0])):
+            text = re.sub(rf"\b{attr}\b", words, text)
+        # пороги индуктора — середины между целыми: «≤ 3/2» для целого числа значит «≤ 1»
+        text = re.sub(r"<= (-?\d+)/2\b", lambda m: f"≤ {int(m.group(1)) // 2}", text)
+        text = re.sub(r'== "([^"]*)"', r"= \1", text)
+        text = text.replace("<=", "≤").replace(">=", "≥").replace(" and ", " и ").replace("not ", "не ")
+        return text if branch else f"не ({text})"
 
     def genus(self, tree_id: str, node_id: str) -> tuple[str | None, list[tuple[str, bool]]]:
         """Ближайший несинтетический предок (род) и шаги от него до узла (видовые отличия)."""

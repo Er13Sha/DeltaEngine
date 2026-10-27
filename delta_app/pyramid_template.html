@@ -1,0 +1,245 @@
+<title>Пирамида дельт материи</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Пирамида: полосы уровней сужаются к вершине («Материя»), внутри — дерево вилок да / нет;
+   путь выбранного объекта подсвечен на каждом уровне, между полосами — правило «состоит из». */
+:root {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --fg: #18212b;
+  --muted: #5a6573;
+  --line: #d3d9e0;
+  --hit: #d9480f;
+  --hit-soft: #fde6dc;
+  --l0: #4c3f91;
+  --l1: #2b6cb0;
+  --l2: #0f7b7b;
+  --l3: #3d7a2e;
+  --l4: #9a6a00;
+  --l5: #a33d6a;
+  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11161c; --surface: #19212a; --fg: #e4e9ef; --muted: #98a3b0; --line: #2c3743;
+    --hit: #ff8a5c; --hit-soft: #3a2219;
+    --l0: #a99cf0; --l1: #7fb2ee; --l2: #5fc9c4; --l3: #8fcf74; --l4: #e2b648; --l5: #e88bb4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11161c; --surface: #19212a; --fg: #e4e9ef; --muted: #98a3b0; --line: #2c3743;
+  --hit: #ff8a5c; --hit-soft: #3a2219;
+  --l0: #a99cf0; --l1: #7fb2ee; --l2: #5fc9c4; --l3: #8fcf74; --l4: #e2b648; --l5: #e88bb4;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 1060px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+header { display: flex; flex-direction: column; gap: 10px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 4.2vw, 34px); line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+.lead { margin: 0; max-width: 68ch; color: var(--muted); }
+.picker { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.picker label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+select { font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); max-width: 100%; }
+select:focus-visible, .node:focus-visible { outline: 2px solid var(--hit); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.pyramid { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.band {
+  width: 100%; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--lvl);
+  border-radius: 10px; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0;
+}
+@media (min-width: 760px) {
+  .band[data-rank="0"] { width: 62%; } .band[data-rank="1"] { width: 70%; } .band[data-rank="2"] { width: 76%; }
+  .band[data-rank="3"] { width: 84%; } .band[data-rank="4"] { width: 92%; } .band[data-rank="5"] { width: 100%; }
+}
+.band h2 { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin: 0; color: var(--lvl); letter-spacing: 0.01em; }
+.band .doc { margin: 0; font-size: 13px; color: var(--muted); }
+.link { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 0; font-size: 13px; color: var(--muted); text-align: center; }
+.link .arrow { font-family: var(--font-mono); font-size: 16px; color: var(--muted); }
+.link .num { font-family: var(--font-mono); color: var(--hit); font-variant-numeric: tabular-nums; }
+.tree { overflow-x: auto; padding-bottom: 2px; }
+.tree ul { list-style: none; margin: 0; padding-left: 16px; border-left: 1px solid var(--line); }
+.tree > ul { padding-left: 0; border-left: none; }
+.tree li { margin: 3px 0; }
+.branch { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-right: 6px; }
+.node {
+  display: inline-flex; align-items: baseline; gap: 6px; padding: 2px 8px; border-radius: 6px; cursor: pointer;
+  border: 1px solid transparent; background: none; color: inherit; font: inherit; text-align: left;
+}
+.node.fork { color: var(--muted); font-size: 13px; }
+.node.leaf { font-weight: 600; }
+.node.hyp::after { content: "гипотеза"; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+.node.on { background: var(--hit-soft); border-color: var(--hit); color: var(--fg); }
+.node.end { background: var(--hit); color: var(--surface); border-color: var(--hit); }
+.node.end.hyp::after { color: var(--surface); border-color: var(--surface); }
+.node:hover { border-color: var(--line); }
+.detail { border-top: 1px dashed var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.detail .who { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.detail p { margin: 0; max-width: 78ch; }
+.chi { font-family: var(--font-mono); font-size: 13px; background: var(--bg); border-radius: 6px; padding: 6px 8px; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+.chi b { color: var(--hit); font-weight: 500; }
+footer { font-size: 13px; color: var(--muted); max-width: 78ch; }
+footer code { font-family: var(--font-mono); font-size: 12px; }
+@media (prefers-reduced-motion: no-preference) { .node { transition: background-color .15s, border-color .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Пирамида дельт материи</h1>
+    <p class="lead">Каждый уровень — дерево логических вилок «да / нет», проверенное ядром. Между уровнями — правило «состоит из». Выберите объект: его путь подсвечен сверху вниз, от материи до вещества, а у каждого узла есть функция-характеристика χ — условие, при котором объект попадает в этот узел.</p>
+    <div class="picker">
+      <label for="obj">Объект</label>
+      <select id="obj"></select>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background: var(--hit)"></i>узел объекта</span>
+      <span><i class="dot" style="background: var(--hit-soft); border: 1px solid var(--hit)"></i>путь к нему</span>
+      <span>«гипотеза» — вилка открыта индуктором и ещё не принята человеком</span>
+    </div>
+  </header>
+  <main class="pyramid" id="pyramid"></main>
+  <footer id="foot"></footer>
+</div>
+
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+(function () {
+  const DATA = JSON.parse(document.getElementById("data").textContent);
+  const COLORS = ["--l0", "--l1", "--l2", "--l3", "--l4", "--l5"];
+  const select = document.getElementById("obj");
+  const pyramid = document.getElementById("pyramid");
+  const groups = [["Химические элементы", DATA.objects.filter(o => o.kind === "element")],
+                  ["Вещества", DATA.objects.filter(o => o.kind === "compound")]];
+  for (const [title, items] of groups) {
+    const og = document.createElement("optgroup");
+    og.label = title;
+    for (const o of items) {
+      const opt = document.createElement("option");
+      opt.value = o.key; opt.textContent = o.title;
+      og.appendChild(opt);
+    }
+    select.appendChild(og);
+  }
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c])); }
+
+  function buildTree(level) {
+    const byParent = {};
+    for (const n of level.nodes) (byParent[n.parent || "_root"] ||= []).push(n);
+    const root = byParent._root[0];
+    function render(node, branchText) {
+      const li = document.createElement("li");
+      if (branchText) {
+        const b = document.createElement("span"); b.className = "branch"; b.textContent = branchText; li.appendChild(b);
+      }
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "node " + (node.leaf ? "leaf" : "fork") + (node.knowledge === "hypothesis" ? " hyp" : "");
+      btn.dataset.level = level.id; btn.dataset.node = node.id;
+      btn.textContent = node.leaf ? node.label
+        : (node.label && !node.synthetic ? `${node.label}: ${node.question}` : node.question);
+      btn.addEventListener("click", () => showNode(level, node));
+      li.appendChild(btn);
+      const kids = byParent[node.id] || [];
+      if (kids.length) {
+        const ul = document.createElement("ul");
+        for (const k of kids.sort((a, b) => (b.branch === true) - (a.branch === true))) {
+          ul.appendChild(render(k, k.branch ? "да" : "нет"));
+        }
+        li.appendChild(ul);
+      }
+      return li;
+    }
+    const ul = document.createElement("ul");
+    ul.appendChild(render(root, ""));
+    return ul;
+  }
+
+  const bands = {};
+  DATA.bands.forEach((band, i) => {
+    if (band.link) {
+      const link = document.createElement("div");
+      link.className = "link";
+      link.innerHTML = `<span class="arrow">↓</span><span>${esc(band.link)}</span><span class="num" data-link="${band.id}"></span>`;
+      pyramid.appendChild(link);
+    }
+    const sec = document.createElement("section");
+    sec.className = "band"; sec.dataset.rank = String(i);
+    sec.style.setProperty("--lvl", `var(${COLORS[i % COLORS.length]})`);
+    sec.setAttribute("aria-labelledby", `h-${band.id}`);
+    sec.innerHTML = `<h2 id="h-${band.id}">${esc(band.title)}</h2><p class="doc">${esc(band.doc)}</p>`;
+    if (band.level) {
+      const t = document.createElement("div"); t.className = "tree";
+      t.appendChild(buildTree(DATA.levels[band.level]));
+      sec.appendChild(t);
+    }
+    const detail = document.createElement("div"); detail.className = "detail";
+    sec.appendChild(detail);
+    pyramid.appendChild(sec);
+    bands[band.id] = {sec, detail, band};
+  });
+
+  function chiHtml(chi) {
+    return esc(chi).replace(/\b(and|not|or)\b/g, "<b>$1</b>");
+  }
+
+  function showNode(level, node) {
+    const band = Object.values(bands).find(b => b.band.level === level.id);
+    band.detail.innerHTML = `<span class="who">Узел «${esc(node.label)}»</span>` +
+      `<p>Функция-характеристика: χ = 1, когда выполнено</p><div class="chi">${chiHtml(node.chi)}</div>` +
+      (node.leaf ? "" : `<p>Вилка: <span class="chi">${esc(node.predicate)}</span></p>`);
+  }
+
+  function ancestors(level, id) {
+    const map = Object.fromEntries(level.nodes.map(n => [n.id, n]));
+    const out = [];
+    for (let cur = map[id]; cur; cur = map[cur.parent]) out.push(cur.id);
+    return out;
+  }
+
+  function showObject(key) {
+    const obj = DATA.objects.find(o => o.key === key);
+    document.querySelectorAll(".node").forEach(el => el.classList.remove("on", "end"));
+    for (const {band, detail} of Object.values(bands)) {
+      const step = obj.steps[band.id];
+      detail.innerHTML = step
+        ? `<span class="who">${esc(obj.title)} на этом уровне</span>` + step.lines.map(l => `<p>${esc(l)}</p>`).join("") +
+          (step.chi ? `<div class="chi">χ = ${chiHtml(step.chi)}</div>` : "")
+        : `<span class="who">${esc(obj.title)}</span><p>На этом уровне данных нет.</p>`;
+      const level = band.level && DATA.levels[band.level];
+      if (level && step) {
+        for (const target of step.nodes) {
+          ancestors(level, target).forEach((id, i) => {
+            const el = document.querySelector(`.node[data-level="${level.id}"][data-node="${CSS.escape(id)}"]`);
+            if (el) el.classList.add(i === 0 ? "end" : "on");
+          });
+        }
+      }
+    }
+    document.querySelectorAll("[data-link]").forEach(el => { el.textContent = (obj.links && obj.links[el.dataset.link]) || ""; });
+    try { localStorage.setItem("pyramid-object", key); } catch (e) {}
+  }
+
+  select.addEventListener("change", () => showObject(select.value));
+  let start = DATA.default;
+  try { const saved = localStorage.getItem("pyramid-object"); if (saved && DATA.objects.some(o => o.key === saved)) start = saved; } catch (e) {}
+  select.value = start;
+  showObject(start);
+
+  document.getElementById("foot").innerHTML =
+    `Сгенерировано из деревьев ядра: ${DATA.levelsList.map(l => `<code>${esc(l.id)}</code> ${esc(l.hash.slice(7, 19))}`).join(", ")}. ` +
+    `Константы частиц: ${esc(DATA.constants.source)}. Классы атомов выведены из заряда ядра Z; совпадение с классами PubChem: ${esc(DATA.atomsCheck)}.`;
+})();
+</script>

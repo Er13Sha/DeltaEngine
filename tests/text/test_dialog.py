@@ -49,7 +49,7 @@ class DialogTests(unittest.TestCase):
         self.assertEqual(r.status, "proven")
         self.assertIn("щелочной металл", r.text)
         self.assertIn("твёрдое вещество", r.text)
-        self.assertEqual([c["status"] for c in r.certificates if "status" in c], ["proven"] * 3)
+        self.assertEqual([c["status"] for c in r.certificates if "status" in c], ["proven"] * 4)
 
     def test_difference_of_classes_uses_separating_fork(self):
         r = respond("Чем жидкость отличается от газа?", hand())
@@ -224,3 +224,16 @@ class ScienceDialogTests(unittest.TestCase):
         self.assertIn("притягивать к себе общие электронные пары", respond("Что такое электроотрицательность?").text)
         r = respond("Чем ионная связь отличается от ковалентной?")
         self.assertIn("ионная связь — между ионами", r.text)
+
+
+class UnfoldDialogTests(unittest.TestCase):
+    def test_unfold_question(self):
+        r = respond("Из чего состоит натрий?")
+        self.assertIn("Развёртка «натрий»", r.text)
+        self.assertIn("энергия связи ядра 186,564 МэВ", r.text)
+        self.assertIn("χ = both_metals", r.text)
+
+    def test_define_class_shows_characteristic_and_definition(self):
+        r = respond("Что такое протон?")
+        self.assertIn("χ = mass_u > 1/2 and not charge == 0", r.text)
+        self.assertIn("Определение по учебнику", r.text)

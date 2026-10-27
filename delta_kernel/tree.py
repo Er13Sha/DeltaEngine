@@ -209,6 +209,16 @@ class Tree:
             current = self.parent[fork_id]
         return tuple(reversed(steps))
 
+    def characteristic(self, node_id: str) -> Predicate:
+        """Функция-характеристика узла χ (спецификация, раздел 5): конъюнкция вилок пути.
+
+        χ_b(x) = ∏ b_i·δ_i(x) + (1 − b_i)·(1 − δ_i(x)) — в DSL это `δ_1 and not δ_2 and …`.
+        Для корня χ ≡ true. Ядро компилирует χ как обычный предикат, поэтому её можно
+        вычислить на записи и сверить с проходом по дереву.
+        """
+        parts = [f"({s.predicate})" if s.branch else f"not ({s.predicate})" for s in self.path_to(node_id)]
+        return self.language.compile(" and ".join(parts) if parts else "true")
+
     def separating_fork(self, a: str, b: str) -> tuple[Step, Step] | None:
         """Вилка, на которой расходятся пути к узлам a и b (их ближайший общий предок).
 

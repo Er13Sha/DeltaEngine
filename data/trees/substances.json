@@ -1,0 +1,44 @@
+{
+  "format": "delta-tree@0.1",
+  "id": "substances",
+  "version": "0.1.0",
+  "schema": {
+    "name": "Substance",
+    "version": "0.1.0",
+    "attributes": [
+      {"name": "n_elements", "type": {"kind": "int"}, "doc": "Число разных химических элементов в составе"},
+      {"name": "bond", "type": {"kind": "enum", "values": ["metallic", "ionic", "covalent_polar", "covalent_nonpolar", "none"]},
+       "doc": "Главный тип связи (дерево химической связи); none — отдельные атомы"}
+    ]
+  },
+  "root": {
+    "id": "substance.simple",
+    "label": "Вещество (по составу и строению)",
+    "predicate": "n_elements == 1",
+    "evidence": [{"source": "textbook", "doc": "Химия 8 кл.: простые вещества состоят из атомов одного элемента, сложные — разных"}],
+    "true": {
+      "id": "simple.metal",
+      "label": "Простое вещество",
+      "predicate": "bond == \"metallic\"",
+      "evidence": [{"source": "textbook", "doc": "Химия 8 кл.: простые вещества делят на металлы и неметаллы"}],
+      "true": {"id": "MetalSubstance", "label": "Простое вещество — металл"},
+      "false": {
+        "id": "simple.atomic",
+        "label": "Простое вещество — неметалл (в широком смысле)",
+        "synthetic": true,
+        "predicate": "bond == \"none\"",
+        "evidence": [{"source": "textbook", "doc": "Химия 8 кл.: благородные газы состоят из отдельных атомов"}],
+        "true": {"id": "AtomicSubstance", "label": "Простое вещество из отдельных атомов"},
+        "false": {"id": "NonmetalSubstance", "label": "Простое вещество — неметалл"}
+      }
+    },
+    "false": {
+      "id": "compound.ionic",
+      "label": "Сложное вещество",
+      "predicate": "bond == \"ionic\"",
+      "evidence": [{"source": "textbook", "doc": "Химия 8 кл.: вещества ионного и ковалентного строения"}],
+      "true": {"id": "IonicSubstance", "label": "Вещество ионного строения"},
+      "false": {"id": "CovalentSubstance", "label": "Вещество ковалентного строения"}
+    }
+  }
+}

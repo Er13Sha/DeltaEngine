@@ -22,12 +22,14 @@ from delta_science.bonds import ORDER_NAMES, compound_structure, fmt, simple_sub
 from delta_science.causes import (BOND_NAMES, SubstanceRecord, attributes_of, class_record, compound_record,
                                   element_record, evaluate)
 from delta_science.causes import rules as causal_rules
+from delta_science.pyramid import unfold_compound, unfold_element
 from delta_science.smiles import SmilesError
 from delta_text.knowledge import Concept, KnowledgeBase
 from delta_text.morph import SERVICE_POS, normalize, parses
 
 TREE_TITLES = {"matter": "дерево материи", "elements": "дерево химических элементов",
-               "bonds": "дерево химической связи"}
+               "bonds": "дерево химической связи", "particles": "дерево элементарных частиц",
+               "substances": "дерево веществ"}
 TERMS_CAVEAT = "определение термина сформулировано по школьным учебникам и ещё не проверено человеком"
 
 
@@ -55,6 +57,10 @@ def execute(intent: str, keys: list[str], kb: KnowledgeBase, lemmas: frozenset[s
         raise NotApplicable("для терминов могу дать только определения")
     if intent == "WHY":
         return _why(concepts, kb, lemmas)
+    if intent == "UNFOLD":
+        if len(concepts) != 1 or concepts[0].kind != "instance":
+            raise NotApplicable("развёртку от частиц до вещества могу построить для одного элемента или вещества")
+        return _unfold(concepts[0])
     if intent == "DEFINE":
         if len(concepts) != 1:
             raise NotApplicable("для вопроса «что это» нужно одно понятие")
@@ -100,9 +106,14 @@ def _define(c: Concept, kb: KnowledgeBase) -> TaskResult:
         parts = [_division_part(kb, c.tree, node, branch) for branch in (True, False)]
         lines.append(f"Делится на: {parts[0]} и {parts[1]}.")
     lines.append(_path_line(kb, c.tree, c.node))
+    lines.append(f"Функция-характеристика: χ = {tree.characteristic(c.node).text}")
+    caveats = []
+    if c.definition:
+        lines.append(f"Определение по учебнику: {c.definition}.")
+        caveats.append(TERMS_CAVEAT)
     lines += wiki_lines(kb, c.name, *c.names, c.label)
     cert = _structural_certificate(kb, c)
-    return TaskResult(lines, f"что такое «{c.name}»", True, certificates=[cert],
+    return TaskResult(lines, f"что такое «{c.name}»", True, caveats, certificates=[cert],
                       plan=["найти узел понятия в дереве", "взять род и видовое отличие", "описать деление узла"])
 
 
@@ -149,6 +160,37 @@ def _define_terms(terms: list[Concept], kb: KnowledgeBase) -> TaskResult:
         lines += wiki_lines(kb, *t.names)
     names = " и ".join(f"«{t.name}»" for t in terms)
     return TaskResult(lines, f"что такое {names}", True, [TERMS_CAVEAT], plan=["взять определение термина"])
+
+
+# ---------------------------------------------------------------- развёртка
+
+
+def _unfold(c: Concept) -> TaskResult:
+    """Пирамида от элементарных частиц до агрегатного состояния (delta_science.pyramid)."""
+    if c.z is not None:
+        steps = unfold_element(c.z)
+    elif c.smiles:
+        steps = unfold_compound(c.smiles, parse_formula_hill(c.smiles), c.phase)
+    else:
+        raise NotApplicable(f"для «{c.name}» нет данных о строении")
+    lines = [f"Развёртка «{c.name}» по пирамиде уровней, сверху вниз:"]
+    proven = True
+    for i, step in enumerate(steps, 1):
+        lines.append(f"{i}. {step.title}: " + " ".join(step.lines))
+        if step.characteristic:
+            lines.append(f"   χ = {step.characteristic}")
+        proven = proven and step.proven
+    caveats = [] if proven else ["часть шагов опирается на вилки индуктора или непроверенные данные (отмечено в шагах)"]
+    return TaskResult(lines, f"из чего и как построено «{c.name}»", True, caveats,
+                      plan=["частицы", "ядро", "атом", "связь", "вещество", "состояние"])
+
+
+def parse_formula_hill(smiles: str) -> str:
+    """Формула по графу SMILES (для развёртки соединения)."""
+    from delta_science.smiles import parse
+
+    counts = parse(smiles).formula()
+    return "".join(f"{el}{n if n > 1 else ''}" for el, n in sorted(counts.items()))
 
 
 # ---------------------------------------------------------------- строение
@@ -248,7 +290,7 @@ def _classify_only(c: Concept, kb: KnowledgeBase) -> TaskResult:
 
 
 def _add_classifications(c: Concept, kb: KnowledgeBase, result: TaskResult) -> None:
-    for tree_id in ("elements", "matter"):
+    for tree_id in ("elements", "matter", "substances"):
         if tree_id not in c.records:
             continue
         tree = kb.trees[tree_id]
@@ -268,7 +310,8 @@ def _add_classifications(c: Concept, kb: KnowledgeBase, result: TaskResult) -> N
 
 
 def _tree_prefix(tree_id: str) -> str:
-    return {"elements": "Класс элемента", "matter": "Агрегатное состояние при стандартных условиях"}[tree_id]
+    return {"elements": "Класс элемента", "matter": "Агрегатное состояние при стандартных условиях",
+            "substances": "Вещество по составу и строению"}[tree_id]
 
 
 # ---------------------------------------------------------------- принадлежность

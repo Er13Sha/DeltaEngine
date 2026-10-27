@@ -1,0 +1,29 @@
+{
+  "format": "delta-tree@0.1",
+  "id": "particles",
+  "version": "0.1.0",
+  "schema": {
+    "name": "Particle",
+    "version": "0.1.0",
+    "attributes": [
+      {"name": "charge", "type": {"kind": "int"}, "doc": "Электрический заряд в элементарных зарядах e"},
+      {"name": "mass_u", "type": {"kind": "rat"}, "doc": "Масса покоя в атомных единицах массы (CODATA 2018)"}
+    ]
+  },
+  "root": {
+    "id": "particle.heavy",
+    "label": "Элементарная частица",
+    "predicate": "mass_u > 1/2",
+    "evidence": [{"source": "CODATA 2018",
+                  "doc": "Модель школьного курса: протон, нейтрон, электрон; кварки и другие частицы не рассматриваются. Масса нуклонов ≈ 1 а. е. м., электрона ≈ 0,00055 а. е. м."}],
+    "true": {
+      "id": "particle.neutral",
+      "label": "Нуклон",
+      "predicate": "charge == 0",
+      "evidence": [{"source": "CODATA 2018", "doc": "заряд протона +1 e, нейтрона 0"}],
+      "true": {"id": "Neutron", "label": "Нейтрон"},
+      "false": {"id": "Proton", "label": "Протон"}
+    },
+    "false": {"id": "Electron", "label": "Электрон"}
+  }
+}
