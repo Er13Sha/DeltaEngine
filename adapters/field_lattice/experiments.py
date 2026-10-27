@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and not {"--scan", "--screening"} & set(sys.argv):
+if __name__ == "__main__" and not {"--scan", "--screening", "--drag"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -340,3 +340,13 @@ if __name__ == "__main__" and "--screening" in sys.argv:
     (OUT / "screening.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("экранирование: показатель", round(result["distance_law"]["exponent"], 4),
           "контроль", result["negative_control_single_body_force"])
+
+
+if __name__ == "__main__" and "--drag" in sys.argv:
+    from adapters.field_lattice.drag import experiment as drag_experiment
+
+    result = {"protocol_hash": protocol_hash(), **drag_experiment()}
+    (OUT / "drag.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    earth = result["earth"]
+    print("торможение и нагрев: u ≥", f"{earth['u_min_over_c']:.2e}", "c; нагрев Земли ≥",
+          f"{earth['earth_heat_min_W']:.2e}", "Вт")

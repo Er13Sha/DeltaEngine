@@ -1,0 +1,99 @@
+{
+ "protocol_hash": "sha256:b67b4f09eeeb8075e1f143de8a916af3a534538b72b354a4fe4261eb156c6cf4",
+ "family": "D",
+ "check": "C6",
+ "scope": "model",
+ "method": "квадратура Гаусса—Лежандра; носители нерелятивистские; оценки в плавающей точке",
+ "negative_control_at_rest": -1.0191500421363742e-17,
+ "drag": [
+  {
+   "s": 0.0001,
+   "K": -3.333333326667562e-05,
+   "K_over_minus_s_3": 0.9999999980002686
+  },
+  {
+   "s": 0.001,
+   "K": -0.00033333326666667757,
+   "K_over_minus_s_3": 0.9999998000000327
+  },
+  {
+   "s": 0.01,
+   "K": -0.0033332666666666655,
+   "K_over_minus_s_3": 0.9999799999999996
+  },
+  {
+   "s": 0.1,
+   "K": -0.03326666666666656,
+   "K_over_minus_s_3": 0.9979999999999969
+  }
+ ],
+ "reemission": [
+  {
+   "mu": 0.01,
+   "beta": 0.0,
+   "shadow": 7.50160041715448e-07,
+   "shadow_over_formula": 0.9999122001110056,
+   "reemission_push": 0.0,
+   "net_over_shadow": 1.0
+  },
+  {
+   "mu": 0.01,
+   "beta": 0.5,
+   "shadow": 7.50160041715448e-07,
+   "shadow_over_formula": 0.9999122001110056,
+   "reemission_push": 3.7511295573359777e-07,
+   "net_over_shadow": 0.4999560962007541
+  },
+  {
+   "mu": 0.01,
+   "beta": 1.0,
+   "shadow": 7.50160041715448e-07,
+   "shadow_over_formula": 0.9999122001110056,
+   "reemission_push": 7.502259114671955e-07,
+   "net_over_shadow": -8.780759849178968e-05
+  },
+  {
+   "mu": 1.0,
+   "beta": 0.0,
+   "shadow": 0.0021167454752759867,
+   "shadow_over_formula": 0.9998490163488115,
+   "reemission_push": 0.0,
+   "net_over_shadow": 1.0
+  },
+  {
+   "mu": 1.0,
+   "beta": 0.5,
+   "shadow": 0.0021167454752759867,
+   "shadow_over_formula": 0.9998490163488115,
+   "reemission_push": 0.0010585325587486151,
+   "net_over_shadow": 0.4999244967746531
+  },
+  {
+   "mu": 1.0,
+   "beta": 1.0,
+   "shadow": 0.0021167454752759867,
+   "shadow_over_formula": 0.9998490163488115,
+   "reemission_push": 0.0021170651174972303,
+   "net_over_shadow": -0.00015100645069378706
+  }
+ ],
+ "earth": {
+  "assumptions": "μ·2R ≤ 1 (Земля не непрозрачна для потока), орбита не затухла за 4,54 млрд лет (допуск Δv ≤ v); носители поглощаются",
+  "earth_mean_density_kg_m3": 5513.443375519388,
+  "lambda_min_kg_m2": 70252295490.86804,
+  "if_u_is_c": {
+   "stopping_time_s": 15263911.896170542,
+   "stopping_time_days": 176.6656469464183,
+   "heat_per_kg_W": 8832157688.51136,
+   "mass_doubling_days": 117.77709796427885
+  },
+  "u_min_m_s": 2.813938958616021e+18,
+  "u_min_over_c": 9386290026.735832,
+  "heat_per_kg_min_W": 8.290119362623237e+19,
+  "earth_heat_min_W": 4.95102508574585e+44,
+  "mass_doubling_time_min_s": 0.0010841281523507823,
+  "earth_heat_observed_W": 47000000000000.0,
+  "excess": 1.053409592711883e+31,
+  "equilibrium_surface_temperature_K": 2034063838.4714184
+ }
+}

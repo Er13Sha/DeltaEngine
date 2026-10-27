@@ -191,6 +191,12 @@ def build() -> dict[str, Any]:
         "Одноимённые в потоке притягиваются, только если G·m² > k·q²; у протонов отталкивание сильнее в "
         f"{screening['like_charges']['real_world']['proton_pair_coulomb_over_gravity']:.2e} раз.",
     ]
+    earth = json.loads((ROOT / "data" / "experiments" / "field" / "drag.json").read_text(encoding="utf-8"))["earth"]
+    field_note.append(
+        f"Проверка C6 отклонила D как механизм тяготения: при носителях со скоростью света Земля остановилась бы "
+        f"на орбите за {earth['if_u_is_c']['stopping_time_days']:.0f} суток, а чтобы орбита выжила, нагрев "
+        f"должен превышать наблюдаемый в {earth['excess']:.0e} раз; упругое переизлучение убирает само притяжение."
+    )
     for band in BANDS:
         if band["id"] == "field":
             band["note"] = field_note

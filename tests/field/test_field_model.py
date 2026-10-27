@@ -126,3 +126,32 @@ class ScreeningTests(unittest.TestCase):
         saved = json.loads((FIELD / "screening.json").read_text(encoding="utf-8"))
         dense = [row["ratio"] for row in saved["video_formula"]["rows"] if row["mu"] == 10.0]
         self.assertTrue(all(r < 0.01 for r in dense))
+
+
+class DragTests(unittest.TestCase):
+    """Проверка C6: торможение и нагрев тела в потоке семейства D."""
+
+    def test_body_at_rest_feels_no_drag(self):
+        from adapters.field_lattice.drag import drag_integral
+
+        self.assertLess(abs(drag_integral(0.0)), 1e-15)
+
+    def test_drag_is_one_third_of_speed_ratio(self):
+        from adapters.field_lattice.drag import drag_integral
+
+        for s in (1e-4, 1e-3, 1e-2):
+            self.assertAlmostEqual(drag_integral(s) / (-s / 3), 1.0, delta=1e-4)
+
+    def test_elastic_reemission_cancels_attraction(self):
+        saved = json.loads((FIELD / "drag.json").read_text(encoding="utf-8"))
+        for row in saved["reemission"]:
+            self.assertAlmostEqual(row["shadow_over_formula"], 1.0, delta=0.005)
+            self.assertAlmostEqual(row["net_over_shadow"], 1 - row["beta"], delta=0.005)
+
+    def test_earth_bounds_are_fatal(self):
+        from adapters.field_lattice.drag import earth_bounds
+
+        earth = earth_bounds()
+        self.assertGreater(earth["u_min_over_c"], 1e9)
+        self.assertGreater(earth["excess"], 1e30)
+        self.assertLess(earth["if_u_is_c"]["stopping_time_days"], 365)
