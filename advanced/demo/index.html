@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1018">
+  <title>Атлас полей · 3D-демонстрация</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%236ce4ce' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='6' fill='%236ce4ce'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./src/styles.css">
+  <script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">◉</span><span>АТЛАС ПОЛЕЙ<small>ПРОСТРАНСТВО / МАТЕРИЯ / ДВИЖЕНИЕ</small></span></a>
+    <span class="model-badge"><i></i>Концептуальная модель</span>
+    <button class="text-button" id="fullscreen" title="Полноэкранный режим">Развернуть ⛶</button>
+  </header>
+  <main class="workspace">
+    <aside class="navigation">
+      <div class="eyebrow">ИНТЕРАКТИВНОЕ ИССЛЕДОВАНИЕ</div>
+      <h1>От пространства<br>к материи<span>.</span></h1>
+      <p class="intro">Четыре взгляда на схему из исходных текстов.</p>
+      <nav class="chapters" aria-label="Сцены модели">
+        <button class="chapter active" data-scene="layers" aria-pressed="true"><span class="chapter-index">01</span><span><strong>Слои пространства</strong><small>Кластеры и эфирная прослойка</small></span><b>↗</b></button>
+        <button class="chapter" data-scene="atom" aria-pressed="false"><span class="chapter-index">02</span><span><strong>От поля к атому</strong><small>Потоки и сборка структуры</small></span><b>↗</b></button>
+        <button class="chapter" data-scene="gravity" aria-pressed="false"><span class="chapter-index">03</span><span><strong>Гравитационные поля</strong><small>Внутреннее и внешнее поле</small></span><b>↗</b></button>
+        <button class="chapter" data-scene="speeds" aria-pressed="false"><span class="chapter-index">04</span><span><strong>Распространение</strong><small>Сравнение скоростей</small></span><b>↗</b></button>
+      </nav>
+      <div class="sidebar-footer"><span class="tiny-orbit">◎</span><p>Геометрия и масштаб условны.<br>Это визуализация текста,<br>не физический расчёт.</p></div>
+    </aside>
+    <section class="stage" aria-label="Трёхмерная модель">
+      <div class="stage-heading"><div><span class="eyebrow" id="scene-kicker">01 / АРХИТЕКТУРА ПРОСТРАНСТВА</span><h2 id="scene-title">Вложенные миры</h2></div><span class="live-status" id="status">Загрузка…</span></div>
+      <div id="viewport"><div id="labels" aria-hidden="true"></div></div>
+      <div id="failure" class="failure" hidden></div>
+      <div class="stage-tools"><button id="reset" title="Вернуть исходный ракурс" aria-label="Вернуть исходный ракурс">⌖</button><button id="capture" title="Сохранить PNG" aria-label="Сохранить PNG">↓</button></div>
+      <div class="scene-caption" id="scene-caption">Шесть эфирных слоёв между двумя кластерами</div>
+      <div class="transport"><button id="pause" class="pause" aria-label="Приостановить анимацию">Ⅱ</button><div class="speed-control"><label for="speed">Темп <output id="speed-value">1×</output></label><input type="range" id="speed" min="0.1" max="2" step="0.1" value="1"></div><span class="transport-divider"></span><label class="toggle"><input type="checkbox" id="rotate">Автообзор</label><button id="restart" class="text-button">Сначала ↺</button></div>
+      <p class="gestures">Вращайте мышью · Колесо — масштаб · Правая кнопка — сдвиг</p>
+    </section>
+    <aside class="inspector">
+      <span class="eyebrow">ПАРАМЕТРЫ СЦЕНЫ</span>
+      <div id="scene-controls"></div>
+      <div class="info-card" aria-live="polite"><span class="info-tag" id="info-tag"></span><h3 id="info-title"></h3><p id="info-text"></p><div id="info-metrics"></div><p class="source" id="info-source"></p></div>
+      <div class="note"><span>i</span><p>Числа взяты из текстов. Сферические оболочки, траектории и цвета выбраны для наглядности.</p></div>
+    </aside>
+  </main>
+  <footer class="bottom-bar"><span>DEMONSTRATION 01 <b>/</b> THREE.JS</span><span id="bottom-note">Выберите слой, чтобы узнать его роль</span></footer>
+  <script type="module">
+    import('./src/main.js').catch(error => {
+      document.querySelector('#status').textContent = 'Не удалось загрузить';
+      const box = document.querySelector('#failure');
+      box.hidden = false;
+      box.textContent = 'Не удалось запустить 3D. Откройте демонстрацию через локальный сервер: npm install, затем npm start. Подробности: ' + error.message;
+    });
+  </script>
+</body>
+</html>
