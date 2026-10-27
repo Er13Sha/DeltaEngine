@@ -1,0 +1,14 @@
+{
+  "id": "E-COMP-v2-campaign",
+  "protocol_id": "E-COMP-v2",
+  "simulation_started": true,
+  "scope": "model",
+  "empirical_status_changed": false,
+  "stage_A_passed": true,
+  "stage_B_passed": false,
+  "stage_B_status": "evaluated",
+  "found_particle": false,
+  "report": "docs/external-compression-v2-result.md",
+  "stage_a": "data/experiments/field/external_compression_v2/stage_a.json",
+  "stage_b": "data/experiments/field/external_compression_v2/stage_b.json"
+}
