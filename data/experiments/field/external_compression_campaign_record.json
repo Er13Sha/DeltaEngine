@@ -1,0 +1,22 @@
+{
+  "id": "E-COMP-v1-campaign",
+  "protocol_id": "E-COMP-v1",
+  "protocol_sha256": "fe0fa6c04209092e91fb0b53514878c8045dc4499939456b1510147032c860f8",
+  "code_sha256": "bbe168748f63e6d4239739e16dbfe19e253e9bdbe75727edda4f4d6398c55236",
+  "acceptance": "data/experiments/field/external_compression_protocol_v1.acceptance.json",
+  "simulation_started": true,
+  "p0_passed": true,
+  "campaign_runs": 27,
+  "candidate_count": 0,
+  "p2_executed": false,
+  "finite_environment_expanded": true,
+  "convergence_passed": true,
+  "timestep_passed": true,
+  "found_particle": false,
+  "refutes_general_scheme": false,
+  "empirical_status_changed": false,
+  "scope": "model",
+  "summary": "data/experiments/field/external_compression_v1/summary.json",
+  "report": "docs/external-compression-v1-result.md",
+  "decision": "P0 пройден. P1 не дал удержания: минимальная модель парного отталкивания не сохраняет размер локальной группы в проверенных условиях. Конечное окружение существенно расширяется, поэтому результат не опровергает схему бесконечного окружения и не объявляет частицу. P2 не запускалась."
+}
