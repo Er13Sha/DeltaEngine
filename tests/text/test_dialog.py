@@ -169,15 +169,20 @@ class WhyTests(unittest.TestCase):
         r = respond("почему хлор металл?")
         self.assertTrue(r.text.startswith("Посылка вопроса неверна."))
 
-    def test_why_property_is_a_definition_not_a_cause(self):
+    def test_why_property_has_causal_mechanism(self):
         r = respond("Почему газ не сохраняет объём?")
-        self.assertEqual(r.status, "proven")
-        self.assertIn("вилкой «не сохраняет объём»", r.text)
-        self.assertIn("причинных знаний", r.text)
+        self.assertIn("gas.fills_volume", r.text)
+        self.assertIn("притяжение между ними очень слабое", r.text)
 
-    def test_why_property_of_instance_through_concept_name(self):
+    def test_why_property_of_instance_through_state(self):
         r = respond("почему натрий твёрдый?")
-        self.assertIn("сохраняет форму («твёрдое вещество»)", r.text)
+        self.assertIn("solid.keeps_shape", r.text)
+        self.assertIn("«Solid»", r.text)
+
+    def test_why_falls_back_to_definition_without_causal_rule(self):
+        r = respond("Почему плазма ионизирована?")
+        self.assertIn("вилкой «ионизирован»", r.text)
+        self.assertIn("причинных знаний", r.text)
 
     def test_why_without_known_property_is_declined(self):
         r = respond("почему вода мокрая?")
@@ -188,3 +193,34 @@ class WhyTests(unittest.TestCase):
         r = respond("Как отличить жидкость от газа?")
         self.assertEqual(r.status, "proven")
         self.assertIn("газ — не сохраняет объём", r.text)
+
+
+class ScienceDialogTests(unittest.TestCase):
+    """Строение веществ, термины и причинные правила учебника в ответах."""
+
+    def test_define_element_shows_atom_structure(self):
+        r = respond("Что такое натрий?")
+        self.assertIn("11 протонов и 12 нейтронов", r.text)
+        self.assertIn("по слоям 2, 8, 1", r.text)
+        self.assertIn("металлическая связь", r.text)
+
+    def test_define_compound_shows_bond_graph(self):
+        r = respond("Что такое вода?")
+        self.assertIn("H–O ×2 (2 одинарные) — ковалентная полярная связь, ΔЭО 1,24", r.text)
+
+    def test_why_causal_rule_with_chain(self):
+        r = respond("Почему натрий проводит ток?")
+        self.assertIn("Механизм:", r.text)
+        self.assertIn("металлическая связь", r.text)
+        self.assertIn("metal.conducts", r.text)
+        self.assertEqual(r.status, "assumed")  # правило ещё не проверено человеком
+
+    def test_why_rule_not_applicable_makes_no_claim(self):
+        r = respond("Почему хлор проводит ток?")
+        self.assertEqual(r.status, "unknown")
+        self.assertIn("вывода в ту или другую сторону я не делаю", r.text)
+
+    def test_terms_and_bond_classes(self):
+        self.assertIn("притягивать к себе общие электронные пары", respond("Что такое электроотрицательность?").text)
+        r = respond("Чем ионная связь отличается от ковалентной?")
+        self.assertIn("ионная связь — между ионами", r.text)

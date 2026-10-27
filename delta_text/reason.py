@@ -14,10 +14,21 @@ from typing import Any
 
 from delta_kernel import PROVEN, digest
 from delta_kernel.tree import Fork
+from fractions import Fraction
+
+from delta_science.atoms import elements, format_configuration
+from delta_science.atoms import structure as atom_structure
+from delta_science.bonds import ORDER_NAMES, compound_structure, fmt, simple_substance
+from delta_science.causes import (BOND_NAMES, SubstanceRecord, attributes_of, class_record, compound_record,
+                                  element_record, evaluate)
+from delta_science.causes import rules as causal_rules
+from delta_science.smiles import SmilesError
 from delta_text.knowledge import Concept, KnowledgeBase
 from delta_text.morph import SERVICE_POS, normalize, parses
 
-TREE_TITLES = {"matter": "дерево материи", "elements": "дерево химических элементов"}
+TREE_TITLES = {"matter": "дерево материи", "elements": "дерево химических элементов",
+               "bonds": "дерево химической связи"}
+TERMS_CAVEAT = "определение термина сформулировано по школьным учебникам и ещё не проверено человеком"
 
 
 class NotApplicable(Exception):
@@ -37,6 +48,11 @@ class TaskResult:
 def execute(intent: str, keys: list[str], kb: KnowledgeBase, lemmas: frozenset[str] = frozenset()) -> TaskResult:
     """lemmas — леммы вопроса: нужны «почему», чтобы найти признак, о котором спрашивают."""
     concepts = [kb.concepts[k] for k in keys]
+    terms = [c for c in concepts if c.kind == "term"]
+    if terms:
+        if intent in ("DEFINE", "DIFFERENCE", "CLASSIFY") and len(terms) == len(concepts):
+            return _define_terms(terms, kb)
+        raise NotApplicable("для терминов могу дать только определения")
     if intent == "WHY":
         return _why(concepts, kb, lemmas)
     if intent == "DEFINE":
@@ -122,8 +138,97 @@ def _describe_instance(c: Concept, kb: KnowledgeBase, restatement: str) -> TaskR
     lines = [f"«{_cap(c.name)}» — {c.category}; {facts}."]
     result = TaskResult(lines, restatement, True, plan=["взять данные объекта из источника"])
     _add_classifications(c, kb, result)
+    result.lines += structure_lines(c)
     result.lines += wiki_lines(kb, *c.names)
     return result
+
+
+def _define_terms(terms: list[Concept], kb: KnowledgeBase) -> TaskResult:
+    lines = [f"«{_cap(t.name)}» — {t.definition}." for t in terms]
+    for t in terms:
+        lines += wiki_lines(kb, *t.names)
+    names = " и ".join(f"«{t.name}»" for t in terms)
+    return TaskResult(lines, f"что такое {names}", True, [TERMS_CAVEAT], plan=["взять определение термина"])
+
+
+# ---------------------------------------------------------------- строение
+
+
+def structure_lines(c: Concept) -> list[str]:
+    """Строение атома и простого вещества (элемент) или граф связей (соединение)."""
+    if c.z is not None:
+        return _atom_lines(c.z)
+    if c.smiles:
+        return _compound_lines(c.smiles)
+    return []
+
+
+def _atom_lines(z: int) -> list[str]:
+    e = elements()[z]
+    s = atom_structure(z)
+    group = f"группа {s.group}" if s.group else "f-элемент"
+    lines = [
+        f"Строение атома: ядро — {plural(s.protons, 'протон')} и {plural(s.neutrons, 'нейтрон')} (школьное правило: "
+        f"округлённая атомная масса {round(e.atomic_mass)} минус {z}); {plural(s.electrons, 'электрон')} по слоям "
+        f"{', '.join(map(str, s.shells))}: {format_configuration(s.configuration)}. На внешнем слое "
+        f"{plural(s.outer_electrons, 'электрон')}{' (слой завершён)' if s.outer_full else ''}; период {s.period}, {group}.",
+    ]
+    if s.anomaly or s.notes:
+        lines.append("Особенность: " + "; ".join(s.notes) + ".")
+    props = [("электроотрицательность", e.electronegativity, ""), ("энергия ионизации", e.ionization_energy, " эВ"),
+             ("радиус атома", e.atomic_radius, " пм"), ("температура плавления", e.melting_point, " K"),
+             ("температура кипения", e.boiling_point, " K"), ("плотность", e.density, " г/см³")]
+    known = [f"{name} {fmt(v, 3)}{unit}" for name, v, unit in props if v is not None]
+    if known:
+        lines.append("Данные PubChem: " + "; ".join(known) + ".")
+    bond = simple_substance(z)
+    if bond is None:
+        lines.append("Простое вещество: отдельные атомы, химических связей между ними нет (внешний слой завершён).")
+    elif bond.kind is None:
+        lines.append(f"Простое вещество: тип связи не определён ({bond.note}).")
+    else:
+        why = "атомы металла" if bond.kind == "metallic" else "одинаковые атомы неметалла, разность электроотрицательностей 0"
+        lines.append(f"Простое вещество: {BOND_NAMES[bond.kind]} ({why}; дерево химической связи).")
+    return lines
+
+
+PLURAL_ORDERS = {"одинарная": "одинарные", "двойная": "двойные", "тройная": "тройные", "ароматическая": "ароматические"}
+
+
+def _order_name(order: Fraction, n: int) -> str:
+    name = ORDER_NAMES.get(order, str(order))
+    return name if n == 1 else PLURAL_ORDERS.get(name, name)
+
+
+def plural(n: int, word: str) -> str:
+    """«1 электрон», «2 электрона», «5 электронов» (для слов на согласную)."""
+    if n % 10 == 1 and n % 100 != 11:
+        return f"{n} {word}"
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
+        return f"{n} {word}а"
+    return f"{n} {word}ов"
+
+
+def _compound_lines(smiles: str) -> list[str]:
+    try:
+        mol, bonds = compound_structure(smiles)
+    except SmilesError as exc:
+        return [f"Строение: запись SMILES {smiles} не разобрана ({exc})."]
+    parts = []
+    for b in bonds:
+        if b.kind == "ionic" and Fraction(0) in b.orders:
+            text = f"{b.a} и {b.b} — ионная связь между ионами"
+        else:
+            orders = ", ".join(f"{n} {_order_name(o, n)}" for o, n in sorted(b.orders.items()))
+            kind = BOND_NAMES.get(b.kind, "тип не определён")
+            text = f"{b.a}–{b.b} ×{b.count} ({orders}) — {kind}"
+        if b.delta_en is not None:
+            text += f", ΔЭО {fmt(b.delta_en)}"
+        if b.note:
+            text += f"; {b.note}"
+        parts.append(text)
+    n_atoms = len(mol.atoms) + sum(a.hydrogens for a in mol.atoms)
+    return [f"Строение (SMILES {smiles}, PubChem): атомов {n_atoms}; связи: " + "; ".join(parts) + "."]
 
 
 def _classify_only(c: Concept, kb: KnowledgeBase) -> TaskResult:
@@ -219,8 +324,69 @@ def _why(concepts: list[Concept], kb: KnowledgeBase, lemmas: frozenset[str]) -> 
     if len(concepts) == 2 and concepts[1].kind == "class":
         return _why_member(concepts[0], concepts[1], kb)
     if len(concepts) == 1:
-        return _why_property(concepts[0], kb, lemmas)
+        causal = _why_causal(concepts[0], kb, lemmas)
+        return causal if causal is not None else _why_property(concepts[0], kb, lemmas)
     raise NotApplicable("для вопроса «почему» нужно одно понятие или объект и класс")
+
+
+def substance_of(c: Concept) -> SubstanceRecord | None:
+    if c.z is not None:
+        return element_record(c.z)
+    if c.smiles:
+        return compound_record(c.smiles, c.phase, phase_verified=False)
+    return class_record(c.key)
+
+
+def _why_causal(c: Concept, kb: KnowledgeBase, lemmas: frozenset[str]) -> TaskResult | None:
+    """Причинное правило учебника, следствие которого совпадает с вопросом."""
+    sub = substance_of(c)
+    if sub is None:
+        return None
+    subject = set().union(*(_content_lemmas(n) for n in c.names)) if c.names else set()
+    asked = {w for w in lemmas if w not in WHY_STOP} - subject
+    scored = []
+    for rule in causal_rules():
+        overlap = len(_content_lemmas(" ".join(rule.keywords)) & asked)
+        if overlap:
+            scored.append((overlap, rule, evaluate(rule, sub)))
+    if not scored:
+        return None
+    best = max(o for o, _, ev in scored if ev.value is True) if any(ev.value is True for _, _, ev in scored) else None
+    fired = [(r, ev) for o, r, ev in scored if ev.value is True and o == best]
+    if fired:
+        lines, caveats, certs = [], list(sub.caveats), []
+        for rule, ev in fired:
+            reasons = "; ".join(sub.provenance[a] for a in attributes_of(rule) if a in sub.provenance)
+            lines += [f"«{_cap(c.name)}»: {rule.effect}.",
+                      f"Механизм: {rule.mechanism}",
+                      f"Основания для «{c.name}»: {reasons}.",
+                      f"Правило «{rule.id}», источник: {rule.source}."]
+            if rule.status != "accepted":
+                caveats.append(f"причинное правило «{rule.id}» сформулировано по учебнику и ещё не проверено человеком")
+            certs.append(_rule_certificate(rule, sub, ev))
+        return TaskResult(lines, f"почему «{c.name}» {fired[0][0].effect}", True, caveats, certs,
+                          plan=["построить запись вещества из данных", "найти причинное правило по вопросу",
+                                "проверить условие правила ядром"])
+    top = max(o for o, _, _ in scored)
+    unmet = []
+    for o, rule, ev in scored:
+        if o != top:
+            continue
+        if ev.value is False:
+            values = "; ".join(sub.provenance[a] for a in attributes_of(rule) if a in sub.provenance)
+            unmet.append(f"«{rule.effect}» — условие не выполнено ({values})")
+        else:
+            unmet.append(f"«{rule.effect}» — не хватает данных: {', '.join(ev.missing)}")
+    raise NotApplicable(
+        f"ни одно из подходящих причинных правил к «{c.name}» не применимо: " + "; ".join(unmet)
+        + ". Других правил об этом у меня нет, поэтому вывода в ту или другую сторону я не делаю"
+    )
+
+
+def _rule_certificate(rule: Any, sub: SubstanceRecord, ev: Any) -> dict[str, Any]:
+    body = {"format": "delta-rule-certificate@0.1", "rule": rule.id, "status": rule.status,
+            "predicate": rule.predicate.text, "record": sub.record, "value": ev.value}
+    return {**body, "hash": digest(body)}
 
 
 def _why_member(x: Concept, cls: Concept, kb: KnowledgeBase) -> TaskResult:

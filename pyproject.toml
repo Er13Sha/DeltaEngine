@@ -17,7 +17,7 @@ dev = ["pytest>=8"]
 text = ["pymorphy3>=2", "pymorphy3-dicts-ru"]
 
 [tool.setuptools.packages.find]
-include = ["delta_kernel*", "delta_text*", "delta_tools*", "delta_app*", "adapters*", "logical_delta_matter*"]
+include = ["delta_kernel*", "delta_science*", "delta_text*", "delta_tools*", "delta_app*", "adapters*", "logical_delta_matter*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

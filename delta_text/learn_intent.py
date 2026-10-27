@@ -59,8 +59,8 @@ SENSE_SCHEMA = {
     "version": "0.1.0",
     "attributes": [
         {"name": "word", "type": {"kind": "str"}, "doc": "Упоминание в тексте (строчными, ё → е)"},
-        {"name": "kind", "type": {"kind": "enum", "values": ["class", "element", "compound"]},
-         "doc": "Вид понятия: класс дерева, химический элемент, соединение"},
+        {"name": "kind", "type": {"kind": "enum", "values": ["class", "element", "compound", "term"]},
+         "doc": "Вид понятия: класс дерева, химический элемент, соединение, термин"},
         {"name": "context", "type": {"kind": "set", "element": "str"}, "doc": "Леммы остальных слов фразы"},
     ],
 }

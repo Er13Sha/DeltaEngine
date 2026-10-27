@@ -19,6 +19,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from delta_text.knowledge import KnowledgeBase, default_knowledge
+from delta_text.morph import normalize, parses
 from delta_text.reason import NotApplicable, TaskResult, execute, wiki_lines
 from delta_text.understand import Hypothesis, Understanding, understand
 
@@ -55,8 +56,10 @@ def respond(text: str, kb: KnowledgeBase | None = None) -> Reply:
             return Reply(_not_understood(u, kb), "unknown", h.assumptions, trace=_trace(u, done, rejected))
         names = ", ".join(f"«{kb.concepts[k].name}»" for k in h.concepts)
         text = f"Не могу ответить: {reason}. Нашёл понятия: {names}."
-        if u.unrecognized:
-            text += " Не знаю: " + ", ".join(f"«{w}»" for w in u.unrecognized) + "."
+        unknown = [w for w in u.unrecognized
+                   if not ({normalize(w)} | {p.lemma for p in parses(w)}) & kb.science_words]
+        if unknown:
+            text += " Не знаю: " + ", ".join(f"«{w}»" for w in unknown) + "."
         return Reply(text, "unknown", h.assumptions, trace=_trace(u, done, rejected))
 
     fewest = min(len(h.assumptions) for h, _ in done)

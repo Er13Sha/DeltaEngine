@@ -1,6 +1,7 @@
 """База знаний языкового слоя: деревья ядра, понятия, объекты и их имена.
 
-- Понятие-класс — несинтетический узел дерева (`matter`, `elements`).
+- Понятие-класс — несинтетический узел дерева (`matter`, `elements`, `bonds`).
+- Термин — определение учебной физики и химии (`data/knowledge/terms.json`).
 - Объект — химический элемент или соединение из `data/confirmed-concepts.json`.
   У объекта есть записи для деревьев: элемент классифицируется деревом
   `elements` (класс PubChem) и деревом `matter` (агрегатное состояние).
@@ -40,7 +41,7 @@ _CYRILLIC = re.compile(r"[А-Яа-яЁё]")
 @dataclass
 class Concept:
     key: str
-    kind: str  # class | instance
+    kind: str  # class | instance | term
     label: str
     names: list[str]
     tree: str | None = None  # для класса
@@ -50,6 +51,10 @@ class Concept:
     records: dict[str, dict[str, Any]] = field(default_factory=dict)  # дерево → запись
     data_assumptions: dict[str, list[str]] = field(default_factory=dict)  # дерево → оговорки
     facts: list[tuple[str, str]] = field(default_factory=list)  # описательные данные из источника
+    z: int | None = None  # элемент: заряд ядра (строение — delta_science.atoms)
+    smiles: str | None = None  # соединение: граф связей атомов (PubChem)
+    phase: str | None = None  # соединение: агрегатное состояние (локальные метаданные)
+    definition: str = ""  # термин: определение
 
     @property
     def name(self) -> str:
@@ -67,6 +72,7 @@ class KnowledgeBase:
         self.trees: dict[str, Tree] = {
             "matter": Tree.from_dict(matter_tree_from_deltas(_load(data_dir / "matter-deltas.json"))),
             "elements": Tree.from_dict(_load(data_dir / "trees" / "elements.json")),
+            "bonds": Tree.from_dict(_load(data_dir / "trees" / "bonds.json")),
         }
         hand = Tree.from_dict(_load(data_dir / "trees" / "intent.json"))
         learned_intent = data_dir / "trees" / "intent.learned.json"
@@ -85,7 +91,12 @@ class KnowledgeBase:
         self.lexicon = _load(data_dir / "lexicon" / "ru.json")
         self.concepts: dict[str, Concept] = {}
         self._load_classes()
-        self._load_instances(_load(data_dir / "confirmed-concepts.json"))
+        self._load_instances(_load(data_dir / "confirmed-concepts.json"),
+                             _load(data_dir / "sources" / "pubchem" / "compound-structures.json"))
+        self._load_terms(_load(data_dir / "knowledge" / "terms.json"))
+        # слова причинных правил («ток», «плавиться») — не «незнакомые» в вопросах «почему»
+        self.science_words = {normalize(w) for r in _load(data_dir / "knowledge" / "causes.json")["rules"]
+                              for w in r["keywords"]}
         self.patterns: list[tuple[tuple[frozenset[str], ...], str]] = []
         self.latin_index: dict[str, list[str]] = {}
         self.single_words: dict[str, list[str]] = {}
@@ -125,8 +136,14 @@ class KnowledgeBase:
                 names = lex.get(key, {}).get("names") or [label.lower()]
                 self.concepts[key] = Concept(key, "class", label, names, tree=tree_id, node=node.id)
 
-    def _load_instances(self, data: dict[str, Any]) -> None:
+    def _load_terms(self, data: dict[str, Any]) -> None:
+        for t in data["terms"]:
+            key = f"term:{t['id']}"
+            self.concepts[key] = Concept(key, "term", t["names"][0], t["names"], definition=t["definition"])
+
+    def _load_instances(self, data: dict[str, Any], structures: dict[str, Any]) -> None:
         kinds = self.lexicon.get("instance_kinds", {})
+        smiles = {r["CID"]: r.get("SMILES") for r in structures["compounds"]}
         for e in data["elements"]:
             ru = [a for a in e["aliases"] if _CYRILLIC.search(a)]
             state = e["standard_state"]
@@ -141,6 +158,7 @@ class KnowledgeBase:
                 records={"elements": {"z": e["atomic_number"], "group_block": e["group_block"]}},
                 facts=[("символ", e["symbol"]), ("атомный номер", str(e["atomic_number"])),
                        ("атомная масса", e["atomic_mass"])],
+                z=e["atomic_number"],
             )
             if phase in STATE_TRAITS:
                 concept.records["matter"] = dict(STATE_TRAITS[phase])
@@ -160,8 +178,10 @@ class KnowledgeBase:
                 category=kinds.get("compound", "compound"),
                 latin=[c["formula"], c["query"]],
                 facts=[("формула", c["formula"]), ("название IUPAC", c["iupac_name"]), ("PubChem CID", str(c["cid"]))],
+                smiles=smiles.get(c["cid"]),
+                phase=c.get("model", {}).get("phase"),
             )
-            phase = c.get("model", {}).get("phase")
+            phase = concept.phase
             if phase in STATE_TRAITS:
                 concept.records["matter"] = dict(STATE_TRAITS[phase])
                 concept.data_assumptions["matter"] = [
