@@ -203,6 +203,13 @@ def build() -> dict[str, Any]:
         f"(скорость ≥ {instant['instant_carriers']['superluminal_u_min_over_c']:.1e} c); тогда волны тяготения "
         f"(GW170817, двойной пульсар — скорость c) должны быть отдельным явлением среды."
     )
+    light = json.loads((ROOT / "data" / "experiments" / "field" / "light.json").read_text(encoding="utf-8"))
+    field_note.append(
+        "Свет — частица в базовом поле: данные выбирают поле как среду для света (n = 1 + 2GM/(rc²)): отклонение у "
+        f"Солнца {light['deflection_at_limb_arcsec']['medium']:.3f}″ и задержка сигнала совпадают с измерениями "
+        f"({light['medium_sigma']:.1f} σ); частица, которую поле только притягивает, даёт половину отклонения и "
+        "опережение вместо задержки."
+    )
     unified = json.loads((ROOT / "data" / "experiments" / "field" / "unified.json").read_text(encoding="utf-8"))
     nuclear = unified["nuclear"]
     field_note.append(

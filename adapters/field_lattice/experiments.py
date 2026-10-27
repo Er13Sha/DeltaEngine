@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified"} & set(sys.argv):
+if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -361,3 +361,12 @@ if __name__ == "__main__" and "--unified" in sys.argv:
     nuclear = result["nuclear"]
     print("ядро: показатель данных", round(nuclear["data_exponent_B_vs_A"], 3), "лучший r0", nuclear["best"]["r0_fm"],
           "ошибка формулы без затухания", round(nuclear["fits"][-1]["rms_relative_error"], 3))
+
+
+if __name__ == "__main__" and "--light" in sys.argv:
+    from adapters.field_lattice.light import experiment as light_experiment
+
+    result = {"protocol_hash": protocol_hash(), **light_experiment()}
+    (OUT / "light.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print("свет: отклонение", {k: round(v, 4) for k, v in result["deflection_at_limb_arcsec"].items()},
+          "задержка, мкс", {k: round(v, 1) for k, v in result["shapiro_round_trip_us"].items()})

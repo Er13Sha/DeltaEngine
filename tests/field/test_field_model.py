@@ -236,3 +236,25 @@ class InstantGravityTests(unittest.TestCase):
         self.assertGreater(obs["gw170817"]["instant_lead_years"], 1e8)
         self.assertLess(obs["gw170817"]["instant_tidal_over_wave"], 1e-70)
         self.assertGreater(obs["psr_b1913_16"]["deviation_sigma"], 600)
+
+
+class LightInFieldTests(unittest.TestCase):
+    """Тезис: свет — частица, движущаяся в базовом гравитационном поле."""
+
+    def test_deflection_corpuscle_is_half_of_medium(self):
+        from adapters.field_lattice.light import R_SUN, deflection
+
+        corpuscle, medium = deflection(R_SUN, "corpuscle"), deflection(R_SUN, "medium")
+        self.assertAlmostEqual(medium / corpuscle, 2.0, delta=1e-6)
+        self.assertAlmostEqual(medium / (math.pi / 180 / 3600), 1.7512, delta=1e-3)
+
+    def test_delay_sign_separates_models(self):
+        saved = json.loads((FIELD / "light.json").read_text(encoding="utf-8"))
+        rt = saved["shapiro_round_trip_us"]
+        self.assertLess(rt["corpuscle"], 0)  # опережение
+        self.assertAlmostEqual(rt["medium"] / saved["shapiro_medium_analytic_us"], 1.0, delta=1e-5)
+
+    def test_cassini_selects_medium(self):
+        saved = json.loads((FIELD / "light.json").read_text(encoding="utf-8"))
+        self.assertLess(saved["medium_sigma"], 2)
+        self.assertGreater(saved["corpuscle_deflection_sigma"], 1e4)
