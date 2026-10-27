@@ -258,3 +258,12 @@ class LightInFieldTests(unittest.TestCase):
         saved = json.loads((FIELD / "light.json").read_text(encoding="utf-8"))
         self.assertLess(saved["medium_sigma"], 2)
         self.assertGreater(saved["corpuscle_deflection_sigma"], 1e4)
+
+    def test_field_slows_clocks_and_light_equally(self):
+        from adapters.field_lattice.light import light_speed_in_field
+
+        s = light_speed_in_field()
+        split = s["deflection_split_arcsec"]
+        self.assertAlmostEqual(split["total"], 1.7512, delta=1e-3)
+        self.assertAlmostEqual(s["pound_snider"]["predicted_shift"], 2.45e-15, delta=0.01e-15)
+        self.assertAlmostEqual(s["gps_us_per_day"]["net"], 38.6, delta=0.3)  # заводская поправка часов GPS

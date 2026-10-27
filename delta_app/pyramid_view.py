@@ -210,6 +210,12 @@ def build() -> dict[str, Any]:
         f"({light['medium_sigma']:.1f} σ); частица, которую поле только притягивает, даёт половину отклонения и "
         "опережение вместо задержки."
     )
+    speed = light["speed_in_field"]
+    field_note.append(
+        "Скорость света зависит от поля: поле в равной мере замедляет часы и укорачивает масштабы "
+        f"(часы GPS: {speed['gps_us_per_day']['net']:+.1f} мкс/сут; у края Солнца c' = "
+        f"{speed['speed_at_sun_limb_over_c']:.7f} c). Сводка схемы: docs/track-e-field-scheme.md."
+    )
     unified = json.loads((ROOT / "data" / "experiments" / "field" / "unified.json").read_text(encoding="utf-8"))
     nuclear = unified["nuclear"]
     field_note.append(

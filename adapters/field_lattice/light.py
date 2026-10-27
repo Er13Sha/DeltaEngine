@@ -59,6 +59,37 @@ def delay(b: float, r1: float, r2: float, model: str) -> float:
     raise ValueError(model)
 
 
+GM_EARTH = 3.986004418e14  # м³/с², IERS
+R_EARTH_EQ = 6.378137e6  # м, WGS-84
+R_GPS = 2.656175e7  # м, большая полуось орбиты GPS
+POUND_SNIDER = {"height_m": 22.5, "observed_over_predicted": 0.9990, "sigma": 0.0076}  # 1965
+GALILEO_REDSHIFT = {"deviation": 0.19e-5, "sigma": 2.48e-5}  # Delva et al. 2018, PRL 121, 231101
+DAY = 86400.0
+
+
+def light_speed_in_field() -> dict:
+    """Тезис: скорость света зависит от гравитационной среды, свет — часть поля.
+
+    Скорость света в поле (как её видит далёкий наблюдатель) c' = c·(1 − (1 + γ)·GM/(rc²)):
+    поле замедляет ход часов (доля 1, «временная часть») и укорачивает масштабы (доля γ,
+    «пространственная часть»). Временная часть отдельно проверяется красным смещением и
+    ходом часов; полное отклонение света = временная часть + пространственная часть.
+    """
+    g = GM_EARTH / R_EARTH_EQ ** 2
+    pound = g * POUND_SNIDER["height_m"] / C_LIGHT ** 2
+    grav = GM_EARTH * (1 / R_EARTH_EQ - 1 / R_GPS) / C_LIGHT ** 2 * DAY * 1e6  # мкс/сут, часы на орбите спешат
+    kin = GM_EARTH / R_GPS / (2 * C_LIGHT ** 2) * DAY * 1e6  # v²/(2c²), часы на орбите отстают
+    time_part = deflection(R_SUN, "corpuscle") / ARCSEC
+    return {
+        "speed_at_sun_limb_over_c": 1 - 2 * GM_SUN / (R_SUN * C_LIGHT ** 2),
+        "speed_at_earth_surface_over_c": 1 - 2 * GM_EARTH / (R_EARTH_EQ * C_LIGHT ** 2),
+        "deflection_split_arcsec": {"time_part": time_part, "space_part": time_part, "total": 2 * time_part},
+        "pound_snider": {**POUND_SNIDER, "predicted_shift": pound},
+        "gps_us_per_day": {"field": grav, "motion": -kin, "net": grav - kin},
+        "galileo_redshift": GALILEO_REDSHIFT,
+    }
+
+
 def experiment() -> dict:
     b = R_SUN
     defl = {m: deflection(b, m) / ARCSEC for m in ("corpuscle", "medium")}
@@ -80,4 +111,5 @@ def experiment() -> dict:
         "corpuscle_delay_sigma": abs(gamma + 1.0) / CASSINI["sigma"],
         "medium_sigma": abs(gamma - 1.0) / CASSINI["sigma"],
         "gw_and_light_same_medium": GW170817_GAMMA,
+        "speed_in_field": light_speed_in_field(),
     }

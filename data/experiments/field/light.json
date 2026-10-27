@@ -25,5 +25,29 @@
  "corpuscle_deflection_sigma": 43479.17391304348,
  "corpuscle_delay_sigma": 86957.4347826087,
  "medium_sigma": 0.9130434782629895,
- "gw_and_light_same_medium": "−2,6·10⁻⁷ ≤ γ_волн − γ_света ≤ 1,2·10⁻⁶ (Abbott et al. 2017, ApJL 848 L13)"
+ "gw_and_light_same_medium": "−2,6·10⁻⁷ ≤ γ_волн − γ_света ≤ 1,2·10⁻⁶ (Abbott et al. 2017, ApJL 848 L13)",
+ "speed_in_field": {
+  "speed_at_sun_limb_over_c": 0.9999957549948592,
+  "speed_at_earth_surface_over_c": 0.999999998609303,
+  "deflection_split_arcsec": {
+   "time_part": 0.8755951628983364,
+   "space_part": 0.8755951628983364,
+   "total": 1.7511903257966728
+  },
+  "pound_snider": {
+   "height_m": 22.5,
+   "observed_over_predicted": 0.999,
+   "sigma": 0.0076,
+   "predicted_shift": 2.452964149720599e-15
+  },
+  "gps_us_per_day": {
+   "field": 45.651861866919695,
+   "motion": -7.2131245603126075,
+   "net": 38.43873730660709
+  },
+  "galileo_redshift": {
+   "deviation": 1.9e-06,
+   "sigma": 2.48e-05
+  }
+ }
 }
