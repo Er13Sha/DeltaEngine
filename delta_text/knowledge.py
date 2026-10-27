@@ -74,6 +74,9 @@ class KnowledgeBase:
             intent_tree = learned_intent if learned_intent.exists() else data_dir / "trees" / "intent.json"
         self.intent = Tree.from_dict(_load(intent_tree))
         self.hand_intent = hand  # запасное дерево, когда обученное отвечает UNKNOWN
+        # программные правила: проверяются раньше обученного дерева, вилки — не гипотезы
+        rules = data_dir / "trees" / "intent.rules.json"
+        self.rules: Tree | None = Tree.from_dict(_load(rules)) if rules.exists() else None
         if sense_tree is None:
             sense_tree = data_dir / "trees" / "sense.learned.json"
         self.sense: Tree | None = (

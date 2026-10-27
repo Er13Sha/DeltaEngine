@@ -1,19 +1,21 @@
 """Самопостановка и выполнение задачи (Delta LM, разделы 3.3, 3.4, 3.6).
 
 Гипотеза понимания превращается в задачу по её типу (DEFINE, DIFFERENCE, IS_A,
-CLASSIFY). Каждый шаг выполняет ядро: классификация с сертификатом, путь к узлу,
+CLASSIFY, WHY). Каждый шаг выполняет ядро: классификация с сертификатом, путь к узлу,
 разделяющая вилка. Текст собирается только из результатов ядра и словаря:
 названия понятий, фразы ветвей вилок, описательные данные источника.
 Если задача к понятиям неприменима, гипотеза отбрасывается с объяснением.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Any
 
 from delta_kernel import PROVEN, digest
 from delta_kernel.tree import Fork
 from delta_text.knowledge import Concept, KnowledgeBase
+from delta_text.morph import SERVICE_POS, normalize, parses
 
 TREE_TITLES = {"matter": "дерево материи", "elements": "дерево химических элементов"}
 
@@ -32,8 +34,11 @@ class TaskResult:
     plan: list[str] = field(default_factory=list)
 
 
-def execute(intent: str, keys: list[str], kb: KnowledgeBase) -> TaskResult:
+def execute(intent: str, keys: list[str], kb: KnowledgeBase, lemmas: frozenset[str] = frozenset()) -> TaskResult:
+    """lemmas — леммы вопроса: нужны «почему», чтобы найти признак, о котором спрашивают."""
     concepts = [kb.concepts[k] for k in keys]
+    if intent == "WHY":
+        return _why(concepts, kb, lemmas)
     if intent == "DEFINE":
         if len(concepts) != 1:
             raise NotApplicable("для вопроса «что это» нужно одно понятие")
@@ -53,7 +58,7 @@ def execute(intent: str, keys: list[str], kb: KnowledgeBase) -> TaskResult:
     if intent == "OTHER":
         names = " или ".join(f"«{c.name}»" for c in concepts)
         raise NotApplicable(
-            "это вопрос вида «почему», «как», «где», «сколько» и т. п.; такие я пока не умею. "
+            "это вопрос вида «как», «где», «сколько» и т. п.; такие я пока не умею. "
             f"Могу объяснить, что такое {names}, сравнить понятия или проверить принадлежность классу"
         )
     raise NotApplicable("тип вопроса не определён")
@@ -201,6 +206,127 @@ def _is_a(x: Concept, cls: Concept, kb: KnowledgeBase) -> TaskResult:
             line = f"Нет: «{x.name}» — более общее понятие, чем «{cls.name}»."
     return TaskResult([line], restatement, True, caveats, certs,
                       plan=["классифицировать объект в дереве класса", "проверить, лежит ли класс на пути"])
+
+
+# ---------------------------------------------------------------- «почему»
+#
+# Объяснение не выучивается, а выводится: путь в дереве и есть основание, по которому
+# объект отнесён к классу. Причинных знаний («почему так устроена природа») в базе нет,
+# и ответ говорит об этом прямо.
+
+
+def _why(concepts: list[Concept], kb: KnowledgeBase, lemmas: frozenset[str]) -> TaskResult:
+    if len(concepts) == 2 and concepts[1].kind == "class":
+        return _why_member(concepts[0], concepts[1], kb)
+    if len(concepts) == 1:
+        return _why_property(concepts[0], kb, lemmas)
+    raise NotApplicable("для вопроса «почему» нужно одно понятие или объект и класс")
+
+
+def _why_member(x: Concept, cls: Concept, kb: KnowledgeBase) -> TaskResult:
+    restatement = f"почему «{x.name}» относится к «{cls.name}»"
+    tree = kb.tree_of(cls)
+    base = _is_a(x, cls, kb)
+    base.restatement = restatement
+    if not base.lines[0].startswith("Да"):
+        base.lines.insert(0, "Посылка вопроса неверна.")
+        return base
+    if x.kind == "instance":
+        record = x.records[cls.tree]
+        res = tree.classify(record)
+        nodes = [s.node for s in res.path] + [res.leaf]
+        reasons = list(res.path[: nodes.index(cls.node)])
+        lines = [f"«{_cap(x.name)}» относится к «{cls.name}», потому что на пути выполнены условия вилок:"]
+        for s in reasons:
+            values = ", ".join(f"{a} = {_value(v)}" for a, v in sorted(record.items()) if _mentions(s.predicate, a))
+            lines.append(f"• {kb.say(cls.tree, s.node, s.branch)} — условие «{s.predicate}» "
+                         f"{'выполнено' if s.branch else 'не выполнено'}; у «{x.name}»: {values}.")
+        if not reasons:
+            lines.append(f"• «{cls.name}» — корень дерева, к нему относится всё, что в нём классифицировано.")
+        source = {"elements": "PubChem (класс элемента)",
+                  "matter": "агрегатное состояние при стандартных условиях"}.get(cls.tree, cls.tree)
+        lines.append(f"Значения признаков взяты из данных: {source}.")
+        return TaskResult(lines, restatement, True, base.caveats, base.certificates,
+                          plan=["классифицировать объект", "взять вилки пути до класса", "показать значения признаков"])
+    path = tree.path_to(x.node)
+    start = [s.node for s in path].index(cls.node) if cls.node != x.node else len(path)
+    steps = [kb.say(cls.tree, s.node, s.branch) for s in path[start:]]
+    if not steps:
+        line = f"«{_cap(x.name)}» и «{cls.name}» — одно и то же понятие."
+    else:
+        line = (f"Так задано определениями: понятие «{x.name}» выделено внутри «{cls.name}» вилками: "
+                f"{' → '.join(steps)}. Поэтому всё, что относится к «{x.name}», относится и к «{cls.name}».")
+    return TaskResult([line], restatement, True, certificates=base.certificates,
+                      plan=["найти путь от класса к понятию"])
+
+
+def _why_property(c: Concept, kb: KnowledgeBase, lemmas: frozenset[str]) -> TaskResult:
+    """«Почему газ не сохраняет объём?» — если признак есть на пути понятия, это определение."""
+    asked = {w for w in lemmas if w not in WHY_STOP}
+    paths: list[tuple[str, list[Any]]] = []
+    if c.kind == "class":
+        paths.append((c.tree, list(kb.tree_of(c).path_to(c.node))))
+    else:
+        for tree_id, record in c.records.items():
+            res = kb.trees[tree_id].classify(record)
+            if res.status == PROVEN:
+                paths.append((tree_id, list(res.path)))
+    # Шаг пути, который лучше всего совпадает с вопросом: по фразе ветви и по названию
+    # понятия, в которое ветвь ведёт («твёрдый» → «твёрдое вещество»).
+    best = None
+    for tree_id, steps in paths:
+        tree = kb.trees[tree_id]
+        for depth, s in enumerate(steps):
+            phrase = kb.say(tree_id, s.node, s.branch)
+            fork = tree.nodes[s.node]
+            child = fork.if_true if s.branch else fork.if_false
+            child_key = kb.class_key(tree_id, child.id)
+            child_name = kb.concepts[child_key].name if child_key else ""
+            overlap = len((_content_lemmas(phrase) | _content_lemmas(child_name)) & asked)
+            if overlap and (best is None or (overlap, depth) > (best[0], best[1])):
+                best = (overlap, depth, tree_id, s, phrase, child_name)
+    if best is None:
+        raise NotApplicable(
+            f"признака, о котором спрашивают, нет в моих деревьях, а причинных знаний нет совсем. "
+            f"Могу объяснить, что такое «{c.name}», и показать классификацию"
+        )
+    _, _, tree_id, s, phrase, child_name = best
+    genus = _named_ancestor(kb, tree_id, s.node)
+    result_name = f" («{child_name}»)" if child_name and child_name != c.name else ""
+    if c.kind == "class":
+        line = (f"Так задано определением: понятие «{c.name}» отделено внутри «{genus}» вилкой "
+                f"«{phrase}». Это определение, а не вывод из причин; причинных знаний о том, "
+                "почему природа устроена так, в моей базе нет.")
+        certs = [_structural_certificate(kb, c)]
+    else:
+        line = (f"Для «{c.name}» это следует из классификации: на вилке рода «{genus}» — "
+                f"{phrase}{result_name}; условие «{s.predicate}» выполнено по данным. "
+                "Причинных знаний в моей базе нет.")
+        certs = [kb.trees[tree_id].classify(c.records[tree_id]).certificate]
+    return TaskResult([line], f"почему «{c.name}» — {phrase}", True,
+                      list(c.data_assumptions.get(tree_id, [])), certs,
+                      plan=["найти признак на пути понятия", "показать вилку-определение"])
+
+
+WHY_STOP = {"почему", "не", "ли", "так", "такой", "это", "быть", "являться"}
+
+
+def _content_lemmas(text: str) -> set[str]:
+    out = set()
+    for word in text.replace("(", " ").replace(")", " ").split():
+        variants = parses(word)
+        if variants and variants[0].pos in SERVICE_POS:
+            continue
+        out |= {p.lemma for p in variants} | {normalize(word)}
+    return out - WHY_STOP
+
+
+def _mentions(predicate: str, attr: str) -> bool:
+    return re.search(rf"\b{re.escape(attr)}\b", predicate) is not None
+
+
+def _value(v: Any) -> str:
+    return f"«{v}»" if isinstance(v, str) else ("да" if v is True else "нет" if v is False else str(v))
 
 
 # ---------------------------------------------------------------- различие

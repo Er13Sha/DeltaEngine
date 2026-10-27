@@ -126,9 +126,9 @@ class LearnedTreesTests(unittest.TestCase):
         self.assertIn("германий", r.text)
 
     def test_other_question_type_is_declined(self):
-        r = respond("почему вода мокрая?")
+        r = respond("где можно купить воду?")
         self.assertEqual(r.status, "unknown")
-        self.assertIn("«почему»", r.text)
+        self.assertIn("«где»", r.text)
 
     def test_learned_intent_is_an_assumption(self):
         r = respond("Что такое натрий?")
@@ -150,3 +150,41 @@ class LearnedTreesTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WhyTests(unittest.TestCase):
+    """«Почему» и «как отличить» запрограммированы: правила и объяснение по пути в дереве."""
+
+    def test_rules_tree_is_a_kernel_tree_without_hypotheses(self):
+        rules = default_knowledge().rules
+        self.assertEqual(rules.check(), [])
+        self.assertTrue(all(f.knowledge == "constatation" for f in rules.forks()))
+
+    def test_why_member_shows_fork_conditions_and_data(self):
+        r = respond("Почему натрий металл?")
+        self.assertEqual(r.status, "proven")
+        self.assertIn('group_block = «Alkali metal»', r.text)
+
+    def test_why_with_false_premise(self):
+        r = respond("почему хлор металл?")
+        self.assertTrue(r.text.startswith("Посылка вопроса неверна."))
+
+    def test_why_property_is_a_definition_not_a_cause(self):
+        r = respond("Почему газ не сохраняет объём?")
+        self.assertEqual(r.status, "proven")
+        self.assertIn("вилкой «не сохраняет объём»", r.text)
+        self.assertIn("причинных знаний", r.text)
+
+    def test_why_property_of_instance_through_concept_name(self):
+        r = respond("почему натрий твёрдый?")
+        self.assertIn("сохраняет форму («твёрдое вещество»)", r.text)
+
+    def test_why_without_known_property_is_declined(self):
+        r = respond("почему вода мокрая?")
+        self.assertEqual(r.status, "unknown")
+        self.assertIn("причинных знаний нет", r.text)
+
+    def test_how_to_distinguish(self):
+        r = respond("Как отличить жидкость от газа?")
+        self.assertEqual(r.status, "proven")
+        self.assertIn("газ — не сохраняет объём", r.text)

@@ -28,7 +28,8 @@ INTENT_NAMES = {
     "DIFFERENCE": "вопрос о различии",
     "IS_A": "вопрос о принадлежности классу",
     "CLASSIFY": "вопрос о классе",
-    "OTHER": "вопрос другого вида («почему», «как», «где»…)",
+    "WHY": "вопрос «почему»",
+    "OTHER": "вопрос другого вида («как», «где», «сколько»…)",
 }
 
 
@@ -80,10 +81,17 @@ def understand(text: str, kb: KnowledgeBase) -> Understanding:
         concepts = list(dict.fromkeys(c.concept for c in picked))
         assumptions = [c.assumption for c in picked if c.assumption]
         record = utterance_record(tokens, [kb.concepts[k] for k in concepts])
-        tree = kb.intent
-        cls = tree.classify(project(tree, record))
-        leaf = tree.nodes[cls.leaf] if cls.leaf else None
-        if learned and (leaf is None or leaf.meta.get("unknown")):
+        tree, cls, leaf = None, None, None
+        if kb.rules is not None:
+            # программные правила («почему», «как отличить») — раньше обученного дерева
+            cls = kb.rules.classify(project(kb.rules, record))
+            leaf = kb.rules.nodes[cls.leaf] if cls.leaf else None
+            tree = kb.rules if leaf is not None and leaf.id != "PASS" else None
+        if tree is None:
+            tree = kb.intent
+            cls = tree.classify(project(tree, record))
+            leaf = tree.nodes[cls.leaf] if cls.leaf else None
+        if tree is kb.intent and learned and (leaf is None or leaf.meta.get("unknown")):
             # обученное дерево не знает (мало примеров) — догадка по ручному дереву
             tree = kb.hand_intent
             cls = tree.classify(project(tree, record))

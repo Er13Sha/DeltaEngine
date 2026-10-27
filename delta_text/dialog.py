@@ -36,6 +36,7 @@ class Reply:
 def respond(text: str, kb: KnowledgeBase | None = None) -> Reply:
     kb = kb or default_knowledge()
     u = understand(text, kb)
+    lemmas = frozenset(lemma for t in u.tokens if t.kind == "word" for lemma in t.lemmas)
     if not u.mentions:
         quoted = None if u.other_sense else _wiki_fallback(u, kb)
         return quoted or Reply(_not_understood(u, kb), "unknown", trace=_trace(u, []))
@@ -44,7 +45,7 @@ def respond(text: str, kb: KnowledgeBase | None = None) -> Reply:
     rejected: list[tuple[Hypothesis, str]] = []
     for h in u.hypotheses:
         try:
-            done.append((h, execute(h.intent, h.concepts, kb)))
+            done.append((h, execute(h.intent, h.concepts, kb, lemmas)))
         except NotApplicable as exc:
             rejected.append((h, str(exc)))
     if not done:
