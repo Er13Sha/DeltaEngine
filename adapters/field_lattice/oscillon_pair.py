@@ -40,10 +40,14 @@ PAIR_PROTOCOL = {
     "measurement": "D(t) по центрам энергии частиц в окне ρ < 6, |z − z_c| < 6 вокруг прежнего центра; "
                    "a — из подгонки D = D₀ + v₀t + a·t²/2 на [0, t_max]; f = E·a/2",
     "window": 6.0,
-    "version": 2,
+    "fit_until_shift": 1.0,
+    "fit_min_t": 10.0,
+    "version": 3,
     "revision": "v1 (sha256:f412b682…) мерил центры энергии половин z > 0 и z < 0; пилот d = 12 в фазе показал "
                 "D: 11,8 → 23,3 — излучение, уходящее от частиц, уносит центр половины. Изменено только "
-                "определение центра (окно вокруг частицы) до основного расчёта; пилот записан в отчёте.",
+                "определение центра (окно вокруг частицы) до основного расчёта; пилот записан в отчёте. "
+                "v2 (sha256:c9421d9c…): пилот d = 12 показал, что в фазе частицы сливаются за t ≈ 60, и парабола "
+                "на всём [0, 150] неприменима; v3 подгоняет D(t) только пока смещение < 1 (не меньше t = 10).",
     "law_fit": "f(d) = g·(1 + κd)·e^(−κd)/d² по разделённым d, отдельно для фаз",
     "prediction_before_run": "κ = √(1 − ω²) при ω = частота частицы; в фазе — притяжение, в противофазе — отталкивание",
     "alpha_model": "g/S, S = E/ω",
@@ -150,9 +154,13 @@ def pair_run(particle: dict, d: float, phase: str) -> dict:
     _step_axisym(phi, pi, h, dt, damp, steps, n_rho, n_z, n_z // 2, out, d / 2, PAIR_PROTOCOL["window"])
     t = (np.arange(steps) + 1) * dt
     sep = out[:, 0] - out[:, 1]
-    coef = np.polyfit(t, sep, 2)  # D = c2·t² + c1·t + c0
+    moved = np.nonzero(np.abs(sep - sep[0]) >= PAIR_PROTOCOL["fit_until_shift"])[0]
+    n_fit = max(int(PAIR_PROTOCOL["fit_min_t"] / dt), int(moved[0]) if moved.size else steps)
+    coef = np.polyfit(t[:n_fit], sep[:n_fit], 2)  # D = c2·t² + c1·t + c0, пока смещение мало
     a = 2 * coef[0]
-    return {"d": d, "phase": phase, "D_start": float(sep[0]), "D_end": float(sep[-1]), "a": float(a),
+    merged = bool(sep[-1] < 1.0)
+    return {"d": d, "phase": phase, "D_start": float(sep[0]), "D_end": float(sep[-1]), "t_fit": float(t[n_fit - 1]),
+            "merged": merged, "trajectory": [round(float(x), 3) for x in sep[::100]], "a": float(a),
             "force": float(particle["energy"] * a / 2), "verdict": "attraction" if a < 0 else "repulsion"}
 
 
