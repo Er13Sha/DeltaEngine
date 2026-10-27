@@ -190,3 +190,22 @@ def experiment() -> dict:
         "runs": rows, "control": control, "laws": laws, "kappa_predicted": kappa_pred,
         "alpha_model": {ph: laws[ph]["g"] / particle["action"] for ph in laws},
     }
+
+
+def post_hoc(result: dict, d_min: float = 12) -> dict:
+    """Анализ ПОСЛЕ расчёта (не входил в протокол): только d ≥ 12, где ядра частиц не перекрываются
+    (при d = 8 начальное расстояние центров уже 6,0 и 7,8 — частицы слиты с самого начала)."""
+    s = result["particle"]["action"]
+    kp = result["kappa_predicted"]
+    out = {"note": "анализ после расчёта, не из протокола: исключены d < 12 (перекрытие ядер)"}
+    for ph in PAIR_PROTOCOL["phases"]:
+        rows = [r for r in result["runs"] if r["phase"] == ph and r["d"] >= d_min]
+        free = fit_law(rows)
+        d = np.array([r["d"] for r in rows], dtype=float)
+        f = np.abs(np.array([r["force"] for r in rows]))
+        shape = (1 + kp * d) * np.exp(-kp * d) / d ** 2
+        g = math.exp(float(np.mean(np.log(f) - np.log(shape))))
+        out[ph] = {"free_fit": free, "alpha_free": free["g"] / s,
+                   "fixed_kappa_g": g, "alpha_fixed_kappa": g / s,
+                   "kappa_fit_over_predicted": free["kappa"] / kp}
+    return out

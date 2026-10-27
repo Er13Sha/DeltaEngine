@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light", "--frequency", "--oscillon"} & set(sys.argv):
+if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light", "--frequency", "--oscillon", "--pair"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -388,3 +388,13 @@ if __name__ == "__main__" and "--oscillon" in sys.argv:
     result = oscillon_experiment()
     (OUT / "oscillon.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("частиц", result["particles"], "ω/F", result["omega_over_F_range"])
+
+
+if __name__ == "__main__" and "--pair" in sys.argv:
+    from adapters.field_lattice.oscillon_pair import experiment as pair_experiment
+    from adapters.field_lattice.oscillon_pair import post_hoc
+
+    result = pair_experiment()
+    result["post_hoc"] = post_hoc(result)
+    (OUT / "oscillon_pair.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print("κ предсказано", round(result["kappa_predicted"], 4), "α_модель", result["alpha_model"])

@@ -228,7 +228,15 @@ def build() -> dict[str, Any]:
     field_note.append(
         "E3-волна (поле с инерцией и двумя состояниями, без свободных параметров, протокол до расчёта): "
         f"уплотнения разного размера приходят к одной частице с собственной частотой {lo:.3f}–{hi:.3f} F; "
-        "малые распадаются. Следующий шаг — сила между двумя такими частицами."
+        "малые распадаются."
+    )
+    pair = json.loads((ROOT / "data" / "experiments" / "field" / "oscillon_pair.json").read_text(encoding="utf-8"))
+    field_note.append(
+        "Сила между двумя частицами поля: в фазе — притяжение и слияние, в противофазе — отталкивание; радиус силы "
+        f"предсказан до расчёта по частоте (κ = {pair['kappa_predicted']:.3f}, измерено "
+        f"{pair['post_hoc']['anti']['free_fit']['kappa']:.3f}). Безразмерная сила ≈ "
+        f"{pair['post_hoc']['anti']['alpha_free']:.1f} — в ~10 раз больше ядерной: поле с двумя состояниями "
+        "даёт форму закона, но не числа нашего мира."
     )
     unified = json.loads((ROOT / "data" / "experiments" / "field" / "unified.json").read_text(encoding="utf-8"))
     nuclear = unified["nuclear"]

@@ -311,3 +311,25 @@ class OscillonTests(unittest.TestCase):
         self.assertTrue(all(0.95 < w < 0.98 for w in omegas))  # ниже общей частоты поля
         self.assertLess(max(energies) / min(energies), 1.1)  # разные начальные размеры → одна частица
         self.assertTrue(all(not r["particle"] for r in saved["runs"] if r["R0"] <= 3.0))
+
+
+class OscillonPairTests(unittest.TestCase):
+    """E3-волна, этап 2: сила между двумя частицами поля."""
+
+    def test_protocol_registered(self):
+        from adapters.field_lattice.oscillon_pair import protocol_hash
+
+        registered = json.loads((FIELD / "oscillon_pair_protocol.json").read_text(encoding="utf-8"))
+        self.assertEqual(registered["hash"], protocol_hash())
+
+    def test_phase_decides_sign(self):
+        saved = json.loads((FIELD / "oscillon_pair.json").read_text(encoding="utf-8"))
+        far = [r for r in saved["runs"] if r["d"] >= 12]
+        self.assertTrue(all(r["merged"] for r in far if r["phase"] == "in"))  # в фазе: притяжение, слияние
+        self.assertTrue(all(r["verdict"] == "repulsion" and not r["merged"] for r in far if r["phase"] == "anti"))
+        weakest = min(abs(r["force"]) for r in far)
+        self.assertTrue(all(abs(r["force"]) < weakest / 10 for r in saved["control"]))  # контроль d = 32
+
+    def test_range_set_by_frequency(self):
+        saved = json.loads((FIELD / "oscillon_pair.json").read_text(encoding="utf-8"))
+        self.assertAlmostEqual(saved["post_hoc"]["anti"]["kappa_fit_over_predicted"], 1.0, delta=0.06)
