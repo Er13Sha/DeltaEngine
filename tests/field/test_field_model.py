@@ -290,3 +290,24 @@ class FrequencyTests(unittest.TestCase):
         row = deuteron_fit(HBARC / PION_MEV)
         self.assertAlmostEqual(row["scattering_length_fm"], 5.414, delta=0.01)
         self.assertAlmostEqual(row["structure_radius_fm"], 1.966, delta=0.01)
+
+
+class OscillonTests(unittest.TestCase):
+    """E3-волна: частица — колебание поля без свободных параметров (протокол записан до расчёта)."""
+
+    def test_protocol_unchanged_since_registration(self):
+        from adapters.field_lattice.oscillon import protocol_hash
+
+        registered = json.loads((FIELD / "oscillon_protocol.json").read_text(encoding="utf-8"))
+        self.assertEqual(registered["hash"], protocol_hash())
+        self.assertEqual(registered["free_dimensionless_parameters"], 0)
+
+    def test_field_selects_one_particle(self):
+        saved = json.loads((FIELD / "oscillon.json").read_text(encoding="utf-8"))
+        particles = [r for r in saved["runs"] if r["particle"]]
+        self.assertGreaterEqual(len(particles), 4)
+        omegas = [r["omega_over_F"] for r in particles]
+        energies = [r["energy"] for r in particles]
+        self.assertTrue(all(0.95 < w < 0.98 for w in omegas))  # ниже общей частоты поля
+        self.assertLess(max(energies) / min(energies), 1.1)  # разные начальные размеры → одна частица
+        self.assertTrue(all(not r["particle"] for r in saved["runs"] if r["R0"] <= 3.0))

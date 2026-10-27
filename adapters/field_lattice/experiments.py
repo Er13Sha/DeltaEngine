@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light", "--frequency"} & set(sys.argv):
+if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light", "--frequency", "--oscillon"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -380,3 +380,11 @@ if __name__ == "__main__" and "--frequency" in sys.argv:
                                         encoding="utf-8")
     print("частота ядра по дейтрону:", f"{result['fine_best']['frequency_Hz']:.3e}", "Гц; пион:",
           f"{result['pion']['frequency_Hz']:.3e}", "Гц; отношение", round(result["deuteron_frequency_over_pion"], 3))
+
+
+if __name__ == "__main__" and "--oscillon" in sys.argv:
+    from adapters.field_lattice.oscillon import experiment as oscillon_experiment
+
+    result = oscillon_experiment()
+    (OUT / "oscillon.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print("частиц", result["particles"], "ω/F", result["omega_over_F_range"])

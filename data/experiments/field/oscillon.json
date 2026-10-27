@@ -1,0 +1,142 @@
+{
+ "protocol": {
+  "format": "delta-protocol@0.1",
+  "track": "E",
+  "stage": "E3-волна: собственная частота уплотнения поля",
+  "postulates": {
+   "P1": "пространство заполнено полем φ",
+   "P2": "поле обладает инерцией, возмущения распространяются с конечной скоростью c",
+   "P3": "у поля два равновесных состояния φ = ±1 (дельта поля)",
+   "P4": "частица — долгоживущее локализованное колебание поля"
+  },
+  "equation": "φ_tt = ∇²φ − V'(φ), V = (φ² − 1)²/8; единицы c = 1, F = √V''(±1) = 1",
+  "free_dimensionless_parameters": 0,
+  "geometry": "3D, сферическая симметрия",
+  "numerics": {
+   "dr": 0.05,
+   "dt": 0.02,
+   "r_max": 240.0,
+   "absorb_from": 180.0,
+   "t_max": 20000.0,
+   "core_radius": 15.0
+  },
+  "initial": "φ(r, 0) = −1 + 2·exp(−r²/R₀²), φ_t = 0",
+  "scan_R0": [
+   1.5,
+   2.0,
+   2.5,
+   3.0,
+   3.5,
+   4.0,
+   4.5,
+   5.0,
+   6.0
+  ],
+  "particle_criterion": "энергия в ядре r < 15 держится выше 10 % начальной дольше 100 периодов 2π/F",
+  "outputs": [
+   "ω/F на поздней стадии (по нулям колебания φ(0, t) + 1)",
+   "время жизни в периодах",
+   "энергия E и действие за период S = E/ω (в единицах 1/λ, сокращаются в отношениях)"
+  ],
+  "comparison": "после расчёта — со структурой частиц природы (см. отчёт); подгонки нет: параметров нет"
+ },
+ "protocol_hash": "sha256:01cc19af760e7d0c8f42539198accf5ecef0e0e08ace657ebf7f97c26df6f3b3",
+ "scope": "model",
+ "runs": [
+  {
+   "R0": 1.5,
+   "initial_core_energy": 20.61509881016645,
+   "lifetime_t": 26.6,
+   "lifetime_periods": 4.233521486244416,
+   "particle": false,
+   "omega_over_F": NaN,
+   "energy": NaN,
+   "action_per_period": null
+  },
+  {
+   "R0": 2.0,
+   "initial_core_energy": 31.343721250025716,
+   "lifetime_t": 40.4,
+   "lifetime_periods": 6.429859700912572,
+   "particle": false,
+   "omega_over_F": NaN,
+   "energy": NaN,
+   "action_per_period": null
+  },
+  {
+   "R0": 2.5,
+   "initial_core_energy": 45.2018133933427,
+   "lifetime_t": 65.60000000000001,
+   "lifetime_periods": 10.440564266828336,
+   "particle": false,
+   "omega_over_F": 1.0025704323460394,
+   "energy": 8.85264810155407,
+   "action_per_period": 8.82995130909522
+  },
+  {
+   "R0": 3.0,
+   "initial_core_energy": 62.97135068580603,
+   "lifetime_t": 135.0,
+   "lifetime_periods": 21.48591731740587,
+   "particle": false,
+   "omega_over_F": 1.0007878292058432,
+   "energy": 12.137781873393637,
+   "action_per_period": 12.128226902025128
+  },
+  {
+   "R0": 3.5,
+   "initial_core_energy": 85.43445978871085,
+   "lifetime_t": 4944.8,
+   "lifetime_periods": 786.9893626008042,
+   "particle": true,
+   "omega_over_F": 0.9592333813409165,
+   "energy": 58.18681611998663,
+   "action_per_period": 60.65970727441431
+  },
+  {
+   "R0": 4.0,
+   "initial_core_energy": 113.3733233269155,
+   "lifetime_t": 10578.600000000002,
+   "lifetime_periods": 1683.6364809919244,
+   "particle": true,
+   "omega_over_F": 0.9631713014238201,
+   "energy": 59.33358497012435,
+   "action_per_period": 61.60231817789185
+  },
+  {
+   "R0": 4.5,
+   "initial_core_energy": 147.57014722973466,
+   "lifetime_t": 6599.8,
+   "lifetime_periods": 1050.390793417891,
+   "particle": true,
+   "omega_over_F": 0.961085436287194,
+   "energy": 59.56542947376144,
+   "action_per_period": 61.97724700092318
+  },
+  {
+   "R0": 5.0,
+   "initial_core_energy": 188.80706538526942,
+   "lifetime_t": 3953.8,
+   "lifetime_periods": 629.2668139967358,
+   "particle": true,
+   "omega_over_F": 0.958397553144776,
+   "energy": 60.11154829950283,
+   "action_per_period": 62.72089082683869
+  },
+  {
+   "R0": 6.0,
+   "initial_core_energy": 295.5080411161556,
+   "lifetime_t": 1007.0,
+   "lifetime_periods": 160.26902769353862,
+   "particle": true,
+   "omega_over_F": 0.97069601180356,
+   "energy": 61.780532937049884,
+   "action_per_period": 63.64560293418865
+  }
+ ],
+ "particles": 5,
+ "omega_over_F_range": [
+  0.958397553144776,
+  0.97069601180356
+ ]
+}

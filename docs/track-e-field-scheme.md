@@ -40,3 +40,5 @@
 - [track-e-unified.md](track-e-unified.md) — магнетизм и ядерные силы
 - [track-e-light.md](track-e-light.md) — свет в поле, часы, скорость света
 - [track-e-frequency.md](track-e-frequency.md) — одна сила, частоты колебания поля
+- [track-e-oscillon.md](track-e-oscillon.md) — частица как колебание поля, собственная частота 0,96 F
+- [absolute-calculation-protocol.md](absolute-calculation-protocol.md) — правила абсолютного расчёта

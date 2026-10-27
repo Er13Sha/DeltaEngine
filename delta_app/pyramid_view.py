@@ -223,6 +223,13 @@ def build() -> dict[str, Any]:
         f"совпала с частотой пиона {freq['pion']['frequency_Hz']:.3e} Гц "
         f"({abs(1 - freq['deuteron_frequency_over_pion']):.1%})."
     )
+    osc = json.loads((ROOT / "data" / "experiments" / "field" / "oscillon.json").read_text(encoding="utf-8"))
+    lo, hi = osc["omega_over_F_range"]
+    field_note.append(
+        "E3-волна (поле с инерцией и двумя состояниями, без свободных параметров, протокол до расчёта): "
+        f"уплотнения разного размера приходят к одной частице с собственной частотой {lo:.3f}–{hi:.3f} F; "
+        "малые распадаются. Следующий шаг — сила между двумя такими частицами."
+    )
     unified = json.loads((ROOT / "data" / "experiments" / "field" / "unified.json").read_text(encoding="utf-8"))
     nuclear = unified["nuclear"]
     field_note.append(
