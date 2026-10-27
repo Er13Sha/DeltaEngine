@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and "--scan" not in sys.argv:
+if __name__ == "__main__" and not {"--scan", "--screening"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -331,3 +331,12 @@ def scan() -> dict[str, Any]:
 
 if __name__ == "__main__" and "--scan" in sys.argv:
     scan()
+
+
+if __name__ == "__main__" and "--screening" in sys.argv:
+    from adapters.field_lattice.screening import experiment as screening_experiment
+
+    result = {"protocol_hash": protocol_hash(), **screening_experiment()}
+    (OUT / "screening.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print("экранирование: показатель", round(result["distance_law"]["exponent"], 4),
+          "контроль", result["negative_control_single_body_force"])

@@ -1,4 +1,5 @@
 import json
+import math
 import random
 import unittest
 from pathlib import Path
@@ -79,3 +80,49 @@ class FieldCharacteristicTests(unittest.TestCase):
             record["t_ratio"], record["k_ratio"] = Fraction(row["t_ratio"]), Fraction(row["k_ratio"])
             with self.subTest(row=record):
                 self.assertEqual(predict(tree, record)[0], row["label"])
+
+
+@unittest.skipIf(np is None, "нужен numpy")
+class ScreeningTests(unittest.TestCase):
+    """Семейство D: притяжение через экранирование изотропного потока (H2)."""
+
+    def test_single_body_feels_no_force(self):
+        from adapters.field_lattice.screening import single_body_force
+
+        self.assertLess(single_body_force(1.0, 0.3), 1e-12)
+
+    def test_pair_attracts_with_inverse_square(self):
+        from adapters.field_lattice.screening import power_law_exponent, shadow_force
+
+        ds = [8, 16, 32]
+        fs = [shadow_force(d, 1, 1, 0.05, 0.05, n_theta=24, n_phi=16, n_rho=12, n_psi=12) for d in ds]
+        self.assertTrue(all(f > 0 for f in fs))
+        self.assertAlmostEqual(power_law_exponent(ds, fs), -2.0, delta=0.02)
+
+    def test_saturation_breaks_mass_proportionality(self):
+        saved = json.loads((FIELD / "screening.json").read_text(encoding="utf-8"))
+        ratios = [row["F_over_m2"] for row in saved["mass_proportionality"]]
+        self.assertEqual(ratios, sorted(ratios, reverse=True))
+        self.assertGreater(ratios[0] / ratios[-1], 100)
+
+    def test_like_charges_condition_with_real_constants(self):
+        saved = json.loads((FIELD / "screening.json").read_text(encoding="utf-8"))
+        real = saved["like_charges"]["real_world"]
+        self.assertGreater(real["proton_pair_coulomb_over_gravity"], 1e36)
+        self.assertGreater(real["proton_charge_to_mass_C_per_kg"], real["threshold_charge_to_mass_C_per_kg"])
+
+    def test_video_formula_holds_for_transparent_bodies(self):
+        """Формула видео Rek8C322Q5k: F = c1·N_A·N_B/(4πd²) с c1 = 4π·I, N = μ·V.
+
+        У прозрачных тел отношение силы к формуле → 1 при любом расстоянии; у плотных
+        количество N = h·S·ρ насыщается, и формула завышает силу.
+        """
+        from adapters.field_lattice.screening import shadow_force
+
+        n = 0.001 * 4 / 3 * math.pi
+        for d in (12, 24):
+            f = shadow_force(d, 1, 1, 0.001, 0.001, n_theta=24, n_phi=16, n_rho=12, n_psi=12)
+            self.assertAlmostEqual(f * d * d / (n * n), 1.0, delta=0.005)
+        saved = json.loads((FIELD / "screening.json").read_text(encoding="utf-8"))
+        dense = [row["ratio"] for row in saved["video_formula"]["rows"] if row["mu"] == 10.0]
+        self.assertTrue(all(r < 0.01 for r in dense))

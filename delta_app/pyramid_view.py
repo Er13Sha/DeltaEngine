@@ -177,7 +177,19 @@ def build() -> dict[str, Any]:
         "Отрицательные контроли провалили проверку, как требуется: "
         + ("да" if summary["negative_controls_failed_as_required"] else "НЕТ") + ".",
         "Ограничения шипа: решётка 2D, динамика без инерции, параметры выбраны по пилотным прогонам; "
-        "притяжение через экранирование (семейство D) и квантование заряда ещё не проверялись.",
+        "квантование заряда ещё не проверялось.",
+    ]
+    screening = json.loads((ROOT / "data" / "experiments" / "field" / "screening.json").read_text(encoding="utf-8"))
+    transparent = next(r["ratio"] for r in screening["video_formula"]["rows"] if r["mu"] == 0.001)
+    field_note += [
+        "Закон взаимодействия — формула воздействия (видео Rek8C322Q5k): W = Q·N, Q = k·c1/(4πr²), N = h·S·ρ; "
+        "при c1 = 4πG она точно даёт закон тяготения, при c1 = 1/ε₀ — закон Кулона.",
+        f"Семейство D (экранирование изотропного потока): одно тело — сила "
+        f"{screening['negative_control_single_body_force']:.0e}, пара притягивается по закону "
+        f"r^{screening['distance_law']['exponent']:.4f}; формула видео выводится с c1 = 4π·I "
+        f"(опыт/формула = {transparent:.3f} для прозрачных тел), для плотных тел насыщается.",
+        "Одноимённые в потоке притягиваются, только если G·m² > k·q²; у протонов отталкивание сильнее в "
+        f"{screening['like_charges']['real_world']['proton_pair_coulomb_over_gravity']:.2e} раз.",
     ]
     for band in BANDS:
         if band["id"] == "field":
