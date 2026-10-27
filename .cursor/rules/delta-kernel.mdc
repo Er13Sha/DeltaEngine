@@ -1,0 +1,21 @@
+---
+description: Ограничения доверенного ядра delta_kernel
+globs: delta_kernel/**/*.py,tests/kernel/**/*.py,tests/architecture/**/*.py
+alwaysApply: false
+---
+
+# Ядро
+
+Только стандартная библиотека. Счётчики — `int` и `Fraction`. Без `float`, без встроенных `eval` и `exec`, без NumPy и прочих пакетов проекта. Функция `dsl._eval` обходит AST предикатов; это не встроенный `eval`.
+
+`verified` выдаёт только классификация с сертификатом. Импорт `delta_tools`, `adapters` или `logical_delta_matter` в ядро запрещён. Страж: `tests/architecture/test_trust_boundary.py`.
+
+```python
+# плохо
+from adapters.field_lattice.model import step
+mass = float(record["mass"])
+
+# хорошо
+from fractions import Fraction
+mass = Fraction(record["mass"])
+```

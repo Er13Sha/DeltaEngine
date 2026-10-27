@@ -1,0 +1,149 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-many-particles-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "m": 3,
+      "pressure": 1.0,
+      "t": 5.0,
+      "kind": "merged",
+      "intact": 3,
+      "start_rms": 1.3333333333333335,
+      "end_rms": 1.2676746720212857,
+      "max_relative_rms": 0.3950093719676337,
+      "all_radius": 1.3928738002828007,
+      "min_pair": 1e+300,
+      "close_approach": false,
+      "steps_done": 2500
+    },
+    {
+      "m": 4,
+      "pressure": 1.0,
+      "t": 5.0,
+      "kind": "assembled",
+      "intact": 4,
+      "start_rms": 1.4142135623730951,
+      "end_rms": 1.3815011500183434,
+      "max_relative_rms": 0.16880143667254735,
+      "all_radius": 1.5346251325310447,
+      "min_pair": 1e+300,
+      "close_approach": false,
+      "steps_done": 2500
+    },
+    {
+      "m": 8,
+      "pressure": 1.0,
+      "t": 5.0,
+      "kind": "other",
+      "intact": 0,
+      "start_rms": 1.7320508075688772,
+      "end_rms": 2.9199902811292855,
+      "max_relative_rms": 0.8622755387521394,
+      "all_radius": 2.952764225887388,
+      "min_pair": 1e+300,
+      "close_approach": false,
+      "steps_done": 2500
+    },
+    {
+      "m": 16,
+      "pressure": 1.0,
+      "t": 5.0,
+      "kind": "other",
+      "intact": 0,
+      "start_rms": 2.481179155159901,
+      "end_rms": 5.137038026291454,
+      "max_relative_rms": 1.0948775163845545,
+      "all_radius": 5.268949894777091,
+      "min_pair": 1e+300,
+      "close_approach": false,
+      "steps_done": 2500
+    },
+    {
+      "m": 32,
+      "pressure": 1.0,
+      "t": 1.0,
+      "kind": "other",
+      "intact": 32,
+      "start_rms": 3.3166247903554,
+      "end_rms": 3.9985153313598873,
+      "max_relative_rms": 0.2055977338731217,
+      "all_radius": 3.9276456232482775,
+      "min_pair": 1e+300,
+      "close_approach": false,
+      "steps_done": 500
+    },
+    {
+      "m": 64,
+      "pressure": 1.0,
+      "t": 1.0,
+      "kind": "other",
+      "intact": 64,
+      "start_rms": 3.872983346207417,
+      "end_rms": 5.075752915286276,
+      "max_relative_rms": 0.31055376735783274,
+      "all_radius": 4.946008205192826,
+      "min_pair": 1e+300,
+      "close_approach": false,
+      "steps_done": 500
+    },
+    {
+      "m": 128,
+      "pressure": 1.0,
+      "t": 0.4,
+      "kind": "assembled",
+      "intact": 128,
+      "start_rms": 5.238361355185417,
+      "end_rms": 5.499425318749914,
+      "max_relative_rms": 0.04983695202815119,
+      "all_radius": 5.297179824252483,
+      "min_pair": 1e+300,
+      "close_approach": false,
+      "steps_done": 200
+    }
+  ],
+  "zero_M8": {
+    "m": 8,
+    "pressure": 0.0,
+    "t": 5.0,
+    "kind": "other",
+    "intact": 0,
+    "start_rms": 1.7320508075688772,
+    "end_rms": 10.483313975315806,
+    "max_relative_rms": 5.052544145647947,
+    "all_radius": 11.002145254534682,
+    "min_pair": 1e+300,
+    "close_approach": false,
+    "steps_done": 2500
+  },
+  "assembled_m": [
+    4,
+    128
+  ],
+  "substance_on_grid": true
+}

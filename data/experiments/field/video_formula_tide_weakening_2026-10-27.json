@@ -1,0 +1,193 @@
+{
+  "scope": "model",
+  "protocol": "docs/video-formula-tide-weakening-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "side_mass": 200.0,
+      "mean_separation": 528.4654534199066,
+      "min_separation": 0.01751914073017038,
+      "max_separation": 10888.33732320692,
+      "width": 10888.31980406619,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.10012511728523255,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 150.0,
+      "mean_separation": 160.95387160598943,
+      "min_separation": 0.02357101306038569,
+      "max_separation": 816.7301004588932,
+      "width": 816.7065294458328,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.07509383796392433,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 100.0,
+      "mean_separation": 1631.2496783379245,
+      "min_separation": 0.009201084602636024,
+      "max_separation": 5668.723174489949,
+      "width": 5668.713973405346,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.05006255864261627,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 75.0,
+      "mean_separation": 1369.3023596965247,
+      "min_separation": 0.01140846224160104,
+      "max_separation": 4951.886555383356,
+      "width": 4951.875146921114,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.03754691898196216,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 50.0,
+      "mean_separation": 421.402455681112,
+      "min_separation": 0.019125743036665865,
+      "max_separation": 3966.5443938695594,
+      "width": 3966.525268126523,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.025031279321308136,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 25.0,
+      "mean_separation": 0.9992622983628725,
+      "min_separation": 0.8248322941903081,
+      "max_separation": 1.1762316582212393,
+      "width": 0.3513993640309312,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.012515639660654068,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 10.0,
+      "mean_separation": 0.9987410360662952,
+      "min_separation": 0.9903236990270535,
+      "max_separation": 1.007239020373065,
+      "width": 0.01691532134601148,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.005006255864261636,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 5.0,
+      "mean_separation": 0.9993722888742347,
+      "min_separation": 0.9969964171903591,
+      "max_separation": 1.0015078190683973,
+      "width": 0.004511401878038113,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.002503127932130818,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 2.0,
+      "mean_separation": 0.9997514663677599,
+      "min_separation": 0.9989730925803837,
+      "max_separation": 1.0002901826739732,
+      "width": 0.0013170900935894903,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.0010012511728523278,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 1.0,
+      "mean_separation": 0.9998771705579885,
+      "min_separation": 0.9995007085437829,
+      "max_separation": 1.0001026764546794,
+      "width": 0.0006019679108965059,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.0005006255864261639,
+      "balanced": true,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    },
+    {
+      "side_mass": 0.0,
+      "mean_separation": 1.0000024674000567,
+      "min_separation": 0.999999999999958,
+      "max_separation": 1.0000049347900202,
+      "width": 4.934790062138816e-06,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.0,
+      "balanced": true,
+      "max_law_error": 2.220446049250313e-16,
+      "close_approach": false,
+      "steps_done": 100000,
+      "steps": 100000
+    }
+  ],
+  "bare_law_ok": true,
+  "all_balanced": true,
+  "pull_moves_mean": true,
+  "mean_relative_shift": 527.4641494874342,
+  "weakening_returns_mean": false,
+  "settled_size_at_200": false,
+  "mean_monotonic": false
+}

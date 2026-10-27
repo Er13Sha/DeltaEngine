@@ -1,0 +1,101 @@
+{
+  "scope": "model",
+  "protocol_id": "E-COMP-v2",
+  "protocol_sha256": "45fd537ff7101c69ac46642ec8b76ccbae5faa7e656a1ef91b8aae1e0aa558c3",
+  "code_sha256": "19998a3b87e751d048ed2d5648137b6dc722ca1bc5ce95ca5a582c6378fe37c5",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.5.4",
+    "numba": "0.68.0"
+  },
+  "stage": "T0",
+  "passed": true,
+  "rows": [
+    {
+      "id": "T0a",
+      "r": 0.0,
+      "force": -3.5236570605778894e-19,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "id": "T0a",
+      "r": 0.25,
+      "force": -3.669319622451317e-15,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "id": "T0a",
+      "r": 0.5,
+      "force": -1.1248380699102611e-14,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "id": "T0a",
+      "r": 0.75,
+      "force": -4.5187378144850854e-14,
+      "expected": 0.0,
+      "passed": true
+    },
+    {
+      "id": "T0a",
+      "r": 1.25,
+      "force": 0.6400000000000416,
+      "expected": 0.64,
+      "passed": true
+    },
+    {
+      "id": "T0a",
+      "r": 2.0,
+      "force": 0.25000000000000194,
+      "expected": 0.25,
+      "passed": true
+    },
+    {
+      "id": "T0b",
+      "r": 0.0,
+      "force": -1.5769303407837897e-19,
+      "passed": true
+    },
+    {
+      "id": "T0b",
+      "r": 0.75,
+      "force": -2.468086099696922e-16,
+      "passed": true
+    },
+    {
+      "id": "T0b",
+      "r": 1.5,
+      "force": -6.803144909642443e-16,
+      "passed": true
+    },
+    {
+      "id": "T0b",
+      "r": 2.25,
+      "force": -2.0343369736821585e-15,
+      "passed": true
+    },
+    {
+      "id": "T0c",
+      "r": 0.2,
+      "force": -5.930005266297742e-17,
+      "passed": true
+    },
+    {
+      "id": "T0d",
+      "r": 25.0,
+      "force": 0.0015999999999999999,
+      "expected": 0.0016,
+      "passed": true
+    },
+    {
+      "id": "T0d",
+      "r": 40.0,
+      "force": 0.000625,
+      "expected": 0.000625,
+      "passed": true
+    }
+  ]
+}

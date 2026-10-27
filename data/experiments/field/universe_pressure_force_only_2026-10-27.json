@@ -1,0 +1,185 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-force-only-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "b": 0.0,
+      "pressure": 0.0,
+      "min_separation": 0.9523806790662236,
+      "t_done": 21.095999999999187,
+      "steps": 10548,
+      "undefined_pair_skips": 0,
+      "x0": -10.000585498993345,
+      "x1": 10.000585498993345,
+      "vx0": -1.000001463660739,
+      "vx1": 1.000001463660739,
+      "sides_swapped": false,
+      "turned_back": true,
+      "halted": false
+    },
+    {
+      "b": 0.2,
+      "pressure": 0.0,
+      "min_separation": 0.9908308096691967,
+      "t_done": 24.98799999999703,
+      "steps": 12494,
+      "undefined_pair_skips": 0,
+      "x0": -10.000616939973867,
+      "x1": 10.000616939973867,
+      "vx0": -0.7172184512631049,
+      "vx1": 0.7172184512631049,
+      "sides_swapped": false,
+      "turned_back": true,
+      "halted": false
+    },
+    {
+      "b": 0.5,
+      "pressure": 0.0,
+      "min_separation": 1.1580060579456488,
+      "t_done": 40.00000000000292,
+      "steps": 20000,
+      "undefined_pair_skips": 0,
+      "x0": 0.4779445140100155,
+      "x1": -0.4779445140100155,
+      "vx0": 0.02512499692673066,
+      "vx1": -0.02512499692673066,
+      "sides_swapped": true,
+      "turned_back": false,
+      "halted": false
+    },
+    {
+      "b": 1.0,
+      "pressure": 0.0,
+      "min_separation": 1.5621392238293965,
+      "t_done": 27.539999999995615,
+      "steps": 13770,
+      "undefined_pair_skips": 0,
+      "x0": 10.000154158101054,
+      "x1": -10.000154158101054,
+      "vx0": 0.6222341735280154,
+      "vx1": -0.6222341735280154,
+      "sides_swapped": true,
+      "turned_back": false,
+      "halted": false
+    },
+    {
+      "b": 2.0,
+      "pressure": 0.0,
+      "min_separation": 2.485603592947893,
+      "t_done": 22.197999999998576,
+      "steps": 11099,
+      "undefined_pair_skips": 0,
+      "x0": 10.000754196145543,
+      "x1": -10.000754196145543,
+      "vx0": 0.8918619359473139,
+      "vx1": -0.8918619359473139,
+      "sides_swapped": true,
+      "turned_back": false,
+      "halted": false
+    },
+    {
+      "b": 0.0,
+      "pressure": 1.0,
+      "min_separation": 0.04780977522341305,
+      "t_done": 7.201999999999429,
+      "steps": 3601,
+      "undefined_pair_skips": 0,
+      "x0": -10.000240077030641,
+      "x1": 10.000240077030641,
+      "vx0": -0.9997604924480965,
+      "vx1": 0.9997604924480965,
+      "sides_swapped": false,
+      "turned_back": true,
+      "halted": false
+    },
+    {
+      "b": 0.2,
+      "pressure": 1.0,
+      "min_separation": 0.07350366966135301,
+      "t_done": 25.805999999996576,
+      "steps": 12903,
+      "undefined_pair_skips": 0,
+      "x0": -10.000587207439116,
+      "x1": 10.000587207439116,
+      "vx0": -0.782762080615691,
+      "vx1": 0.782762080615691,
+      "sides_swapped": false,
+      "turned_back": true,
+      "halted": false
+    },
+    {
+      "b": 0.5,
+      "pressure": 1.0,
+      "min_separation": 0.13576755594512271,
+      "t_done": 40.00000000000292,
+      "steps": 20000,
+      "undefined_pair_skips": 0,
+      "x0": -0.039895612225047956,
+      "x1": 0.039895612225047956,
+      "vx0": -0.048922069331059186,
+      "vx1": 0.048922069331059186,
+      "sides_swapped": false,
+      "turned_back": true,
+      "halted": false
+    },
+    {
+      "b": 1.0,
+      "pressure": 1.0,
+      "min_separation": 0.24442698491411513,
+      "t_done": 7.271999999999421,
+      "steps": 3636,
+      "undefined_pair_skips": 0,
+      "x0": 10.000030345828886,
+      "x1": -10.000030345828886,
+      "vx0": 0.9250019062502977,
+      "vx1": -0.9250019062502977,
+      "sides_swapped": true,
+      "turned_back": false,
+      "halted": false
+    },
+    {
+      "b": 2.0,
+      "pressure": 1.0,
+      "min_separation": 0.46463434000536774,
+      "t_done": 7.18799999999943,
+      "steps": 3594,
+      "undefined_pair_skips": 0,
+      "x0": 10.001330179931447,
+      "x1": -10.001330179931447,
+      "vx0": 1.0216483324504042,
+      "vx1": -1.0216483324504042,
+      "sides_swapped": true,
+      "turned_back": false,
+      "halted": false
+    }
+  ],
+  "all_finished": true,
+  "no_undefined_skips": true,
+  "grid_accepted": true
+}

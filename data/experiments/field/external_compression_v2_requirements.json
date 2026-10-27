@@ -1,0 +1,27 @@
+{
+  "id": "E-COMP-v2-requirements",
+  "date": "2026-10-27",
+  "scope": "model",
+  "status": "requirements_recorded_transfer_law_pending",
+  "simulation_started": false,
+  "document": "docs/external-compression-v2-requirements.md",
+  "requirements": {
+    "constant_universal_base_level": true,
+    "base_level_symbol": "B0",
+    "base_level_distinct_from_unit_source_C1": true,
+    "all_objects_mutually_interact": true,
+    "all_objects_dynamic": true,
+    "environment_responds": true,
+    "intervening_bodies_attenuate_transmitted_action": true,
+    "attenuation_explicitly_confirmed_by_user": true,
+    "source_receiver_intervening_body_recoil_required": true,
+    "field_energy_and_momentum_accounting_required": true,
+    "distance_cutoff": false,
+    "do_not_double_count_explicit_sources_and_universal_complex": true
+  },
+  "notation_only": "W_(j->i) = C1*N_j/(4*pi*r_ij^2) * T_(j->i)[all positions and field state]",
+  "transmission_law_selected": false,
+  "constant_external_force_on_each_point_is_not_equivalent": true,
+  "pending": ["definition and normalization of B0", "transmission law", "finite effective cross section or internal field geometry", "absorption versus scattering and field storage", "source reaction and remote-universe closure"],
+  "previous_model": "E-COMP-v1: mobile finite pairwise inverse-square repulsion, no transmission attenuation"
+}

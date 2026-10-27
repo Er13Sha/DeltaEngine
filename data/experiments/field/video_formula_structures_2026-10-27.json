@@ -1,0 +1,50 @@
+{
+  "scope": "model",
+  "protocol": "docs/video-formula-structures-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "expected": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "expected": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "expected": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "expected": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "chamber": false,
+  "k_transfer": 1,
+  "binary": {
+    "max_relative_separation_error": 1.20570220474292e-13,
+    "max_step_law_error": 1.1102230246251565e-16,
+    "min_distance": 1.000000000000001,
+    "structure_accepted": true,
+    "step_law_accepted": true
+  },
+  "triangle": {
+    "unperturbed_max_side_error": 6.333318074425165e-06,
+    "relative_equilibrium": true,
+    "perturbed_max_side_error": 0.9442798387652349,
+    "perturbation_growth": 149097.17586716046,
+    "stable": false
+  }
+}

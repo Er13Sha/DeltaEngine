@@ -1,0 +1,144 @@
+{
+  "scope": "model",
+  "protocol": "docs/video-formula-triple-circular-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "plain": {
+        "radius": 3.0,
+        "shift": 0.0,
+        "initial_outer": 3.0,
+        "initial_speed2_times_r": 3.0,
+        "steps": 169706,
+        "max_inner_error": 0.15377520128737576,
+        "max_outer_error": 0.04932951332722091,
+        "min_pair": 0.8462247987126242,
+        "close_approach": false,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 3.0,
+        "shift": 0.003,
+        "initial_outer": 3.003,
+        "initial_speed2_times_r": 3.0,
+        "steps": 169706,
+        "max_inner_error": 0.1530323609428631,
+        "max_outer_error": 0.057861632232142135,
+        "min_pair": 0.8469676390571369,
+        "close_approach": false,
+        "accepted": false
+      },
+      "stable": false,
+      "initial_gate": true
+    },
+    {
+      "plain": {
+        "radius": 5.0,
+        "shift": 0.0,
+        "initial_outer": 5.0,
+        "initial_speed2_times_r": 2.999999999999999,
+        "steps": 365149,
+        "max_inner_error": 0.021748901658828146,
+        "max_outer_error": 0.05220427183270093,
+        "min_pair": 0.9782510983411719,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 5.0,
+        "shift": 0.005,
+        "initial_outer": 5.005,
+        "initial_speed2_times_r": 2.999999999999999,
+        "steps": 365149,
+        "max_inner_error": 0.021623252301281815,
+        "max_outer_error": 0.03719961264909433,
+        "min_pair": 0.9783767476987182,
+        "close_approach": false,
+        "accepted": true
+      },
+      "stable": true,
+      "initial_gate": true
+    },
+    {
+      "plain": {
+        "radius": 10.0,
+        "shift": 0.0,
+        "initial_outer": 10.0,
+        "initial_speed2_times_r": 2.999999999999999,
+        "steps": 1032796,
+        "max_inner_error": 0.0022010267537553307,
+        "max_outer_error": 0.03435502011695668,
+        "min_pair": 0.9977989732462447,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 10.0,
+        "shift": 0.01,
+        "initial_outer": 10.01,
+        "initial_speed2_times_r": 2.999999999999999,
+        "steps": 1032796,
+        "max_inner_error": 0.0021930258204324593,
+        "max_outer_error": 0.009999999518617742,
+        "min_pair": 0.9978069741795675,
+        "close_approach": false,
+        "accepted": true
+      },
+      "stable": true,
+      "initial_gate": true
+    },
+    {
+      "plain": {
+        "radius": 20.0,
+        "shift": 0.0,
+        "initial_outer": 20.0,
+        "initial_speed2_times_r": 3.0000000000000004,
+        "steps": 2921187,
+        "max_inner_error": 0.0002535652859670945,
+        "max_outer_error": 0.018227740037009,
+        "min_pair": 0.9997464347140329,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 20.0,
+        "shift": 0.02,
+        "initial_outer": 20.02,
+        "initial_speed2_times_r": 3.0000000000000004,
+        "steps": 2921187,
+        "max_inner_error": 0.00025268232960873327,
+        "max_outer_error": 0.04185386855955642,
+        "min_pair": 0.9997473176703913,
+        "close_approach": false,
+        "accepted": true
+      },
+      "stable": true,
+      "initial_gate": true
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Комплекс удалённых тел — 3D модель</title>
+  <style>
+    :root {
+      --bg: #12141a;
+      --panel: rgba(18, 22, 30, 0.88);
+      --line: #2a3140;
+      --text: #e8e4d8;
+      --muted: #9aa3b2;
+      --accent: #d4a574;
+      --hold: #7dba8a;
+      --fly: #d07a6a;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font: 15px/1.45 "Segoe UI", sans-serif; }
+    canvas { display: block; }
+    #hud {
+      position: absolute; top: 16px; left: 16px; width: min(380px, calc(100vw - 32px));
+      background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+      padding: 16px 16px 12px; backdrop-filter: blur(10px);
+    }
+    h1 { margin: 0 0 6px; font-size: 17px; font-weight: 600; }
+    .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+    label { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+    input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .row { display: flex; gap: 8px; margin-top: 12px; }
+    button {
+      flex: 1; border: 1px solid var(--line); background: #1c222c; color: var(--text);
+      border-radius: 8px; padding: 8px 10px; cursor: pointer;
+    }
+    button:hover { border-color: var(--accent); }
+    #status { margin-top: 12px; font-size: 13px; }
+    #status b { color: var(--hold); }
+    #legend { position: absolute; right: 16px; bottom: 16px; color: var(--muted); font-size: 12px; text-align: right; }
+    .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="hud">
+    <h1>Комплекс удалённых тел</h1>
+    <div class="sub">Счёт один: Python, закон сцены. Этот экран только показывает положения порций.</div>
+    <label>Порций n <span id="nVal">4</span></label>
+    <input id="n" type="range" min="2" max="16000" step="1" value="4" />
+    <label>Комплекс неба P<sub>∞</sub> <span id="pVal">1000000</span></label>
+    <input id="p" type="range" min="0" max="1000000" step="1000" value="1000000" />
+    <div class="row">
+      <button id="reset">Собрать заново</button>
+      <button id="pause">Пауза</button>
+    </div>
+    <div id="status">ждём Python…</div>
+  </div>
+  <div id="legend">
+    <div><span class="dot" style="background:#e8c9a0"></span>порция материи</div>
+    <div><span class="dot" style="background:#6ea8d8"></span>комплекс, его считает Python</div>
+    <div>вращение мышью, колесо — масштаб</div>
+  </div>
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+    const nInput = document.getElementById("n");
+    const pInput = document.getElementById("p");
+    const nVal = document.getElementById("nVal");
+    const pVal = document.getElementById("pVal");
+    const status = document.getElementById("status");
+    const pauseBtn = document.getElementById("pause");
+    const resetBtn = document.getElementById("reset");
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x12141a);
+    const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.01, 1e7);
+    camera.position.set(6.2, 3.6, 7.4);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(innerWidth, innerHeight);
+    document.body.appendChild(renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.minDistance = 0.05;
+    controls.maxDistance = 1e6;
+
+    scene.add(new THREE.AmbientLight(0xb8c4d4, 0.7));
+    const key = new THREE.DirectionalLight(0xffe6c8, 1.1);
+    key.position.set(4, 8, 6);
+    scene.add(key);
+    const grid = new THREE.PolarGridHelper(8, 16, 8, 64, 0x2a3140, 0x1c222c);
+    grid.rotation.x = Math.PI / 2;
+    scene.add(grid);
+
+    let cloud = null;
+    let shown = 0;
+    const dummy = new THREE.Object3D();
+    let paused = false;
+
+    function formatP(value) {
+      if (value >= 1000) return String(Math.round(value));
+      return Number(value).toFixed(2);
+    }
+
+    function rebuild(count) {
+      if (cloud && shown === count) return;
+      if (cloud) {
+        scene.remove(cloud);
+        cloud.geometry.dispose();
+        cloud.material.dispose();
+      }
+      const detail = count > 800 ? 6 : 14;
+      cloud = new THREE.InstancedMesh(
+        new THREE.SphereGeometry(1, detail, Math.max(4, detail - 2)),
+        new THREE.MeshStandardMaterial({
+          color: 0xe8c9a0, roughness: 0.35, metalness: 0.05, emissive: 0x3a2a18, emissiveIntensity: 0.35,
+        }),
+        count
+      );
+      cloud.frustumCulled = false;
+      scene.add(cloud);
+      shown = count;
+    }
+
+    function draw(state) {
+      const count = state.n;
+      const xyz = state.positions;
+      rebuild(count);
+      const scale = Math.max(0.04, state.radius * 0.036) * Math.cbrt(8 / count);
+      const cm = new THREE.Vector3();
+      for (let i = 0; i < count; i++) {
+        dummy.position.set(xyz[i * 3], xyz[i * 3 + 1], xyz[i * 3 + 2]);
+        cm.add(dummy.position);
+        dummy.scale.setScalar(scale);
+        dummy.rotation.set(0, 0, 0);
+        dummy.updateMatrix();
+        cloud.setMatrixAt(i, dummy.matrix);
+      }
+      cloud.instanceMatrix.needsUpdate = true;
+      cm.multiplyScalar(1 / count);
+      controls.target.lerp(cm, 0.2);
+      const desired = Math.max(3, state.radius * 3.5);
+      const current = camera.position.distanceTo(controls.target);
+      if (current > desired * 2.2 || current < desired * 0.35) {
+        const dir = camera.position.clone().sub(controls.target);
+        if (dir.lengthSq() < 1e-8) dir.set(1, 0.55, 1.2);
+        dir.setLength(desired);
+        camera.position.copy(controls.target).add(dir);
+      }
+      const horizon = Math.max(6, 4 * state.radius, 0.6 * camera.position.distanceTo(cm));
+      grid.position.copy(cm);
+      grid.scale.setScalar(horizon / 8);
+      nVal.textContent = String(count);
+      pVal.textContent = formatP(state.pressure);
+      status.innerHTML = `радиус <b>${state.radius.toFixed(3)}</b> · t ${state.t.toExponential(2)} · ближайшие ${state.minPair.toExponential(2)} · шаг ${state.steps}`;
+    }
+
+    async function control(body) {
+      const response = await fetch("/api/control", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      draw(await response.json());
+    }
+
+    async function poll() {
+      try {
+        const response = await fetch("/api/state");
+        const state = await response.json();
+        paused = state.paused;
+        pauseBtn.textContent = paused ? "Дальше" : "Пауза";
+        draw(state);
+      } catch (error) {
+        status.textContent = "нет ответа Python";
+      }
+    }
+
+    nInput.addEventListener("change", () => control({ n: Number(nInput.value), reset: true }));
+    pInput.addEventListener("change", () => {
+      pVal.textContent = formatP(pInput.value);
+      control({ pressure: Number(pInput.value), reset: true });
+    });
+    pInput.addEventListener("input", () => { pVal.textContent = formatP(pInput.value); });
+    nInput.addEventListener("input", () => { nVal.textContent = nInput.value; });
+    resetBtn.addEventListener("click", () => control({
+      n: Number(nInput.value),
+      pressure: Number(pInput.value),
+      reset: true,
+    }));
+    pauseBtn.addEventListener("click", () => control({ paused: !paused }));
+    addEventListener("resize", () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+
+    function loop() {
+      requestAnimationFrame(loop);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    loop();
+    setInterval(poll, 50);
+    poll();
+  </script>
+</body>
+</html>

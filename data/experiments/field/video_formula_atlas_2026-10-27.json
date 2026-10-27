@@ -1,0 +1,1985 @@
+{
+  "scope": "model",
+  "protocol": "docs/video-formula-atlas-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "mu_star": 0.03852089650455137,
+  "binary": [
+    {
+      "separation": 0.5,
+      "masses": [
+        1.0,
+        1.0
+      ],
+      "max_relative_error": 4.93480605268104e-08,
+      "max_law_error": 2.220446049250313e-16,
+      "min_pair": 0.4999999999999447,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 0.5,
+      "masses": [
+        1.0,
+        0.1
+      ],
+      "max_relative_error": 4.934806896450539e-08,
+      "max_law_error": 2.7755575615628914e-17,
+      "min_pair": 0.49999999999996425,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 0.5,
+      "masses": [
+        1.0,
+        10.0
+      ],
+      "max_relative_error": 4.934806629997013e-08,
+      "max_law_error": 3.552713678800501e-15,
+      "min_pair": 0.4999999999999166,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 1.0,
+      "masses": [
+        1.0,
+        1.0
+      ],
+      "max_relative_error": 4.934803876643912e-08,
+      "max_law_error": 2.220446049250313e-16,
+      "min_pair": 0.9999999999999027,
+      "accepted": true,
+      "control": true
+    },
+    {
+      "separation": 1.0,
+      "masses": [
+        1.0,
+        0.1
+      ],
+      "max_relative_error": 4.9348050312758573e-08,
+      "max_law_error": 2.7755575615628914e-17,
+      "min_pair": 0.9999999999998819,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 1.0,
+      "masses": [
+        1.0,
+        10.0
+      ],
+      "max_relative_error": 4.934802633194124e-08,
+      "max_law_error": 3.552713678800501e-15,
+      "min_pair": 0.9999999999999619,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 2.0,
+      "masses": [
+        1.0,
+        1.0
+      ],
+      "max_relative_error": 4.93480605268104e-08,
+      "max_law_error": 2.220446049250313e-16,
+      "min_pair": 1.9999999999997788,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 2.0,
+      "masses": [
+        1.0,
+        0.1
+      ],
+      "max_relative_error": 4.934806896450539e-08,
+      "max_law_error": 2.7755575615628914e-17,
+      "min_pair": 1.999999999999857,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 2.0,
+      "masses": [
+        1.0,
+        10.0
+      ],
+      "max_relative_error": 4.934806629997013e-08,
+      "max_law_error": 3.552713678800501e-15,
+      "min_pair": 1.9999999999996665,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 10.0,
+      "masses": [
+        1.0,
+        1.0
+      ],
+      "max_relative_error": 4.9348135533477946e-08,
+      "max_law_error": 3.3306690738754696e-16,
+      "min_pair": 9.99999999999978,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 10.0,
+      "masses": [
+        1.0,
+        0.1
+      ],
+      "max_relative_error": 4.934810355905484e-08,
+      "max_law_error": 2.7755575615628914e-17,
+      "min_pair": 9.99999999999977,
+      "accepted": true,
+      "control": false
+    },
+    {
+      "separation": 10.0,
+      "masses": [
+        1.0,
+        10.0
+      ],
+      "max_relative_error": 4.9348012431948975e-08,
+      "max_law_error": 1.7763568394002505e-15,
+      "min_pair": 9.999999999998678,
+      "accepted": true,
+      "control": false
+    }
+  ],
+  "equilateral": [
+    {
+      "plain": {
+        "max_error": 4.193344734337856e-06,
+        "errors": [
+          4.147955482869392e-06,
+          4.193344734337856e-06,
+          1.793276594663773e-06
+        ],
+        "min_pair": 0.9999958604949147,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 20000,
+        "steps": 20000
+      },
+      "shifted": {
+        "max_error": 1.0003225037768297,
+        "errors": [
+          0.7668681134087038,
+          1.0003225037768297,
+          0.622949760409578
+        ],
+        "min_pair": 0.23313188659129622,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 7874,
+        "steps": 20000
+      },
+      "equilibrium": true,
+      "stable": false,
+      "label": "control",
+      "masses": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "periods": 5,
+      "classical_gascheau": false,
+      "control": true
+    },
+    {
+      "plain": {
+        "max_error": 1.002280093318186,
+        "errors": [
+          9.938538343634562e-06,
+          1.002280093318186,
+          0.9916177008287763
+        ],
+        "min_pair": 0.008382299171223684,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 43832,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 1.0001462977881723,
+        "errors": [
+          2.6386127390809477e-06,
+          0.45779875973087125,
+          1.0001462977881723
+        ],
+        "min_pair": 0.8618939727666988,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 7785,
+        "steps": 800000
+      },
+      "equilibrium": false,
+      "stable": false,
+      "label": "mu=0.5",
+      "masses": [
+        0.5,
+        0.5,
+        1e-06
+      ],
+      "periods": 200,
+      "classical_gascheau": false,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.0001853328933752,
+        "errors": [
+          8.214874292145069e-06,
+          1.0001853328933752,
+          0.6829807027950251
+        ],
+        "min_pair": 0.009656435600231737,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 61107,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 1.0009244361690666,
+        "errors": [
+          8.723619239647817e-06,
+          0.9712053084576107,
+          1.0009244361690666
+        ],
+        "min_pair": 0.052281959912309175,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 19321,
+        "steps": 800000
+      },
+      "equilibrium": false,
+      "stable": false,
+      "label": "mu=0.1",
+      "masses": [
+        0.9,
+        0.1,
+        1e-06
+      ],
+      "periods": 200,
+      "classical_gascheau": false,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.001980152265844,
+        "errors": [
+          5.400220838569503e-05,
+          1.001980152265844,
+          0.9411714941891343
+        ],
+        "min_pair": 0.0020841059391582214,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 133269,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 1.000076411503796,
+        "errors": [
+          1.4721214816715289e-05,
+          1.000076411503796,
+          0.5550223770762244
+        ],
+        "min_pair": 0.44497762292377563,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 21994,
+        "steps": 800000
+      },
+      "equilibrium": false,
+      "stable": false,
+      "label": "mu=0.05",
+      "masses": [
+        0.95,
+        0.05,
+        1e-06
+      ],
+      "periods": 200,
+      "classical_gascheau": false,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.2339236312719493e-06,
+        "errors": [
+          1.2336998314044223e-06,
+          1.2339236312719493e-06,
+          1.2337947410401284e-06
+        ],
+        "min_pair": 0.9999999997847159,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 0.07898074094113205,
+        "errors": [
+          2.199564236082807e-06,
+          0.07898074094113205,
+          0.03556734850868515
+        ],
+        "min_pair": 0.9279134576551414,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "equilibrium": true,
+      "stable": false,
+      "label": "mu=0.038520897",
+      "masses": [
+        0.9614791034954486,
+        0.03852089650455137,
+        1e-06
+      ],
+      "periods": 200,
+      "classical_gascheau": false,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.2337011721097468e-06,
+        "errors": [
+          1.2337000319107005e-06,
+          1.2337011721097468e-06,
+          1.23370048465965e-06
+        ],
+        "min_pair": 0.9999999999985777,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 0.007172675485902391,
+        "errors": [
+          1.4457211177099083e-06,
+          0.007172675485902391,
+          0.002721163397124915
+        ],
+        "min_pair": 0.9928273245140976,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "equilibrium": true,
+      "stable": true,
+      "label": "mu=0.02",
+      "masses": [
+        0.98,
+        0.02,
+        1e-06
+      ],
+      "periods": 200,
+      "classical_gascheau": true,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.2337007238016895e-06,
+        "errors": [
+          1.2336997954331963e-06,
+          1.2337007238016895e-06,
+          1.2336999055673203e-06
+        ],
+        "min_pair": 0.9999999999987712,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 0.007597694664230659,
+        "errors": [
+          1.6115839198693749e-06,
+          0.007597694664230659,
+          0.002256892942786415
+        ],
+        "min_pair": 0.9924067422255171,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "equilibrium": true,
+      "stable": true,
+      "label": "mu=0.01",
+      "masses": [
+        0.99,
+        0.01,
+        1e-06
+      ],
+      "periods": 200,
+      "classical_gascheau": true,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.2337042312182689e-06,
+        "errors": [
+          1.2336999959394745e-06,
+          1.2337042312182689e-06,
+          1.2337000956375022e-06
+        ],
+        "min_pair": 0.9999999999957185,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 0.017850801022330387,
+        "errors": [
+          5.041374730341275e-06,
+          0.017850801022330387,
+          0.00202146903656919
+        ],
+        "min_pair": 0.9823072919538363,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "equilibrium": true,
+      "stable": false,
+      "label": "mu=0.001",
+      "masses": [
+        0.999,
+        0.001,
+        1e-06
+      ],
+      "periods": 200,
+      "classical_gascheau": true,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.2337008148399775e-06,
+        "errors": [
+          1.2336999151152384e-06,
+          1.2337008148399775e-06,
+          1.233699895131224e-06
+        ],
+        "min_pair": 0.9999999999990541,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 0.007991268165318921,
+        "errors": [
+          0.002327597135251658,
+          0.007991268165318921,
+          0.002339429452560715
+        ],
+        "min_pair": 0.9929701209713487,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "equilibrium": true,
+      "stable": true,
+      "label": "finite",
+      "masses": [
+        1.0,
+        0.01,
+        0.01
+      ],
+      "periods": 200,
+      "classical_gascheau": true,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 0.14566495912988664,
+        "errors": [
+          0.03268027980349897,
+          0.14566495912988664,
+          0.03284017556059482
+        ],
+        "min_pair": 0.8788953872830553,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 0.15311555382232234,
+        "errors": [
+          0.034103632405865336,
+          0.15311555382232234,
+          0.03416249121326542
+        ],
+        "min_pair": 0.8743167005317163,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 800000,
+        "steps": 800000
+      },
+      "equilibrium": false,
+      "stable": false,
+      "label": "finite",
+      "masses": [
+        1.0,
+        0.02,
+        0.02
+      ],
+      "periods": 200,
+      "classical_gascheau": false,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.0106415702449625,
+        "errors": [
+          0.9825216078401944,
+          1.0106415702449625,
+          0.33551783846698857
+        ],
+        "min_pair": 0.0032654712776034487,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 64617,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 1.0001251188425062,
+        "errors": [
+          0.654846439494988,
+          1.0001251188425062,
+          0.741603624813119
+        ],
+        "min_pair": 0.258396375186881,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 14206,
+        "steps": 800000
+      },
+      "equilibrium": false,
+      "stable": false,
+      "label": "finite",
+      "masses": [
+        1.0,
+        0.05,
+        0.05
+      ],
+      "periods": 200,
+      "classical_gascheau": false,
+      "control": false
+    },
+    {
+      "plain": {
+        "max_error": 1.0000680285755839,
+        "errors": [
+          0.9834358246651864,
+          1.0000680285755839,
+          0.8407051559319005
+        ],
+        "min_pair": 0.15929484406809943,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 43573,
+        "steps": 800000
+      },
+      "shifted": {
+        "max_error": 1.000663342834661,
+        "errors": [
+          0.5453438271127808,
+          1.000663342834661,
+          0.4563185531987055
+        ],
+        "min_pair": 0.013457791314395087,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 20712,
+        "steps": 800000
+      },
+      "equilibrium": false,
+      "stable": false,
+      "label": "finite",
+      "masses": [
+        1.0,
+        0.1,
+        0.1
+      ],
+      "periods": 200,
+      "classical_gascheau": false,
+      "control": false
+    }
+  ],
+  "euler": {
+    "residual": 0.0,
+    "initial_gate": true,
+    "plain": {
+      "max_error": 6.168501749392874e-07,
+      "errors": [
+        3.084250874696437e-07,
+        3.084250874696437e-07,
+        6.168501749392874e-07
+      ],
+      "min_pair": 1.0,
+      "close_approach": false,
+      "stopped_early": false,
+      "steps_done": 160000,
+      "steps": 160000
+    },
+    "shifted": {
+      "max_error": 1.0003188740792863,
+      "errors": [
+        0.6830955436106962,
+        1.0003188740792863,
+        0.32466436477925487
+      ],
+      "min_pair": 0.31690445638930376,
+      "close_approach": false,
+      "stopped_early": true,
+      "steps_done": 5977,
+      "steps": 160000
+    },
+    "equilibrium": true,
+    "stable": false
+  },
+  "polygon": [
+    {
+      "n": 3,
+      "residual": 2.220446049250313e-16,
+      "initial_gate": true,
+      "control": true,
+      "plain": {
+        "max_error": 1.0001999973051532,
+        "errors": [
+          0.4528880300869882,
+          1.0001999973051532,
+          0.6869403988290204
+        ],
+        "min_pair": 0.7321896350728578,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 60870,
+        "steps": 160000
+      },
+      "shifted": {
+        "max_error": 1.000018165179947,
+        "errors": [
+          0.6232677628177765,
+          1.000018165179947,
+          0.7467682376865715
+        ],
+        "min_pair": 0.9864048494663861,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 15204,
+        "steps": 160000
+      },
+      "equilibrium": false,
+      "stable": false
+    },
+    {
+      "n": 4,
+      "residual": 2.2374368342634757e-16,
+      "initial_gate": true,
+      "control": false,
+      "plain": {
+        "max_error": 1.0010680722536764,
+        "errors": [
+          1.0010680722536764,
+          0.10791717842521509,
+          0.3950433586775284,
+          0.368839833504903,
+          0.1618218842198864,
+          0.9476611465963274
+        ],
+        "min_pair": 0.4144138084723089,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 53671,
+        "steps": 160000
+      },
+      "shifted": {
+        "max_error": 1.000187368276621,
+        "errors": [
+          0.4304726621848183,
+          0.3450967778392007,
+          0.6138525002222521,
+          0.5494878594207866,
+          0.05360637037008642,
+          1.000187368276621
+        ],
+        "min_pair": 0.800361062150843,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 12457,
+        "steps": 160000
+      },
+      "equilibrium": false,
+      "stable": false
+    },
+    {
+      "n": 5,
+      "residual": 4.440892098500626e-16,
+      "initial_gate": true,
+      "control": false,
+      "plain": {
+        "max_error": 1.0000908259258257,
+        "errors": [
+          0.2631096676745732,
+          0.2579851523880474,
+          0.6678155044812399,
+          0.764430783397656,
+          0.8120165901183074,
+          0.4584417927204656,
+          0.3555878837657207,
+          1.0000908259258257,
+          0.19298913929215367,
+          0.5393880521874652
+        ],
+        "min_pair": 0.4120895536357957,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 46076,
+        "steps": 160000
+      },
+      "shifted": {
+        "max_error": 1.0004342641660964,
+        "errors": [
+          0.4939145806013705,
+          0.33070056305807216,
+          0.6316707610541676,
+          0.9975552152419628,
+          0.5541312853923559,
+          0.8746126715045579,
+          1.0004342641660964,
+          0.9646937681486074,
+          0.31760152230465843,
+          0.7496154893522362
+        ],
+        "min_pair": 0.1780152893429837,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 12086,
+        "steps": 160000
+      },
+      "equilibrium": false,
+      "stable": false
+    },
+    {
+      "n": 6,
+      "residual": 1.897149936107019e-15,
+      "initial_gate": true,
+      "control": false,
+      "plain": {
+        "max_error": 1.0004782644020636,
+        "errors": [
+          0.24885993717139776,
+          0.36044574759782533,
+          0.5692743096947521,
+          0.919962673061923,
+          0.33361162312844994,
+          0.6316874655570138,
+          0.10889321095911475,
+          0.6427470957382921,
+          0.46110642158334536,
+          1.0004782644020636,
+          0.3435403023270096,
+          0.7732231513809451,
+          0.38002930825769876,
+          0.2149098773804865,
+          0.28816883893526235
+        ],
+        "min_pair": 0.6199706917423009,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 45480,
+        "steps": 160000
+      },
+      "shifted": {
+        "max_error": 1.0004507971075118,
+        "errors": [
+          0.4504506106115188,
+          0.1870700911938279,
+          0.2037995553823344,
+          1.0004507971075118,
+          0.2838800456935212,
+          0.37226402237487377,
+          0.6793341256937193,
+          0.14353352104260564,
+          0.5432314275484704,
+          0.22931246192744625,
+          0.1561477848226005,
+          0.5040827721340371,
+          0.5678337089555564,
+          0.6041595208819523,
+          0.7010751488503592
+        ],
+        "min_pair": 0.2989248511496413,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 10850,
+        "steps": 160000
+      },
+      "equilibrium": false,
+      "stable": false
+    }
+  ],
+  "control_R5": {
+    "plain": {
+      "radius": 5.0,
+      "q": 1.0,
+      "shift": 0.0,
+      "retrograde": false,
+      "periods": 20,
+      "speed2_times_r": 2.999999999999999,
+      "steps": 365149,
+      "max_inner_error": 0.021748901658828146,
+      "max_outer_error": 0.05220427183270093,
+      "min_pair": 0.9782510983411719,
+      "close_approach": false,
+      "accepted": true
+    },
+    "shifted": {
+      "radius": 5.0,
+      "q": 1.0,
+      "shift": 0.005,
+      "retrograde": false,
+      "periods": 20,
+      "speed2_times_r": 2.999999999999999,
+      "steps": 365149,
+      "max_inner_error": 0.021623252301281815,
+      "max_outer_error": 0.03719961264909433,
+      "min_pair": 0.9783767476987182,
+      "close_approach": false,
+      "accepted": true
+    },
+    "initial_gate": true,
+    "stable": true,
+    "control": true,
+    "periods": 20,
+    "retrograde": false
+  },
+  "hierarchical": [
+    {
+      "plain": {
+        "radius": 3.0,
+        "q": 0.01,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 207329,
+        "max_inner_error": 0.0013543896718666293,
+        "max_outer_error": 0.06526723630293141,
+        "min_pair": 0.9986456103281334,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 3.0,
+        "q": 0.01,
+        "shift": 0.003,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 207329,
+        "max_inner_error": 0.00134489794185233,
+        "max_outer_error": 0.05621869998397244,
+        "min_pair": 0.9986551020581477,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 5.0,
+        "q": 0.01,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 446100,
+        "max_inner_error": 0.00019950091253417845,
+        "max_outer_error": 0.060793959201960845,
+        "min_pair": 0.9998004990874658,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 5.0,
+        "q": 0.01,
+        "shift": 0.005,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 446100,
+        "max_inner_error": 0.00019852489868232848,
+        "max_outer_error": 0.04576811960485028,
+        "min_pair": 0.9998014751013177,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 10.0,
+        "q": 0.01,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 1261761,
+        "max_inner_error": 1.673271191326986e-05,
+        "max_outer_error": 0.03512821843133729,
+        "min_pair": 0.9999832672880867,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 10.0,
+        "q": 0.01,
+        "shift": 0.01,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 1261761,
+        "max_inner_error": 1.6645317933106085e-05,
+        "max_outer_error": 0.009999999677473781,
+        "min_pair": 0.9999833546820669,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 20.0,
+        "q": 0.01,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 3568798,
+        "max_inner_error": 3.663618451277273e-06,
+        "max_outer_error": 0.018335788180973367,
+        "min_pair": 0.9999999990349991,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 20.0,
+        "q": 0.01,
+        "shift": 0.02,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.01,
+        "steps": 3568798,
+        "max_inner_error": 3.6645410197433392e-06,
+        "max_outer_error": 0.04174612147245327,
+        "min_pair": 1.0,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 3.0,
+        "q": 0.1,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.1,
+        "steps": 202838,
+        "max_inner_error": 0.013806468750743428,
+        "max_outer_error": 0.05636853668759523,
+        "min_pair": 0.9861935312492566,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 3.0,
+        "q": 0.1,
+        "shift": 0.003,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.1,
+        "steps": 202838,
+        "max_inner_error": 0.013710709770781704,
+        "max_outer_error": 0.0473319020338705,
+        "min_pair": 0.9862892902292183,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 5.0,
+        "q": 0.1,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.1000000000000005,
+        "steps": 436436,
+        "max_inner_error": 0.0020522052777058875,
+        "max_outer_error": 0.06001447594882414,
+        "min_pair": 0.9979477947222941,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 5.0,
+        "q": 0.1,
+        "shift": 0.005,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.1000000000000005,
+        "steps": 436436,
+        "max_inner_error": 0.0020424226431650094,
+        "max_outer_error": 0.04499265474289782,
+        "min_pair": 0.997957577356835,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 10.0,
+        "q": 0.1,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.1000000000000005,
+        "steps": 1234427,
+        "max_inner_error": 0.00021213759571891977,
+        "max_outer_error": 0.035053748654188865,
+        "min_pair": 0.9997878624042811,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 10.0,
+        "q": 0.1,
+        "shift": 0.01,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.1000000000000005,
+        "steps": 1234427,
+        "max_inner_error": 0.00021125948025502161,
+        "max_outer_error": 0.009999999663032,
+        "min_pair": 0.999788740519745,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 20.0,
+        "q": 0.1,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.0999999999999996,
+        "steps": 3491487,
+        "max_inner_error": 2.077485264628809e-05,
+        "max_outer_error": 0.018325135290012895,
+        "min_pair": 0.9999792251473537,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 20.0,
+        "q": 0.1,
+        "shift": 0.02,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 2.0999999999999996,
+        "steps": 3491487,
+        "max_inner_error": 2.0687465678737027e-05,
+        "max_outer_error": 0.04175667176879827,
+        "min_pair": 0.9999793125343213,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 3.0,
+        "q": 10.0,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 12.0,
+        "steps": 84853,
+        "max_inner_error": 13.909295782900363,
+        "max_outer_error": 3.9521994203670845,
+        "min_pair": 0.19494840776514064,
+        "close_approach": true,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 3.0,
+        "q": 10.0,
+        "shift": 0.003,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 12.0,
+        "steps": 84853,
+        "max_inner_error": 82.8672850561457,
+        "max_outer_error": 38.332267264642354,
+        "min_pair": 0.465437553157208,
+        "close_approach": false,
+        "accepted": false
+      },
+      "initial_gate": true,
+      "stable": false,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 5.0,
+        "q": 10.0,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 12.000000000000002,
+        "steps": 182575,
+        "max_inner_error": 0.8003987379000503,
+        "max_outer_error": 0.24663551081373836,
+        "min_pair": 0.1996012620999497,
+        "close_approach": true,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 5.0,
+        "q": 10.0,
+        "shift": 0.005,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 12.000000000000002,
+        "steps": 182575,
+        "max_inner_error": 0.7233035741212624,
+        "max_outer_error": 0.17135305290832648,
+        "min_pair": 0.27669642587873755,
+        "close_approach": false,
+        "accepted": false
+      },
+      "initial_gate": true,
+      "stable": false,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 10.0,
+        "q": 10.0,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 11.999999999999996,
+        "steps": 516398,
+        "max_inner_error": 0.024579334903435,
+        "max_outer_error": 0.028796968111377552,
+        "min_pair": 0.975420665096565,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 10.0,
+        "q": 10.0,
+        "shift": 0.01,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 11.999999999999996,
+        "steps": 516398,
+        "max_inner_error": 0.024457195140438426,
+        "max_outer_error": 0.00999999807446983,
+        "min_pair": 0.9755428048595616,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 20.0,
+        "q": 10.0,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 12.000000000000002,
+        "steps": 1460594,
+        "max_inner_error": 0.0026699449923105467,
+        "max_outer_error": 0.01758300375732702,
+        "min_pair": 0.9973300550076895,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 20.0,
+        "q": 10.0,
+        "shift": 0.02,
+        "retrograde": false,
+        "periods": 20,
+        "speed2_times_r": 12.000000000000002,
+        "steps": 1460594,
+        "max_inner_error": 0.0026604902294780075,
+        "max_outer_error": 0.042507709983933495,
+        "min_pair": 0.997339509770522,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": false
+    }
+  ],
+  "retrograde": [
+    {
+      "plain": {
+        "radius": 3.0,
+        "q": 1.0,
+        "shift": 0.0,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 3.0,
+        "steps": 169706,
+        "max_inner_error": 0.0488783992207088,
+        "max_outer_error": 0.16694802509316942,
+        "min_pair": 0.9511216007792912,
+        "close_approach": false,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 3.0,
+        "q": 1.0,
+        "shift": 0.003,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 3.0,
+        "steps": 169706,
+        "max_inner_error": 0.04878763150173915,
+        "max_outer_error": 0.15788956940477306,
+        "min_pair": 0.9512123684982609,
+        "close_approach": false,
+        "accepted": false
+      },
+      "initial_gate": true,
+      "stable": false,
+      "control": false,
+      "periods": 20,
+      "retrograde": true
+    },
+    {
+      "plain": {
+        "radius": 5.0,
+        "q": 1.0,
+        "shift": 0.0,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 365149,
+        "max_inner_error": 0.012863426261741306,
+        "max_outer_error": 0.08879248438864895,
+        "min_pair": 0.9871365737382587,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 5.0,
+        "q": 1.0,
+        "shift": 0.005,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 365149,
+        "max_inner_error": 0.012825042706590906,
+        "max_outer_error": 0.0737730172906641,
+        "min_pair": 0.9871749572934091,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": true
+    },
+    {
+      "plain": {
+        "radius": 10.0,
+        "q": 1.0,
+        "shift": 0.0,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 1032796,
+        "max_inner_error": 0.001834447250754212,
+        "max_outer_error": 0.04024225879185117,
+        "min_pair": 0.9981655527492458,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 10.0,
+        "q": 1.0,
+        "shift": 0.01,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 1032796,
+        "max_inner_error": 0.001828999207530324,
+        "max_outer_error": 0.010202414164638185,
+        "min_pair": 0.9981710007924697,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": true
+    },
+    {
+      "plain": {
+        "radius": 20.0,
+        "q": 1.0,
+        "shift": 0.0,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 3.0000000000000004,
+        "steps": 2921187,
+        "max_inner_error": 0.00023754367060380144,
+        "max_outer_error": 0.019256129848781,
+        "min_pair": 0.9997624563293962,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 20.0,
+        "q": 1.0,
+        "shift": 0.02,
+        "retrograde": true,
+        "periods": 20,
+        "speed2_times_r": 3.0000000000000004,
+        "steps": 2921187,
+        "max_inner_error": 0.00023674774158011225,
+        "max_outer_error": 0.040824894865522765,
+        "min_pair": 0.9997632522584199,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 20,
+      "retrograde": true
+    }
+  ],
+  "durability_200": [
+    {
+      "plain": {
+        "radius": 5.0,
+        "q": 1.0,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 200,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 3651484,
+        "max_inner_error": 0.021776318304197795,
+        "max_outer_error": 0.05220427183270093,
+        "min_pair": 0.9782236816958022,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 5.0,
+        "q": 1.0,
+        "shift": 0.005,
+        "retrograde": false,
+        "periods": 200,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 3651484,
+        "max_inner_error": 0.021661068273056805,
+        "max_outer_error": 0.03720668622939094,
+        "min_pair": 0.9783389317269432,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 200,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 10.0,
+        "q": 1.0,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 200,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 10327956,
+        "max_inner_error": 0.0022022942416007885,
+        "max_outer_error": 0.03435514722260358,
+        "min_pair": 0.9977977057583992,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 10.0,
+        "q": 1.0,
+        "shift": 0.01,
+        "retrograde": false,
+        "periods": 200,
+        "speed2_times_r": 2.999999999999999,
+        "steps": 10327956,
+        "max_inner_error": 0.0021930962383841512,
+        "max_outer_error": 0.009999999518617742,
+        "min_pair": 0.9978069037616158,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 200,
+      "retrograde": false
+    },
+    {
+      "plain": {
+        "radius": 20.0,
+        "q": 1.0,
+        "shift": 0.0,
+        "retrograde": false,
+        "periods": 200,
+        "speed2_times_r": 3.0000000000000004,
+        "steps": 29211870,
+        "max_inner_error": 0.00025356554103472817,
+        "max_outer_error": 0.018228894240397864,
+        "min_pair": 0.9997464344589653,
+        "close_approach": false,
+        "accepted": true
+      },
+      "shifted": {
+        "radius": 20.0,
+        "q": 1.0,
+        "shift": 0.02,
+        "retrograde": false,
+        "periods": 200,
+        "speed2_times_r": 3.0000000000000004,
+        "steps": 29211870,
+        "max_inner_error": 0.00025268328744010304,
+        "max_outer_error": 0.041853873228649974,
+        "min_pair": 0.9997473167125599,
+        "close_approach": false,
+        "accepted": true
+      },
+      "initial_gate": true,
+      "stable": true,
+      "control": false,
+      "periods": 200,
+      "retrograde": false
+    }
+  ],
+  "planets": [
+    {
+      "r_out": 1.2,
+      "periods": 200,
+      "plain": {
+        "shift": 0.0,
+        "max_relative_radius": 0.25225786254645555,
+        "per_planet": [
+          0.19375464425003108,
+          0.25225786254645555
+        ],
+        "min_pair": 0.0999810289486789,
+        "close_approach": true,
+        "accepted": false,
+        "steps": 525814
+      },
+      "shifted": {
+        "shift": 0.0012,
+        "max_relative_radius": 0.2997544947863948,
+        "per_planet": [
+          0.22089205049191318,
+          0.2997544947863948
+        ],
+        "min_pair": 0.10034539836678391,
+        "close_approach": true,
+        "accepted": false,
+        "steps": 525814
+      },
+      "stable": false
+    },
+    {
+      "r_out": 1.5,
+      "periods": 200,
+      "plain": {
+        "shift": 0.0,
+        "max_relative_radius": 0.02512896723484226,
+        "per_planet": [
+          0.02512896723484226,
+          0.011916299374809314
+        ],
+        "min_pair": 0.46944659435432734,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 734847
+      },
+      "shifted": {
+        "shift": 0.0015,
+        "max_relative_radius": 0.02580562336073744,
+        "per_planet": [
+          0.02580562336073744,
+          0.012187052304968082
+        ],
+        "min_pair": 0.471538741475957,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 734847
+      },
+      "stable": true
+    },
+    {
+      "r_out": 2.0,
+      "periods": 200,
+      "plain": {
+        "shift": 0.0,
+        "max_relative_radius": 0.008985557306022685,
+        "per_planet": [
+          0.0035912009210387064,
+          0.008985557306022685
+        ],
+        "min_pair": 0.9871823145038111,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 1131371
+      },
+      "shifted": {
+        "shift": 0.002,
+        "max_relative_radius": 0.0070127965484863,
+        "per_planet": [
+          0.0032804191583835074,
+          0.0070127965484863
+        ],
+        "min_pair": 0.9930702706946383,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 1131371
+      },
+      "stable": true
+    },
+    {
+      "r_out": 3.0,
+      "periods": 20,
+      "plain": {
+        "shift": 0.0,
+        "max_relative_radius": 0.010228557821226336,
+        "per_planet": [
+          0.0003550965820671159,
+          0.010228557821226336
+        ],
+        "min_pair": 0.9996449034179329,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 207847
+      },
+      "shifted": {
+        "shift": 0.003,
+        "max_relative_radius": 0.008254059963868188,
+        "per_planet": [
+          0.0003498970856463668,
+          0.008254059963868188
+        ],
+        "min_pair": 0.9996501029143536,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 207847
+      },
+      "stable": true
+    },
+    {
+      "r_out": 5.0,
+      "periods": 20,
+      "plain": {
+        "shift": 0.0,
+        "max_relative_radius": 0.01168962335956214,
+        "per_planet": [
+          5.383170229966705e-05,
+          0.01168962335956214
+        ],
+        "min_pair": 0.9999461682977003,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 447214
+      },
+      "shifted": {
+        "shift": 0.005,
+        "max_relative_radius": 0.009720837337840682,
+        "per_planet": [
+          5.127761447676349e-05,
+          0.009720837337840682
+        ],
+        "min_pair": 0.9999487223855232,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 447214
+      },
+      "stable": true
+    },
+    {
+      "r_out": 10.0,
+      "periods": 20,
+      "plain": {
+        "shift": 0.0,
+        "max_relative_radius": 0.014901473732828463,
+        "per_planet": [
+          7.678594878379741e-06,
+          0.014901473732828463
+        ],
+        "min_pair": 0.999992754809093,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 1264912
+      },
+      "shifted": {
+        "shift": 0.01,
+        "max_relative_radius": 0.012943451855150667,
+        "per_planet": [
+          7.4146759523330275e-06,
+          0.012943451855150667
+        ],
+        "min_pair": 0.9999930397798633,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 1264912
+      },
+      "stable": true
+    },
+    {
+      "r_out": 20.0,
+      "periods": 20,
+      "plain": {
+        "shift": 0.0,
+        "max_relative_radius": 0.019814199826236334,
+        "per_planet": [
+          5.5405159249399816e-06,
+          0.019814199826236334
+        ],
+        "min_pair": 0.9999988470848754,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 3577709
+      },
+      "shifted": {
+        "shift": 0.02,
+        "max_relative_radius": 0.01787047925416474,
+        "per_planet": [
+          5.522743193431268e-06,
+          0.01787047925416474
+        ],
+        "min_pair": 0.9999988671549881,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 3577709
+      },
+      "stable": true
+    }
+  ],
+  "binary_binary": [
+    {
+      "distance": 5.0,
+      "plain": {
+        "shift": 0.0,
+        "max_pair_a": 0.04754029730809972,
+        "max_pair_b": 0.04754029704674967,
+        "max_centers": 0.08837869990742497,
+        "min_pair": 0.9524597026919003,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 316228
+      },
+      "shifted": {
+        "shift": 0.005,
+        "max_pair_a": 0.047469187618229935,
+        "max_pair_b": 0.04746918772362552,
+        "max_centers": 0.07337417853502082,
+        "min_pair": 0.9525308122763745,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 316228
+      },
+      "stable": true
+    },
+    {
+      "distance": 10.0,
+      "plain": {
+        "shift": 0.0,
+        "max_pair_a": 0.004522520884301828,
+        "max_pair_b": 0.004522520884013281,
+        "max_centers": 0.06776436867918711,
+        "min_pair": 0.9954774791156982,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 894428
+      },
+      "shifted": {
+        "shift": 0.01,
+        "max_pair_a": 0.0045030761414895926,
+        "max_pair_b": 0.004503076141522677,
+        "max_centers": 0.037725264356700094,
+        "min_pair": 0.9954969238584773,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 894428
+      },
+      "stable": true
+    },
+    {
+      "distance": 20.0,
+      "plain": {
+        "shift": 0.0,
+        "max_pair_a": 0.000515932874730618,
+        "max_pair_b": 0.0005159328703759902,
+        "max_centers": 0.03633475295749378,
+        "min_pair": 0.9994840671252694,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 2529823
+      },
+      "shifted": {
+        "shift": 0.02,
+        "max_pair_a": 0.0005139433332113086,
+        "max_pair_b": 0.0005139433345277,
+        "max_centers": 0.023752749507810478,
+        "min_pair": 0.9994860566654723,
+        "close_approach": false,
+        "accepted": true,
+        "steps": 2529823
+      },
+      "stable": true
+    }
+  ],
+  "star_planet_moon": [
+    {
+      "d": 0.01,
+      "initial_gate": true,
+      "steps": 3162277,
+      "plain": {
+        "max_error": 4.9714391131848445e-05,
+        "errors": [
+          1.0123159388530922e-05,
+          4.9714391131848445e-05
+        ],
+        "min_pair": 0.009950285608868152,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 3162277,
+        "steps": 3162277,
+        "accepted": true
+      },
+      "shifted": {
+        "max_error": 3.406245713750283e-05,
+        "errors": [
+          1.0103868677391326e-05,
+          3.406245713750283e-05
+        ],
+        "min_pair": 0.00998000227647943,
+        "close_approach": false,
+        "stopped_early": false,
+        "steps_done": 3162277,
+        "steps": 3162277,
+        "accepted": true
+      },
+      "stable": true
+    },
+    {
+      "d": 0.05,
+      "initial_gate": true,
+      "steps": 282843,
+      "plain": {
+        "max_error": 1.00009657153588,
+        "errors": [
+          0.0005057074106514792,
+          1.00009657153588
+        ],
+        "min_pair": 0.00767828893763052,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 4579,
+        "steps": 282843,
+        "accepted": false
+      },
+      "shifted": {
+        "max_error": 1.000166261438136,
+        "errors": [
+          0.0005045011327644566,
+          1.000166261438136
+        ],
+        "min_pair": 0.007550204260054947,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 4585,
+        "steps": 282843,
+        "accepted": false
+      },
+      "stable": false
+    },
+    {
+      "d": 0.2,
+      "initial_gate": true,
+      "steps": 100000,
+      "plain": {
+        "max_error": 1.0000295718240932,
+        "errors": [
+          0.0007995823899679122,
+          1.0000295718240932
+        ],
+        "min_pair": 0.19999999999999996,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 785,
+        "steps": 100000,
+        "accepted": false
+      },
+      "shifted": {
+        "max_error": 1.0007583573893506,
+        "errors": [
+          0.0007995929001283208,
+          1.0007583573893506
+        ],
+        "min_pair": 0.2001999999999997,
+        "close_approach": false,
+        "stopped_early": true,
+        "steps_done": 785,
+        "steps": 100000,
+        "accepted": false
+      },
+      "stable": false
+    }
+  ],
+  "figure_eight": {
+    "plain": {
+      "shift": 0.0,
+      "return_error_period_1": 2.4440049245399667e-07,
+      "return_error_period_10": 4.064684280184506e-06,
+      "return_error_period_30": 1.2094372524500569e-05,
+      "laps_done": 30,
+      "max_radius": 1.0810171772556572,
+      "min_pair": 0.6905263261812621,
+      "close_approach": false,
+      "periodic": true,
+      "bounded": true
+    },
+    "shift_1e-5": {
+      "shift": 1e-05,
+      "return_error_period_1": 0.00012379988319476899,
+      "return_error_period_10": 0.0012279504386362267,
+      "return_error_period_30": 0.0036766308676404913,
+      "laps_done": 30,
+      "max_radius": 1.0810373458195262,
+      "min_pair": 0.6905020673210375,
+      "close_approach": false,
+      "periodic": false,
+      "bounded": true
+    },
+    "shift_1e-3": {
+      "shift": 0.001,
+      "return_error_period_1": 0.012364813895604305,
+      "return_error_period_10": 0.12307619526727771,
+      "return_error_period_30": 0.36667114461230094,
+      "laps_done": 30,
+      "max_radius": 1.0830334997922233,
+      "min_pair": 0.688082093356493,
+      "close_approach": false,
+      "periodic": false,
+      "bounded": true
+    },
+    "periodic": true,
+    "stable_1e-5": true,
+    "stable_1e-3": true
+  }
+}

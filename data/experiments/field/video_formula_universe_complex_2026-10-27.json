@@ -1,0 +1,177 @@
+{
+  "scope": "model",
+  "protocol": "docs/video-formula-universe-complex-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "count": 40000,
+  "filled": [
+    {
+      "label": "filled M=400.0",
+      "total_mass": 400.0,
+      "mean_separation": 5.360909699060615,
+      "min_separation": 0.7152225786531641,
+      "max_separation": 9.955216195051607,
+      "width": 9.239993616398444,
+      "cm_acceleration": 1.3600233215392634,
+      "tidal_acceleration": 0.35422890023525566,
+      "inward_projection": 0.17706425246205093,
+      "presses_inward": true,
+      "balanced": false,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 20000
+    },
+    {
+      "label": "filled M=100.0",
+      "total_mass": 100.0,
+      "mean_separation": 7.387204822736968,
+      "min_separation": 0.09720260266204386,
+      "max_separation": 15.975134390490929,
+      "width": 15.877931787828885,
+      "cm_acceleration": 0.34000583038481585,
+      "tidal_acceleration": 0.08855722505881392,
+      "inward_projection": 0.04426606311551273,
+      "presses_inward": true,
+      "balanced": false,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 20000
+    },
+    {
+      "label": "filled M=25.0",
+      "total_mass": 25.0,
+      "mean_separation": 1.1384240686077451,
+      "min_separation": 0.11165850277198067,
+      "max_separation": 1.7371010220293694,
+      "width": 1.6254425192573887,
+      "cm_acceleration": 0.08500145759620396,
+      "tidal_acceleration": 0.02213930626470348,
+      "inward_projection": 0.011066515778878183,
+      "presses_inward": true,
+      "balanced": false,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 20000
+    },
+    {
+      "label": "filled M=0.0",
+      "total_mass": 0.0,
+      "mean_separation": 1.0000024674000767,
+      "min_separation": 0.9999999999999727,
+      "max_separation": 1.0000049347900202,
+      "width": 4.934790047483872e-06,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.0,
+      "inward_projection": 0.0,
+      "presses_inward": false,
+      "balanced": true,
+      "max_law_error": 2.220446049250313e-16,
+      "close_approach": false,
+      "steps_done": 20000
+    }
+  ],
+  "cavity": [
+    {
+      "label": "cavity M=400.0",
+      "total_mass": 400.0,
+      "mean_separation": 8.303382092820959,
+      "min_separation": 0.36791179773114685,
+      "max_separation": 15.243797435137413,
+      "width": 14.875885637406267,
+      "cm_acceleration": 0.8129743067319997,
+      "tidal_acceleration": 0.07400310039995149,
+      "inward_projection": 0.0370022553089977,
+      "presses_inward": true,
+      "balanced": false,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 20000
+    },
+    {
+      "label": "cavity M=100.0",
+      "total_mass": 100.0,
+      "mean_separation": 1.1471316083051961,
+      "min_separation": 0.544022012610348,
+      "max_separation": 2.0609330955508414,
+      "width": 1.5169110829404935,
+      "cm_acceleration": 0.20324357668299992,
+      "tidal_acceleration": 0.018500775099987873,
+      "inward_projection": 0.009250563827249425,
+      "presses_inward": false,
+      "balanced": false,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 20000
+    },
+    {
+      "label": "cavity M=25.0",
+      "total_mass": 25.0,
+      "mean_separation": 2.492884843664581,
+      "min_separation": 0.8875530353648101,
+      "max_separation": 8.029960009919483,
+      "width": 7.142406974554673,
+      "cm_acceleration": 0.05081089417074998,
+      "tidal_acceleration": 0.004625193774996968,
+      "inward_projection": 0.0023126409568123563,
+      "presses_inward": false,
+      "balanced": false,
+      "max_law_error": 0.0,
+      "close_approach": false,
+      "steps_done": 20000
+    },
+    {
+      "label": "cavity M=0.0",
+      "total_mass": 0.0,
+      "mean_separation": 1.0000024674000767,
+      "min_separation": 0.9999999999999727,
+      "max_separation": 1.0000049347900202,
+      "width": 4.934790047483872e-06,
+      "cm_acceleration": 0.0,
+      "tidal_acceleration": 0.0,
+      "inward_projection": 0.0,
+      "presses_inward": false,
+      "balanced": true,
+      "max_law_error": 2.220446049250313e-16,
+      "close_approach": false,
+      "steps_done": 20000
+    }
+  ],
+  "filled_verdict": {
+    "size_grew_on_weakening": false,
+    "relative_change": -0.8134640343642973,
+    "presses_inward_at_400": true,
+    "balanced_at_400": false,
+    "bare_law_ok": true
+  },
+  "cavity_verdict": {
+    "size_grew_on_weakening": false,
+    "relative_change": -0.8795668492403028,
+    "presses_inward_at_400": true,
+    "balanced_at_400": false,
+    "bare_law_ok": true
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-flyby-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "b": 0.0,
+      "pressure": 0.0,
+      "min_separation": 0.9523806790662236,
+      "t_done": 21.095999999999187,
+      "x0": -10.000585498993345,
+      "x1": 10.000585498993345,
+      "vx0": -1.000001463660739,
+      "vx1": 1.000001463660739,
+      "collision": false,
+      "expected": "rebound",
+      "accepted": true
+    },
+    {
+      "b": 0.2,
+      "pressure": 0.0,
+      "min_separation": 0.9908308096691967,
+      "t_done": 24.98799999999703,
+      "x0": -10.000616939973867,
+      "x1": 10.000616939973867,
+      "vx0": -0.717218451263105,
+      "vx1": 0.717218451263105,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": false
+    },
+    {
+      "b": 0.5,
+      "pressure": 0.0,
+      "min_separation": 1.1580060579456488,
+      "t_done": 40.0,
+      "x0": 0.47794451400993226,
+      "x1": -0.47794451400993226,
+      "vx0": 0.025124996926730314,
+      "vx1": -0.025124996926730314,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": true
+    },
+    {
+      "b": 1.0,
+      "pressure": 0.0,
+      "min_separation": 1.5621392238293965,
+      "t_done": 27.539999999995615,
+      "x0": 10.000154158101054,
+      "x1": -10.000154158101054,
+      "vx0": 0.6222341735280154,
+      "vx1": -0.6222341735280154,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": true
+    },
+    {
+      "b": 2.0,
+      "pressure": 0.0,
+      "min_separation": 2.485603592947893,
+      "t_done": 22.197999999998576,
+      "x0": 10.000754196145543,
+      "x1": -10.000754196145543,
+      "vx0": 0.8918619359473139,
+      "vx1": -0.8918619359473139,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": true
+    },
+    {
+      "b": 0.0,
+      "pressure": 1.0,
+      "min_separation": 0.047824850842623653,
+      "t_done": 7.205761922785814,
+      "x0": -10.0003285601197,
+      "x1": 10.0003285601197,
+      "vx0": -0.9951295653670416,
+      "vx1": 0.9951295653670416,
+      "collision": false,
+      "expected": "rebound",
+      "accepted": true
+    },
+    {
+      "b": 0.2,
+      "pressure": 1.0,
+      "min_separation": 0.07358426901759307,
+      "t_done": 25.816595774908404,
+      "x0": -10.000889461886983,
+      "x1": 10.000889461886983,
+      "vx0": -0.7717456540230196,
+      "vx1": 0.7717456540230196,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": false
+    },
+    {
+      "b": 0.5,
+      "pressure": 1.0,
+      "min_separation": 0.13579911302129624,
+      "t_done": 40.0,
+      "x0": -0.040515038005938524,
+      "x1": 0.040515038005938524,
+      "vx0": -0.04742004794746742,
+      "vx1": 0.04742004794746742,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": false
+    },
+    {
+      "b": 1.0,
+      "pressure": 1.0,
+      "min_separation": 0.2444202961474809,
+      "t_done": 7.273688355156841,
+      "x0": 10.001587037661958,
+      "x1": -10.001587037661958,
+      "vx0": 0.923331177943359,
+      "vx1": -0.923331177943359,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": true
+    },
+    {
+      "b": 2.0,
+      "pressure": 1.0,
+      "min_separation": 0.4645980930013262,
+      "t_done": 7.1867868771946855,
+      "x0": 10.000092494458059,
+      "x1": -10.000092494458059,
+      "vx0": 1.022857163036274,
+      "vx1": -1.022857163036274,
+      "collision": false,
+      "expected": "flyby",
+      "accepted": true
+    }
+  ],
+  "no_collisions": true,
+  "grid_accepted": false
+}

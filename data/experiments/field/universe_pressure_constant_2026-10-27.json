@@ -1,0 +1,286 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-constant-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "constant": "P",
+  "distant_objects": false,
+  "internal": "repulsion 1/r^2",
+  "n2_start_radius": 0.5,
+  "rows": [
+    {
+      "n": 2,
+      "pressure": 1.0,
+      "start_radius": 0.5,
+      "mean_radius": 0.5,
+      "max_radius_error": 0.0,
+      "min_pair": 1.0,
+      "max_radius": 0.5,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 2,
+      "pressure": 0.25,
+      "start_radius": 1.0,
+      "mean_radius": 1.0,
+      "max_radius_error": 0.0,
+      "min_pair": 2.0,
+      "max_radius": 1.0,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 2,
+      "pressure": 0.0625,
+      "start_radius": 2.0,
+      "mean_radius": 2.0,
+      "max_radius_error": 0.0,
+      "min_pair": 4.0,
+      "max_radius": 2.0,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 2,
+      "pressure": 0.0,
+      "start_radius": 0.5,
+      "mean_radius": 24.029455075827265,
+      "max_radius_error": 48.260333046344115,
+      "min_pair": 1.0,
+      "max_radius": 48.760333046344115,
+      "close_approach": false,
+      "accepted": false,
+      "steps_done": 25000
+    },
+    {
+      "n": 3,
+      "pressure": 1.0,
+      "start_radius": 0.7598356856515925,
+      "mean_radius": 0.7598356856517956,
+      "max_radius_error": 0.0,
+      "min_pair": 1.316074012952492,
+      "max_radius": 0.7598356856515927,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 3,
+      "pressure": 0.25,
+      "start_radius": 1.519671371303185,
+      "mean_radius": 1.5196713713035912,
+      "max_radius_error": 0.0,
+      "min_pair": 2.632148025904984,
+      "max_radius": 1.5196713713031853,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 3,
+      "pressure": 0.0625,
+      "start_radius": 3.03934274260637,
+      "mean_radius": 3.0393427426071824,
+      "max_radius_error": 0.0,
+      "min_pair": 5.264296051809968,
+      "max_radius": 3.0393427426063706,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 3,
+      "pressure": 0.0,
+      "start_radius": 0.7598356856515925,
+      "mean_radius": 29.42919789974807,
+      "max_radius_error": 59.07569375110181,
+      "min_pair": 1.316074012952492,
+      "max_radius": 59.8355294367537,
+      "close_approach": false,
+      "accepted": false,
+      "steps_done": 25000
+    },
+    {
+      "n": 4,
+      "pressure": 1.0,
+      "start_radius": 0.9783183434785159,
+      "mean_radius": 0.9783183434783695,
+      "max_radius_error": 1.1102230246251565e-16,
+      "min_pair": 1.383551069665697,
+      "max_radius": 0.978318343478516,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 4,
+      "pressure": 0.25,
+      "start_radius": 1.9566366869570317,
+      "mean_radius": 1.956636686956739,
+      "max_radius_error": 0.0,
+      "min_pair": 2.767102139331394,
+      "max_radius": 1.9566366869570317,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 4,
+      "pressure": 0.0625,
+      "start_radius": 3.9132733739140635,
+      "mean_radius": 3.913273373913478,
+      "max_radius_error": 0.0,
+      "min_pair": 5.534204278662788,
+      "max_radius": 3.9132733739140635,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 4,
+      "pressure": 0.0,
+      "start_radius": 0.9783183434785159,
+      "mean_radius": 33.24778552505688,
+      "max_radius_error": 66.70551282126316,
+      "min_pair": 1.383551069665697,
+      "max_radius": 67.68383116474168,
+      "close_approach": false,
+      "accepted": false,
+      "steps_done": 25000
+    },
+    {
+      "n": 6,
+      "pressure": 1.0,
+      "start_radius": 1.3517952023844535,
+      "mean_radius": 1.3517952023839,
+      "max_radius_error": 4.440892098500626e-16,
+      "min_pair": 1.3517952023844528,
+      "max_radius": 1.3517952023844542,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 6,
+      "pressure": 0.25,
+      "start_radius": 2.703590404768907,
+      "mean_radius": 2.7035904047678,
+      "max_radius_error": 8.881784197001252e-16,
+      "min_pair": 2.7035904047689066,
+      "max_radius": 2.7035904047689083,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 6,
+      "pressure": 0.0625,
+      "start_radius": 5.407180809537814,
+      "mean_radius": 5.4071808095356,
+      "max_radius_error": 1.7763568394002505e-15,
+      "min_pair": 5.407180809537813,
+      "max_radius": 5.407180809537817,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 6,
+      "pressure": 0.0,
+      "start_radius": 1.3517952023844535,
+      "mean_radius": 38.84603537408506,
+      "max_radius_error": 77.8574604507969,
+      "min_pair": 1.3517952023844533,
+      "max_radius": 79.2092556531814,
+      "close_approach": false,
+      "accepted": false,
+      "steps_done": 25000
+    },
+    {
+      "n": 8,
+      "pressure": 1.0,
+      "start_radius": 1.6747733715966235,
+      "mean_radius": 1.6747733715965325,
+      "max_radius_error": 0.0,
+      "min_pair": 1.2818160445524993,
+      "max_radius": 1.6747733715966238,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 8,
+      "pressure": 0.25,
+      "start_radius": 3.349546743193247,
+      "mean_radius": 3.349546743193065,
+      "max_radius_error": 0.0,
+      "min_pair": 2.5636320891049986,
+      "max_radius": 3.3495467431932475,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 8,
+      "pressure": 0.0625,
+      "start_radius": 6.699093486386494,
+      "mean_radius": 6.69909348638613,
+      "max_radius_error": 0.0,
+      "min_pair": 5.127264178209997,
+      "max_radius": 6.699093486386495,
+      "close_approach": false,
+      "accepted": true,
+      "steps_done": 25000
+    },
+    {
+      "n": 8,
+      "pressure": 0.0,
+      "start_radius": 1.6747733715966235,
+      "mean_radius": 43.0523767768706,
+      "max_radius_error": 86.20633581808487,
+      "min_pair": 1.2818160445524995,
+      "max_radius": 87.88110918968155,
+      "close_approach": false,
+      "accepted": false,
+      "steps_done": 25000
+    }
+  ],
+  "pressure_sets_size": true,
+  "pressure_necessary": true,
+  "particle_ladder": true,
+  "accepted_n_at_P_1": [
+    2,
+    3,
+    4,
+    6,
+    8
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "format": "delta-protocol@0.1",
+  "id": "E-COMP-v2",
+  "date": "2026-10-27",
+  "scope": "model",
+  "status": "draft_for_review",
+  "simulation_started": false,
+  "implementation": "adapters/field_lattice/external_compression_v2.py",
+  "document": "docs/external-compression-protocol-v2.md",
+  "prior": {
+    "protocol": "E-COMP-v1",
+    "p1_result": "docs/external-compression-p1-result-2026-10-27.md",
+    "p0_passed": true,
+    "p1_holding_candidates": 0,
+    "v1_missing_observables": [
+      "26 mobile dt=0.002 tau main-grid runs",
+      "three dt/2 runs at R_ext=8 ell",
+      "mobile convergence at R_ext=6 and 8"
+    ],
+    "v1_missing_not_required_to_close_no_holding": true,
+    "v1_missing_required_for_v1_infinite_limit": true
+  },
+  "question": "Can a local mutually-repelling system remain size-bounded when the surroundings are a reactive distribution with an initial rarefied cavity and the far contribution is an explicit inverse-square field of a spherically replaced distant complex, without a separate attractive term?",
+  "finite_N_choice": {
+    "rejected": {
+      "A_larger_open_volume": "Same exploding shell as v1 P1",
+      "B_periodic_images": "Net-charge sum needs neutralizing background or induced opposite sources",
+      "D_lattice_flux_field": "Instantaneous Gauss law is the same Coulomb pair; finite propagation is a later version"
+    },
+    "accepted": "C_analytic_spherical_far_complex_plus_reactive_cavity_layer",
+    "reason": "Uniform infinite medium and a concentric spherical far complex exert no net force in the cavity (P0, shell theorem) and cannot hold by themselves; v2 therefore tests a specified rarefaction plus reaction of a near layer, with a holonomic radial belt standing in for nested outer equilibrium of that layer only"
+  },
+  "equation": "mu_i*x_i'' = sum_{a!=i} kappa*N_i*N_a*(x_i-x_a)/abs(x_i-x_a)^3 + F_i_infinity; nabla^2 Phi = -4*pi*kappa*rho outside the far replacement; Phi_infinity = kappa*N_infinity/R_infinity and F_infinity = 0 for r < R_infinity",
+  "additional_assumptions": [
+    "Eight effective nodes with no internal nested equilibria",
+    "Pairwise central repulsion with linear vector superposition; no direct attractive term",
+    "Common unit susceptibility; N_i=mu_i in normalized units",
+    "Inertia, instantaneous quasistatic pair interactions, no wave delay",
+    "Far complex replaced by a sphere: Phi_infinity constant, F_infinity = 0 inside; this is a limit rule, not a pair-force cutoff",
+    "Near surroundings are a reactive spherical belt with an initial cavity",
+    "Radial holonomic walls on reservoir nodes only replace nested outer holding of the belt, not attraction among the octet"
+  ],
+  "units": {"ell": 1, "mu0": 1, "N0": 1, "kappa": 1, "tau": "sqrt(mu0*ell^3/(kappa*N0^2))"},
+  "T0": {
+    "T0a": {
+      "geometry": "Uniform thin spherical shell, same as v1 P0",
+      "quadrature": "Gauss-Legendre order 128, not 128 material nodes",
+      "expectation": "Zero net force inside; inverse-square outside",
+      "interior_force_abs_tolerance": 1e-8,
+      "exterior_force_rel_tolerance": 1e-8
+    },
+    "T0b": {
+      "geometry": "Concentric thick shell R_in=3 ell, R_out=4 ell, spherically symmetric uniform volume density",
+      "expectation": "Zero net force in the cavity",
+      "interior_r_over_R_in": [0, 0.25, 0.5, 0.75],
+      "interior_force_abs_tolerance": 1e-8
+    },
+    "T0c": {
+      "geometry": "Same thick shell plus probe displaced by 0.2 ell",
+      "expectation": "No restoring well and no central spring from a uniform shell",
+      "force_abs_tolerance": 1e-8
+    },
+    "T0d": {
+      "R_infinity_over_ell": 20,
+      "probe_N_infinity": 1,
+      "campaign_N_infinity": 33144,
+      "N_infinity_rule": "Campaign N_infinity is the count of cubic lattice points of spacing ell with 4 < r <= 20, no jitter, index range covering that ball; that total is placed on the replacement sphere of radius R_infinity (series-4 geometric replacement), not integrated as a filled ball. T0d uses probe_N_infinity=1.",
+      "exterior_r_over_ell": [25, 40],
+      "expectation": "F = kappa N N_infinity / r^2; log|F| + 2 log r = log|K|",
+      "exterior_force_rel_tolerance": 1e-8
+    },
+    "T0e": {
+      "check": "scripts/check_inverse_square.py",
+      "data": "data/experiments/field/inverse_square_check.json",
+      "rerun_if_unchanged": false
+    }
+  },
+  "P1": {
+    "central_nodes": 8,
+    "central_geometry": "Cube vertices on radius R0",
+    "R0_over_ell": 0.5,
+    "cavity_radius_over_ell": 1.5,
+    "reservoir_band_over_ell": [3, 4],
+    "reservoir_placement": "Cubic lattice of spacing ell, indices -8..8, independent uniform jitter [-0.1 ell, 0.1 ell], keep 3 <= r <= 4",
+    "reservoir_nodes_no_jitter": 164,
+    "rng": "PCG64",
+    "seeds": [1, 2, 3],
+    "omega_times_tau": [0, 0.5, 1],
+    "external_initial_velocities": "zero",
+    "R_infinity_over_ell": 20,
+    "N_infinity": 33144,
+    "families": {
+      "isolated": "Octet only",
+      "frozen": "Belt nodes fixed in three coordinates; not the author's mechanism",
+      "mobile_open": "Same belt, no radial constraint; seed=1, all omega; expected density drop as in v1 P1",
+      "mobile_reservoir": "P1 proper: angular motion free, radius clamped to the band"
+    },
+    "mobile_reservoir_runs": 9,
+    "mobile_open_runs": 3,
+    "pilot": {"family": "mobile_reservoir", "seed": 1, "omega": 0},
+    "integrator": "velocity Verlet",
+    "dt_over_tau": 0.002,
+    "tmax_over_tau": 10,
+    "record_interval_over_tau": 0.02,
+    "unresolved_pair_distance_over_ell": 0.05,
+    "softening": false,
+    "force_cutoff": false,
+    "float_underflow_is_not_physics": true,
+    "constraint": {
+      "applies_to": "reservoir nodes only",
+      "projection": "nearest of R_in, R_out",
+      "radial_velocity_on_hit": 0,
+      "saturated_if_fraction_of_steps_with_projection_above": 0.1
+    },
+    "controls": ["isolated", "frozen", "mobile_open", "half timestep for mobile_reservoir seed=1 all omega"],
+    "quality": {
+      "energy_relative_drift_max": 0.001,
+      "normalized_momentum_drift_max": 1e-8,
+      "radius_timestep_relative_difference_max": 0.01,
+      "energy_criterion_skips_constraint_projection_steps": true,
+      "momentum_criterion_skips_constraint_projection_steps": true
+    },
+    "candidate": {"all_initial_nodes_within_radius_over_R0": 2, "time_window": [5, 10], "rms_max_over_min_max": 1.1},
+    "environment_density_relative_drift_flag": 0.1
+  },
+  "P2": {
+    "conditional_on": "mobile_reservoir candidate, numerical quality, constraint not saturated",
+    "fork_time_over_tau": 5,
+    "central_radius_factors": [0.95, 1.05],
+    "preserve_central_angular_momentum": true,
+    "continuation_over_tau": 5,
+    "final_average_window_over_tau": 2,
+    "recovery_relative_radius_tolerance": 0.05,
+    "weaker_surroundings": "Remove every second reservoir node in the initial generator order; N_infinity unchanged",
+    "expansion_relative_to_control_min": 0.05
+  },
+  "prohibited_shortcuts": [
+    "imposed confining force on the octet",
+    "negative neutralizing background",
+    "damping or thermostat",
+    "distance cutoff",
+    "F >= epsilon floor",
+    "treating sum of force magnitudes as net compression",
+    "post hoc replacement of group members",
+    "Yukawa, Q-ball, or absorbing-screen substitutions",
+    "periodic images",
+    "pair-of-bodies test before a holding candidate"
+  ],
+  "success_does_not_imply": [
+    "physical elementary particle",
+    "empirical gravitational mechanism",
+    "change of H0, H1, H2, or Katyushchik status",
+    "unique infinite-environment limit",
+    "absolute coupling prediction"
+  ],
+  "honest_expectation": "v2 may again fail to hold; that is a result",
+  "sources": [
+    "https://www.youtube.com/watch?v=AA-ECUpj3xk&t=311s",
+    "https://www.youtube.com/watch?v=AA-ECUpj3xk&t=1035s",
+    "https://www.youtube.com/watch?v=h_J_pqVMy4c&t=452s",
+    "https://www.feynmanlectures.caltech.edu/II_05.html#Ch5-S7",
+    "docs/external-compression-p1-result-2026-10-27.md",
+    "docs/track-e-inverse-square.md"
+  ]
+}

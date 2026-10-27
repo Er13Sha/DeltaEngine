@@ -1,0 +1,18 @@
+{
+  "id": "E-COMP-v2",
+  "status": "draft_for_review",
+  "prepared_date": "2026-10-27",
+  "timezone": "Asia/Qyzylorda",
+  "simulation_started": false,
+  "hash_method": "SHA-256 of raw UTF-8 file bytes",
+  "files": [
+    {
+      "path": "data/experiments/field/external_compression_protocol_v2.json",
+      "sha256": "45fd537ff7101c69ac46642ec8b76ccbae5faa7e656a1ef91b8aae1e0aa558c3"
+    },
+    {
+      "path": "docs/external-compression-protocol-v2.md",
+      "sha256": "25207fd177d8c427c12d127537f85d930de5a00e05c3bf1b99989a36dbc38e35"
+    }
+  ]
+}

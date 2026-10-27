@@ -1,0 +1,124 @@
+{
+  "scope": "model",
+  "protocol": "docs/video-formula-hierarchical-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "plain": {
+        "radius": 3.0,
+        "shift": 0.0,
+        "steps": 207847,
+        "max_inner_error": 3.633112619083083,
+        "max_outer_error": 2.3199551471681077,
+        "min_pair": 0.19996785760588734,
+        "close_approach": true,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 3.0,
+        "shift": 0.003,
+        "steps": 207847,
+        "max_inner_error": 11.380919421469352,
+        "max_outer_error": 3.791510608024965,
+        "min_pair": 0.19617225595895763,
+        "close_approach": true,
+        "accepted": false
+      },
+      "stable": false
+    },
+    {
+      "plain": {
+        "radius": 5.0,
+        "shift": 0.0,
+        "steps": 447214,
+        "max_inner_error": 0.7982984220255758,
+        "max_outer_error": 212.46513524043908,
+        "min_pair": 0.20170157797442426,
+        "close_approach": false,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 5.0,
+        "shift": 0.005,
+        "steps": 447214,
+        "max_inner_error": 7.128138078555629,
+        "max_outer_error": 3.8906613125519307,
+        "min_pair": 0.19838198292715792,
+        "close_approach": true,
+        "accepted": false
+      },
+      "stable": false
+    },
+    {
+      "plain": {
+        "radius": 10.0,
+        "shift": 0.0,
+        "steps": 1264912,
+        "max_inner_error": 0.009003298375488633,
+        "max_outer_error": 5.031369644434532,
+        "min_pair": 0.9930811972317451,
+        "close_approach": false,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 10.0,
+        "shift": 0.01,
+        "steps": 1264912,
+        "max_inner_error": 0.0088748330469135,
+        "max_outer_error": 5.018797219619434,
+        "min_pair": 0.9931186570630979,
+        "close_approach": false,
+        "accepted": false
+      },
+      "stable": false
+    },
+    {
+      "plain": {
+        "radius": 20.0,
+        "shift": 0.0,
+        "steps": 3577709,
+        "max_inner_error": 0.0008612115053170388,
+        "max_outer_error": 10.01619094933733,
+        "min_pair": 0.999444884809861,
+        "close_approach": false,
+        "accepted": false
+      },
+      "shifted": {
+        "radius": 20.0,
+        "shift": 0.02,
+        "steps": 3577709,
+        "max_inner_error": 0.0008550688155852804,
+        "max_outer_error": 9.991149821784257,
+        "min_pair": 0.9994484512991992,
+        "close_approach": false,
+        "accepted": false
+      },
+      "stable": false
+    }
+  ]
+}

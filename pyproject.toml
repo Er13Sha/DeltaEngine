@@ -15,8 +15,12 @@ dependencies = []
 dev = ["pytest>=8"]
 # Языковой слой Delta LM (вне доверенного ядра): морфология русского языка.
 text = ["pymorphy3>=2", "pymorphy3-dicts-ru"]
-# Трек E (модель поля, вне доверенного ядра): целочисленная решётка на CPU.
-field = ["numpy>=2", "numba>=0.60"]
+# Трек E (модель поля, вне доверенного ядра): решётка и радиальные уравнения на CPU.
+field = ["numpy>=2", "numba>=0.60", "scipy>=1.14"]
+# Точная символьная алгебра (logical_delta_matter.exact_algebra). Вне ядра.
+symbolic = ["sympy>=1.13"]
+# Извлечение текста из PDF для реестра источников. Вне ядра.
+sources = ["pypdf>=5"]
 
 [tool.setuptools.packages.find]
 include = ["delta_kernel*", "delta_science*", "delta_text*", "delta_tools*", "delta_app*", "adapters*", "logical_delta_matter*"]

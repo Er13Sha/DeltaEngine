@@ -1,0 +1,10 @@
+{
+  "protocol_id": "E-COMP-v2",
+  "date": "2026-10-27",
+  "status": "accepted_for_initial_test",
+  "user_reply": "пока давай так",
+  "accepted_assumption": "Reactive belt with holonomic radial wall as a provisional stand-in for nested outer equilibrium of the surroundings; spherical replacement of the far complex",
+  "original_registration": "data/experiments/field/external_compression_protocol_v2.registration.json",
+  "scope": "model",
+  "empirical_status_changed": false
+}

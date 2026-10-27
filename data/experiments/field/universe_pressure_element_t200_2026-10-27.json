@@ -1,0 +1,70 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-element-t200-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "n": 2,
+      "pressure": 1.0,
+      "h_cap": 0.02,
+      "orbiting": 0,
+      "max_abs_phi": 1.1334521198171437,
+      "max_radius_ratio": 8.013334137829416,
+      "min_pair": 0.6767773452983002,
+      "t_done": 27.09999999999951,
+      "steps": 1355,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 1.0,
+      "h_cap": 0.02,
+      "orbiting": 1,
+      "max_abs_phi": 6.284004835680141,
+      "max_radius_ratio": 5.603919046770424,
+      "min_pair": 0.9298324298106732,
+      "t_done": 38.56000000000043,
+      "steps": 1928,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 1.0,
+      "h_cap": 0.02,
+      "orbiting": 1,
+      "max_abs_phi": 6.289184434719899,
+      "max_radius_ratio": 5.328116851109285,
+      "min_pair": 0.6555549668813143,
+      "t_done": 23.429954725295637,
+      "steps": 1201,
+      "accepted": false
+    }
+  ],
+  "held": [],
+  "element_starts": false
+}

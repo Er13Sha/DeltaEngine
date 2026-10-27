@@ -1,0 +1,127 @@
+{
+  "scope": "model",
+  "protocol": "docs/field-pressure-balance-protocol-2026-10-27.md",
+  "chamber": false,
+  "k": 1.0,
+  "Q": 1.0,
+  "families": [
+    {
+      "family": "shell",
+      "rows": [
+        {
+          "pressure": 1.0,
+          "predicted_radius": 0.44662192086900115,
+          "radius": 0.44662192036879234,
+          "speed": 1.173244409674808e-09,
+          "relative_error": 1.1199826865566743e-09,
+          "accepted": true
+        },
+        {
+          "pressure": 0.5,
+          "predicted_radius": 0.5311259660135985,
+          "radius": 0.531125965433327,
+          "speed": 2.1663766876001258e-09,
+          "relative_error": 1.0925308394808912e-09,
+          "accepted": true
+        },
+        {
+          "pressure": 0.25,
+          "predicted_radius": 0.6316187777460647,
+          "radius": 0.6316187778581958,
+          "speed": -3.0594070926524567e-09,
+          "relative_error": 1.7752968427783167e-10,
+          "accepted": true
+        },
+        {
+          "pressure": 0.0625,
+          "predicted_radius": 0.8932438417380023,
+          "radius": 0.893243841985432,
+          "speed": 3.079676582977167e-09,
+          "relative_error": 2.770013425218293e-10,
+          "accepted": true
+        }
+      ],
+      "drop": {
+        "radius_before": 0.44662192036879234,
+        "radius_after": 0.8932438413371432,
+        "predicted_after": 0.8932438417380023,
+        "growth": 2.0000000013424297,
+        "predicted_growth": 2.0,
+        "relative_error": 4.4876785592234676e-10,
+        "accepted": true
+      },
+      "zero_pressure": {
+        "radius_start": 0.44662192036879234,
+        "radius_end": 2.285612975940654,
+        "growth": 5.117556644002915,
+        "unbounded_record": true
+      }
+    },
+    {
+      "family": "ball",
+      "rows": [
+        {
+          "pressure": 1.0,
+          "predicted_radius": 0.46745019640429697,
+          "radius": 0.4674501963681736,
+          "speed": -2.6869655311405737e-09,
+          "relative_error": 7.727749895335778e-11,
+          "accepted": true
+        },
+        {
+          "pressure": 0.5,
+          "predicted_radius": 0.5558950994734093,
+          "radius": 0.5558950999139569,
+          "speed": -2.7569860850130275e-09,
+          "relative_error": 7.925013169190233e-10,
+          "accepted": true
+        },
+        {
+          "pressure": 0.25,
+          "predicted_radius": 0.6610744074889238,
+          "radius": 0.6610744068505692,
+          "speed": 2.998746481678833e-09,
+          "relative_error": 9.656319835974532e-10,
+          "accepted": true
+        },
+        {
+          "pressure": 0.0625,
+          "predicted_radius": 0.9349003928085939,
+          "radius": 0.934900394887078,
+          "speed": -1.6513991012875964e-09,
+          "relative_error": 2.2232144381643023e-09,
+          "accepted": true
+        }
+      ],
+      "drop": {
+        "radius_before": 0.4674501963681736,
+        "radius_after": 0.9349003938932349,
+        "predicted_after": 0.9349003928085939,
+        "growth": 2.0000000024748896,
+        "predicted_growth": 2.0,
+        "relative_error": 1.1601673728753042e-09,
+        "accepted": true
+      },
+      "zero_pressure": {
+        "radius_start": 0.4674501963681736,
+        "radius_end": 2.4358306133541734,
+        "growth": 5.210887988237493,
+        "unbounded_record": true
+      }
+    }
+  ],
+  "shell_quadrature_at_P1": {
+    "order_64": {
+      "order": 64,
+      "max_abs_force_inside": 3.226116578474575e-05,
+      "max_rel_potential_inside": 4.684131881830863e-08,
+      "max_rel_force_outside": 2.989675610087417e-15
+    },
+    "order_128": {
+      "order": 128,
+      "max_abs_force_inside": 6.375664319746761e-11,
+      "max_rel_potential_inside": 2.2412417281268807e-14,
+      "max_rel_force_outside": 1.9133923904559468e-14
+    }
+  }
+}

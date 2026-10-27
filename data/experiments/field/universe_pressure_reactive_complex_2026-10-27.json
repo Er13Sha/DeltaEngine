@@ -1,0 +1,176 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-reactive-complex-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "live": [
+    {
+      "n": 2,
+      "mode": "reactive",
+      "start_radius": 0.4,
+      "radius": {
+        "mean_second_half": 0.584153135251496,
+        "span_second_half": 0.33579905455554115,
+        "max_abs": 0.7357990565708279,
+        "last": 0.6684428463104775
+      },
+      "q": {
+        "mean_second_half": 0.18415313525150043,
+        "span_second_half": 0.33579905455553954,
+        "max_abs": 0.3357990565708322,
+        "last": 0.2684428463104817
+      },
+      "speed": {
+        "mean_second_half": 0.15480479701643748,
+        "span_second_half": 0.25067096684838763,
+        "max_abs": 0.250703431244888,
+        "last": 0.17643985145576302
+      }
+    },
+    {
+      "n": 4,
+      "mode": "reactive",
+      "start_radius": 0.7667317250955268,
+      "radius": {
+        "mean_second_half": 2.2764543060216256,
+        "span_second_half": 2.105158897149537,
+        "max_abs": 2.8718907504040208,
+        "last": 2.570772045033618
+      },
+      "q": {
+        "mean_second_half": 1.5097225809261319,
+        "span_second_half": 2.1051588971495567,
+        "max_abs": 2.1051590253084975,
+        "last": 1.8040403199381416
+      },
+      "speed": {
+        "mean_second_half": 0.1432185535703378,
+        "span_second_half": 0.402648224595928,
+        "max_abs": 0.40265864446408395,
+        "last": 0.10336500928091268
+      }
+    },
+    {
+      "n": 8,
+      "mode": "reactive",
+      "start_radius": 1.2566868845902004,
+      "radius": {
+        "mean_second_half": 46.07533847119672,
+        "span_second_half": 33.67556908878733,
+        "max_abs": 62.97905201309969,
+        "last": 62.97905201309969
+      },
+      "q": {
+        "mean_second_half": 44.81865158660673,
+        "span_second_half": 33.6755690887874,
+        "max_abs": 61.72236512850973,
+        "last": 61.72236512850973
+      },
+      "speed": {
+        "mean_second_half": 1.3471301983033894,
+        "span_second_half": 0.03352884645774701,
+        "max_abs": 1.3596999476622786,
+        "last": 1.3596999476622786
+      }
+    }
+  ],
+  "frozen": [
+    {
+      "n": 2,
+      "mode": "frozen",
+      "start_radius": 0.4,
+      "radius": {
+        "mean_second_half": 0.5194103985768307,
+        "span_second_half": 0.22499990639068695,
+        "max_abs": 0.6249999132895376,
+        "last": 0.5120359599990596
+      },
+      "q": {
+        "mean_second_half": 0.0,
+        "span_second_half": 0.0,
+        "max_abs": 0.0,
+        "last": 0.0
+      },
+      "speed": {
+        "mean_second_half": 0.14091634712760737,
+        "span_second_half": 0.2235664338257736,
+        "max_abs": 0.22360626377138149,
+        "last": 0.22233743712081178
+      }
+    },
+    {
+      "n": 4,
+      "mode": "frozen",
+      "start_radius": 0.7667317250955268,
+      "radius": {
+        "mean_second_half": 0.9850859997846186,
+        "span_second_half": 0.4312864479179431,
+        "max_abs": 1.1980182335753145,
+        "last": 1.1563070540822062
+      },
+      "q": {
+        "mean_second_half": 0.0,
+        "span_second_half": 0.0,
+        "max_abs": 0.0,
+        "last": 0.0
+      },
+      "speed": {
+        "mean_second_half": 0.20044582343102207,
+        "span_second_half": 0.3095653335831309,
+        "max_abs": 0.3095823425758725,
+        "last": 0.16764866000129106
+      }
+    },
+    {
+      "n": 8,
+      "mode": "frozen",
+      "start_radius": 1.2566868845902004,
+      "radius": {
+        "mean_second_half": 1.641486625108649,
+        "span_second_half": 0.7068862754104417,
+        "max_abs": 1.9635731705703574,
+        "last": 1.3462738149512938
+      },
+      "q": {
+        "mean_second_half": 0.0,
+        "span_second_half": 0.0,
+        "max_abs": 0.0,
+        "last": 0.0
+      },
+      "speed": {
+        "mean_second_half": 0.25151361463043775,
+        "span_second_half": 0.3963310954945277,
+        "max_abs": 0.39634028529448595,
+        "last": 0.2866276693024633
+      }
+    }
+  ],
+  "complex_reacted": true,
+  "no_statics": true,
+  "frozen_differs": true,
+  "grid_accepted": true
+}

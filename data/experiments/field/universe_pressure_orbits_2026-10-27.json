@@ -1,0 +1,73 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-orbits-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "n": 4,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.289084723201212,
+      "min_pair": 0.021522670813879888,
+      "t_done": 0.00405633064755832,
+      "steps": 554,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2832686125542585,
+      "min_pair": 0.0033141175688519695,
+      "t_done": 0.0028476197166622708,
+      "steps": 1634,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2834661192806704,
+      "min_pair": 0.003589046093622311,
+      "t_done": 0.003767500112829811,
+      "steps": 2955,
+      "accepted": false
+    }
+  ],
+  "control_n4_p1": {
+    "n": 4,
+    "pressure": 1.0,
+    "orbiting": 0,
+    "max_abs_phi": 0.11130895527915861,
+    "min_pair": 1.5518477831440494,
+    "t_done": 1.0,
+    "steps": 500,
+    "accepted": false
+  },
+  "grid_accepted": false
+}

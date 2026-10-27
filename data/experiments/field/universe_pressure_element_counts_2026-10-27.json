@@ -1,0 +1,496 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-element-counts-protocol-2026-10-27.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "n": 2,
+      "pressure": 1.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.004788179214287379,
+      "max_radius_ratio": 1.0366907020031573,
+      "min_pair": 2.0,
+      "t_done": 1.0,
+      "steps": 500,
+      "accepted": false
+    },
+    {
+      "n": 2,
+      "pressure": 10.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.6851441508448194,
+      "max_radius_ratio": 52.81907738439025,
+      "min_pair": 0.03786499416402509,
+      "t_done": 1.0,
+      "steps": 581,
+      "accepted": false
+    },
+    {
+      "n": 2,
+      "pressure": 100.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.41602141075986065,
+      "max_radius_ratio": 237.41483136010677,
+      "min_pair": 0.00842378531129427,
+      "t_done": 1.0,
+      "steps": 966,
+      "accepted": false
+    },
+    {
+      "n": 2,
+      "pressure": 1000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.286676286927143,
+      "max_radius_ratio": 256.17777807113,
+      "min_pair": 0.008128185764075284,
+      "t_done": 0.2570648266726148,
+      "steps": 606,
+      "accepted": false
+    },
+    {
+      "n": 2,
+      "pressure": 10000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.287351012897284,
+      "max_radius_ratio": 251.57834293986608,
+      "min_pair": 0.008208848817420554,
+      "t_done": 0.08056454528156846,
+      "steps": 541,
+      "accepted": false
+    },
+    {
+      "n": 2,
+      "pressure": 100000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.284518904700384,
+      "max_radius_ratio": 333.76502346155115,
+      "min_pair": 0.0061425392058520765,
+      "t_done": 0.025529812909329225,
+      "steps": 578,
+      "accepted": false
+    },
+    {
+      "n": 2,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.285904829780879,
+      "max_radius_ratio": 527.514560541551,
+      "min_pair": 0.003901095681176651,
+      "t_done": 0.008085230008622263,
+      "steps": 604,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 1.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.06461142148272117,
+      "max_radius_ratio": 1.0658774234842194,
+      "min_pair": 1.7320508075688772,
+      "t_done": 1.0,
+      "steps": 500,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 10.0,
+      "orbiting": 0,
+      "max_abs_phi": 3.262427600266378,
+      "max_radius_ratio": 30.674994205481887,
+      "min_pair": 0.07818845174558116,
+      "t_done": 1.0,
+      "steps": 671,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 100.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.288323849047284,
+      "max_radius_ratio": 21.047048158652373,
+      "min_pair": 0.032589922415201665,
+      "t_done": 0.4803913973348273,
+      "steps": 664,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 1000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.298405340632436,
+      "max_radius_ratio": 20.94012937583087,
+      "min_pair": 0.035912823984609515,
+      "t_done": 0.1539533206659778,
+      "steps": 507,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 10000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.288213766227751,
+      "max_radius_ratio": 18.422276731414797,
+      "min_pair": 0.03198270961191402,
+      "t_done": 0.05043543861475518,
+      "steps": 537,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 100000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.294131215149187,
+      "max_radius_ratio": 21.06333344601476,
+      "min_pair": 0.034896083682885486,
+      "t_done": 0.015450083691076826,
+      "steps": 513,
+      "accepted": false
+    },
+    {
+      "n": 3,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2941858609691,
+      "max_radius_ratio": 21.063369107242558,
+      "min_pair": 0.034893730519130715,
+      "t_done": 0.004887262466147956,
+      "steps": 513,
+      "accepted": false
+    },
+    {
+      "n": 6,
+      "pressure": 1.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.06229292924540281,
+      "max_radius_ratio": 1.128940078833577,
+      "min_pair": 1.3826029003398186,
+      "t_done": 1.0,
+      "steps": 500,
+      "accepted": false
+    },
+    {
+      "n": 6,
+      "pressure": 10.0,
+      "orbiting": 0,
+      "max_abs_phi": 3.8991990750028176,
+      "max_radius_ratio": 87.99315048834887,
+      "min_pair": 0.06455940025400952,
+      "t_done": 1.0,
+      "steps": 691,
+      "accepted": false
+    },
+    {
+      "n": 6,
+      "pressure": 100.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.283575342062027,
+      "max_radius_ratio": 88.47133569323483,
+      "min_pair": 0.026251725420482562,
+      "t_done": 0.3678623577708325,
+      "steps": 811,
+      "accepted": false
+    },
+    {
+      "n": 6,
+      "pressure": 1000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.297442256562641,
+      "max_radius_ratio": 121.6285225742728,
+      "min_pair": 0.024013435297362856,
+      "t_done": 0.2588655585133948,
+      "steps": 1811,
+      "accepted": false
+    },
+    {
+      "n": 6,
+      "pressure": 10000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.284875677190924,
+      "max_radius_ratio": 118.97080503197941,
+      "min_pair": 0.02380903607874929,
+      "t_done": 0.04823682687112055,
+      "steps": 1063,
+      "accepted": false
+    },
+    {
+      "n": 6,
+      "pressure": 100000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2863330099576,
+      "max_radius_ratio": 122.25966404082104,
+      "min_pair": 0.02378405222642037,
+      "t_done": 0.016425652256458798,
+      "steps": 1112,
+      "accepted": false
+    },
+    {
+      "n": 6,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.285606834822543,
+      "max_radius_ratio": 121.61056459931896,
+      "min_pair": 0.02378145710199016,
+      "t_done": 0.005193209413933487,
+      "steps": 1107,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 1.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.09838234256909274,
+      "max_radius_ratio": 1.10047084893059,
+      "min_pair": 1.0631552210390995,
+      "t_done": 1.0,
+      "steps": 500,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 10.0,
+      "orbiting": 0,
+      "max_abs_phi": 1.0938038494930449,
+      "max_radius_ratio": 14.133582632901925,
+      "min_pair": 0.10076898344348142,
+      "t_done": 1.0,
+      "steps": 659,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 100.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.047392701215858,
+      "max_radius_ratio": 409.56041517938155,
+      "min_pair": 0.011534372081664478,
+      "t_done": 1.0,
+      "steps": 4980,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 1000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.3441307557375515,
+      "max_radius_ratio": 200.96725913395517,
+      "min_pair": 0.006925418289030188,
+      "t_done": 0.1669973383795315,
+      "steps": 1913,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 10000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.283710395509302,
+      "max_radius_ratio": 190.93982217518837,
+      "min_pair": 0.0032031036347216434,
+      "t_done": 0.02898699736265701,
+      "steps": 1515,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 100000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.283216473955458,
+      "max_radius_ratio": 184.76796041653978,
+      "min_pair": 0.003303667148989351,
+      "t_done": 0.008893921290646917,
+      "steps": 1543,
+      "accepted": false
+    },
+    {
+      "n": 8,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2832686125542585,
+      "max_radius_ratio": 183.96008354038008,
+      "min_pair": 0.0033141175688519695,
+      "t_done": 0.0028476197166622708,
+      "steps": 1634,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 1.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.08011589707172166,
+      "max_radius_ratio": 1.866703694319302,
+      "min_pair": 0.7714946196104885,
+      "t_done": 1.0,
+      "steps": 500,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 10.0,
+      "orbiting": 0,
+      "max_abs_phi": 3.721410314624043,
+      "max_radius_ratio": 5.395679509393812,
+      "min_pair": 0.09595738699075107,
+      "t_done": 1.0,
+      "steps": 807,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 100.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.287850591828766,
+      "max_radius_ratio": 63.09466436516231,
+      "min_pair": 0.011514885009730748,
+      "t_done": 0.36570913220916307,
+      "steps": 3422,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 1000.0,
+      "orbiting": 1,
+      "max_abs_phi": 6.283576411449456,
+      "max_radius_ratio": 91.13491135953414,
+      "min_pair": 0.006809321528851727,
+      "t_done": 0.1386892619681691,
+      "steps": 3301,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 10000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.28366774673553,
+      "max_radius_ratio": 105.16195497415268,
+      "min_pair": 0.003523622046803561,
+      "t_done": 0.038881257414269316,
+      "steps": 2977,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 100000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2839713827672306,
+      "max_radius_ratio": 99.09025877684935,
+      "min_pair": 0.00358228262847494,
+      "t_done": 0.012036291322968361,
+      "steps": 2911,
+      "accepted": false
+    },
+    {
+      "n": 16,
+      "pressure": 1000000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2834661192806704,
+      "max_radius_ratio": 99.31025269111854,
+      "min_pair": 0.003589046093622311,
+      "t_done": 0.003767500112829811,
+      "steps": 2955,
+      "accepted": false
+    },
+    {
+      "n": 32,
+      "pressure": 1.0,
+      "orbiting": 0,
+      "max_abs_phi": 0.21583011748861575,
+      "max_radius_ratio": 3.2055198199998336,
+      "min_pair": 0.5459704118261938,
+      "t_done": 1.0,
+      "steps": 500,
+      "accepted": false
+    },
+    {
+      "n": 32,
+      "pressure": 10.0,
+      "orbiting": 0,
+      "max_abs_phi": 2.289690104859663,
+      "max_radius_ratio": 2.2926438180782354,
+      "min_pair": 0.15000992356033496,
+      "t_done": 1.0,
+      "steps": 583,
+      "accepted": false
+    },
+    {
+      "n": 32,
+      "pressure": 100.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.2833289020522525,
+      "max_radius_ratio": 17.59873596436036,
+      "min_pair": 0.03167554724585073,
+      "t_done": 0.5626157713817629,
+      "steps": 3374,
+      "accepted": false
+    },
+    {
+      "n": 32,
+      "pressure": 1000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.28433081265172,
+      "max_radius_ratio": 140.33714222312472,
+      "min_pair": 0.002611640422001992,
+      "t_done": 0.15845505976442634,
+      "steps": 6016,
+      "accepted": false
+    },
+    {
+      "n": 32,
+      "pressure": 10000.0,
+      "orbiting": 0,
+      "max_abs_phi": 6.285762892524505,
+      "max_radius_ratio": 87.59160044079796,
+      "min_pair": 0.0025017081395505157,
+      "t_done": 0.03720952316116468,
+      "steps": 3316,
+      "accepted": false
+    },
+    {
+      "n": 32,
+      "pressure": 100000.0,
+      "orbiting": 1,
+      "max_abs_phi": 6.284345508229914,
+      "max_radius_ratio": 80.7035067548382,
+      "min_pair": 0.0021562182802024226,
+      "t_done": 0.014269725410360763,
+      "steps": 4669,
+      "accepted": false
+    },
+    {
+      "n": 32,
+      "pressure": 1000000.0,
+      "orbiting": 1,
+      "max_abs_phi": 6.283406897224301,
+      "max_radius_ratio": 79.95700705101912,
+      "min_pair": 0.002252030989521351,
+      "t_done": 0.004585795313841854,
+      "steps": 4541,
+      "accepted": false
+    }
+  ],
+  "held": [],
+  "element_starts": false
+}

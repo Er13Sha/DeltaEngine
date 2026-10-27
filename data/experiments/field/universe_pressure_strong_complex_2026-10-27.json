@@ -1,0 +1,76 @@
+{
+  "scope": "model",
+  "protocol": "docs/universe-pressure-strong-complex-protocol-2026-10-27.md",
+  "pressure": 1000000.0,
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "rows": [
+    {
+      "min_separation": 0.16641920657648762,
+      "start_separation": 6.0,
+      "start_speed": 0.0,
+      "speed_at_closest": 3459.428667063893,
+      "sides_swapped": true,
+      "t_done": 0.015263416146294038,
+      "steps": 474,
+      "x0": 6.571776651967456,
+      "x1": -3.0967603825633017,
+      "name": "line-rest",
+      "approached": true,
+      "gained_speed": true
+    },
+    {
+      "min_separation": 6.007495318350236,
+      "start_separation": 6.007495318350236,
+      "start_speed": 0.0,
+      "speed_at_closest": 0.0,
+      "sides_swapped": false,
+      "t_done": 5.0,
+      "steps": 2501,
+      "x0": -211258.51374498164,
+      "x1": -211251.84645870887,
+      "name": "offset-rest",
+      "approached": false,
+      "gained_speed": false
+    },
+    {
+      "min_separation": 3.1803436839247246,
+      "start_separation": 6.007495318350236,
+      "start_speed": 0.8,
+      "speed_at_closest": 0.2193381064919109,
+      "sides_swapped": false,
+      "t_done": 5.0,
+      "steps": 2501,
+      "x0": -211256.7587225194,
+      "x1": -211253.6014811709,
+      "name": "offset-inertia",
+      "approached": false,
+      "gained_speed": false
+    }
+  ],
+  "grid_accepted": false
+}

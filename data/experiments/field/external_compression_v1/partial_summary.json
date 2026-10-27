@@ -1,0 +1,290 @@
+{
+  "scope": "model",
+  "status": "partial_campaign_superseded_by_v2_requirements",
+  "expected_main_runs": 27,
+  "saved_main_runs": 20,
+  "complete_main_runs": 20,
+  "main_quality_passes_before_missing_timestep_checks": 20,
+  "candidate_count": 0,
+  "initial_rms_radius": 0.5,
+  "final_rms_radius_range": [
+    25.32573705943483,
+    30.19934001937145
+  ],
+  "max_energy_drift": 1.0896825187733938e-06,
+  "max_normalized_momentum_drift": 2.951364216970517e-14,
+  "environment_density_relative_drift_range": [
+    0.999932750573588,
+    0.9999445537342448
+  ],
+  "saved_controls": 33,
+  "controls_with_unresolved_close_pairs": [
+    {
+      "parameters": {
+        "radius": 6,
+        "seed": 3,
+        "omega": 0.0,
+        "dt": 0.002,
+        "mode": "frozen",
+        "tmax": 10.0
+      },
+      "last_sample_t": 1.5
+    },
+    {
+      "parameters": {
+        "radius": 8,
+        "seed": 1,
+        "omega": 1.0,
+        "dt": 0.002,
+        "mode": "frozen",
+        "tmax": 10.0
+      },
+      "last_sample_t": 1.58
+    }
+  ],
+  "timestep_checks_available": [
+    {
+      "radius": 4,
+      "seed": 1,
+      "omega": 0.0,
+      "max_relative_radius_difference": 1.5304855762732217e-06,
+      "passes_1_percent": true
+    },
+    {
+      "radius": 4,
+      "seed": 1,
+      "omega": 0.5,
+      "max_relative_radius_difference": 1.9304830419786256e-06,
+      "passes_1_percent": true
+    },
+    {
+      "radius": 4,
+      "seed": 1,
+      "omega": 1.0,
+      "max_relative_radius_difference": 2.5208383354069497e-06,
+      "passes_1_percent": true
+    }
+  ],
+  "interpretation": "No bound central group among saved runs. Finite surroundings expand; this does not simulate the subsequently required constant universal complex or attenuation by intervening bodies.",
+  "full_protocol_completed": false,
+  "new_model_simulated": false,
+  "P2_status": "not_started_no_P1_candidate",
+  "source_files": [
+    {
+      "path": "data/experiments/field/external_compression_v1/pilot/mobile-R4-seed1-omega0-dt0.002.json",
+      "sha256": "f729f48092d3b286578347cf4abeed8937b985775fe6223002c88577d9e46639"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed1-omega0-dt0.002.json",
+      "sha256": "6c747813355c6a322cc4978bea757a3a6c426cf0b5a1170065af8378ad02d934"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed1-omega0.5-dt0.002.json",
+      "sha256": "1bc782b6bdac403cb83d3e4759c0be4204a2be40f72b70803cd638d2fb2a5d99"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed1-omega1-dt0.002.json",
+      "sha256": "c7f54af94e537382d18389a4ddf638700b1fe3f231327962e71ad373f160ee9b"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed2-omega0-dt0.002.json",
+      "sha256": "0ab2ee6ebe047d528f3a51b57cad37d350b1a846506a2a10fe43541e3485d6c1"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed2-omega0.5-dt0.002.json",
+      "sha256": "42348267f0dee7e0a19eafe6d289d579dcf697fff76c4142405ccda1980a9f70"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed2-omega1-dt0.002.json",
+      "sha256": "b845d892587d1df8645373217bc9782aed2c60c94f3bfe18f6de2d2cc38dae78"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed3-omega0-dt0.002.json",
+      "sha256": "b6e8af3bcf89d4973b7eeb0ac42760ba59a7e126fe8aed5ceec150bece37baa3"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed3-omega0.5-dt0.002.json",
+      "sha256": "aeb90c1e35c3d4028af61e3abaaa41e9c775695c0debbb40c8ddbfb3757f1e5d"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R4-seed3-omega1-dt0.002.json",
+      "sha256": "68ba32f47331100810cc49bc23bacdbfcec9cb57ca0f838264eb54dfbf087fea"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed1-omega0-dt0.002.json",
+      "sha256": "3461c12bd004c5db32ae4d3e84d0fb05259b146a4b32ebf00dffc810b6ce1d84"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed1-omega0.5-dt0.002.json",
+      "sha256": "abd33d80ba3549ab1e4f618d435b15f1f0c67af2db88d68ff81c051ef8608641"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed1-omega1-dt0.002.json",
+      "sha256": "cbad0de2019f3a83bb88ff1633bd784ad2fab915c431a643d66d39891ea96c42"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed2-omega0-dt0.002.json",
+      "sha256": "38014fddf0e60add5556493f0912d9da19d2ad7a493c4b8635f27d28b0ee2b5e"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed2-omega0.5-dt0.002.json",
+      "sha256": "2862c8bea597c70e89af1ca38e8e70e127e808e8e3d0083ea63d17587541609f"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed2-omega1-dt0.002.json",
+      "sha256": "cd4c64dc754e2c468e628d8ed266ed0475c38a92bf5b579488cd120aeaba8997"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed3-omega0-dt0.002.json",
+      "sha256": "36722c1c4bd2d5e9e360607fb1f673facbd9299907efa9f7bd360d2373088e08"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed3-omega0.5-dt0.002.json",
+      "sha256": "cd0e4587e09c22a96273b480900588abdbbf1365caed223c45e7ac604e9673b7"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R6-seed3-omega1-dt0.002.json",
+      "sha256": "897b390995a9e07e2be3e1982defb220a8411cb3ae1507afa2e9ff2db34da2b2"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R8-seed1-omega0-dt0.002.json",
+      "sha256": "a18a27d340c195f1a51091178daba76ea41016b0b49ba79b1910772ced5d54c0"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/runs/mobile-R8-seed1-omega0.5-dt0.002.json",
+      "sha256": "72260fd5aac55502b5735060b1296ea1bdbb1aaef494019dc51d11d9f1210603"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed1-omega0-dt0.002.json",
+      "sha256": "f7661ec9ee959e6bda105ac861c0446776c36675587a51514029da1f01a5f763"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed1-omega0.5-dt0.002.json",
+      "sha256": "3f41d9af7ad73e4d959a31014dba9434d2df15ee1d2c34fe7ca66c46550c6b09"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed1-omega1-dt0.002.json",
+      "sha256": "3ac921b5ca4a3b5fef4fba74d79b22f418686a1691742cc72ff7e62413848003"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed2-omega0-dt0.002.json",
+      "sha256": "73def8c5baaa517da766c77a02bf4e07b8fcf1fb8dba6ddf67e49b1178a9372b"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed2-omega0.5-dt0.002.json",
+      "sha256": "c5e66f2f7031df512ffea1557603448e2bd6e246d55f83ab854d5ce7ba42788f"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed2-omega1-dt0.002.json",
+      "sha256": "00c74c89c447fd88982bacad998c705392f6a3e960056034a548bbbf715416d4"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed3-omega0-dt0.002.json",
+      "sha256": "d856daca164a7fceb09955c956106eac6b696a705c3c234ea2a4a1d369c00cc0"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed3-omega0.5-dt0.002.json",
+      "sha256": "1069f8c3714d45d3a509b6fc38fed38e8f4e60a2a37cf9f1e55bcc14bac0e6fe"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R4-seed3-omega1-dt0.002.json",
+      "sha256": "c86754bb641bc00353901b51993bfe34ce295b8f40873ae15ffef64d6ae2335c"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed1-omega0-dt0.002.json",
+      "sha256": "c23552e87a493d91a979cf836aefe9230a870aa2f8e67f9870508f96c1027759"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed1-omega0.5-dt0.002.json",
+      "sha256": "43ff0e21363c1a457ccc4a0a36cdc3b05673659387432772785c6eb920935b44"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed1-omega1-dt0.002.json",
+      "sha256": "0959e97a903db1db868d0dfcf54140ba8c3322fcac22aa1ffe7bb8bb78baef11"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed2-omega0-dt0.002.json",
+      "sha256": "6719440716ebefc71c6b99f35fc23958a2b3b6992a83d57168b1354dedab5c20"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed2-omega0.5-dt0.002.json",
+      "sha256": "30c9ad4a9543f0c9b1415abceeb9c5f19423f7c7c00ea836f1f25ee3dd939841"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed2-omega1-dt0.002.json",
+      "sha256": "b996ecec1e1aa4a582b583008ed869779e733d410e94321d85ed57be9943c4db"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed3-omega0-dt0.002.json",
+      "sha256": "1883e73d24d0f8e3d06379d35d49485af4948aa0d43adc350011e37f84ad0c2c"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed3-omega0.5-dt0.002.json",
+      "sha256": "4bb292fc8b75fe0bb2dd25d6ebf5b571c709a08cd357519ba98d0a8a81668740"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R6-seed3-omega1-dt0.002.json",
+      "sha256": "7a77e44e681a2c3cadd1845c2328fc0f041b58c3008e9126862d0cf6274a36d6"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed1-omega0-dt0.002.json",
+      "sha256": "3e900a25acfb48f31e887ee920900ea10aef0cd052ec96d05a8ebeeac8e1d294"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed1-omega0.5-dt0.002.json",
+      "sha256": "64c40f0b7e888cef3d3edfd4b57c4ee0f16e42f24352535645d926ef8a89e98e"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed1-omega1-dt0.002.json",
+      "sha256": "1064ddea92e16e4b2aacff1ff8e14e8f210a5a9c17bc57d126d70bc6a50bad6c"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed2-omega0-dt0.002.json",
+      "sha256": "7a4a001aa6955f64f0180aaab409599b75616754c725ec76469c9216e14a5785"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed2-omega0.5-dt0.002.json",
+      "sha256": "f4a5807d9991f962a5e18206b3a9cdb0df7f94bd079bcf27d9b907ddd2f784a2"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed2-omega1-dt0.002.json",
+      "sha256": "4ab855e7a956eb2427bc4babcca0f7f35384eba7b785960c008a0c9166569eda"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed3-omega0-dt0.002.json",
+      "sha256": "fdb8a1e191e0e6dc33b92a3c0d3dac82995e64f1660862b5666adcff882ed2e8"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed3-omega0.5-dt0.002.json",
+      "sha256": "8a3ab185fb9b5185aa3f0cc18a8e34200c59cb3703d37e048d53c19dc2a7a8de"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/frozen-R8-seed3-omega1-dt0.002.json",
+      "sha256": "6c48bfec3ab800f940a03287b4fb50d30719fa1980dd1879ac270bf19ecd1ccb"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/isolated-R4-seed1-omega0-dt0.002.json",
+      "sha256": "da8001d496b36eea6c70f6a5ee74563e892efcab9edf2d191593dd887c4225b0"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/isolated-R4-seed1-omega0.5-dt0.002.json",
+      "sha256": "0097ef39b5cfa0fd3c557aca96b6414c15f5c2563afde1a9ffad700f1c39c620"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/isolated-R4-seed1-omega1-dt0.002.json",
+      "sha256": "9996632b91e5a2858ce04423965488dc5e3d435ef70b28189a5a4d6dd24c2a9c"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/mobile-R4-seed1-omega0-dt0.001.json",
+      "sha256": "1710b495e0b0009460e731eef6494904290f5d14900a7b0af72310f0aaec8dcf"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/mobile-R4-seed1-omega0.5-dt0.001.json",
+      "sha256": "1ef5b9bf2b4920d655b22d2dbfcf1ec015c089db83f308bd8b798c69b30cbb01"
+    },
+    {
+      "path": "data/experiments/field/external_compression_v1/controls/mobile-R4-seed1-omega1-dt0.001.json",
+      "sha256": "87895da898f8fe8357d33e3364fc899618173d9cc43271758c921fdce726d73c"
+    }
+  ]
+}
