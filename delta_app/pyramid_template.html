@@ -61,8 +61,9 @@ select:focus-visible, .node:focus-visible { outline: 2px solid var(--hit); outli
   border-radius: 10px; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0;
 }
 @media (min-width: 760px) {
-  .band[data-rank="0"] { width: 62%; } .band[data-rank="1"] { width: 70%; } .band[data-rank="2"] { width: 76%; }
-  .band[data-rank="3"] { width: 84%; } .band[data-rank="4"] { width: 92%; } .band[data-rank="5"] { width: 100%; }
+  .band[data-rank="0"] { width: 58%; } .band[data-rank="1"] { width: 64%; } .band[data-rank="2"] { width: 70%; }
+  .band[data-rank="3"] { width: 76%; } .band[data-rank="4"] { width: 84%; } .band[data-rank="5"] { width: 92%; }
+  .band[data-rank="6"] { width: 100%; }
 }
 .band h2 { font-family: var(--font-display); font-weight: 500; font-size: 17px; margin: 0; color: var(--lvl); letter-spacing: 0.01em; }
 .band .doc { margin: 0; font-size: 13px; color: var(--muted); }
@@ -117,7 +118,7 @@ footer code { font-family: var(--font-mono); font-size: 12px; }
 <script>
 (function () {
   const DATA = JSON.parse(document.getElementById("data").textContent);
-  const COLORS = ["--l0", "--l1", "--l2", "--l3", "--l4", "--l5"];
+  const COLORS = ["--l0", "--l5", "--l1", "--l2", "--l3", "--l4", "--l0"];
   const select = document.getElementById("obj");
   const pyramid = document.getElementById("pyramid");
   const groups = [["Химические элементы", DATA.objects.filter(o => o.kind === "element")],
@@ -217,7 +218,9 @@ footer code { font-family: var(--font-mono); font-size: 12px; }
       detail.innerHTML = step
         ? `<span class="who">${esc(obj.title)} на этом уровне</span>` + step.lines.map(l => `<p>${esc(l)}</p>`).join("") +
           (step.chi ? `<div class="chi">χ = ${chiHtml(step.chi)}</div>` : "")
-        : `<span class="who">${esc(obj.title)}</span><p>На этом уровне данных нет.</p>`;
+        : band.note
+          ? `<span class="who">Результат опыта на модели</span>` + band.note.map(l => `<p>${esc(l)}</p>`).join("")
+          : `<span class="who">${esc(obj.title)}</span><p>На этом уровне данных нет.</p>`;
       const level = band.level && DATA.levels[band.level];
       if (level && step) {
         for (const target of step.nodes) {

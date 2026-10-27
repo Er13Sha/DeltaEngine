@@ -1,0 +1,81 @@
+import json
+import random
+import unittest
+from pathlib import Path
+
+try:
+    import numpy as np
+
+    from adapters.field_lattice import experiments as ex
+    from adapters.field_lattice.model import _local_energy_change, energy, kawasaki, acceptance, kernel, topple
+except ImportError:  # numba и numpy — необязательные зависимости трека E
+    np = None
+
+ROOT = Path(__file__).resolve().parents[2]
+FIELD = ROOT / "data" / "experiments" / "field"
+
+
+@unittest.skipIf(np is None, "нужны numpy и numba (pip install -e .[field])")
+class FieldModelTests(unittest.TestCase):
+    def test_energy_change_matches_total_energy(self):
+        rng = random.Random(7)
+        kern = kernel(5)
+        L = 16
+        for _ in range(200):
+            s = np.array([[rng.choice([-1, 0, 0, 1]) for _ in range(L)] for _ in range(L)], dtype=np.int64)
+            x, y = rng.randrange(L), rng.randrange(L)
+            dx, dy = rng.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
+            nx, ny = (x + dx) % L, (y + dy) % L
+            a, b = int(s[x, y]), int(s[nx, ny])
+            if a == b:
+                continue
+            de = _local_energy_change(s, L, x, y, nx, ny, a, b, 40, 1, kern)
+            e0 = energy(s, 40, 1, kern)
+            s[x, y], s[nx, ny] = b, a
+            self.assertEqual(energy(s, 40, 1, kern) - e0, de)
+
+    def test_rules_conserve_field(self):
+        rng = np.random.default_rng(3)
+        s = rng.choice(np.array([-1, 0, 1], dtype=np.int64), size=(24, 24))
+        total, plus = int(s.sum()), int((s == 1).sum())
+        kawasaki(s, 40, 1, kernel(8), acceptance(8, 1, 400), 50, 5)
+        self.assertEqual((int(s.sum()), int((s == 1).sum())), (total, plus))
+        t = rng.integers(-9, 10, size=(24, 24)).astype(np.int64)
+        before = int(t.sum())
+        topple(t, 3, 100_000)
+        self.assertEqual(int(t.sum()), before)
+        self.assertTrue(int(np.abs(t).max()) <= 3)
+
+    def test_interaction_energies(self):
+        self.assertEqual(ex.interaction_energy("B", (1, 1), 0, "x")[0], -40)  # сцепление при касании
+        self.assertEqual(ex.interaction_energy("C", (1, 1), 0, "x")[0], 524)  # отталкивание сильнее
+        self.assertEqual(ex.interaction_energy("C", (1, -1), 0, "x")[0], 0)  # разноимённые: прямого притяжения нет
+
+    def test_runs_are_reproducible(self):
+        saved = [json.loads(line) for line in (FIELD / "runs.jsonl").read_text(encoding="utf-8").splitlines()]
+        run = next(r for r in saved if r["kind"] == "existence" and r["model_family"] == "C" and r["seed"] == 1)
+        fresh = ex.existence_run("C", 1)
+        self.assertEqual((fresh["config_hash"], fresh["observables"]), (run["config_hash"], run["observables"]))
+        self.assertEqual(run["protocol_hash"], ex.protocol_hash())
+
+    def test_negative_controls_and_admission(self):
+        summary = json.loads((FIELD / "summary.json").read_text(encoding="utf-8"))
+        self.assertTrue(summary["negative_controls_failed_as_required"])
+        self.assertEqual([f for f, v in summary["families"].items() if v["admitted"]], ["C"])
+
+
+class FieldCharacteristicTests(unittest.TestCase):
+    def test_model_tree_reproduces_scan(self):
+        from fractions import Fraction
+
+        from delta_kernel import Tree
+        from delta_tools.induction import predict
+
+        tree = Tree.from_dict(json.loads((ROOT / "data" / "trees" / "field_model.json").read_text(encoding="utf-8")))
+        self.assertEqual(tree.check(), [])
+        scan = json.loads((FIELD / "scan.json").read_text(encoding="utf-8"))
+        for row in scan["rows"]:
+            record = {k: row[k] for k in ("J", "K", "T")}
+            record["t_ratio"], record["k_ratio"] = Fraction(row["t_ratio"]), Fraction(row["k_ratio"])
+            with self.subTest(row=record):
+                self.assertEqual(predict(tree, record)[0], row["label"])

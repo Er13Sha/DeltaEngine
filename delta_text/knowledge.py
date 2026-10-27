@@ -242,8 +242,10 @@ class KnowledgeBase:
         fork = self.trees[tree_id].nodes[fork_id]
         assert isinstance(fork, Fork)
         text = fork.predicate.text
-        for attr, words in sorted(self.lexicon.get("attributes", {}).items(), key=lambda kv: -len(kv[0])):
-            text = re.sub(rf"\b{attr}\b", words, text)
+        names = self.lexicon.get("attributes", {})
+        if names:  # один проход: замена не должна задевать уже вставленные слова
+            pattern = r"\b(" + "|".join(sorted(map(re.escape, names), key=len, reverse=True)) + r")\b"
+            text = re.sub(pattern, lambda m: names[m.group(1)], text)
         # пороги индуктора — середины между целыми: «≤ 3/2» для целого числа значит «≤ 1»
         text = re.sub(r"<= (-?\d+)/2\b", lambda m: f"≤ {int(m.group(1)) // 2}", text)
         text = re.sub(r'== "([^"]*)"', r"= \1", text)

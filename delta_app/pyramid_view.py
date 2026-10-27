@@ -28,9 +28,14 @@ OUT = ROOT / "docs" / "pyramid.html"
 BANDS = [
     {"id": "matter", "title": "Материя", "level": "matter",
      "doc": "Вершина: дерево материи проекта. Объект приходит сюда своим агрегатным состоянием."},
+    {"id": "field", "title": "Поле → частица (модель)", "level": "field",
+     "doc": "Трек E: целочисленная модель поля. При каких параметрах уплотнения поля устойчивы и одноимённые "
+            "отталкиваются. Вилки открыл индуктор по перебору параметров. Это знание о модели (scope = model), "
+            "а не о природе.",
+     "link": "посылка H0.P2: уплотнённое поле — частица (гипотеза; проверена только на модели)"},
     {"id": "particles", "title": "Элементарные частицы", "level": "particles",
      "doc": "Модель школьного курса: протон, нейтрон, электрон. Константы CODATA 2018.",
-     "link": "дискретная материя состоит из частиц"},
+     "link": "частицы модели сопоставляются с частицами школьного курса (соответствие не доказано)"},
     {"id": "nucleus", "title": "Атомное ядро", "level": None,
      "doc": "Уровень состава: ядро = Z протонов + N нейтронов, заряд +Z.",
      "link": "ядро = Z протонов + N нейтронов"},
@@ -145,6 +150,7 @@ def build() -> dict[str, Any]:
     kb = KnowledgeBase()
     levels = {
         "matter": _level("matter", matter_tree(), kb),
+        "field": _level("field", tree("field_model"), kb),
         "particles": _level("particles", tree("particles"), kb),
         "atoms": _level("atoms", tree("atoms"), kb),
         "bonds": _level("bonds", tree("bonds"), kb),
@@ -161,6 +167,21 @@ def build() -> dict[str, Any]:
         tree("atoms").nodes[tree("atoms").classify(atom_features(z), certify=False).leaf].meta.get("class") == e.group_block
         for z, e in elements().items()
     )
+    summary = json.loads((ROOT / "data" / "experiments" / "field" / "summary.json").read_text(encoding="utf-8"))
+    fams = summary["families"]
+    field_note = [
+        f"Шип E1 (протокол {summary['protocol_hash'][7:19]}): семейство A — частиц нет; B — частицы есть, "
+        f"но одноимённые притягиваются при касании; C — частицы есть, одноимённые отталкиваются, разноимённые "
+        f"не взаимодействуют (прямого притяжения в правиле нет). Допущено: "
+        + ", ".join(f for f, v in fams.items() if v["admitted"]) + ".",
+        "Отрицательные контроли провалили проверку, как требуется: "
+        + ("да" if summary["negative_controls_failed_as_required"] else "НЕТ") + ".",
+        "Ограничения шипа: решётка 2D, динамика без инерции, параметры выбраны по пилотным прогонам; "
+        "притяжение через экранирование (семейство D) и квантование заряда ещё не проверялись.",
+    ]
+    for band in BANDS:
+        if band["id"] == "field":
+            band["note"] = field_note
     return {
         "levels": levels,
         "levelsList": [{"id": k, "hash": v["hash"]} for k, v in levels.items()],

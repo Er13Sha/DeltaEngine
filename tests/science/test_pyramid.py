@@ -70,4 +70,4 @@ class PyramidTests(unittest.TestCase):
         data = build()
         self.assertEqual(data["atomsCheck"], "118 из 118")
         self.assertEqual(len(data["objects"]), 200)
-        self.assertEqual({l["id"] for l in data["levelsList"]}, {"matter", "particles", "atoms", "bonds", "substances"})
+        self.assertEqual({l["id"] for l in data["levelsList"]}, {"matter", "field", "particles", "atoms", "bonds", "substances"})

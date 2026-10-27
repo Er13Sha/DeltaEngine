@@ -1,0 +1,906 @@
+{
+ "protocol_hash": "sha256:b67b4f09eeeb8075e1f143de8a916af3a534538b72b354a4fe4261eb156c6cf4",
+ "scope": "model",
+ "families": {
+  "A": {
+   "existence": [
+    "no_particles",
+    "no_particles",
+    "no_particles"
+   ],
+   "existence_observables": [
+    {
+     "topple_steps": 5,
+     "densifications_after": 0,
+     "sum_conserved": true
+    },
+    {
+     "topple_steps": 7,
+     "densifications_after": 0,
+     "sum_conserved": true
+    },
+    {
+     "topple_steps": 5,
+     "densifications_after": 0,
+     "sum_conserved": true
+    }
+   ],
+   "K1": false,
+   "admitted": false
+  },
+  "B": {
+   "existence": [
+    "particles",
+    "particles",
+    "particles"
+   ],
+   "existence_observables": [
+    {
+     "clusters_before": 51,
+     "clusters_after": 48,
+     "persistent": 43,
+     "charges_after": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      10,
+      10,
+      12,
+      13,
+      13,
+      13,
+      15
+     ],
+     "sum_conserved": true
+    },
+    {
+     "clusters_before": 48,
+     "clusters_after": 47,
+     "persistent": 43,
+     "charges_after": [
+      4,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      8,
+      9,
+      9,
+      9,
+      10,
+      10,
+      11,
+      11,
+      12,
+      13,
+      13,
+      14,
+      24
+     ],
+     "sum_conserved": true
+    },
+    {
+     "clusters_before": 49,
+     "clusters_after": 48,
+     "persistent": 43,
+     "charges_after": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      10,
+      10,
+      10,
+      10,
+      11,
+      11,
+      11,
+      12,
+      13,
+      13,
+      13,
+      14,
+      15,
+      25
+     ],
+     "sum_conserved": true
+    }
+   ],
+   "like": {
+    "static": {
+     "profile": {
+      "x": [
+       {
+        "gap": 0,
+        "d": 7.0,
+        "E_int": -40
+       },
+       {
+        "gap": 1,
+        "d": 8.0,
+        "E_int": 0
+       },
+       {
+        "gap": 2,
+        "d": 9.0,
+        "E_int": 0
+       },
+       {
+        "gap": 3,
+        "d": 10.0,
+        "E_int": 0
+       },
+       {
+        "gap": 4,
+        "d": 11.0,
+        "E_int": 0
+       },
+       {
+        "gap": 6,
+        "d": 13.0,
+        "E_int": 0
+       },
+       {
+        "gap": 8,
+        "d": 15.0,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 17.0,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.0,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 23.0,
+        "E_int": 0
+       }
+      ],
+      "diagonal": [
+       {
+        "gap": 0,
+        "d": 7.071,
+        "E_int": 0
+       },
+       {
+        "gap": 1,
+        "d": 8.485,
+        "E_int": 0
+       },
+       {
+        "gap": 2,
+        "d": 9.899,
+        "E_int": 0
+       },
+       {
+        "gap": 3,
+        "d": 11.314,
+        "E_int": 0
+       },
+       {
+        "gap": 4,
+        "d": 11.314,
+        "E_int": 0
+       },
+       {
+        "gap": 6,
+        "d": 14.142,
+        "E_int": 0
+       },
+       {
+        "gap": 8,
+        "d": 15.556,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 18.385,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.799,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 24.042,
+        "E_int": 0
+       }
+      ]
+     },
+     "monotone": false,
+     "verdict": "attraction"
+    },
+    "contact_outcomes": [
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "merged",
+     "separate",
+     "separate",
+     "merged",
+     "separate",
+     "separate",
+     "separate"
+    ],
+    "merges": 2
+   },
+   "opposite": {
+    "static": {
+     "profile": {
+      "x": [
+       {
+        "gap": 0,
+        "d": 7.0,
+        "E_int": 0
+       },
+       {
+        "gap": 1,
+        "d": 8.0,
+        "E_int": 0
+       },
+       {
+        "gap": 2,
+        "d": 9.0,
+        "E_int": 0
+       },
+       {
+        "gap": 3,
+        "d": 10.0,
+        "E_int": 0
+       },
+       {
+        "gap": 4,
+        "d": 11.0,
+        "E_int": 0
+       },
+       {
+        "gap": 6,
+        "d": 13.0,
+        "E_int": 0
+       },
+       {
+        "gap": 8,
+        "d": 15.0,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 17.0,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.0,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 23.0,
+        "E_int": 0
+       }
+      ],
+      "diagonal": [
+       {
+        "gap": 0,
+        "d": 7.071,
+        "E_int": 0
+       },
+       {
+        "gap": 1,
+        "d": 8.485,
+        "E_int": 0
+       },
+       {
+        "gap": 2,
+        "d": 9.899,
+        "E_int": 0
+       },
+       {
+        "gap": 3,
+        "d": 11.314,
+        "E_int": 0
+       },
+       {
+        "gap": 4,
+        "d": 11.314,
+        "E_int": 0
+       },
+       {
+        "gap": 6,
+        "d": 14.142,
+        "E_int": 0
+       },
+       {
+        "gap": 8,
+        "d": 15.556,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 18.385,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.799,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 24.042,
+        "E_int": 0
+       }
+      ]
+     },
+     "monotone": true,
+     "verdict": "no_interaction"
+    },
+    "contact_outcomes": [
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate"
+    ],
+    "merges": 0
+   },
+   "K1": false,
+   "admitted": false
+  },
+  "C": {
+   "existence": [
+    "particles",
+    "particles",
+    "particles"
+   ],
+   "existence_observables": [
+    {
+     "clusters_before": 49,
+     "clusters_after": 48,
+     "persistent": 40,
+     "charges_after": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      8,
+      9,
+      9,
+      9,
+      9,
+      10,
+      10,
+      10,
+      15
+     ],
+     "sum_conserved": true
+    },
+    {
+     "clusters_before": 43,
+     "clusters_after": 45,
+     "persistent": 32,
+     "charges_after": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      8,
+      9,
+      9,
+      9,
+      10,
+      10,
+      10,
+      11,
+      11,
+      14,
+      16
+     ],
+     "sum_conserved": true
+    },
+    {
+     "clusters_before": 48,
+     "clusters_after": 59,
+     "persistent": 43,
+     "charges_after": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      7,
+      7,
+      7,
+      7,
+      8,
+      8,
+      8,
+      8,
+      9,
+      9,
+      9,
+      10,
+      11,
+      11,
+      12
+     ],
+     "sum_conserved": true
+    }
+   ],
+   "like": {
+    "static": {
+     "profile": {
+      "x": [
+       {
+        "gap": 0,
+        "d": 7.0,
+        "E_int": 524
+       },
+       {
+        "gap": 1,
+        "d": 8.0,
+        "E_int": 378
+       },
+       {
+        "gap": 2,
+        "d": 9.0,
+        "E_int": 226
+       },
+       {
+        "gap": 3,
+        "d": 10.0,
+        "E_int": 124
+       },
+       {
+        "gap": 4,
+        "d": 11.0,
+        "E_int": 56
+       },
+       {
+        "gap": 6,
+        "d": 13.0,
+        "E_int": 3
+       },
+       {
+        "gap": 8,
+        "d": 15.0,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 17.0,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.0,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 23.0,
+        "E_int": 0
+       }
+      ],
+      "diagonal": [
+       {
+        "gap": 0,
+        "d": 7.071,
+        "E_int": 553
+       },
+       {
+        "gap": 1,
+        "d": 8.485,
+        "E_int": 305
+       },
+       {
+        "gap": 2,
+        "d": 9.899,
+        "E_int": 142
+       },
+       {
+        "gap": 3,
+        "d": 11.314,
+        "E_int": 45
+       },
+       {
+        "gap": 4,
+        "d": 11.314,
+        "E_int": 45
+       },
+       {
+        "gap": 6,
+        "d": 14.142,
+        "E_int": 0
+       },
+       {
+        "gap": 8,
+        "d": 15.556,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 18.385,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.799,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 24.042,
+        "E_int": 0
+       }
+      ]
+     },
+     "monotone": true,
+     "verdict": "repulsion"
+    },
+    "contact_outcomes": [
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate"
+    ],
+    "merges": 0
+   },
+   "opposite": {
+    "static": {
+     "profile": {
+      "x": [
+       {
+        "gap": 0,
+        "d": 7.0,
+        "E_int": 0
+       },
+       {
+        "gap": 1,
+        "d": 8.0,
+        "E_int": 0
+       },
+       {
+        "gap": 2,
+        "d": 9.0,
+        "E_int": 0
+       },
+       {
+        "gap": 3,
+        "d": 10.0,
+        "E_int": 0
+       },
+       {
+        "gap": 4,
+        "d": 11.0,
+        "E_int": 0
+       },
+       {
+        "gap": 6,
+        "d": 13.0,
+        "E_int": 0
+       },
+       {
+        "gap": 8,
+        "d": 15.0,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 17.0,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.0,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 23.0,
+        "E_int": 0
+       }
+      ],
+      "diagonal": [
+       {
+        "gap": 0,
+        "d": 7.071,
+        "E_int": 0
+       },
+       {
+        "gap": 1,
+        "d": 8.485,
+        "E_int": 0
+       },
+       {
+        "gap": 2,
+        "d": 9.899,
+        "E_int": 0
+       },
+       {
+        "gap": 3,
+        "d": 11.314,
+        "E_int": 0
+       },
+       {
+        "gap": 4,
+        "d": 11.314,
+        "E_int": 0
+       },
+       {
+        "gap": 6,
+        "d": 14.142,
+        "E_int": 0
+       },
+       {
+        "gap": 8,
+        "d": 15.556,
+        "E_int": 0
+       },
+       {
+        "gap": 10,
+        "d": 18.385,
+        "E_int": 0
+       },
+       {
+        "gap": 12,
+        "d": 19.799,
+        "E_int": 0
+       },
+       {
+        "gap": 16,
+        "d": 24.042,
+        "E_int": 0
+       }
+      ]
+     },
+     "monotone": true,
+     "verdict": "no_interaction"
+    },
+    "contact_outcomes": [
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate",
+     "separate"
+    ],
+    "merges": 0
+   },
+   "K1": true,
+   "admitted": true
+  }
+ },
+ "negative_controls_failed_as_required": true
+}

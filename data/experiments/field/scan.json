@@ -1,0 +1,300 @@
+{
+ "protocol_hash": "sha256:b67b4f09eeeb8075e1f143de8a916af3a534538b72b354a4fe4261eb156c6cf4",
+ "scope": "model",
+ "scan": {
+  "J": [
+   10,
+   20,
+   40
+  ],
+  "K": [
+   0,
+   1,
+   2
+  ],
+  "T": [
+   4,
+   8,
+   16
+  ],
+  "R": 8,
+  "seeds": [
+   1,
+   2
+  ]
+ },
+ "rows": [
+  {
+   "J": 10,
+   "K": 0,
+   "T": 4,
+   "t_ratio": "2/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 10,
+   "K": 0,
+   "T": 8,
+   "t_ratio": "4/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 10,
+   "K": 0,
+   "T": 16,
+   "t_ratio": "8/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 10,
+   "K": 1,
+   "T": 4,
+   "t_ratio": "2/5",
+   "k_ratio": "4/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 10,
+   "K": 1,
+   "T": 8,
+   "t_ratio": "4/5",
+   "k_ratio": "4/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 10,
+   "K": 1,
+   "T": 16,
+   "t_ratio": "8/5",
+   "k_ratio": "4/5",
+   "static_like": "repulsion",
+   "particles": false,
+   "label": "частиц нет"
+  },
+  {
+   "J": 10,
+   "K": 2,
+   "T": 4,
+   "t_ratio": "2/5",
+   "k_ratio": "8/5",
+   "static_like": "repulsion",
+   "particles": false,
+   "label": "частиц нет"
+  },
+  {
+   "J": 10,
+   "K": 2,
+   "T": 8,
+   "t_ratio": "4/5",
+   "k_ratio": "8/5",
+   "static_like": "repulsion",
+   "particles": false,
+   "label": "частиц нет"
+  },
+  {
+   "J": 10,
+   "K": 2,
+   "T": 16,
+   "t_ratio": "8/5",
+   "k_ratio": "8/5",
+   "static_like": "repulsion",
+   "particles": false,
+   "label": "частиц нет"
+  },
+  {
+   "J": 20,
+   "K": 0,
+   "T": 4,
+   "t_ratio": "1/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 20,
+   "K": 0,
+   "T": 8,
+   "t_ratio": "2/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 20,
+   "K": 0,
+   "T": 16,
+   "t_ratio": "4/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 20,
+   "K": 1,
+   "T": 4,
+   "t_ratio": "1/5",
+   "k_ratio": "2/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 20,
+   "K": 1,
+   "T": 8,
+   "t_ratio": "2/5",
+   "k_ratio": "2/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 20,
+   "K": 1,
+   "T": 16,
+   "t_ratio": "4/5",
+   "k_ratio": "2/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 20,
+   "K": 2,
+   "T": 4,
+   "t_ratio": "1/5",
+   "k_ratio": "4/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 20,
+   "K": 2,
+   "T": 8,
+   "t_ratio": "2/5",
+   "k_ratio": "4/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 20,
+   "K": 2,
+   "T": 16,
+   "t_ratio": "4/5",
+   "k_ratio": "4/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 40,
+   "K": 0,
+   "T": 4,
+   "t_ratio": "1/10",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 40,
+   "K": 0,
+   "T": 8,
+   "t_ratio": "1/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 40,
+   "K": 0,
+   "T": 16,
+   "t_ratio": "2/5",
+   "k_ratio": "0",
+   "static_like": "attraction",
+   "particles": true,
+   "label": "частицы, K1 не выполнен"
+  },
+  {
+   "J": 40,
+   "K": 1,
+   "T": 4,
+   "t_ratio": "1/10",
+   "k_ratio": "1/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 40,
+   "K": 1,
+   "T": 8,
+   "t_ratio": "1/5",
+   "k_ratio": "1/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 40,
+   "K": 1,
+   "T": 16,
+   "t_ratio": "2/5",
+   "k_ratio": "1/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 40,
+   "K": 2,
+   "T": 4,
+   "t_ratio": "1/10",
+   "k_ratio": "2/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 40,
+   "K": 2,
+   "T": 8,
+   "t_ratio": "1/5",
+   "k_ratio": "2/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  },
+  {
+   "J": 40,
+   "K": 2,
+   "T": 16,
+   "t_ratio": "2/5",
+   "k_ratio": "2/5",
+   "static_like": "repulsion",
+   "particles": true,
+   "label": "частицы, одноимённые отталкиваются"
+  }
+ ],
+ "tree_forks": 3,
+ "tree_errors": 0
+}
