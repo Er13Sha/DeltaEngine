@@ -1,0 +1,46 @@
+{
+ "format": "delta-protocol@0.1",
+ "track": "E",
+ "stage": "E3-волна, этап 2: сила между двумя частицами поля",
+ "field": "φ_tt = ∇²φ − V'(φ), V = (φ² − 1)²/8; единицы c = 1, F = √V''(±1) = 1",
+ "postulates": "P1–P4 из oscillon_protocol.json, новых нет",
+ "free_dimensionless_parameters": 0,
+ "particle": {
+  "source": "радиальный расчёт R₀ = 4, установившийся к t = 2000",
+  "phase0": "максимум φ(0, t)",
+  "antiphase": "тот же осциллон через полпериода"
+ },
+ "geometry": "3D, осевая симметрия (ρ, z)",
+ "numerics": {
+  "h": 0.1,
+  "dt": 0.05,
+  "rho_max": 50.0,
+  "z_max": 70.0,
+  "absorb_width": 12.0,
+  "t_max": 150.0
+ },
+ "separations": [
+  8,
+  10,
+  12,
+  14,
+  16
+ ],
+ "control": {
+  "separation": 32,
+  "expectation": "|a| много меньше, чем при d = 16"
+ },
+ "phases": [
+  "in",
+  "anti"
+ ],
+ "measurement": "D(t) по центрам энергии половин; a — из подгонки D = D₀ + v₀t + a·t²/2 на [0, t_max]; f = E·a/2",
+ "law_fit": "f(d) = g·(1 + κd)·e^(−κd)/d² по разделённым d, отдельно для фаз",
+ "prediction_before_run": "κ = √(1 − ω²) при ω = частота частицы; в фазе — притяжение, в противофазе — отталкивание",
+ "alpha_model": "g/S, S = E/ω",
+ "comparison_after_run": {
+  "primary": "ядерная сила: α_N = 0,355 (дейтрон, track-e-frequency.md) — сила короткодействующая",
+  "secondary": "электричество: α = 1/137 — приводится для полноты, сила модели не дальнодействующая"
+ },
+ "hash": "sha256:f412b68273610cb11456e8cd80efa4ff65be2997d594c744d8387656e892b58c"
+}
