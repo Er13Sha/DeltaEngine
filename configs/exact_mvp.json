@@ -1,0 +1,52 @@
+{
+  "name": "exact_mvp_demo",
+  "world": {
+    "R": 1,
+    "N_fin": 16,
+    "grid_shape": [16, 16, 16],
+    "seed": 42,
+    "max_steps": 40,
+    "neighborhood_radius": 2,
+    "checkpoint_every": 10
+  },
+  "particle_counts": {
+    "proto_A": 90,
+    "proto_B": 70
+  },
+  "interaction_weights": {
+    "proto_A": 3,
+    "proto_B": 2
+  },
+  "delta_tree": {
+    "name": "matter",
+    "predicate": "is_discrete",
+    "yes": {
+      "name": "particles",
+      "predicate": "is_grouped",
+      "yes": {
+        "name": "groups",
+        "predicate": "is_stable",
+        "yes": {
+          "name": "substance"
+        },
+        "no": {
+          "name": "transient_group"
+        }
+      },
+      "no": {
+        "name": "free_particles"
+      }
+    },
+    "no": {
+      "name": "field"
+    }
+  },
+  "aggregation_rules": {
+    "cluster_min_size": 2,
+    "stability_window": 3,
+    "element_signature": ["size", "surface", "compactness_permille"]
+  },
+  "visualization": {
+    "frame_every": 10
+  }
+}

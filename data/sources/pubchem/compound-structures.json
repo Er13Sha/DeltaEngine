@@ -1,0 +1,499 @@
+{
+ "format": "pubchem-structures@0.1",
+ "source": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/<cid>/property/MolecularFormula,SMILES,ConnectivitySMILES/JSON",
+ "fetched": "2026-10-27",
+ "compounds": [
+  {
+   "CID": 962,
+   "MolecularFormula": "H2O",
+   "SMILES": "O",
+   "ConnectivitySMILES": "O"
+  },
+  {
+   "CID": 783,
+   "MolecularFormula": "H2",
+   "SMILES": "[HH]",
+   "ConnectivitySMILES": "[HH]"
+  },
+  {
+   "CID": 977,
+   "MolecularFormula": "O2",
+   "SMILES": "O=O",
+   "ConnectivitySMILES": "O=O"
+  },
+  {
+   "CID": 947,
+   "MolecularFormula": "N2",
+   "SMILES": "N#N",
+   "ConnectivitySMILES": "N#N"
+  },
+  {
+   "CID": 24823,
+   "MolecularFormula": "O3",
+   "SMILES": "[O-][O+]=O",
+   "ConnectivitySMILES": "[O-][O+]=O"
+  },
+  {
+   "CID": 24526,
+   "MolecularFormula": "Cl2",
+   "SMILES": "ClCl",
+   "ConnectivitySMILES": "ClCl"
+  },
+  {
+   "CID": 280,
+   "MolecularFormula": "CO2",
+   "SMILES": "C(=O)=O",
+   "ConnectivitySMILES": "C(=O)=O"
+  },
+  {
+   "CID": 281,
+   "MolecularFormula": "CO",
+   "SMILES": "[C-]#[O+]",
+   "ConnectivitySMILES": "[C-]#[O+]"
+  },
+  {
+   "CID": 297,
+   "MolecularFormula": "CH4",
+   "SMILES": "C",
+   "ConnectivitySMILES": "C"
+  },
+  {
+   "CID": 222,
+   "MolecularFormula": "H3N",
+   "SMILES": "N",
+   "ConnectivitySMILES": "N"
+  },
+  {
+   "CID": 784,
+   "MolecularFormula": "H2O2",
+   "SMILES": "OO",
+   "ConnectivitySMILES": "OO"
+  },
+  {
+   "CID": 402,
+   "MolecularFormula": "H2S",
+   "SMILES": "S",
+   "ConnectivitySMILES": "S"
+  },
+  {
+   "CID": 1119,
+   "MolecularFormula": "O2S",
+   "SMILES": "O=S=O",
+   "ConnectivitySMILES": "O=S=O"
+  },
+  {
+   "CID": 3032552,
+   "MolecularFormula": "NO2",
+   "SMILES": "N(=O)[O]",
+   "ConnectivitySMILES": "N(=O)[O]"
+  },
+  {
+   "CID": 5234,
+   "MolecularFormula": "ClNa",
+   "SMILES": "[Na+].[Cl-]",
+   "ConnectivitySMILES": "[Na+].[Cl-]"
+  },
+  {
+   "CID": 4873,
+   "MolecularFormula": "ClK",
+   "SMILES": "[Cl-].[K+]",
+   "ConnectivitySMILES": "[Cl-].[K+]"
+  },
+  {
+   "CID": 10112,
+   "MolecularFormula": "CCaO3",
+   "SMILES": "C(=O)([O-])[O-].[Ca+2]",
+   "ConnectivitySMILES": "C(=O)([O-])[O-].[Ca+2]"
+  },
+  {
+   "CID": 10340,
+   "MolecularFormula": "CNa2O3",
+   "SMILES": "C(=O)([O-])[O-].[Na+].[Na+]",
+   "ConnectivitySMILES": "C(=O)([O-])[O-].[Na+].[Na+]"
+  },
+  {
+   "CID": 516892,
+   "MolecularFormula": "CHNaO3",
+   "SMILES": "C(=O)(O)[O-].[Na+]",
+   "ConnectivitySMILES": "C(=O)(O)[O-].[Na+]"
+  },
+  {
+   "CID": 14792,
+   "MolecularFormula": "MgO",
+   "SMILES": "O=[Mg]",
+   "ConnectivitySMILES": "O=[Mg]"
+  },
+  {
+   "CID": 518696,
+   "MolecularFormula": "Fe2O3",
+   "SMILES": "O=[Fe]O[Fe]=O",
+   "ConnectivitySMILES": "O=[Fe]O[Fe]=O"
+  },
+  {
+   "CID": 449809,
+   "MolecularFormula": "FeO",
+   "SMILES": "[O-2].[Fe+2]",
+   "ConnectivitySMILES": "[O-2].[Fe+2]"
+  },
+  {
+   "CID": 9989226,
+   "MolecularFormula": "Al2O3",
+   "SMILES": "[O-2].[O-2].[O-2].[Al+3].[Al+3]",
+   "ConnectivitySMILES": "[O-2].[O-2].[O-2].[Al+3].[Al+3]"
+  },
+  {
+   "CID": 24261,
+   "MolecularFormula": "O2Si",
+   "SMILES": "O=[Si]=O",
+   "ConnectivitySMILES": "O=[Si]=O"
+  },
+  {
+   "CID": 26042,
+   "MolecularFormula": "O2Ti",
+   "SMILES": "O=[Ti]=O",
+   "ConnectivitySMILES": "O=[Ti]=O"
+  },
+  {
+   "CID": 24462,
+   "MolecularFormula": "CuO4S",
+   "SMILES": "[O-]S(=O)(=O)[O-].[Cu+2]",
+   "ConnectivitySMILES": "[O-]S(=O)(=O)[O-].[Cu+2]"
+  },
+  {
+   "CID": 24083,
+   "MolecularFormula": "MgO4S",
+   "SMILES": "[O-]S(=O)(=O)[O-].[Mg+2]",
+   "ConnectivitySMILES": "[O-]S(=O)(=O)[O-].[Mg+2]"
+  },
+  {
+   "CID": 24436,
+   "MolecularFormula": "Na2O4S",
+   "SMILES": "[O-]S(=O)(=O)[O-].[Na+].[Na+]",
+   "ConnectivitySMILES": "[O-]S(=O)(=O)[O-].[Na+].[Na+]"
+  },
+  {
+   "CID": 24268,
+   "MolecularFormula": "NNaO3",
+   "SMILES": "[N+](=O)([O-])[O-].[Na+]",
+   "ConnectivitySMILES": "[N+](=O)([O-])[O-].[Na+]"
+  },
+  {
+   "CID": 24434,
+   "MolecularFormula": "KNO3",
+   "SMILES": "[N+](=O)([O-])[O-].[K+]",
+   "ConnectivitySMILES": "[N+](=O)([O-])[O-].[K+]"
+  },
+  {
+   "CID": 22985,
+   "MolecularFormula": "H4N2O3",
+   "SMILES": "[NH4+].[N+](=O)([O-])[O-]",
+   "ConnectivitySMILES": "[NH4+].[N+](=O)([O-])[O-]"
+  },
+  {
+   "CID": 24456,
+   "MolecularFormula": "Ca3O8P2",
+   "SMILES": "[O-]P(=O)([O-])[O-].[O-]P(=O)([O-])[O-].[Ca+2].[Ca+2].[Ca+2]",
+   "ConnectivitySMILES": "[O-]P(=O)([O-])[O-].[O-]P(=O)([O-])[O-].[Ca+2].[Ca+2].[Ca+2]"
+  },
+  {
+   "CID": 313,
+   "MolecularFormula": "ClH",
+   "SMILES": "Cl",
+   "ConnectivitySMILES": "Cl"
+  },
+  {
+   "CID": 1118,
+   "MolecularFormula": "H2O4S",
+   "SMILES": "OS(=O)(=O)O",
+   "ConnectivitySMILES": "OS(=O)(=O)O"
+  },
+  {
+   "CID": 944,
+   "MolecularFormula": "HNO3",
+   "SMILES": "[N+](=O)(O)[O-]",
+   "ConnectivitySMILES": "[N+](=O)(O)[O-]"
+  },
+  {
+   "CID": 1004,
+   "MolecularFormula": "H3O4P",
+   "SMILES": "OP(=O)(O)O",
+   "ConnectivitySMILES": "OP(=O)(O)O"
+  },
+  {
+   "CID": 767,
+   "MolecularFormula": "CH2O3",
+   "SMILES": "C(=O)(O)O",
+   "ConnectivitySMILES": "C(=O)(O)O"
+  },
+  {
+   "CID": 14798,
+   "MolecularFormula": "HNaO",
+   "SMILES": "[OH-].[Na+]",
+   "ConnectivitySMILES": "[OH-].[Na+]"
+  },
+  {
+   "CID": 14797,
+   "MolecularFormula": "HKO",
+   "SMILES": "[OH-].[K+]",
+   "ConnectivitySMILES": "[OH-].[K+]"
+  },
+  {
+   "CID": 6093208,
+   "MolecularFormula": "CaH2O2",
+   "SMILES": "[OH-].[OH-].[Ca+2]",
+   "ConnectivitySMILES": "[OH-].[OH-].[Ca+2]"
+  },
+  {
+   "CID": 5793,
+   "MolecularFormula": "C6H12O6",
+   "SMILES": "C([C@@H]1[C@H]([C@@H]([C@H](C(O1)O)O)O)O)O",
+   "ConnectivitySMILES": "C(C1C(C(C(C(O1)O)O)O)O)O"
+  },
+  {
+   "CID": 2723872,
+   "MolecularFormula": "C6H12O6",
+   "SMILES": "C1[C@H]([C@H]([C@@H](C(O1)(CO)O)O)O)O",
+   "ConnectivitySMILES": "C1C(C(C(C(O1)(CO)O)O)O)O"
+  },
+  {
+   "CID": 5988,
+   "MolecularFormula": "C12H22O11",
+   "SMILES": "C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)CO)O)O)CO)O)O)O)O",
+   "ConnectivitySMILES": "C(C1C(C(C(C(O1)OC2(C(C(C(O2)CO)O)O)CO)O)O)O)O"
+  },
+  {
+   "CID": 10975657,
+   "MolecularFormula": "C5H10O5",
+   "SMILES": "C1[C@H]([C@H]([C@H](C(O1)O)O)O)O",
+   "ConnectivitySMILES": "C1C(C(C(C(O1)O)O)O)O"
+  },
+  {
+   "CID": 5460005,
+   "MolecularFormula": "C5H10O4",
+   "SMILES": "C(C=O)[C@@H]([C@@H](CO)O)O",
+   "ConnectivitySMILES": "C(C=O)C(C(CO)O)O"
+  },
+  {
+   "CID": 753,
+   "MolecularFormula": "C3H8O3",
+   "SMILES": "C(C(CO)O)O",
+   "ConnectivitySMILES": "C(C(CO)O)O"
+  },
+  {
+   "CID": 702,
+   "MolecularFormula": "C2H6O",
+   "SMILES": "CCO",
+   "ConnectivitySMILES": "CCO"
+  },
+  {
+   "CID": 887,
+   "MolecularFormula": "CH4O",
+   "SMILES": "CO",
+   "ConnectivitySMILES": "CO"
+  },
+  {
+   "CID": 176,
+   "MolecularFormula": "C2H4O2",
+   "SMILES": "CC(=O)O",
+   "ConnectivitySMILES": "CC(=O)O"
+  },
+  {
+   "CID": 311,
+   "MolecularFormula": "C6H8O7",
+   "SMILES": "C(C(=O)O)C(CC(=O)O)(C(=O)O)O",
+   "ConnectivitySMILES": "C(C(=O)O)C(CC(=O)O)(C(=O)O)O"
+  },
+  {
+   "CID": 612,
+   "MolecularFormula": "C3H6O3",
+   "SMILES": "CC(C(=O)O)O",
+   "ConnectivitySMILES": "CC(C(=O)O)O"
+  },
+  {
+   "CID": 1176,
+   "MolecularFormula": "CH4N2O",
+   "SMILES": "C(=O)(N)N",
+   "ConnectivitySMILES": "C(=O)(N)N"
+  },
+  {
+   "CID": 985,
+   "MolecularFormula": "C16H32O2",
+   "SMILES": "CCCCCCCCCCCCCCCC(=O)O",
+   "ConnectivitySMILES": "CCCCCCCCCCCCCCCC(=O)O"
+  },
+  {
+   "CID": 445639,
+   "MolecularFormula": "C18H34O2",
+   "SMILES": "CCCCCCCC/C=C\\CCCCCCCC(=O)O",
+   "ConnectivitySMILES": "CCCCCCCCC=CCCCCCCCC(=O)O"
+  },
+  {
+   "CID": 750,
+   "MolecularFormula": "C2H5NO2",
+   "SMILES": "C(C(=O)O)N",
+   "ConnectivitySMILES": "C(C(=O)O)N"
+  },
+  {
+   "CID": 5950,
+   "MolecularFormula": "C3H7NO2",
+   "SMILES": "C[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "CC(C(=O)O)N"
+  },
+  {
+   "CID": 6287,
+   "MolecularFormula": "C5H11NO2",
+   "SMILES": "CC(C)[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "CC(C)C(C(=O)O)N"
+  },
+  {
+   "CID": 6106,
+   "MolecularFormula": "C6H13NO2",
+   "SMILES": "CC(C)C[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "CC(C)CC(C(=O)O)N"
+  },
+  {
+   "CID": 6306,
+   "MolecularFormula": "C6H13NO2",
+   "SMILES": "CC[C@H](C)[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "CCC(C)C(C(=O)O)N"
+  },
+  {
+   "CID": 5951,
+   "MolecularFormula": "C3H7NO3",
+   "SMILES": "C([C@@H](C(=O)O)N)O",
+   "ConnectivitySMILES": "C(C(C(=O)O)N)O"
+  },
+  {
+   "CID": 6288,
+   "MolecularFormula": "C4H9NO3",
+   "SMILES": "C[C@H]([C@@H](C(=O)O)N)O",
+   "ConnectivitySMILES": "CC(C(C(=O)O)N)O"
+  },
+  {
+   "CID": 5862,
+   "MolecularFormula": "C3H7NO2S",
+   "SMILES": "C([C@@H](C(=O)O)N)S",
+   "ConnectivitySMILES": "C(C(C(=O)O)N)S"
+  },
+  {
+   "CID": 6137,
+   "MolecularFormula": "C5H11NO2S",
+   "SMILES": "CSCC[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "CSCCC(C(=O)O)N"
+  },
+  {
+   "CID": 5960,
+   "MolecularFormula": "C4H7NO4",
+   "SMILES": "C([C@@H](C(=O)O)N)C(=O)O",
+   "ConnectivitySMILES": "C(C(C(=O)O)N)C(=O)O"
+  },
+  {
+   "CID": 33032,
+   "MolecularFormula": "C5H9NO4",
+   "SMILES": "C(CC(=O)O)[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "C(CC(=O)O)C(C(=O)O)N"
+  },
+  {
+   "CID": 6267,
+   "MolecularFormula": "C4H8N2O3",
+   "SMILES": "C([C@@H](C(=O)O)N)C(=O)N",
+   "ConnectivitySMILES": "C(C(C(=O)O)N)C(=O)N"
+  },
+  {
+   "CID": 5961,
+   "MolecularFormula": "C5H10N2O3",
+   "SMILES": "C(CC(=O)N)[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "C(CC(=O)N)C(C(=O)O)N"
+  },
+  {
+   "CID": 5962,
+   "MolecularFormula": "C6H14N2O2",
+   "SMILES": "C(CCN)C[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "C(CCN)CC(C(=O)O)N"
+  },
+  {
+   "CID": 6322,
+   "MolecularFormula": "C6H14N4O2",
+   "SMILES": "C(C[C@@H](C(=O)O)N)CN=C(N)N",
+   "ConnectivitySMILES": "C(CC(C(=O)O)N)CN=C(N)N"
+  },
+  {
+   "CID": 6274,
+   "MolecularFormula": "C6H9N3O2",
+   "SMILES": "C1=C(NC=N1)C[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "C1=C(NC=N1)CC(C(=O)O)N"
+  },
+  {
+   "CID": 6140,
+   "MolecularFormula": "C9H11NO2",
+   "SMILES": "C1=CC=C(C=C1)C[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "C1=CC=C(C=C1)CC(C(=O)O)N"
+  },
+  {
+   "CID": 6057,
+   "MolecularFormula": "C9H11NO3",
+   "SMILES": "C1=CC(=CC=C1C[C@@H](C(=O)O)N)O",
+   "ConnectivitySMILES": "C1=CC(=CC=C1CC(C(=O)O)N)O"
+  },
+  {
+   "CID": 6305,
+   "MolecularFormula": "C11H12N2O2",
+   "SMILES": "C1=CC=C2C(=C1)C(=CN2)C[C@@H](C(=O)O)N",
+   "ConnectivitySMILES": "C1=CC=C2C(=C1)C(=CN2)CC(C(=O)O)N"
+  },
+  {
+   "CID": 145742,
+   "MolecularFormula": "C5H9NO2",
+   "SMILES": "C1C[C@H](NC1)C(=O)O",
+   "ConnectivitySMILES": "C1CC(NC1)C(=O)O"
+  },
+  {
+   "CID": 190,
+   "MolecularFormula": "C5H5N5",
+   "SMILES": "C1=NC2=NC=NC(=C2N1)N",
+   "ConnectivitySMILES": "C1=NC2=NC=NC(=C2N1)N"
+  },
+  {
+   "CID": 135398634,
+   "MolecularFormula": "C5H5N5O",
+   "SMILES": "C1=NC2=C(N1)C(=O)NC(=N2)N",
+   "ConnectivitySMILES": "C1=NC2=C(N1)C(=O)NC(=N2)N"
+  },
+  {
+   "CID": 597,
+   "MolecularFormula": "C4H5N3O",
+   "SMILES": "C1=C(NC(=O)N=C1)N",
+   "ConnectivitySMILES": "C1=C(NC(=O)N=C1)N"
+  },
+  {
+   "CID": 1135,
+   "MolecularFormula": "C5H6N2O2",
+   "SMILES": "CC1=CNC(=O)NC1=O",
+   "ConnectivitySMILES": "CC1=CNC(=O)NC1=O"
+  },
+  {
+   "CID": 1174,
+   "MolecularFormula": "C4H4N2O2",
+   "SMILES": "C1=CNC(=O)NC1=O",
+   "ConnectivitySMILES": "C1=CNC(=O)NC1=O"
+  },
+  {
+   "CID": 5957,
+   "MolecularFormula": "C10H16N5O13P3",
+   "SMILES": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N",
+   "ConnectivitySMILES": "C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N"
+  },
+  {
+   "CID": 6022,
+   "MolecularFormula": "C10H15N5O10P2",
+   "SMILES": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)O)O)O)N",
+   "ConnectivitySMILES": "C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)COP(=O)(O)OP(=O)(O)O)O)O)N"
+  },
+  {
+   "CID": 6083,
+   "MolecularFormula": "C10H14N5O7P",
+   "SMILES": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)O)O)O)N",
+   "ConnectivitySMILES": "C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)COP(=O)(O)O)O)O)N"
+  }
+ ]
+}

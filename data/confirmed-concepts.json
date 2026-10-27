@@ -807,8 +807,7 @@
         "Fe",
         "Iron",
         "железо",
-        "железа",
-        "металл"
+        "железа"
       ],
       "verified": {
         "source_id": "pubchem.periodic_table",
@@ -901,8 +900,7 @@
         "Cu",
         "Copper",
         "медь",
-        "меди",
-        "проводник"
+        "меди"
       ],
       "verified": {
         "source_id": "pubchem.periodic_table",

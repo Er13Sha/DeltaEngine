@@ -1,0 +1,16 @@
+{
+ "format": "source-manifest@0.1",
+ "source": "PubChem PUG-REST (NCBI), данные открытые",
+ "fetched": "2026-10-27",
+ "files": {
+  "periodic-table.json": {
+   "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/periodictable/JSON",
+   "sha256": "ff0f75976583b8a6493b18d0b42e83e1b68bd6e112b45d33578d98494ed5d321"
+  },
+  "compound-structures.json": {
+   "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/<cid>/property/MolecularFormula,SMILES,ConnectivitySMILES/JSON",
+   "compounds": 82
+  }
+ },
+ "status": "verified: значения скопированы из PubChem без изменений"
+}

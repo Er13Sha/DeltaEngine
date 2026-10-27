@@ -1,0 +1,53 @@
+{
+ "protocol_hash": "sha256:b67b4f09eeeb8075e1f143de8a916af3a534538b72b354a4fe4261eb156c6cf4",
+ "thesis": "свет — частица, движущаяся в базовом гравитационном поле",
+ "scope": "model+data",
+ "deflection_at_limb_arcsec": {
+  "corpuscle": 0.8755951628983364,
+  "medium": 1.7511903257966726
+ },
+ "deflection_observed_arcsec": 1.7512087132950938,
+ "shapiro_round_trip_us": {
+  "corpuscle": -131.17646229729436,
+  "medium": 262.3529245945887
+ },
+ "shapiro_medium_analytic_us": 262.35320116347805,
+ "cassini": {
+  "gamma_minus_1": 2.1e-05,
+  "sigma": 2.3e-05,
+  "source": "Кассини, 2002: эффект задержки радиосигнала у Солнца (по сдвигу частоты)"
+ },
+ "gamma_by_model": {
+  "corpuscle_deflection": 0.0,
+  "corpuscle_delay": -1.0,
+  "medium": 1.0
+ },
+ "corpuscle_deflection_sigma": 43479.17391304348,
+ "corpuscle_delay_sigma": 86957.4347826087,
+ "medium_sigma": 0.9130434782629895,
+ "gw_and_light_same_medium": "−2,6·10⁻⁷ ≤ γ_волн − γ_света ≤ 1,2·10⁻⁶ (Abbott et al. 2017, ApJL 848 L13)",
+ "speed_in_field": {
+  "speed_at_sun_limb_over_c": 0.9999957549948592,
+  "speed_at_earth_surface_over_c": 0.999999998609303,
+  "deflection_split_arcsec": {
+   "time_part": 0.8755951628983364,
+   "space_part": 0.8755951628983364,
+   "total": 1.7511903257966728
+  },
+  "pound_snider": {
+   "height_m": 22.5,
+   "observed_over_predicted": 0.999,
+   "sigma": 0.0076,
+   "predicted_shift": 2.452964149720599e-15
+  },
+  "gps_us_per_day": {
+   "field": 45.651861866919695,
+   "motion": -7.2131245603126075,
+   "net": 38.43873730660709
+  },
+  "galileo_redshift": {
+   "deviation": 1.9e-06,
+   "sigma": 2.48e-05
+  }
+ }
+}

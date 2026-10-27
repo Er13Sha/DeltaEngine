@@ -1,0 +1,99 @@
+{
+  "scope": "model",
+  "source_sha256": "34e3b4f8ca3adcadf7c1fb1c1ea179c1911ae23018c874498c71d674bd653891",
+  "code_sha256": "dd4cc6040a8af08d27d6780c9b4d31eefe5cf9d79d36c663285e35562a778cce",
+  "kappa_predicted": 0.5864298764558299,
+  "fits": {
+    "same_in": {
+      "fixed": {
+        "kappa": 0.5864298764558299,
+        "g": 483.13476166054073,
+        "log_rms": 0.034397619373901546,
+        "separations": [
+          12.0,
+          14.0,
+          16.0
+        ],
+        "internal_g_over_E_over_omega": 8.02319517863239
+      },
+      "free": {
+        "kappa": 0.607,
+        "g": 624.8606098778192,
+        "log_rms": 0.008492122925351436,
+        "separations": [
+          12.0,
+          14.0,
+          16.0
+        ]
+      },
+      "relative_kappa_difference": 0.035076868300927044
+    },
+    "same_anti": {
+      "fixed": {
+        "kappa": 0.5864298764558299,
+        "g": 344.5207940679697,
+        "log_rms": 0.037113424080418636,
+        "separations": [
+          12,
+          14,
+          16
+        ],
+        "internal_g_over_E_over_omega": 5.721297230620065
+      },
+      "free": {
+        "kappa": 0.5660000000000001,
+        "g": 267.10475465929403,
+        "log_rms": 0.0179740432831997,
+        "separations": [
+          12,
+          14,
+          16
+        ]
+      },
+      "relative_kappa_difference": -0.034837714236697126
+    },
+    "opposite": {
+      "fixed": {
+        "kappa": 0.5864298764558299,
+        "g": 1.1072792688554443,
+        "log_rms": 0.9285361028881665,
+        "separations": [
+          12,
+          14,
+          16
+        ],
+        "internal_g_over_E_over_omega": 0.01838807387973172
+      },
+      "free": {
+        "kappa": 1.159,
+        "g": 1794.3547142424197,
+        "log_rms": 0.020279070490615503,
+        "separations": [
+          12,
+          14,
+          16
+        ]
+      },
+      "relative_kappa_difference": 0.9763658819782117
+    }
+  },
+  "refinement": {
+    "same_in": {
+      "force_coarse": -0.0015735173518241748,
+      "force_fine": -0.0015746306448039217,
+      "relative_change": 0.0007075187181484477
+    },
+    "same_anti": {
+      "force_coarse": 0.001239230732180135,
+      "force_fine": 0.0012397366391940026,
+      "relative_change": 0.0004082427918630227
+    },
+    "opposite": {
+      "force_coarse": -1.22945255358616e-06,
+      "force_fine": -1.1557805499207893e-06,
+      "relative_change": -0.05992260819702122
+    }
+  },
+  "K1_pass": false,
+  "absolute_alpha_comparison_valid": false
+}

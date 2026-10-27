@@ -1,0 +1,16 @@
+{
+  "id": "vES01B3sW-Y",
+  "title": "Как работает Вселенная? Все держится на поле! Катющик ТВ2 #short",
+  "channel": "Научный трибунал \"Катющик ТВ2\"",
+  "duration": 59,
+  "upload_date": "20230803",
+  "webpage_url": "https://www.youtube.com/watch?v=vES01B3sW-Y",
+  "caption_type": "automatic ru-orig; cleaned rolling captions, approximately 30-second buckets",
+  "audio_verified": false,
+  "frames_inspected_seconds": [
+    15
+  ],
+  "transcript_path": "data/sources/video-transcripts/vES01B3sW-Y.ru-auto.txt",
+  "sha256": "25095d7778d92c2b0e81965cd82b2a1947287c5739187a9ef5a931920af5e73c",
+  "review": "docs/gravity-terminology-review-2026-10-27.md"
+}

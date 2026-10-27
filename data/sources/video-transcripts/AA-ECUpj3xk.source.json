@@ -1,0 +1,17 @@
+{
+  "id": "AA-ECUpj3xk",
+  "title": "Гравитация. 2 серия. ★ 2018г. наука о вселенной ★ ✔фильм на \"Катющик ТВ\"",
+  "channel": "Научный трибунал \"Катющик ТВ\" ",
+  "duration": 2151,
+  "upload_date": "20180601",
+  "webpage_url": "https://www.youtube.com/watch?v=AA-ECUpj3xk",
+  "caption_type": "automatic ru-orig; cleaned rolling captions, approximately 30-second buckets",
+  "audio_verified": false,
+  "frames_inspected_seconds": [
+    375,
+    630
+  ],
+  "transcript_path": "data/sources/video-transcripts/AA-ECUpj3xk.ru-auto.txt",
+  "sha256": "756d9d9e44cfcb3d39ba6794ef8e803cc306c2308e35aece14b96c0a4513e117",
+  "review": "docs/gravity-terminology-review-2026-10-27.md"
+}

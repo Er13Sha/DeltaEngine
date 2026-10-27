@@ -1,0 +1,102 @@
+{
+  "format": "delta-tree@0.1",
+  "id": "intent.rules",
+  "version": "0.1.0",
+  "schema": {
+    "name": "Utterance",
+    "version": "0.2.0",
+    "attributes": [
+      {
+        "name": "lemmas",
+        "type": {
+          "kind": "set",
+          "element": "str"
+        },
+        "doc": "Леммы всех слов фразы"
+      },
+      {
+        "name": "first",
+        "type": {
+          "kind": "str"
+        },
+        "doc": "Лемма первого слова"
+      },
+      {
+        "name": "qmark",
+        "type": {
+          "kind": "bool"
+        },
+        "doc": "Во фразе есть знак вопроса"
+      },
+      {
+        "name": "n_concepts",
+        "type": {
+          "kind": "int"
+        },
+        "doc": "Число найденных понятий"
+      },
+      {
+        "name": "pair",
+        "type": {
+          "kind": "enum",
+          "values": [
+            "none",
+            "instance_class",
+            "other"
+          ]
+        },
+        "doc": "Для двух понятий: объект и класс (instance_class) или иное"
+      }
+    ]
+  },
+  "root": {
+    "id": "rule.why",
+    "label": "Программные правила типа вопроса (проверяются раньше обученного дерева)",
+    "predicate": "(any w in lemmas: w == \"почему\") and n_concepts >= 1",
+    "evidence": [
+      {
+        "source": "rule",
+        "doc": "«почему» и хотя бы одно понятие: объяснение по пути в дереве"
+      }
+    ],
+    "true": {
+      "id": "WHY",
+      "label": "вопрос «почему»",
+      "intent": "WHY"
+    },
+    "false": {
+      "id": "rule.unfold",
+      "predicate": "(any w in lemmas: w in {\"развёртка\", \"развертка\", \"развернуть\", \"состоять\", \"построить\", \"устроить\", \"строение\", \"пирамида\"}) and n_concepts == 1",
+      "evidence": [
+        {
+          "source": "rule",
+          "doc": "«из чего состоит», «как устроен», «развёртка» X: пирамида от частиц до вещества"
+        }
+      ],
+      "true": {
+        "id": "UNFOLD",
+        "label": "вопрос «из чего состоит / развёртка»",
+        "intent": "UNFOLD"
+      },
+      "false": {
+        "id": "rule.distinguish",
+        "predicate": "(any w in lemmas: w in {\"отличить\", \"различить\", \"распознать\"}) and n_concepts == 2",
+        "evidence": [
+          {
+            "source": "rule",
+            "doc": "«как отличить A от B»: различие — вилка, на которой расходятся пути"
+          }
+        ],
+        "true": {
+          "id": "DISTINGUISH",
+          "label": "вопрос «как отличить»",
+          "intent": "DIFFERENCE"
+        },
+        "false": {
+          "id": "PASS",
+          "label": "правило не сработало — решает обученное дерево"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+ "format": "delta-tree@0.1",
+ "id": "field_model",
+ "version": "0.1.0",
+ "schema": {
+  "name": "FieldModelParams",
+  "version": "0.1.0",
+  "attributes": [
+   {
+    "name": "J",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "сцепление соседних ячеек одного знака"
+   },
+   {
+    "name": "K",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "сила отталкивания одноимённых"
+   },
+   {
+    "name": "T",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "температура динамики"
+   },
+   {
+    "name": "t_ratio",
+    "type": {
+     "kind": "rat"
+    },
+    "doc": "T / J — тепловое движение против сцепления"
+   },
+   {
+    "name": "k_ratio",
+    "type": {
+     "kind": "rat"
+    },
+    "doc": "K·G(1) / J — отталкивание соседей против сцепления"
+   }
+  ]
+ },
+ "root": {
+  "id": "fork.root#1",
+  "predicate": "K <= 1/2",
+  "knowledge": "hypothesis",
+  "evidence": [
+   {
+    "source": "induction",
+    "status": "candidate",
+    "examples": 27,
+    "labels": {
+     "частиц нет": 4,
+     "частицы, K1 не выполнен": 9,
+     "частицы, одноимённые отталкиваются": 14
+    },
+    "score": "56/9"
+   }
+  ],
+  "true": {
+   "id": "частицы, K1 не выполнен#1",
+   "label": "частицы, K1 не выполнен",
+   "class": "частицы, K1 не выполнен",
+   "support": 9
+  },
+  "false": {
+   "id": "fork.f#1",
+   "predicate": "k_ratio <= 6/5",
+   "knowledge": "hypothesis",
+   "evidence": [
+    {
+     "source": "induction",
+     "status": "candidate",
+     "examples": 18,
+     "labels": {
+      "частиц нет": 4,
+      "частицы, одноимённые отталкиваются": 14
+     },
+     "score": "28/15"
+    }
+   ],
+   "true": {
+    "id": "fork.t#1",
+    "predicate": "t_ratio <= 6/5",
+    "knowledge": "hypothesis",
+    "evidence": [
+     {
+      "source": "induction",
+      "status": "candidate",
+      "examples": 15,
+      "labels": {
+       "частиц нет": 1,
+       "частицы, одноимённые отталкиваются": 14
+      },
+      "score": "0"
+     }
+    ],
+    "true": {
+     "id": "частицы, одноимённые отталкиваются#1",
+     "label": "частицы, одноимённые отталкиваются",
+     "class": "частицы, одноимённые отталкиваются",
+     "support": 14
+    },
+    "false": {
+     "id": "частиц нет#1",
+     "label": "частиц нет",
+     "class": "частиц нет",
+     "support": 1
+    }
+   },
+   "false": {
+    "id": "частиц нет#2",
+    "label": "частиц нет",
+    "class": "частиц нет",
+    "support": 3
+   }
+  },
+  "label": "Поле (модель трека E, scope = model)"
+ }
+}

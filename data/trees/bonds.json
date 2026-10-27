@@ -1,0 +1,42 @@
+{
+  "format": "delta-tree@0.1",
+  "id": "bonds",
+  "version": "0.1.0",
+  "schema": {
+    "name": "AtomPair",
+    "version": "0.1.0",
+    "attributes": [
+      {"name": "both_metals", "type": {"kind": "bool"},
+       "doc": "Оба атома — металлы (по дереву химических элементов, классы PubChem)"},
+      {"name": "ions", "type": {"kind": "bool"},
+       "doc": "Атомы входят в противоположно заряженные ионы (по структуре SMILES PubChem)"},
+      {"name": "delta_en", "type": {"kind": "rat"}, "required": false, "required_when": "not both_metals",
+       "doc": "Разность электроотрицательностей по Полингу, |ЭО₁ − ЭО₂| (PubChem)"}
+    ]
+  },
+  "root": {
+    "id": "bond.metallic",
+    "label": "Химическая связь",
+    "predicate": "both_metals",
+    "evidence": [{"source": "textbook", "doc": "Химия 8–9 кл.: связь между атомами металлов — металлическая"}],
+    "true": {"id": "MetallicBond", "label": "Металлическая связь"},
+    "false": {
+      "id": "bond.ionic",
+      "label": "Связь с участием неметалла",
+      "synthetic": true,
+      "predicate": "ions or delta_en > 17/10",
+      "evidence": [{"source": "textbook",
+                    "doc": "Химия 8 кл.: при разности электроотрицательностей больше 1,7 связь считают ионной (условная граница)"}],
+      "true": {"id": "IonicBond", "label": "Ионная связь"},
+      "false": {
+        "id": "bond.polar",
+        "label": "Ковалентная связь",
+        "predicate": "delta_en > 0",
+        "evidence": [{"source": "textbook",
+                      "doc": "Химия 8 кл.: ковалентная связь между одинаковыми атомами — неполярная, между разными — полярная"}],
+        "true": {"id": "PolarCovalentBond", "label": "Ковалентная полярная связь"},
+        "false": {"id": "NonpolarCovalentBond", "label": "Ковалентная неполярная связь"}
+      }
+    }
+  }
+}

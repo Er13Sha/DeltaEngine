@@ -1,0 +1,17 @@
+{
+  "id": "HETcwoDKr4g",
+  "title": "Гравитация. 1 серия.  ★ 2018г. наука о вселенной ★ ✔фильм на \"Катющик ТВ\"",
+  "channel": "Научный трибунал \"Катющик ТВ\" ",
+  "duration": 2087,
+  "upload_date": "20180323",
+  "webpage_url": "https://www.youtube.com/watch?v=HETcwoDKr4g",
+  "caption_type": "automatic ru-orig; cleaned rolling captions, approximately 30-second buckets",
+  "audio_verified": false,
+  "frames_inspected_seconds": [
+    1290,
+    1630
+  ],
+  "transcript_path": "data/sources/video-transcripts/HETcwoDKr4g.ru-auto.txt",
+  "sha256": "6aea4f0661b85f22ceac198f8ee209e841b5116420398dddb3672281e4d8381f",
+  "review": "docs/gravity-terminology-review-2026-10-27.md"
+}

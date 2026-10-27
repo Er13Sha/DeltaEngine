@@ -1,0 +1,42 @@
+{
+  "scope": "model",
+  "kind": "exact_arithmetic_check_of_postulate",
+  "K": "1",
+  "rows": [
+    {
+      "distance_exact": "10^0",
+      "force_exact": "10^0",
+      "r_squared_times_force": "1",
+      "F_2r_over_F_r": "1/4",
+      "nonzero": true
+    },
+    {
+      "distance_exact": "10^1",
+      "force_exact": "10^-2",
+      "r_squared_times_force": "1",
+      "F_2r_over_F_r": "1/4",
+      "nonzero": true
+    },
+    {
+      "distance_exact": "10^2",
+      "force_exact": "10^-4",
+      "r_squared_times_force": "1",
+      "F_2r_over_F_r": "1/4",
+      "nonzero": true
+    },
+    {
+      "distance_exact": "10^6",
+      "force_exact": "10^-12",
+      "r_squared_times_force": "1",
+      "F_2r_over_F_r": "1/4",
+      "nonzero": true
+    },
+    {
+      "distance_exact": "10^1000",
+      "force_exact": "10^-2000",
+      "r_squared_times_force": "1",
+      "F_2r_over_F_r": "1/4",
+      "nonzero": true
+    }
+  ]
+}

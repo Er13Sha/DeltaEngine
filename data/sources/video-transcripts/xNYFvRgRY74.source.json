@@ -1,0 +1,17 @@
+{
+  "id": "xNYFvRgRY74",
+  "title": "Гравитация. 3 серия. ★ наука и вселенная ✔\"Катющик ТВ\" 2018",
+  "channel": "Научный трибунал \"Катющик ТВ\" ",
+  "duration": 2109,
+  "upload_date": "20180824",
+  "webpage_url": "https://www.youtube.com/watch?v=xNYFvRgRY74",
+  "caption_type": "automatic ru-orig; cleaned rolling captions, approximately 30-second buckets",
+  "audio_verified": false,
+  "frames_inspected_seconds": [
+    1195,
+    1690
+  ],
+  "transcript_path": "data/sources/video-transcripts/xNYFvRgRY74.ru-auto.txt",
+  "sha256": "01cd3685c6d71b15565c4d9507b11f610a87e3e197c5c08a82ee0d5e7a62b3c0",
+  "review": "docs/gravity-terminology-review-2026-10-27.md"
+}

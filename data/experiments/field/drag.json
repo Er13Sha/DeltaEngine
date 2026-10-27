@@ -1,0 +1,170 @@
+{
+ "protocol_hash": "sha256:b67b4f09eeeb8075e1f143de8a916af3a534538b72b354a4fe4261eb156c6cf4",
+ "family": "D",
+ "check": "C6",
+ "scope": "model",
+ "method": "квадратура Гаусса—Лежандра; носители нерелятивистские; оценки в плавающей точке",
+ "negative_control_at_rest": -1.0191500421363742e-17,
+ "drag": [
+  {
+   "s": 0.0001,
+   "K": -3.333333326667562e-05,
+   "K_over_minus_s_3": 0.9999999980002686
+  },
+  {
+   "s": 0.001,
+   "K": -0.00033333326666667757,
+   "K_over_minus_s_3": 0.9999998000000327
+  },
+  {
+   "s": 0.01,
+   "K": -0.0033332666666666655,
+   "K_over_minus_s_3": 0.9999799999999996
+  },
+  {
+   "s": 0.1,
+   "K": -0.03326666666666656,
+   "K_over_minus_s_3": 0.9979999999999969
+  }
+ ],
+ "reemission": [
+  {
+   "mu": 0.01,
+   "beta": 0.0,
+   "shadow": 7.50160041715448e-07,
+   "shadow_over_formula": 0.9999122001110056,
+   "reemission_push": 0.0,
+   "net_over_shadow": 1.0
+  },
+  {
+   "mu": 0.01,
+   "beta": 0.5,
+   "shadow": 7.50160041715448e-07,
+   "shadow_over_formula": 0.9999122001110056,
+   "reemission_push": 3.7511295573359777e-07,
+   "net_over_shadow": 0.4999560962007541
+  },
+  {
+   "mu": 0.01,
+   "beta": 1.0,
+   "shadow": 7.50160041715448e-07,
+   "shadow_over_formula": 0.9999122001110056,
+   "reemission_push": 7.502259114671955e-07,
+   "net_over_shadow": -8.780759849178968e-05
+  },
+  {
+   "mu": 1.0,
+   "beta": 0.0,
+   "shadow": 0.0021167454752759867,
+   "shadow_over_formula": 0.9998490163488115,
+   "reemission_push": 0.0,
+   "net_over_shadow": 1.0
+  },
+  {
+   "mu": 1.0,
+   "beta": 0.5,
+   "shadow": 0.0021167454752759867,
+   "shadow_over_formula": 0.9998490163488115,
+   "reemission_push": 0.0010585325587486151,
+   "net_over_shadow": 0.4999244967746531
+  },
+  {
+   "mu": 1.0,
+   "beta": 1.0,
+   "shadow": 0.0021167454752759867,
+   "shadow_over_formula": 0.9998490163488115,
+   "reemission_push": 0.0021170651174972303,
+   "net_over_shadow": -0.00015100645069378706
+  }
+ ],
+ "earth": {
+  "assumptions": "μ·2R ≤ 1 (Земля не непрозрачна для потока), орбита не затухла за 4,54 млрд лет (допуск Δv ≤ v); носители поглощаются",
+  "earth_mean_density_kg_m3": 5513.443375519388,
+  "lambda_min_kg_m2": 70252295490.86804,
+  "if_u_is_c": {
+   "stopping_time_s": 15263911.896170542,
+   "stopping_time_days": 176.6656469464183,
+   "heat_per_kg_W": 8832157688.51136,
+   "mass_doubling_days": 117.77709796427885
+  },
+  "u_min_m_s": 2.813938958616021e+18,
+  "u_min_over_c": 9386290026.735832,
+  "heat_per_kg_min_W": 8.290119362623237e+19,
+  "earth_heat_min_W": 4.95102508574585e+44,
+  "mass_doubling_time_min_s": 0.0010841281523507823,
+  "earth_heat_observed_W": 47000000000000.0,
+  "excess": 1.053409592711883e+31,
+  "equilibrium_surface_temperature_K": 2034063838.4714184
+ },
+ "big_and_small": {
+  "r_big": 3,
+  "r_small": 1,
+  "on_small": 7.983107017898784e-05,
+  "on_big": 7.981724864745461e-05,
+  "third_law_ratio": 1.000173164720251,
+  "on_small_over_formula": 1.0000676234763703
+ },
+ "universal_over_local": [
+  {
+   "universal_over_local": 1.5000000000000002,
+   "lambda_kg_m2": 70252295490.86804,
+   "stopping_days_if_u_is_c": 176.6656469464183,
+   "u_min_over_c": 9386290026.735832,
+   "heat_excess": 1.0534095927118832e+31
+  },
+  {
+   "universal_over_local": 10.0,
+   "lambda_kg_m2": 468348636605.78687,
+   "stopping_days_if_u_is_c": 26.499847041962752,
+   "u_min_over_c": 62575266844.90554,
+   "heat_excess": 4.681820412052813e+32
+  },
+  {
+   "universal_over_local": 1000.0,
+   "lambda_kg_m2": 46834863660578.69,
+   "stopping_days_if_u_is_c": 0.26499847041962754,
+   "u_min_over_c": 6257526684490.555,
+   "heat_excess": 4.681820412052812e+36
+  },
+  {
+   "universal_over_local": 1000000.0,
+   "lambda_kg_m2": 4.683486366057869e+16,
+   "stopping_days_if_u_is_c": 0.00026499847041962747,
+   "u_min_over_c": 6257526684490555.0,
+   "heat_excess": 4.681820412052813e+42
+  }
+ ],
+ "sink_medium": {
+  "rho_max_kg_m3": 5.808510415349376e-26,
+  "inflow_speed_min_m_s": 1.4069694793080108e+18,
+  "inflow_over_c": 4693145013.367917,
+  "g_times_age_m_s": 1.4069694793080105e+18,
+  "absorbed_mass_rate_per_kg_s": 6.97975502511651e-18,
+  "kinetic_power_per_kg_W": 6.908432802186033e+18
+ },
+ "instant_carriers": {
+  "heat_per_unit_e_over_p_W": 3.5189285613934656e+26,
+  "e_over_p_max_m_s": 1.3356338209204338e-13,
+  "newtonian_carriers_u_max_m_s": 2.6712676418408676e-13,
+  "superluminal_u_min_over_c": 2.2445707296735127e+21,
+  "orbit_change_over_age": 4.181775117463609e-12
+ },
+ "instant_vs_observations": {
+  "gw170817": {
+   "distance_Mpc": 40,
+   "gamma_after_gw_s": 1.74,
+   "speed_bound": "−3·10⁻¹⁵ ≤ (v_gw − c)/c ≤ 7·10⁻¹⁶",
+   "f_gw_Hz": 100,
+   "instant_lead_s": 4117114914211751.0,
+   "instant_lead_years": 130463498.94199023,
+   "instant_tidal_over_wave": 2.233102053519375e-74
+  },
+  "psr_b1913_16": {
+   "pbdot_observed_over_gr": 0.9983,
+   "sigma": 0.0016,
+   "pbdot_gr": -2.40263e-12,
+   "instant_prediction_over_gr": 0.0,
+   "deviation_sigma": 623.9375
+  }
+ }
+}

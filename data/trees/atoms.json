@@ -1,0 +1,450 @@
+{
+ "format": "delta-tree@0.1",
+ "id": "atoms",
+ "version": "0.1.0",
+ "schema": {
+  "name": "AtomStructure",
+  "version": "0.1.0",
+  "attributes": [
+   {
+    "name": "outer",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "электронов на внешнем слое"
+   },
+   {
+    "name": "period",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "номер внешнего слоя (период)"
+   },
+   {
+    "name": "block",
+    "type": {
+     "kind": "enum",
+     "values": [
+      "s",
+      "p",
+      "d",
+      "f"
+     ]
+    },
+    "doc": "подуровень, заполняемый последним"
+   },
+   {
+    "name": "full",
+    "type": {
+     "kind": "bool"
+    },
+    "doc": "внешний слой завершён"
+   },
+   {
+    "name": "d_next",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "d-электронов предвнешнего слоя"
+   },
+   {
+    "name": "f_inner",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "f-электронов третьего снаружи слоя"
+   },
+   {
+    "name": "outer_minus_period",
+    "type": {
+     "kind": "int"
+    },
+    "doc": "внешние электроны минус период"
+   }
+  ]
+ },
+ "root": {
+  "id": "fork.root#1",
+  "predicate": "block == \"d\"",
+  "knowledge": "hypothesis",
+  "evidence": [
+   {
+    "source": "induction",
+    "status": "candidate",
+    "examples": 118,
+    "labels": {
+     "Actinide": 15,
+     "Alkali metal": 6,
+     "Alkaline earth metal": 6,
+     "Halogen": 6,
+     "Lanthanide": 15,
+     "Metalloid": 7,
+     "Noble gas": 7,
+     "Nonmetal": 7,
+     "Post-transition metal": 11,
+     "Transition metal": 38
+    },
+    "score": "18721/260"
+   }
+  ],
+  "true": {
+   "id": "fork.t#1",
+   "predicate": "d_next <= 3/2",
+   "knowledge": "hypothesis",
+   "evidence": [
+    {
+     "source": "induction",
+     "status": "candidate",
+     "examples": 40,
+     "labels": {
+      "Actinide": 1,
+      "Lanthanide": 1,
+      "Transition metal": 38
+     },
+     "score": "5/2"
+    }
+   ],
+   "true": {
+    "id": "fork.t#2",
+    "predicate": "f_inner <= 7",
+    "knowledge": "hypothesis",
+    "evidence": [
+     {
+      "source": "induction",
+      "status": "candidate",
+      "examples": 4,
+      "labels": {
+       "Actinide": 1,
+       "Lanthanide": 1,
+       "Transition metal": 2
+      },
+      "score": "1"
+     }
+    ],
+    "true": {
+     "id": "Transition metal#1",
+     "label": "Transition metal",
+     "class": "Transition metal",
+     "support": 2
+    },
+    "false": {
+     "id": "fork.f#1",
+     "predicate": "outer_minus_period <= -9/2",
+     "knowledge": "hypothesis",
+     "evidence": [
+      {
+       "source": "induction",
+       "status": "candidate",
+       "examples": 2,
+       "labels": {
+        "Actinide": 1,
+        "Lanthanide": 1
+       },
+       "score": "0"
+      }
+     ],
+     "true": {
+      "id": "Actinide#1",
+      "label": "Actinide",
+      "class": "Actinide",
+      "support": 1
+     },
+     "false": {
+      "id": "Lanthanide#1",
+      "label": "Lanthanide",
+      "class": "Lanthanide",
+      "support": 1
+     }
+    }
+   },
+   "false": {
+    "id": "Transition metal#2",
+    "label": "Transition metal",
+    "class": "Transition metal",
+    "support": 36
+   }
+  },
+  "false": {
+   "id": "fork.f#2",
+   "predicate": "block == \"f\"",
+   "knowledge": "hypothesis",
+   "evidence": [
+    {
+     "source": "induction",
+     "status": "candidate",
+     "examples": 78,
+     "labels": {
+      "Actinide": 14,
+      "Alkali metal": 6,
+      "Alkaline earth metal": 6,
+      "Halogen": 6,
+      "Lanthanide": 14,
+      "Metalloid": 7,
+      "Noble gas": 7,
+      "Nonmetal": 7,
+      "Post-transition metal": 11
+     },
+     "score": "1412/25"
+    }
+   ],
+   "true": {
+    "id": "fork.t#3",
+    "predicate": "outer_minus_period <= -9/2",
+    "knowledge": "hypothesis",
+    "evidence": [
+     {
+      "source": "induction",
+      "status": "candidate",
+      "examples": 28,
+      "labels": {
+       "Actinide": 14,
+       "Lanthanide": 14
+      },
+      "score": "0"
+     }
+    ],
+    "true": {
+     "id": "Actinide#2",
+     "label": "Actinide",
+     "class": "Actinide",
+     "support": 14
+    },
+    "false": {
+     "id": "Lanthanide#2",
+     "label": "Lanthanide",
+     "class": "Lanthanide",
+     "support": 14
+    }
+   },
+   "false": {
+    "id": "fork.f#3",
+    "predicate": "full",
+    "knowledge": "hypothesis",
+    "evidence": [
+     {
+      "source": "induction",
+      "status": "candidate",
+      "examples": 50,
+      "labels": {
+       "Alkali metal": 6,
+       "Alkaline earth metal": 6,
+       "Halogen": 6,
+       "Metalloid": 7,
+       "Noble gas": 7,
+       "Nonmetal": 7,
+       "Post-transition metal": 11
+      },
+      "score": "1522/43"
+     }
+    ],
+    "true": {
+     "id": "Noble gas#1",
+     "label": "Noble gas",
+     "class": "Noble gas",
+     "support": 7
+    },
+    "false": {
+     "id": "fork.f#4",
+     "predicate": "outer <= 13/2",
+     "knowledge": "hypothesis",
+     "evidence": [
+      {
+       "source": "induction",
+       "status": "candidate",
+       "examples": 43,
+       "labels": {
+        "Alkali metal": 6,
+        "Alkaline earth metal": 6,
+        "Halogen": 6,
+        "Metalloid": 7,
+        "Nonmetal": 7,
+        "Post-transition metal": 11
+       },
+       "score": "1078/37"
+      }
+     ],
+     "true": {
+      "id": "fork.t#4",
+      "predicate": "block == \"p\"",
+      "knowledge": "hypothesis",
+      "evidence": [
+       {
+        "source": "induction",
+        "status": "candidate",
+        "examples": 37,
+        "labels": {
+         "Alkali metal": 6,
+         "Alkaline earth metal": 6,
+         "Metalloid": 7,
+         "Nonmetal": 7,
+         "Post-transition metal": 11
+        },
+        "score": "3557/156"
+       }
+      ],
+      "true": {
+       "id": "fork.t#5",
+       "predicate": "outer_minus_period <= -1/2",
+       "knowledge": "hypothesis",
+       "evidence": [
+        {
+         "source": "induction",
+         "status": "candidate",
+         "examples": 24,
+         "labels": {
+          "Metalloid": 7,
+          "Nonmetal": 6,
+          "Post-transition metal": 11
+         },
+         "score": "55/7"
+        }
+       ],
+       "true": {
+        "id": "Post-transition metal#1",
+        "label": "Post-transition metal",
+        "class": "Post-transition metal",
+        "support": 10
+       },
+       "false": {
+        "id": "fork.f#5",
+        "predicate": "outer_minus_period <= 3/2",
+        "knowledge": "hypothesis",
+        "evidence": [
+         {
+          "source": "induction",
+          "status": "candidate",
+          "examples": 14,
+          "labels": {
+           "Metalloid": 7,
+           "Nonmetal": 6,
+           "Post-transition metal": 1
+          },
+          "score": "7/4"
+         }
+        ],
+        "true": {
+         "id": "fork.t#6",
+         "predicate": "outer <= 7/2",
+         "knowledge": "hypothesis",
+         "evidence": [
+          {
+           "source": "induction",
+           "status": "candidate",
+           "examples": 8,
+           "labels": {
+            "Metalloid": 7,
+            "Post-transition metal": 1
+           },
+           "score": "1"
+          }
+         ],
+         "true": {
+          "id": "fork.t#7",
+          "predicate": "outer_minus_period <= 1/2",
+          "knowledge": "hypothesis",
+          "evidence": [
+           {
+            "source": "induction",
+            "status": "candidate",
+            "examples": 2,
+            "labels": {
+             "Metalloid": 1,
+             "Post-transition metal": 1
+            },
+            "score": "0"
+           }
+          ],
+          "true": {
+           "id": "Post-transition metal#2",
+           "label": "Post-transition metal",
+           "class": "Post-transition metal",
+           "support": 1
+          },
+          "false": {
+           "id": "Metalloid#1",
+           "label": "Metalloid",
+           "class": "Metalloid",
+           "support": 1
+          }
+         },
+         "false": {
+          "id": "Metalloid#2",
+          "label": "Metalloid",
+          "class": "Metalloid",
+          "support": 6
+         }
+        },
+        "false": {
+         "id": "Nonmetal#1",
+         "label": "Nonmetal",
+         "class": "Nonmetal",
+         "support": 6
+        }
+       }
+      },
+      "false": {
+       "id": "fork.f#6",
+       "predicate": "outer <= 3/2",
+       "knowledge": "hypothesis",
+       "evidence": [
+        {
+         "source": "induction",
+         "status": "candidate",
+         "examples": 13,
+         "labels": {
+          "Alkali metal": 6,
+          "Alkaline earth metal": 6,
+          "Nonmetal": 1
+         },
+         "score": "12/7"
+        }
+       ],
+       "true": {
+        "id": "fork.t#8",
+        "predicate": "outer_minus_period <= -1/2",
+        "knowledge": "hypothesis",
+        "evidence": [
+         {
+          "source": "induction",
+          "status": "candidate",
+          "examples": 7,
+          "labels": {
+           "Alkali metal": 6,
+           "Nonmetal": 1
+          },
+          "score": "0"
+         }
+        ],
+        "true": {
+         "id": "Alkali metal#1",
+         "label": "Alkali metal",
+         "class": "Alkali metal",
+         "support": 6
+        },
+        "false": {
+         "id": "Nonmetal#2",
+         "label": "Nonmetal",
+         "class": "Nonmetal",
+         "support": 1
+        }
+       },
+       "false": {
+        "id": "Alkaline earth metal#1",
+        "label": "Alkaline earth metal",
+        "class": "Alkaline earth metal",
+        "support": 6
+       }
+      }
+     },
+     "false": {
+      "id": "Halogen#1",
+      "label": "Halogen",
+      "class": "Halogen",
+      "support": 6
+     }
+    }
+   }
+  },
+  "label": "Атом"
+ }
+}

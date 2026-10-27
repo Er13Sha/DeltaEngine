@@ -1,0 +1,10 @@
+{
+  "protocol_id": "E-COMP-v1",
+  "date": "2026-10-27",
+  "status": "accepted_for_initial_test",
+  "user_reply": "пока давай так",
+  "accepted_assumption": "Effective nodes as a provisional approximation for the first test",
+  "original_registration": "data/experiments/field/external_compression_protocol_v1.registration.json",
+  "scope": "model",
+  "empirical_status_changed": false
+}

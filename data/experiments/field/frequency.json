@@ -1,0 +1,370 @@
+{
+ "protocol_hash": "sha256:b67b4f09eeeb8075e1f143de8a916af3a534538b72b354a4fe4261eb156c6cf4",
+ "hypothesis": "сила одна, силы отличаются частотой колебания поля",
+ "scope": "model+data",
+ "law": "α = f₁·f₂/F² (сила), k_пр = e^(−2πf·r/c) (радиус)",
+ "deuteron_measured": {
+  "binding_MeV": 2.224566,
+  "structure_radius_fm": 1.975,
+  "scattering_length_fm": 5.4194,
+  "effective_range_fm": 1.753
+ },
+ "range_scan": [
+  {
+   "r0_fm": 0.5,
+   "g_MeV_fm": 160.82439133275204,
+   "alpha_nuclear": 0.8150147081090795,
+   "structure_radius_fm": 1.7039596719340222,
+   "scattering_length_fm": 4.7990551274384,
+   "effective_range_fm": 0.8661888842377893,
+   "frequency_Hz": 9.542690318473884e+22,
+   "rms_relative_error": 0.30975957822288425
+  },
+  {
+   "r0_fm": 0.75,
+   "g_MeV_fm": 114.26984113130715,
+   "alpha_nuclear": 0.5790887840054697,
+   "structure_radius_fm": 1.783700904094183,
+   "scattering_length_fm": 5.002561862955083,
+   "effective_range_fm": 1.1822422457890231,
+   "frequency_Hz": 6.361793545649256e+22,
+   "rms_relative_error": 0.20108560518824184
+  },
+  {
+   "r0_fm": 1.0,
+   "g_MeV_fm": 90.94824412272337,
+   "alpha_nuclear": 0.46090121045972976,
+   "structure_radius_fm": 1.8571917522454622,
+   "scattering_length_fm": 5.180212844768121,
+   "effective_range_fm": 1.4378401994269878,
+   "frequency_Hz": 4.771345159236942e+22,
+   "rms_relative_error": 0.11229127356795103
+  },
+  {
+   "r0_fm": 1.25,
+   "g_MeV_fm": 76.92500755672592,
+   "alpha_nuclear": 0.38983522375293955,
+   "structure_radius_fm": 1.9248848509417529,
+   "scattering_length_fm": 5.330855751689093,
+   "effective_range_fm": 1.6412322547076785,
+   "frequency_Hz": 3.817076127389554e+22,
+   "rms_relative_error": 0.040726329416883915
+  },
+  {
+   "r0_fm": 1.4138169306541308,
+   "g_MeV_fm": 70.41286933161462,
+   "alpha_nuclear": 0.3568334608317688,
+   "structure_radius_fm": 1.966360690612156,
+   "scattering_length_fm": 5.4142491835596545,
+   "effective_range_fm": 1.748959736657657,
+   "frequency_Hz": 3.374797016350188e+22,
+   "rms_relative_error": 0.0029068942433497892
+  },
+  {
+   "r0_fm": 1.75,
+   "g_MeV_fm": 60.84485094087633,
+   "alpha_nuclear": 0.30834532012570304,
+   "structure_radius_fm": 2.045068902479794,
+   "scattering_length_fm": 5.545158732247252,
+   "effective_range_fm": 1.911532929911195,
+   "frequency_Hz": 2.7264829481353954e+22,
+   "rms_relative_error": 0.05766482589113855
+  },
+  {
+   "r0_fm": 2.0,
+   "g_MeV_fm": 55.80018746656771,
+   "alpha_nuclear": 0.282780324076594,
+   "structure_radius_fm": 2.0986072481534923,
+   "scattering_length_fm": 5.605137115238371,
+   "effective_range_fm": 1.9834818636813591,
+   "frequency_Hz": 2.385672579618471e+22,
+   "rms_relative_error": 0.08636785349929549
+  },
+  {
+   "r0_fm": 2.5,
+   "g_MeV_fm": 48.71209572883011,
+   "alpha_nuclear": 0.24685978384753163,
+   "structure_radius_fm": 2.1948201589919827,
+   "scattering_length_fm": 5.619190956336894,
+   "effective_range_fm": 2.0001184738292257,
+   "frequency_Hz": 1.908538063694777e+22,
+   "rms_relative_error": 0.10586046222664962
+  },
+  {
+   "r0_fm": 3.0,
+   "g_MeV_fm": 43.96310928454075,
+   "alpha_nuclear": 0.2227931993659634,
+   "structure_radius_fm": 2.278936222722979,
+   "scattering_length_fm": 5.472315436104793,
+   "effective_range_fm": 1.8220306050436632,
+   "frequency_Hz": 1.590448386412314e+22,
+   "rms_relative_error": 0.09188522003861468
+  }
+ ],
+ "best": {
+  "r0_fm": 1.4138169306541308,
+  "g_MeV_fm": 70.41286933161462,
+  "alpha_nuclear": 0.3568334608317688,
+  "structure_radius_fm": 1.966360690612156,
+  "scattering_length_fm": 5.4142491835596545,
+  "effective_range_fm": 1.748959736657657,
+  "frequency_Hz": 3.374797016350188e+22,
+  "rms_relative_error": 0.0029068942433497892
+ },
+ "fine_scan": [
+  {
+   "r0_fm": 1.2,
+   "g_MeV_fm": 79.264516619717,
+   "alpha_nuclear": 0.40169122569574883,
+   "structure_radius_fm": 1.9117840362466298,
+   "scattering_length_fm": 5.30295215215105,
+   "effective_range_fm": 1.6044299155214512,
+   "frequency_Hz": 3.976120966030785e+22,
+   "rms_relative_error": 0.053755939131635934
+  },
+  {
+   "r0_fm": 1.2249999999999999,
+   "g_MeV_fm": 78.07102447628128,
+   "alpha_nuclear": 0.3956429288991506,
+   "structure_radius_fm": 1.9183609647253264,
+   "scattering_length_fm": 5.317045214500361,
+   "effective_range_fm": 1.6230656770381007,
+   "frequency_Hz": 3.894975640193423e+22,
+   "rms_relative_error": 0.04716310884643087
+  },
+  {
+   "r0_fm": 1.2499999999999998,
+   "g_MeV_fm": 76.92500755672592,
+   "alpha_nuclear": 0.38983522375293955,
+   "structure_radius_fm": 1.92488485094177,
+   "scattering_length_fm": 5.330855751689086,
+   "effective_range_fm": 1.6412322547076692,
+   "frequency_Hz": 3.817076127389555e+22,
+   "rms_relative_error": 0.04072632941688507
+  },
+  {
+   "r0_fm": 1.2749999999999997,
+   "g_MeV_fm": 75.82367686720434,
+   "alpha_nuclear": 0.38425397638732806,
+   "structure_radius_fm": 1.9313562566084197,
+   "scattering_length_fm": 5.344382222003588,
+   "effective_range_fm": 1.6589341543731675,
+   "frequency_Hz": 3.7422314974407398e+22,
+   "rms_relative_error": 0.03444477101133271
+  },
+  {
+   "r0_fm": 1.2999999999999996,
+   "g_MeV_fm": 74.7644578783113,
+   "alpha_nuclear": 0.3788861397805655,
+   "structure_radius_fm": 1.9377757421402653,
+   "scattering_length_fm": 5.357623056506135,
+   "effective_range_fm": 1.6761756733530817,
+   "frequency_Hz": 3.670265507105341e+22,
+   "rms_relative_error": 0.02831821984393681
+  },
+  {
+   "r0_fm": 1.3249999999999995,
+   "g_MeV_fm": 73.74497029454054,
+   "alpha_nuclear": 0.3737196512359976,
+   "structure_radius_fm": 1.9441438661478303,
+   "scattering_length_fm": 5.3705766588973844,
+   "effective_range_fm": 1.6929609042661216,
+   "frequency_Hz": 3.601015214518448e+22,
+   "rms_relative_error": 0.022347771774234134
+  },
+  {
+   "r0_fm": 1.3499999999999994,
+   "g_MeV_fm": 72.76301007151443,
+   "alpha_nuclear": 0.3687433412502289,
+   "structure_radius_fm": 1.950461184978959,
+   "scattering_length_fm": 5.3832414053932,
+   "effective_range_fm": 1.7092937386466474,
+   "frequency_Hz": 3.534329747582922e+22,
+   "rms_relative_error": 0.01653791507730842
+  },
+  {
+   "r0_fm": 1.3749999999999993,
+   "g_MeV_fm": 71.81653339491143,
+   "alpha_nuclear": 0.3639468523226408,
+   "structure_radius_fm": 1.9567282523036251,
+   "scattering_length_fm": 5.39561564457523,
+   "effective_range_fm": 1.7251778703045675,
+   "frequency_Hz": 3.470069206717778e+22,
+   "rms_relative_error": 0.01090481728201725
+  },
+  {
+   "r0_fm": 1.3999999999999992,
+   "g_MeV_fm": 70.9036423758782,
+   "alpha_nuclear": 0.35932056646359245,
+   "structure_radius_fm": 1.9629456187390104,
+   "scattering_length_fm": 5.407697697237907,
+   "effective_range_fm": 1.7406167984655265,
+   "frequency_Hz": 3.4081036851692467e+22,
+   "rms_relative_error": 0.00553219130108276
+  },
+  {
+   "r0_fm": 1.4249999999999992,
+   "g_MeV_fm": 70.02257225213421,
+   "alpha_nuclear": 0.35485554033306543,
+   "structure_radius_fm": 1.9691138315119237,
+   "scattering_length_fm": 5.419485856218657,
+   "effective_range_fm": 1.7556138306801081,
+   "frequency_Hz": 3.348312392446979e+22,
+   "rms_relative_error": 0.0019240523713621469
+  },
+  {
+   "r0_fm": 1.449999999999999,
+   "g_MeV_fm": 69.17167991304893,
+   "alpha_nuclear": 0.3505434470888449,
+   "structure_radius_fm": 1.9752334341566165,
+   "scattering_length_fm": 5.430978386217603,
+   "effective_range_fm": 1.770172085515559,
+   "frequency_Hz": 3.2905828684392724e+22,
+   "rms_relative_error": 0.005788975440059593
+  },
+  {
+   "r0_fm": 1.474999999999999,
+   "g_MeV_fm": 68.34943359161178,
+   "alpha_nuclear": 0.34637652414819897,
+   "structure_radius_fm": 1.9813049662416857,
+   "scattering_length_fm": 5.442173523615878,
+   "effective_range_fm": 1.7842944950463167,
+   "frequency_Hz": 3.2348102774487763e+22,
+   "rms_relative_error": 0.010747754430216814
+  },
+  {
+   "r0_fm": 1.499999999999999,
+   "g_MeV_fm": 67.55440358716024,
+   "alpha_nuclear": 0.3423475261731631,
+   "structure_radius_fm": 1.9873289631293831,
+   "scattering_length_fm": 5.453069476274798,
+   "effective_range_fm": 1.7979838071251804,
+   "frequency_Hz": 3.1808967728246303e+22,
+   "rms_relative_error": 0.01566372187341084
+  },
+  {
+   "r0_fm": 1.5249999999999988,
+   "g_MeV_fm": 66.7852539005817,
+   "alpha_nuclear": 0.33844968267999553,
+   "structure_radius_fm": 1.993305955758335,
+   "scattering_length_fm": 5.463664423325916,
+   "effective_range_fm": 1.8112425874518836,
+   "frequency_Hz": 3.1287509240898006e+22,
+   "rms_relative_error": 0.020465358861274967
+  },
+  {
+   "r0_fm": 1.5499999999999987,
+   "g_MeV_fm": 66.04073467897376,
+   "alpha_nuclear": 0.3346766597507502,
+   "structure_radius_fm": 1.999236470451686,
+   "scattering_length_fm": 5.473956514954075,
+   "effective_range_fm": 1.8240732214452178,
+   "frequency_Hz": 3.0782871995077072e+22,
+   "rms_relative_error": 0.025137834560301758
+  },
+  {
+   "r0_fm": 1.5749999999999986,
+   "g_MeV_fm": 65.31967537981942,
+   "alpha_nuclear": 0.3310225253911574,
+   "structure_radius_fm": 2.00512102875054,
+   "scattering_length_fm": 5.483943872168645,
+   "effective_range_fm": 1.8364779159157314,
+   "frequency_Hz": 3.0294254979282192e+22,
+   "rms_relative_error": 0.029676635229134992
+  },
+  {
+   "r0_fm": 1.5999999999999985,
+   "g_MeV_fm": 64.6209785759857,
+   "alpha_nuclear": 0.3274817181360249,
+   "structure_radius_fm": 2.010960147262972,
+   "scattering_length_fm": 5.493624586564067,
+   "effective_range_fm": 1.848458700543176,
+   "frequency_Hz": 2.9820907245230914e+22,
+   "rms_relative_error": 0.03408025970124128
+  },
+  {
+   "r0_fm": 1.6249999999999984,
+   "g_MeV_fm": 63.94361433253424,
+   "alpha_nuclear": 0.32404901855242824,
+   "structure_radius_fm": 2.016754337536707,
+   "scattering_length_fm": 5.502996720071856,
+   "effective_range_fm": 1.8600174291636788,
+   "frequency_Hz": 2.936212405684275e+22,
+   "rms_relative_error": 0.03834832993794802
+  },
+  {
+   "r0_fm": 1.6499999999999984,
+   "g_MeV_fm": 63.28661509469697,
+   "alpha_nuclear": 0.32071952333334836,
+   "structure_radius_fm": 2.0225041059471724,
+   "scattering_length_fm": 5.512058304703899,
+   "effective_range_fm": 1.8711557808683354,
+   "frequency_Hz": 2.891724338931483e+22,
+   "rms_relative_error": 0.04248095075143878
+  },
+  {
+   "r0_fm": 1.6749999999999983,
+   "g_MeV_fm": 62.64907103361472,
+   "alpha_nuclear": 0.31748862171112774,
+   "structure_radius_fm": 2.0282099536015235,
+   "scattering_length_fm": 5.520807342283966,
+   "effective_range_fm": 1.8818752609109597,
+   "frequency_Hz": 2.848564274171312e+22,
+   "rms_relative_error": 0.046478451789122514
+  },
+  {
+   "r0_fm": 1.6999999999999982,
+   "g_MeV_fm": 62.03012580271587,
+   "alpha_nuclear": 0.3143519739519405,
+   "structure_radius_fm": 2.033872376258578,
+   "scattering_length_fm": 5.529241804169104,
+   "effective_range_fm": 1.8921772014282534,
+   "frequency_Hz": 2.806673623080557e+22,
+   "rms_relative_error": 0.0503412702891962
+  }
+ ],
+ "fine_best": {
+  "r0_fm": 1.4249999999999992,
+  "g_MeV_fm": 70.02257225213421,
+  "alpha_nuclear": 0.35485554033306543,
+  "structure_radius_fm": 1.9691138315119237,
+  "scattering_length_fm": 5.419485856218657,
+  "effective_range_fm": 1.7556138306801081,
+  "frequency_Hz": 3.348312392446979e+22,
+  "rms_relative_error": 0.0019240523713621469
+ },
+ "deuteron_frequency_over_pion": 0.9921522323361575,
+ "pion": {
+  "mass_MeV": 139.57039,
+  "frequency_Hz": 3.3747970153359646e+22,
+  "range_fm": 1.4138169306541308,
+  "fit": {
+   "r0_fm": 1.4138169306541308,
+   "g_MeV_fm": 70.41286933161462,
+   "alpha_nuclear": 0.3568334608317688,
+   "structure_radius_fm": 1.966360690612156,
+   "scattering_length_fm": 5.4142491835596545,
+   "effective_range_fm": 1.748959736657657,
+   "frequency_Hz": 3.374797016350188e+22,
+   "rms_relative_error": 0.0029068942433497892
+  }
+ },
+ "strength": {
+  "universal_frequency_F_Hz": 2.952099196683532e+42,
+  "proton_mass_frequency_Hz": 2.2687318153206176e+23,
+  "gravity": {
+   "alpha": 5.906149413805094e-39,
+   "alpha_from_frequencies": 5.906149413805094e-39,
+   "frequency_Hz": 2.2687318153206176e+23
+  },
+  "electric": {
+   "alpha": 0.0072973525693,
+   "frequency_Hz": 2.521817251568461e+41
+  },
+  "nuclear": {
+   "alpha": 0.3568334608317688,
+   "frequency_Hz": 1.7634523641606774e+42
+  },
+  "electric_over_gravity": 1.235551635765105e+36
+ }
+}

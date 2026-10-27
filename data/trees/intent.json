@@ -1,0 +1,56 @@
+{
+  "format": "delta-tree@0.1",
+  "id": "intent",
+  "version": "0.1.0",
+  "schema": {
+    "name": "Utterance",
+    "version": "0.1.0",
+    "attributes": [
+      {"name": "lemmas", "type": {"kind": "set", "element": "str"}, "doc": "Леммы всех слов фразы (все варианты разбора)"},
+      {"name": "n_concepts", "type": {"kind": "int"}, "doc": "Число найденных понятий"},
+      {"name": "pair", "type": {"kind": "enum", "values": ["none", "instance_class", "other"]},
+       "doc": "Для двух понятий: первое — объект, второе — класс (instance_class) или иное"}
+    ]
+  },
+  "root": {
+    "id": "q.difference",
+    "label": "Высказывание",
+    "predicate": "any w in lemmas: w in {\"отличаться\", \"отличие\", \"разница\", \"различие\", \"различаться\", \"отличать\", \"различать\", \"сравнить\", \"сравнение\"}",
+    "true": {"id": "DIFFERENCE", "label": "Вопрос о различии"},
+    "false": {
+      "id": "q.is_a",
+      "predicate": "any w in lemmas: w in {\"являться\", \"ли\", \"относиться\"} and n_concepts == 2",
+      "true": {"id": "IS_A", "label": "Вопрос о принадлежности классу"},
+      "false": {
+        "id": "q.classify",
+        "predicate": "any w in lemmas: w in {\"класс\", \"относиться\", \"группа\", \"тип\", \"категория\", \"классифицировать\"}",
+        "true": {"id": "CLASSIFY", "label": "Вопрос о классе"},
+        "false": {
+          "id": "q.define",
+          "predicate": "any w in lemmas: w in {\"что\", \"такой\", \"определение\", \"означать\", \"кто\", \"рассказать\", \"объяснить\", \"определить\"}",
+          "true": {"id": "DEFINE", "label": "Вопрос «что это»"},
+          "false": {
+            "id": "guess.one",
+            "knowledge": "hypothesis",
+            "label": "Вопрос без вопросительных слов",
+            "predicate": "n_concepts == 1",
+            "true": {"id": "DEFINE_GUESS", "label": "Одно понятие: вероятно, вопрос «что это»", "intent": "DEFINE"},
+            "false": {
+              "id": "guess.is_a",
+              "knowledge": "hypothesis",
+              "predicate": "n_concepts == 2 and pair == \"instance_class\"",
+              "true": {"id": "IS_A_GUESS", "label": "Объект и класс: вероятно, вопрос о принадлежности", "intent": "IS_A"},
+              "false": {
+                "id": "guess.two",
+                "knowledge": "hypothesis",
+                "predicate": "n_concepts == 2",
+                "true": {"id": "DIFFERENCE_GUESS", "label": "Два понятия: вероятно, вопрос о различии", "intent": "DIFFERENCE"},
+                "false": {"id": "NONE", "label": "Тип вопроса не определён"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
