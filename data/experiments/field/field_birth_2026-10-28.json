@@ -1,0 +1,70 @@
+{
+  "scope": "model",
+  "protocol": "docs/field-birth-protocol-2026-10-28.md",
+  "formula_gate": {
+    "passed": true,
+    "coupling": "1",
+    "rows": [
+      {
+        "r": "1",
+        "force": "1",
+        "match": true
+      },
+      {
+        "r": "2",
+        "force": "1/4",
+        "match": true
+      },
+      {
+        "r": "1/2",
+        "force": "4",
+        "match": true
+      },
+      {
+        "r": "10",
+        "force": "1/100",
+        "match": true
+      }
+    ]
+  },
+  "empty": {
+    "scene": "пустая",
+    "n": 8,
+    "pressure": 0.0,
+    "h_cap": 0.02,
+    "R0": 1.0,
+    "R_end": 20.52947018909743,
+    "ratio": 20.52947018909743,
+    "shell_start": null,
+    "shell_end": null,
+    "rarefaction": null,
+    "min_pair": 1.1547005383792517,
+    "t_done": 10.0,
+    "steps": 501,
+    "steps_exhausted": false,
+    "word": "расходится"
+  },
+  "sea": {
+    "scene": "среда",
+    "n": 62,
+    "pressure": 0.0,
+    "h_cap": 0.02,
+    "R0": 1.0,
+    "R_end": 21.404371127662433,
+    "ratio": 21.404371127662433,
+    "shell_start": 2.0000000000000004,
+    "shell_end": 34.993515739695845,
+    "rarefaction": true,
+    "min_pair": 0.5153392032641407,
+    "t_done": 10.0,
+    "steps": 720,
+    "steps_exhausted": false,
+    "word": "расходится"
+  },
+  "pair": {
+    "sign": false,
+    "notes": [
+      "схема не начинается"
+    ]
+  }
+}
