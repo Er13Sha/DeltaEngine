@@ -4,18 +4,17 @@
   <meta charset="utf-8" />
   <title>Пятно в шаре радиуса 4</title>
   <style>
-    html, body { margin: 0; height: 100%; background: #07090d; color: #e6e6e6; font: 14px/1.4 sans-serif; }
+    html, body { margin: 0; height: 100%; background: #000; color: #fff; font: 14px/1.35 "Courier New", monospace; }
     #view { position: fixed; inset: 0; }
     #panel {
-      position: fixed; left: 16px; top: 16px; z-index: 2;
-      background: rgba(7, 9, 13, 0.88); border: 1px solid #2c313a;
-      padding: 12px 14px; width: 280px;
+      position: fixed; left: 12px; top: 12px; z-index: 2;
+      width: 420px; text-shadow: 2px 2px 4px #000;
     }
     h1 { font-size: 15px; font-weight: 600; margin: 0 0 8px; }
-    p { margin: 0 0 8px; color: #b7bdc7; }
+    p { margin: 0 0 8px; }
     label { display: block; margin: 8px 0 4px; }
     button, select, input[type="range"] { font: inherit; }
-    button, select { background: #1c212b; color: #e6e6e6; border: 1px solid #3a4150; padding: 4px 8px; }
+    button, select { background: transparent; color: #fff; border: 1px solid #444; padding: 4px 8px; }
     .row { display: flex; gap: 8px; align-items: center; }
     input[type="range"] { width: 100%; }
     .swatch { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
@@ -25,7 +24,7 @@
   <div id="view"></div>
   <div id="panel">
     <h1>Пятно в шаре радиуса 4</h1>
-    <p>Закон между квантами 1/r², P = 0. Стенка отражает вышедших за радиус 4. Квант рисует фрагментный шейдер: два мягких пятна, голова крупнее хвоста. Длина задана номером и в силу не входит. Кадры каждые 0,1 до t = 10.</p>
+    <p>Кадры прогона в шаре радиуса 4. Закон 1/r², P = 0. Рисунок частицы — тот же спрайт, что в scripts/indexGPU.html: круг, степень 1,6, сложение света. Размер задан номером кванта. Цвет — скорость между кадрами, от синего к золотому. Ни размер, ни цвет в силу не входят. Масса у всех квантов одна.</p>
     <label>Сцена
       <select id="scene">
         <option value="empty">Пустая, 8 квантов</option>
@@ -70,7 +69,7 @@
     document.getElementById("view").appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x07090d);
+    scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 80);
     camera.position.set(9, 7, 11);
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -79,21 +78,26 @@
 
     const wall = new THREE.Mesh(
       new THREE.SphereGeometry(DATA.wall, 48, 32),
-      new THREE.MeshBasicMaterial({ color: 0x8aa0c8, wireframe: true, transparent: true, opacity: 0.35 })
+      new THREE.MeshBasicMaterial({ color: 0x223044, wireframe: true, transparent: true, opacity: 0.08 })
     );
     scene.add(wall);
 
     const quad = new THREE.PlaneGeometry(1, 1);
-    function spriteMaterial(color, gain) {
+    function spriteMaterial() {
       return new THREE.ShaderMaterial({
-        uniforms: {
-          uColor: { value: new THREE.Color(color) },
-          uGain: { value: gain }
-        },
         vertexShader: `
+          attribute float aHeat;
           varying vec2 vUv;
+          varying vec3 vColor;
           void main() {
             vUv = uv;
+            float h = clamp(aHeat, 0.0, 2.0);
+            float mm = 0.0;
+            vec3 cold = vec3(0.10, 0.35, 0.85);
+            vec3 hot = vec3(1.00, 0.75, 0.30);
+            vec3 heavy = vec3(0.95, 0.35, 0.95);
+            vec3 c = mix(cold, hot, clamp(h, 0.0, 1.0));
+            vColor = mix(c, heavy, mm * 0.55);
             vec4 mv = modelViewMatrix * instanceMatrix * vec4(position, 1.0);
             gl_Position = projectionMatrix * mv;
           }
@@ -101,16 +105,12 @@
         fragmentShader: `
           precision mediump float;
           varying vec2 vUv;
-          uniform vec3 uColor;
-          uniform float uGain;
+          varying vec3 vColor;
           void main() {
-            vec2 p = vUv * 2.0 - 1.0;
-            float r2 = dot(p, p);
-            if (r2 > 1.0) discard;
-            float core = exp(-r2 * 7.0);
-            float halo = exp(-r2 * 1.7);
-            float alpha = clamp((core + halo * 0.28) * uGain, 0.0, 1.0);
-            gl_FragColor = vec4(uColor * (0.25 + core) * uGain, alpha);
+            float d = distance(vUv, vec2(0.5));
+            if (d > 0.5) discard;
+            float a = pow(1.0 - d * 2.0, 1.6);
+            gl_FragColor = vec4(vColor, a);
           }
         `,
         transparent: true,
@@ -122,15 +122,6 @@
     function dipoleLength(i) {
       return 0.28 + 0.62 * ((i * 7 + 3) % 11) / 10;
     }
-    function dipoleAxis(i, target) {
-      const yaw = ((i * 17) % 360) * Math.PI / 180;
-      const pitch = ((i * 29) % 180) * Math.PI / 180;
-      target.set(
-        Math.sin(pitch) * Math.cos(yaw),
-        Math.cos(pitch),
-        Math.sin(pitch) * Math.sin(yaw)
-      );
-    }
 
     let meshes = [];
     let frames = DATA.sea;
@@ -140,6 +131,7 @@
     function clearMeshes() {
       for (const mesh of meshes) {
         scene.remove(mesh);
+        mesh.geometry.dispose();
         mesh.material.dispose();
       }
       meshes = [];
@@ -148,55 +140,55 @@
     function build(name) {
       clearMeshes();
       frames = DATA[name];
-      const groups = GROUPS[name];
+      const count = frames[0].length;
+      const geometry = quad.clone();
+      geometry.setAttribute("aHeat", new THREE.InstancedBufferAttribute(new Float32Array(count), 1));
+      const mesh = new THREE.InstancedMesh(geometry, spriteMaterial(), count);
+      scene.add(mesh);
+      meshes.push(mesh);
       const legend = document.getElementById("legend");
       legend.replaceChildren();
-      for (const group of groups) {
-        const count = group.to - group.from;
-        const head = new THREE.InstancedMesh(quad, spriteMaterial(group.color, 1.0), count);
-        const tail = new THREE.InstancedMesh(quad, spriteMaterial(group.color, 0.55), count);
-        head.userData.group = group;
-        head.userData.pole = 1;
-        tail.userData.group = group;
-        tail.userData.pole = -1;
-        scene.add(head);
-        scene.add(tail);
-        meshes.push(head, tail);
+      const cold = document.createElement("div");
+      cold.append(swatch("#1a59d9"), document.createTextNode("медленный кадр"));
+      const hot = document.createElement("div");
+      hot.append(swatch("#ffbf4d"), document.createTextNode("быстрый кадр"));
+      legend.append(cold, hot);
+      for (const group of GROUPS[name]) {
         const line = document.createElement("div");
-        const mark = document.createElement("span");
-        mark.className = "swatch";
-        mark.style.background = "#" + group.color.toString(16).padStart(6, "0");
-        line.append(mark, document.createTextNode(group.name + " · " + count));
+        line.textContent = group.name + " · " + (group.to - group.from);
         legend.append(line);
       }
       frame = Math.min(frame, frames.length - 1);
       show(frame);
     }
 
+    function swatch(color) {
+      const mark = document.createElement("span");
+      mark.className = "swatch";
+      mark.style.background = color;
+      return mark;
+    }
+
     const dummy = new THREE.Object3D();
-    const axis = new THREE.Vector3();
     function show(index) {
       const positions = frames[index];
-      for (const mesh of meshes) {
-        const group = mesh.userData.group;
-        const pole = mesh.userData.pole;
-        for (let i = group.from; i < group.to; i += 1) {
-          const p = positions[i];
-          const length = dipoleLength(i);
-          dipoleAxis(i, axis);
-          const radius = (pole > 0 ? length * 0.42 : length * 0.22) * 2.6;
-          dummy.position.set(
-            p[0] + axis.x * pole * length * 0.45,
-            p[1] + axis.y * pole * length * 0.45,
-            p[2] + axis.z * pole * length * 0.45
-          );
-          dummy.quaternion.copy(camera.quaternion);
-          dummy.scale.setScalar(radius);
-          dummy.updateMatrix();
-          mesh.setMatrixAt(i - group.from, dummy.matrix);
-        }
-        mesh.instanceMatrix.needsUpdate = true;
+      const next = frames[Math.min(frames.length - 1, index + 1)];
+      const mesh = meshes[0];
+      const heatAttr = mesh.geometry.getAttribute("aHeat");
+      for (let i = 0; i < positions.length; i += 1) {
+        const p = positions[i];
+        const q = next[i];
+        const speed = Math.hypot(q[0] - p[0], q[1] - p[1], q[2] - p[2]) / DATA.dt;
+        const heat = Math.min(2, speed / 3);
+        heatAttr.setX(i, heat);
+        dummy.position.set(p[0], p[1], p[2]);
+        dummy.quaternion.copy(camera.quaternion);
+        dummy.scale.setScalar(dipoleLength(i) * (1 + heat * 0.45) * 1.6);
+        dummy.updateMatrix();
+        mesh.setMatrixAt(i, dummy.matrix);
       }
+      heatAttr.needsUpdate = true;
+      mesh.instanceMatrix.needsUpdate = true;
       const t = (index * DATA.dt).toFixed(1).replace(".", ",");
       document.getElementById("clock").textContent = "t = " + t;
       document.getElementById("time").value = String(index);
