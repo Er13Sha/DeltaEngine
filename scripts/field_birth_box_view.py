@@ -47,11 +47,11 @@ PAGE = r"""<!DOCTYPE html>
   <meta charset="utf-8" />
   <title>Пятно в шаре радиуса 4</title>
   <style>
-    html, body { margin: 0; height: 100%; background: #121418; color: #e6e6e6; font: 14px/1.4 sans-serif; }
+    html, body { margin: 0; height: 100%; background: #07090d; color: #e6e6e6; font: 14px/1.4 sans-serif; }
     #view { position: fixed; inset: 0; }
     #panel {
       position: fixed; left: 16px; top: 16px; z-index: 2;
-      background: rgba(18, 20, 24, 0.88); border: 1px solid #2c313a;
+      background: rgba(7, 9, 13, 0.88); border: 1px solid #2c313a;
       padding: 12px 14px; width: 280px;
     }
     h1 { font-size: 15px; font-weight: 600; margin: 0 0 8px; }
@@ -68,7 +68,7 @@ PAGE = r"""<!DOCTYPE html>
   <div id="view"></div>
   <div id="panel">
     <h1>Пятно в шаре радиуса 4</h1>
-    <p>Закон между квантами 1/r², P = 0. Стенка отражает вышедших за радиус 4. На рисунке квант — диполь своей длины. Длина задана номером и в силу не входит. Кадры каждые 0,1 до t = 10.</p>
+    <p>Закон между квантами 1/r², P = 0. Стенка отражает вышедших за радиус 4. Квант рисует фрагментный шейдер: два мягких пятна, голова крупнее хвоста. Длина задана номером и в силу не входит. Кадры каждые 0,1 до t = 10.</p>
     <label>Сцена
       <select id="scene">
         <option value="empty">Пустая, 8 квантов</option>
@@ -98,9 +98,9 @@ PAGE = r"""<!DOCTYPE html>
 
     const DATA = /*DATA*/;
     const GROUPS = {
-      empty: [{ name: "середина", from: 0, to: 8, color: 0xf2c14e }],
+      empty: [{ name: "ядро", from: 0, to: 8, color: 0xf2c14e }],
       sea: [
-        { name: "середина", from: 0, to: 8, color: 0xf2c14e },
+        { name: "ядро", from: 0, to: 8, color: 0xf2c14e },
         { name: "внутренняя оболочка", from: 8, to: 20, color: 0x7eb6ff },
         { name: "средняя оболочка", from: 20, to: 38, color: 0x8fd18d },
         { name: "внешняя оболочка", from: 38, to: 62, color: 0xd0d4dc }
@@ -113,23 +113,54 @@ PAGE = r"""<!DOCTYPE html>
     document.getElementById("view").appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x121418);
+    scene.background = new THREE.Color(0x07090d);
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 80);
     camera.position.set(9, 7, 11);
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 0, 0);
     controls.update();
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.65));
-    const key = new THREE.DirectionalLight(0xffffff, 1.1);
-    key.position.set(6, 10, 4);
-    scene.add(key);
-
     const wall = new THREE.Mesh(
       new THREE.SphereGeometry(DATA.wall, 48, 32),
       new THREE.MeshBasicMaterial({ color: 0x8aa0c8, wireframe: true, transparent: true, opacity: 0.35 })
     );
     scene.add(wall);
+
+    const quad = new THREE.PlaneGeometry(1, 1);
+    function spriteMaterial(color, gain) {
+      return new THREE.ShaderMaterial({
+        uniforms: {
+          uColor: { value: new THREE.Color(color) },
+          uGain: { value: gain }
+        },
+        vertexShader: `
+          varying vec2 vUv;
+          void main() {
+            vUv = uv;
+            vec4 mv = modelViewMatrix * instanceMatrix * vec4(position, 1.0);
+            gl_Position = projectionMatrix * mv;
+          }
+        `,
+        fragmentShader: `
+          precision mediump float;
+          varying vec2 vUv;
+          uniform vec3 uColor;
+          uniform float uGain;
+          void main() {
+            vec2 p = vUv * 2.0 - 1.0;
+            float r2 = dot(p, p);
+            if (r2 > 1.0) discard;
+            float core = exp(-r2 * 7.0);
+            float halo = exp(-r2 * 1.7);
+            float alpha = clamp((core + halo * 0.28) * uGain, 0.0, 1.0);
+            gl_FragColor = vec4(uColor * (0.25 + core) * uGain, alpha);
+          }
+        `,
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+      });
+    }
 
     function dipoleLength(i) {
       return 0.28 + 0.62 * ((i * 7 + 3) % 11) / 10;
@@ -144,7 +175,6 @@ PAGE = r"""<!DOCTYPE html>
       );
     }
 
-    const dot = new THREE.SphereGeometry(1, 14, 10);
     let meshes = [];
     let frames = DATA.sea;
     let frame = 0;
@@ -153,7 +183,6 @@ PAGE = r"""<!DOCTYPE html>
     function clearMeshes() {
       for (const mesh of meshes) {
         scene.remove(mesh);
-        mesh.geometry.dispose();
         mesh.material.dispose();
       }
       meshes = [];
@@ -167,10 +196,8 @@ PAGE = r"""<!DOCTYPE html>
       legend.replaceChildren();
       for (const group of groups) {
         const count = group.to - group.from;
-        const headMat = new THREE.MeshStandardMaterial({ color: group.color, roughness: 0.35 });
-        const tailMat = new THREE.MeshStandardMaterial({ color: group.color, roughness: 0.75 });
-        const head = new THREE.InstancedMesh(dot, headMat, count);
-        const tail = new THREE.InstancedMesh(dot, tailMat, count);
+        const head = new THREE.InstancedMesh(quad, spriteMaterial(group.color, 1.0), count);
+        const tail = new THREE.InstancedMesh(quad, spriteMaterial(group.color, 0.55), count);
         head.userData.group = group;
         head.userData.pole = 1;
         tail.userData.group = group;
@@ -200,14 +227,14 @@ PAGE = r"""<!DOCTYPE html>
           const p = positions[i];
           const length = dipoleLength(i);
           dipoleAxis(i, axis);
-          const radius = pole > 0 ? length * 0.42 : length * 0.22;
+          const radius = (pole > 0 ? length * 0.42 : length * 0.22) * 2.6;
           dummy.position.set(
             p[0] + axis.x * pole * length * 0.45,
             p[1] + axis.y * pole * length * 0.45,
             p[2] + axis.z * pole * length * 0.45
           );
+          dummy.quaternion.copy(camera.quaternion);
           dummy.scale.setScalar(radius);
-          dummy.rotation.set(0, 0, 0);
           dummy.updateMatrix();
           mesh.setMatrixAt(i - group.from, dummy.matrix);
         }
@@ -242,8 +269,8 @@ PAGE = r"""<!DOCTYPE html>
       if (playing && now - last > 70) {
         last = now;
         frame = (frame + 1) % frames.length;
-        show(frame);
       }
+      show(frame);
       controls.update();
       renderer.render(scene, camera);
     }
