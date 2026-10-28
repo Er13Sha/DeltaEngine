@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ПКВ Катющик — WebGPU: расчёты на GPU (N-body отталкивание 1/r^2 + экранирование + упругое поле)</title>
+  <style>
+    html, body { height: 100%; }
+    body { margin: 0; background: #000; overflow: hidden; }
+    canvas { display:block; width:100vw; height:100vh; }
+    #ui{
+      position:absolute; top:12px; left:12px;
+      color:#fff; font-family: "Courier New", monospace;
+      text-shadow:2px 2px 4px #000;
+      line-height:1.35; white-space:pre;
+      user-select:none; pointer-events:none;
+    }
+    #warn{
+      position:absolute; bottom:12px; left:12px;
+      color:#fff; font-family: "Courier New", monospace;
+      opacity:0.8; line-height:1.35;
+      max-width: 900px;
+    }
+  </style>
+</head>
+<body>
+  <div id="ui"></div>
+  <div id="warn"></div>
+  <canvas id="c"></canvas>
+
+<script type="module">
+// WebGPU версия: все расчёты движения выполняются на GPU (compute shader), без чтения позиций обратно на CPU.
+// Рендер также на WebGPU: вершины читают позицию/размер напрямую из storage buffer.
+// Модель:
+// 1) N-body: отталкивание ~ 1/r^2 (точный O(N^2) для выбранного N)
+// 2) «Комплекс удалённых масс»: фоновое поле с экранированием сверхтелами (толкает к сверхтелу через телесный угол)
+// 3) Упругое ограничивающее поле (пружина+демпфер) за пределом R0
+//
+// Примечание:
+// - Для 3k частиц O(N^2) отлично работает на RTX 4070.
+// - Для 50k+ потребуется аппроксимация (grid/Barnes–Hut на GPU). Здесь — честное суммирование.
+
+const ui = document.getElementById('ui');
+const warn = document.getElementById('warn');
+const canvas = document.getElementById('c');
+
+const P = {
+  N: 80000,
+
+  // Иерархия: пыль → тела → сверхтела
+  dustFrac: 0.85,
+  bodyFrac: 0.14,
+  superFrac: 0.01,
+
+  dustMassMin: 0.05,
+  dustMassMax: 0.50,
+  bodyMassMin: 0.50,
+  bodyMassMax: 8.00,
+  superMassMin: 20.0,
+  superMassMax: 120.0,
+
+  // ВИЗУАЛЬНЫЕ РАЗМЕРЫ (в 10 раз увеличены)
+  dustSizeMin: 4.00,
+  dustSizeMax: 12.00,
+  bodySizeMin: 12.00,
+  bodySizeMax: 60.00,
+  superSizeMin: 100.0,
+  superSizeMax: 400.0,
+
+  dustPow: 2.2,
+  bodyPow: 3.5,
+  superPow: 2.0,
+
+  // Начальные условия
+  initRadius: 80.0,
+  initSpeed: 2.8,
+
+  // N-body отталкивание
+  k: 14.0,
+  soft: 0.9,
+
+  // демпфер (потери)
+  damping: 0.02,
+
+  // «Комплекс удалённых масс» (фон) с экранированием сверхтелами
+  bgK: 9.0,
+  bgRad0: 8.0,
+  bgRadMassPow: 0.33,
+  bgOmegaClamp: 0.9,
+
+  // Упругое поле
+  elasticR0: 260.0,
+  elasticK: 0.065,
+  elasticDamp: 0.22,
+
+  // интеграция
+  dtMax: 0.016,
+  timeScale: 1.0,
+
+  // Рендер
+  pointScale: 85.0,
+  near: 0.5,
+  far: 6000.0,
+
+  // Камера (простая орбита)
+  camRadius: 260,
+  camYaw: 0.2,
+  camPitch: 0.35,
+};
+
+function clamp(x,a,b){ return Math.max(a, Math.min(b,x)); }
+function randOnSphere(){
+  const u=Math.random(), v=Math.random();
+  const th=2*Math.PI*u;
+  const ph=Math.acos(2*v-1);
+  const s=Math.sin(ph);
+  return [Math.cos(th)*s, Math.sin(th)*s, Math.cos(ph)];
+}
+
+// ---- минимальная математика матриц ----
+function mat4Identity(){
+  return new Float32Array([1,0,0,0,  0,1,0,0,  0,0,1,0,  0,0,0,1]);
+}
+function mat4Mul(a,b){
+  const o = new Float32Array(16);
+  for(let r=0;r<4;r++){
+    for(let c=0;c<4;c++){
+      o[r*4+c]=a[r*4+0]*b[0*4+c]+a[r*4+1]*b[1*4+c]+a[r*4+2]*b[2*4+c]+a[r*4+3]*b[3*4+c];
+    }
+  }
+  return o;
+}
+function mat4Perspective(fovy, aspect, near, far){
+  const f = 1/Math.tan(fovy/2);
+  const nf = 1/(near - far);
+  const out = new Float32Array(16);
+  out[0]=f/aspect; out[5]=f; out[10]=(far+near)*nf; out[11]=-1;
+  out[14]=2*far*near*nf;
+  return out;
+}
+function mat4LookAt(eye, center, up){
+  const [ex,ey,ez]=eye;
+  const [cx,cy,cz]=center;
+  let zx = ex-cx, zy = ey-cy, zz = ez-cz;
+  const zlen = 1/Math.hypot(zx,zy,zz); zx*=zlen; zy*=zlen; zz*=zlen;
+  let xx = up[1]*zz - up[2]*zy;
+  let xy = up[2]*zx - up[0]*zz;
+  let xz = up[0]*zy - up[1]*zx;
+  const xlen = 1/Math.hypot(xx,xy,xz); xx*=xlen; xy*=xlen; xz*=xlen;
+  let yx = zy*xz - zz*xy;
+  let yy = zz*xx - zx*xz;
+  let yz = zx*xy - zy*xx;
+
+  const out = mat4Identity();
+  out[0]=xx; out[1]=yx; out[2]=zx;
+  out[4]=xy; out[5]=yy; out[6]=zy;
+  out[8]=xz; out[9]=yz; out[10]=zz;
+  out[12]=-(xx*ex + xy*ey + xz*ez);
+  out[13]=-(yx*ex + yy*ey + yz*ez);
+  out[14]=-(zx*ex + zy*ey + zz*ez);
+  return out;
+}
+
+// ---- камера: мышь ----
+let dragging=false, lastX=0, lastY=0;
+canvas.addEventListener('mousedown', (e)=>{ dragging=true; lastX=e.clientX; lastY=e.clientY; });
+addEventListener('mouseup', ()=> dragging=false);
+addEventListener('mousemove', (e)=>{
+  if(!dragging) return;
+  const dx=(e.clientX-lastX), dy=(e.clientY-lastY);
+  lastX=e.clientX; lastY=e.clientY;
+  P.camYaw += dx*0.005;
+  P.camPitch = clamp(P.camPitch + dy*0.005, -1.45, 1.45);
+});
+addEventListener('wheel', (e)=>{
+  P.camRadius = clamp(P.camRadius * (1 + e.deltaY*0.001), 50, 2000);
+}, {passive:true});
+
+// ---- WebGPU init ----
+if(!('gpu' in navigator)){
+  warn.textContent = 'WebGPU недоступен в этом браузере. Включи WebGPU (Chrome/Edge) или используй другой браузер.';
+  throw new Error('WebGPU not available');
+}
+
+const adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
+if(!adapter){
+  warn.textContent = 'Не удалось получить GPU adapter.';
+  throw new Error('No adapter');
+}
+
+const device = await adapter.requestDevice();
+const context = canvas.getContext('webgpu');
+const format = navigator.gpu.getPreferredCanvasFormat();
+
+function resize(){
+  const dpr = Math.max(1, Math.min(2, devicePixelRatio || 1));
+  const w = Math.floor(innerWidth * dpr);
+  const h = Math.floor(innerHeight * dpr);
+  canvas.width = w; canvas.height = h;
+  context.configure({ device, format, alphaMode: 'opaque' });
+}
+addEventListener('resize', resize);
+resize();
+
+// ---- данные частиц (CPU только для инициализации) ----
+// posVel: vec4(pos.xyz, mass)
+// velHeat: vec4(vel.xyz, heat)
+// sizeCls: vec4(size, classId, superRad, pad)
+const N = P.N;
+const posVelA = new Float32Array(N*4);
+const velHeatA = new Float32Array(N*4);
+const sizeClsA = new Float32Array(N*4);
+
+let dustCount=0, bodyCount=0, superCount=0;
+
+for(let i=0;i<N;i++){
+  const r = Math.random()*P.initRadius;
+  const [nx,ny,nz] = randOnSphere();
+  const x=nx*r, y=ny*r, z=nz*r;
+
+  const vx=(Math.random()-0.5)*P.initSpeed;
+  const vy=(Math.random()-0.5)*P.initSpeed;
+  const vz=(Math.random()-0.5)*P.initSpeed;
+
+  const u = Math.random();
+  let m, cls;
+  if(u < P.dustFrac){
+    const t = Math.pow(Math.random(), P.dustPow);
+    m = P.dustMassMin + t*(P.dustMassMax-P.dustMassMin);
+    cls = 0; dustCount++;
+  } else if(u < P.dustFrac + P.bodyFrac){
+    const t = Math.pow(Math.random(), P.bodyPow);
+    m = P.bodyMassMin + t*(P.bodyMassMax-P.bodyMassMin);
+    cls = 1; bodyCount++;
+  } else {
+    const t = Math.pow(Math.random(), P.superPow);
+    m = P.superMassMin + t*(P.superMassMax-P.superMassMin);
+    cls = 2; superCount++;
+  }
+
+  // size by class + mass
+  let sMin,sMax,mMin,mMax,g;
+  if(cls===0){ sMin=P.dustSizeMin; sMax=P.dustSizeMax; mMin=P.dustMassMin; mMax=P.dustMassMax; g=2.0; }
+  else if(cls===1){ sMin=P.bodySizeMin; sMax=P.bodySizeMax; mMin=P.bodyMassMin; mMax=P.bodyMassMax; g=2.4; }
+  else { sMin=P.superSizeMin; sMax=P.superSizeMax; mMin=P.superMassMin; mMax=P.superMassMax; g=1.6; }
+  const mNorm = clamp((m-mMin)/(mMax-mMin), 0, 1);
+  const size = sMin + Math.pow(mNorm,g)*(sMax-sMin);
+
+  const superRad = (cls===2) ? (P.bgRad0 * Math.pow(m, P.bgRadMassPow)) : 0.0;
+
+  posVelA[i*4+0]=x; posVelA[i*4+1]=y; posVelA[i*4+2]=z; posVelA[i*4+3]=m;
+  velHeatA[i*4+0]=vx; velHeatA[i*4+1]=vy; velHeatA[i*4+2]=vz; velHeatA[i*4+3]=0.0;
+  sizeClsA[i*4+0]=size;
+  sizeClsA[i*4+1]=cls;
+  sizeClsA[i*4+2]=superRad;
+  sizeClsA[i*4+3]=0.0;
+}
+
+// ---- GPU buffers (ping-pong) ----
+const bufSize = posVelA.byteLength;
+const posVelBuf = [
+  device.createBuffer({ size: bufSize, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST }),
+  device.createBuffer({ size: bufSize, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST }),
+];
+const velHeatBuf = [
+  device.createBuffer({ size: velHeatA.byteLength, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST }),
+  device.createBuffer({ size: velHeatA.byteLength, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST }),
+];
+const sizeClsBuf = device.createBuffer({ size: sizeClsA.byteLength, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST });
+
+device.queue.writeBuffer(posVelBuf[0], 0, posVelA);
+device.queue.writeBuffer(velHeatBuf[0], 0, velHeatA);
+device.queue.writeBuffer(sizeClsBuf, 0, sizeClsA);
+
+// ---- uniforms ----
+// layout (16-byte aligned):
+// u0: (dt, N, soft2, k)
+// u1: (damping, bgK, bgOmegaClamp, elasticR0)
+// u2: (elasticK, elasticDamp, bgRad0, bgRadMassPow)  // bgRad0/bgRadMassPow не обязательны (есть per-particle superRad), но оставим
+// u3: (pointScale, aspect, near, far)
+// viewProj 16 floats (mat4)
+// uniforms: 4 vec4 + view mat4 + proj mat4 = 48 floats = 192 bytes
+const uniformSize = 48 * 4;
+const uniformBuf = device.createBuffer({ size: uniformSize, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+
+// ---- shaders ----
+const wgsl = /* wgsl */`
+struct Params {
+  u0: vec4<f32>, // dt, N, soft2, k
+  u1: vec4<f32>, // damping, bgK, bgOmegaClamp, elasticR0
+  u2: vec4<f32>, // elasticK, elasticDamp, pointScale, pad
+  u3: vec4<f32>, // aspect, near, far, timeScale
+  view: mat4x4<f32>,
+  proj: mat4x4<f32>,
+};
+
+@group(0) @binding(0) var<uniform> Pm: Params;
+@group(0) @binding(1) var<storage, read>  posVelIn: array<vec4<f32>>;
+@group(0) @binding(2) var<storage, read>  velHeatIn: array<vec4<f32>>;
+@group(0) @binding(3) var<storage, read>  sizeCls: array<vec4<f32>>;
+@group(0) @binding(4) var<storage, read_write> posVelOut: array<vec4<f32>>;
+@group(0) @binding(5) var<storage, read_write> velHeatOut: array<vec4<f32>>;
+
+fn clampf(x:f32, a:f32, b:f32)->f32 { return max(a, min(b, x)); }
+
+@compute @workgroup_size(128)
+fn simulate(@builtin(global_invocation_id) gid: vec3<u32>) {
+  let i = gid.x;
+  let N = u32(Pm.u0.y);
+  if (i >= N) { return; }
+
+  let dt = Pm.u0.x * Pm.u3.w;
+  let soft2 = Pm.u0.z;
+  let k = Pm.u0.w;
+  let damping = Pm.u1.x;
+  let bgK = Pm.u1.y;
+  let bgOmegaClamp = Pm.u1.z;
+  let elasticR0 = Pm.u1.w;
+  let elasticK = Pm.u2.x;
+  let elasticDamp = Pm.u2.y;
+
+  var p = posVelIn[i].xyz;
+  let mi = posVelIn[i].w;
+  var v = velHeatIn[i].xyz;
+  let heatPrev = velHeatIn[i].w;
+
+  var a = vec3<f32>(0.0);
+
+  // 1) N-body отталкивание (O(N^2))
+  for (var j:u32 = 0u; j < N; j = j + 1u) {
+    if (j == i) { continue; }
+    let pj = posVelIn[j].xyz;
+    let mj = posVelIn[j].w;
+    let d = p - pj;
+    let r2 = dot(d,d) + soft2;
+    let invR = inverseSqrt(r2);
+    a = a + (k * mj) * d * (invR*invR*invR);
+  }
+
+  // 2) «Комплекс удалённых масс» с экранированием сверхтелами
+  for (var j:u32 = 0u; j < N; j = j + 1u) {
+    if (j == i) { continue; }
+    let cls = sizeCls[j].y;
+    if (cls < 1.5) { continue; }
+
+    let pj = posVelIn[j].xyz;
+    let d = pj - p;
+    let d2 = dot(d,d) + 1e-6;
+    let invD = inverseSqrt(d2);
+    let u = d * invD;
+
+    let R = sizeCls[j].z;
+    let omega = min(bgOmegaClamp, (R*R)/d2);
+    let f = bgK * omega;
+    a = a + u * f;
+  }
+
+  // 3) демпфер
+  a = a - v * damping;
+
+  // 4) упругое поле
+  let rr = length(p) + 1e-9;
+  if (rr > elasticR0) {
+    let n = p / rr;
+    let dr = rr - elasticR0;
+    let vr = dot(v, n);
+    let aspring = elasticK * dr;
+    let adamp = elasticDamp * vr;
+    a = a + (-n) * (aspring + adamp);
+  }
+
+  v = v + a * dt;
+  p = p + v * dt;
+
+  let amag = length(a);
+  let heat = heatPrev * 0.92 + clampf(amag * 0.08, 0.0, 2.0) * 0.08;
+
+  posVelOut[i] = vec4<f32>(p, mi);
+  velHeatOut[i] = vec4<f32>(v, heat);
+}
+
+struct VSOut {
+  @builtin(position) pos: vec4<f32>,
+  @location(0) color: vec3<f32>,
+  @location(1) alpha: f32,
+  @location(2) uv: vec2<f32>,
+};
+
+fn corner(vid: u32) -> vec2<f32> {
+  switch(vid) {
+    case 0u: { return vec2<f32>(-1.0, -1.0); }
+    case 1u: { return vec2<f32>( 1.0, -1.0); }
+    case 2u: { return vec2<f32>( 1.0,  1.0); }
+    case 3u: { return vec2<f32>(-1.0, -1.0); }
+    case 4u: { return vec2<f32>( 1.0,  1.0); }
+    default:{ return vec2<f32>(-1.0,  1.0); }
+  }
+}
+
+@vertex
+fn vs(@builtin(vertex_index) vid: u32, @builtin(instance_index) iid: u32) -> VSOut {
+  let p = posVelIn[iid].xyz;
+  let m = posVelIn[iid].w;
+  let heat = velHeatIn[iid].w;
+  let size = sizeCls[iid].x;
+
+  let mm = clampf(log2(max(m, 0.0001)) / log2(120.0), 0.0, 1.0);
+  let cold = vec3<f32>(0.10, 0.35, 0.85);
+  let hot  = vec3<f32>(1.00, 0.75, 0.30);
+  let heavy= vec3<f32>(0.95, 0.35, 0.95);
+
+  let h = clampf(heat, 0.0, 2.0);
+  var c = mix(cold, hot, clampf(h, 0.0, 1.0));
+  c = mix(c, heavy, mm * 0.55);
+
+  let pv = (Pm.view * vec4<f32>(p, 1.0)).xyz;
+  let off = corner(vid % 6u);
+
+  // размер: большие значения (100..400) требуют меньшего масштаба, поэтому коэффициент 0.01
+  let s = size * (1.0 + h * 0.45) * 0.01;
+  let pv2 = vec3<f32>(pv.x + off.x * s, pv.y + off.y * s, pv.z);
+
+  var out: VSOut;
+  out.pos = Pm.proj * vec4<f32>(pv2, 1.0);
+  out.color = c;
+  out.alpha = clampf(0.14 + h*0.22 + mm*0.15, 0.10, 0.85);
+  out.uv = (off * 0.5) + vec2<f32>(0.5);
+  return out;
+}
+
+@fragment
+fn fs(@location(0) color: vec3<f32>, @location(1) alpha: f32, @location(2) uv: vec2<f32>) -> @location(0) vec4<f32> {
+  let d = distance(uv, vec2<f32>(0.5));
+  if (d > 0.5) { discard; }
+  let a = pow(1.0 - d*2.0, 1.6);
+  return vec4<f32>(color, a*alpha);
+}
+`;
+
+// Включим вывод ошибок компиляции WGSL/валидации в UI
+let module;
+try {
+  module = device.createShaderModule({ code: wgsl });
+} catch (e) {
+  warn.textContent = 'Ошибка createShaderModule: ' + (e?.message || e);
+  throw e;
+}
+
+// async-лог ошибок WGSL
+module.getCompilationInfo().then(info => {
+  const errs = info.messages.filter(m => m.type === 'error');
+  if (errs.length) {
+    warn.textContent = 'WGSL ошибки:\n' + errs.map(e => `${e.lineNum}:${e.linePos} ${e.message}`).join('\n');
+  }
+});
+
+// ---- pipelines ----
+const computePipeline = device.createComputePipeline({
+  layout: 'auto',
+  compute: { module, entryPoint: 'simulate' }
+});
+
+const renderPipeline = device.createRenderPipeline({
+  layout: 'auto',
+  vertex: { module, entryPoint: 'vs' },
+  fragment: {
+    module,
+    entryPoint: 'fs',
+    targets: [{ format, blend: {
+      color: { srcFactor: 'src-alpha', dstFactor: 'one', operation: 'add' },
+      alpha: { srcFactor: 'one', dstFactor: 'one', operation: 'add' }
+    }}]
+  },
+  primitive: { topology: 'triangle-list' },
+});
+
+function makeBindGroup(readIdx, writeIdx){
+  return device.createBindGroup({
+    layout: computePipeline.getBindGroupLayout(0),
+    entries: [
+      { binding: 0, resource: { buffer: uniformBuf } },
+      { binding: 1, resource: { buffer: posVelBuf[readIdx] } },
+      { binding: 2, resource: { buffer: velHeatBuf[readIdx] } },
+      { binding: 3, resource: { buffer: sizeClsBuf } },
+      { binding: 4, resource: { buffer: posVelBuf[writeIdx] } },
+      { binding: 5, resource: { buffer: velHeatBuf[writeIdx] } },
+    ]
+  });
+}
+
+function makeRenderBindGroup(readIdx){
+  return device.createBindGroup({
+    layout: renderPipeline.getBindGroupLayout(0),
+    entries: [
+      { binding: 0, resource: { buffer: uniformBuf } },
+      { binding: 1, resource: { buffer: posVelBuf[readIdx] } },
+      { binding: 2, resource: { buffer: velHeatBuf[readIdx] } },
+      { binding: 3, resource: { buffer: sizeClsBuf } },
+      // render uses only first 4 bindings (same names, pipeline layout auto)
+    ].slice(0,4)
+  });
+}
+
+// ---- uniforms update ----
+function updateUniforms(dt){
+  const aspect = canvas.width / canvas.height;
+
+  // camera in spherical coords
+  const cp = Math.cos(P.camPitch), sp = Math.sin(P.camPitch);
+  const cy = Math.cos(P.camYaw),   sy = Math.sin(P.camYaw);
+  const eye = [
+    P.camRadius * cp * cy,
+    P.camRadius * sp,
+    P.camRadius * cp * sy,
+  ];
+  const view = mat4LookAt(eye, [0,0,0], [0,1,0]);
+  const proj = mat4Perspective(60*Math.PI/180, aspect, P.near, P.far);
+  // (viewProj не нужен — передаём view и proj отдельно)
+
+  // uniforms: 4 vec4 + view + proj
+  const u = new Float32Array(48);
+  // u0..u3
+  u[0] = dt; u[1] = P.N; u[2] = P.soft*P.soft; u[3] = P.k;
+  u[4] = P.damping; u[5] = P.bgK; u[6] = P.bgOmegaClamp; u[7] = P.elasticR0;
+  u[8] = P.elasticK; u[9] = P.elasticDamp; u[10] = P.pointScale; u[11] = 0;
+  u[12] = aspect; u[13] = P.near; u[14] = P.far; u[15] = P.timeScale;
+  // view
+  u.set(view, 16);
+  // proj
+  u.set(proj, 32);
+
+  device.queue.writeBuffer(uniformBuf, 0, u);
+}
+
+// ---- loop ----
+let ping = 0;
+let last = performance.now();
+let fpsN=0, fpsT=performance.now(), fps=0;
+
+function frame(){
+  const now = performance.now();
+  let dt = (now - last) / 1000;
+  last = now;
+  dt = Math.min(dt, P.dtMax);
+
+  updateUniforms(dt);
+
+  const readIdx = ping;
+  const writeIdx = 1 - ping;
+
+  const computeBG = makeBindGroup(readIdx, writeIdx);
+  const renderBG = makeRenderBindGroup(writeIdx);
+
+  const encoder = device.createCommandEncoder();
+
+  // compute
+  {
+    const pass = encoder.beginComputePass();
+    pass.setPipeline(computePipeline);
+    pass.setBindGroup(0, computeBG);
+    const wg = Math.ceil(P.N / 128);
+    pass.dispatchWorkgroups(wg);
+    pass.end();
+  }
+
+  // render
+  {
+    const view = context.getCurrentTexture().createView();
+    const pass = encoder.beginRenderPass({
+      colorAttachments: [{
+        view,
+        clearValue: { r: 0, g: 0, b: 0, a: 1 },
+        loadOp: 'clear',
+        storeOp: 'store'
+      }]
+    });
+    pass.setPipeline(renderPipeline);
+    pass.setBindGroup(0, renderBG);
+    pass.draw(6, P.N);
+    pass.end();
+  }
+
+  device.queue.submit([encoder.finish()]);
+
+  ping = writeIdx;
+
+  // UI
+  fpsN++;
+  const tNow = performance.now();
+  if(tNow - fpsT > 500){
+    fps = fpsN / ((tNow - fpsT)/1000);
+    fpsN=0; fpsT=tNow;
+  }
+
+  ui.textContent =
+`WebGPU: все расчёты на GPU (compute)
+N: ${P.N}
+O(N^2) суммирование: да (честно), без рандома в силах
+k: ${P.k.toFixed(2)}  soft: ${P.soft.toFixed(2)}  damping: ${P.damping.toFixed(3)}
+фон (экранир.): bgK=${P.bgK.toFixed(2)}  omegaClamp=${P.bgOmegaClamp.toFixed(2)}
+упругое поле: R0=${P.elasticR0.toFixed(1)}  K=${P.elasticK.toFixed(3)}  C=${P.elasticDamp.toFixed(2)}
+классы: пыль ${dustCount} | тела ${bodyCount} | сверхтела ${superCount}
+FPS: ${fps.toFixed(0)}
+
+Мышь: вращение (drag), колесо: zoom`;
+
+  requestAnimationFrame(frame);
+}
+
+warn.textContent =
+`Примечание: это WebGPU. Если страница пустая — открой в Chrome/Edge с включённым WebGPU.
+Для больших N (например 50k+) понадобится аппроксимация (grid/BH на GPU). Сейчас O(N^2) — точная сумма.`;
+
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
