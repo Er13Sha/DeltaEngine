@@ -271,3 +271,14 @@ def pair_run(q: dict, d: float, case: str) -> dict:
     return {"d": d, "case": case, "D_start": float(sep[0]), "D_end": float(sep[-1]), "merged": bool(sep[-1] < 1.0),
             "trajectory": [round(float(x), 3) for x in sep[::100]], "a": float(a), "force": float(q["E"] * a / 2),
             "verdict": "attraction" if a < 0 else "repulsion"}
+
+
+def pair_experiment(omega: float = 0.81) -> dict:
+    """Этап C по протоколу QB_PROTOCOL['C_pairs']: 3 случая × расстояния + контроль."""
+    q = qball(omega)
+    cfg = QB_PROTOCOL["C_pairs"]
+    rows = [pair_run(q, d, case) for case in cfg["cases"] for d in cfg["separations"]]
+    control = [pair_run(q, cfg["control_separation"], case) for case in cfg["cases"]]
+    return {"protocol_hash": protocol_hash(), "scope": "model", "omega": omega,
+            "particle": {"Q": q["Q"], "E": q["E"], "E_over_Q": q["E_over_Q"]},
+            "kappa_predicted": math.sqrt(1 - omega ** 2), "runs": rows, "control": control}

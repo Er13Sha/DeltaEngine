@@ -47,6 +47,6 @@
 ## Как запускать
 
 ```
-python -c "from adapters.field_lattice.qball import qball, pair_run, QB_PROTOCOL; ..."
+python -m adapters.field_lattice.experiments --qball-pair
 ```
-Скрипт прогона — в коммите этапа C (`qball_pair.json` содержит параметры и результаты всех 15 прогонов).
+Функция `pair_experiment` в `adapters/field_lattice/qball.py` берёт параметры из `QB_PROTOCOL['C_pairs']`, пишет `qball_pair.json`. Повторный запуск даёт те же силы до четвёртого знака. Блок `post_hoc` (подгонки после расчёта) добавляется отдельно и в CLI не входит.

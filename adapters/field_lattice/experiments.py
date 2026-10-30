@@ -273,7 +273,7 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light", "--frequency", "--oscillon", "--pair"} & set(sys.argv):
+if __name__ == "__main__" and not {"--scan", "--screening", "--drag", "--unified", "--light", "--frequency", "--oscillon", "--pair", "--qball-pair"} & set(sys.argv):
     sys.exit(main())
 
 
@@ -398,3 +398,11 @@ if __name__ == "__main__" and "--pair" in sys.argv:
     result["post_hoc"] = post_hoc(result)
     (OUT / "oscillon_pair.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("κ предсказано", round(result["kappa_predicted"], 4), "α_модель", result["alpha_model"])
+
+
+if __name__ == "__main__" and "--qball-pair" in sys.argv:
+    from adapters.field_lattice.qball import pair_experiment as qball_pair_experiment
+
+    result = qball_pair_experiment()
+    (OUT / "qball_pair.json").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print("Q-шары, силы:", [(r["case"], r["d"], round(r["force"], 4)) for r in result["runs"]])
