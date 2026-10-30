@@ -34,7 +34,16 @@ QB_PROTOCOL = {
     },
     "equation": "φ_tt = ∇²φ − φ(1 − |φ|²)(1 − 3|φ|²); c = 1, F = 1",
     "free_dimensionless_parameters": 0,
-    "A_family": {"omega_grid": "0,30 … 0,99 с шагом 0,01", "method": "стрельба RK4, dr = 0,002",
+    "revision": {
+        "v2": "исправлен поиск корня стрельбы: v1 искал f₀ только на [0, 1], и для ω ≤ 0,8 получал край отрезка "
+              "(профиль обрывался на f ≈ 0,2). Постулаты, уравнение и критерии не менялись. Результаты v1 для "
+              "ω ≤ 0,8 недействительны (семейство A, живучесть и силы при ω = 0,6 и 0,7). Для ω = 0,81 и 0,9 "
+              "профили идентичны v1, значит их результаты сохраняются.",
+        "v1_hash": "sha256:6c790d661ac877d9faa216aaa7bd0ce3b83bb3160c2cb66c4020a9b28e04899e",
+    },
+    "A_family": {"omega_grid": "0,30 … 0,99 с шагом 0,01",
+                 "method": "стрельба RK4, dr = 0,002; корень f₀ — смена недолёт (−1) → перелёт (+1) на [0,05; 1,5]; "
+                           "хвост профиля < 10⁻⁶ обязателен",
                  "outputs": ["f(0)", "Q(ω)", "E(ω)", "E/Q", "проверка dE/dQ = ω"]},
     "elementary_particle": "наименьший заряд среди устойчивых: dQ/dω < 0 (классическая устойчивость) и E < Q "
                            "(не распадается на свободные кванты поля); берётся наибольшее ω сетки с обоими условиями",
@@ -91,28 +100,44 @@ def _shoot(f0, omega, dr, r_max):
     return 0, fs, n
 
 
+def _root(omega: float, dr: float, r_max: float, lo: float = 0.05, hi: float = 1.5, m: int = 291) -> float:
+    """Физический корень стрельбы: смена −1 (недолёт) → +1 (перелёт) при росте f₀.
+
+    v1 искал корень только на [0, 1] и для ω ≤ 0,8 получал край отрезка (истинное f₀ ≈ 1,00–1,06),
+    поэтому профиль обрывался на f ≈ 0,2. v2 сканирует [0,05; 1,5] и уточняет бисекцией.
+    """
+    xs = np.linspace(lo, hi, m)
+    verdicts = [_shoot(x, omega, dr, r_max)[0] for x in xs]
+    for i in range(len(xs) - 1):
+        if verdicts[i] == -1 and verdicts[i + 1] == 1:
+            a, b = xs[i], xs[i + 1]
+            for _ in range(80):
+                mid = (a + b) / 2
+                if _shoot(mid, omega, dr, r_max)[0] > 0:
+                    b = mid
+                else:
+                    a = mid
+            return a
+    raise ValueError(f"нет корня стрельбы при ω = {omega}")
+
+
 def qball(omega: float, dr: float = 0.002, r_max: float = 80.0) -> dict:
-    lo, hi = 0.0, 1.0
-    for _ in range(200):
-        mid = (lo + hi) / 2
-        verdict, _, _ = _shoot(mid, omega, dr, r_max)
-        if verdict > 0:
-            hi = mid
-        else:
-            lo = mid
-        if hi - lo < 1e-15:
-            break
+    lo = _root(omega, dr, r_max)
     _, fs, n = _shoot(lo, omega, dr, r_max)
     # обрезать на минимуме |f| (дальше — расходимость стрельбы), хвост ~ e^(−κr) отбросить
     cut = int(np.argmin(np.abs(fs[: n])))
     f = fs[:cut]
     r = 1e-6 + np.arange(f.size) * dr
-    df = np.gradient(f, dr)
     s = f * f
     w = 4 * math.pi * r * r
     charge = float(np.trapezoid(2 * omega * s * w, r))
+    df = np.gradient(f, dr)
     energy = float(np.trapezoid((omega * omega * s + df * df + s * (1 - s) ** 2) * w, r))
-    return {"omega": omega, "f0": lo, "Q": charge, "E": energy, "E_over_Q": energy / charge, "r": r, "f": f}
+    tail = float(abs(f[-1]))
+    if tail > 1e-6:
+        raise ValueError(f"профиль при ω = {omega} не убывает до нуля (хвост {tail:.2e})")
+    return {"omega": omega, "f0": lo, "Q": charge, "E": energy, "E_over_Q": energy / charge, "r": r, "f": f,
+            "tail": tail}
 
 
 def family() -> list[dict]:
