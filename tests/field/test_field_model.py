@@ -333,3 +333,26 @@ class OscillonPairTests(unittest.TestCase):
     def test_range_set_by_frequency(self):
         saved = json.loads((FIELD / "oscillon_pair.json").read_text(encoding="utf-8"))
         self.assertAlmostEqual(saved["post_hoc"]["anti"]["kappa_fit_over_predicted"], 1.0, delta=0.06)
+
+
+class QBallLifetimeTests(unittest.TestCase):
+    """E3-заряд, этап B: Q-шар с ω = 0.81 живёт, с ω = 0.95 (dQ/dω > 0) распадается."""
+
+    def test_protocol_registered(self):
+        from adapters.field_lattice.qball import protocol_hash
+
+        registered = json.loads((FIELD / "qball_protocol.json").read_text(encoding="utf-8"))
+        self.assertEqual(registered["hash"], protocol_hash())
+
+    def test_candidate_is_stable_and_control_breaks(self):
+        saved = json.loads((FIELD / "qball_lifetime.json").read_text(encoding="utf-8"))
+        self.assertTrue(saved["lifetime"]["stable"])
+        self.assertLess(saved["lifetime"]["max_relative_change"], 1e-3)
+        control = saved["negative_control"]["lifetime"]
+        self.assertFalse(control["stable"])
+        self.assertGreater(control["max_relative_change"], 0.01)
+
+    def test_family_candidate_is_registered_value(self):
+        saved = json.loads((FIELD / "qball_family.json").read_text(encoding="utf-8"))
+        self.assertAlmostEqual(saved["elementary_candidate"]["omega"], 0.81)
+        self.assertLess(saved["elementary_candidate"]["E"], saved["elementary_candidate"]["Q"])

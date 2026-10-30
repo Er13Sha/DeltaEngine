@@ -1,0 +1,24 @@
+{
+ "protocol_hash": "sha256:6c790d661ac877d9faa216aaa7bd0ce3b83bb3160c2cb66c4020a9b28e04899e",
+ "scope": "model",
+ "omega": 0.81,
+ "lifetime": {
+  "t_max": 5000,
+  "charge_start": 50.02347760911568,
+  "charge_end": 50.0213864246899,
+  "max_relative_change": 4.181071413800197e-05,
+  "stable": true
+ },
+ "negative_control": {
+  "omega": 0.95,
+  "dQ_domega_sign": "positive (unstable branch)",
+  "lifetime": {
+   "t_max": 5000,
+   "charge_start": 40.863395564870466,
+   "charge_end": 39.672679900463265,
+   "max_relative_change": 0.029421599686081046,
+   "stable": false
+  },
+  "note": "добавлено после пилота: протокольный контроль (осциллон) не различает за t_max = 5000, т.к. осциллон живёт ~10⁴ единиц времени"
+ }
+}
