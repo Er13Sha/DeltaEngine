@@ -282,3 +282,39 @@ def pair_experiment(omega: float = 0.81) -> dict:
     return {"protocol_hash": protocol_hash(), "scope": "model", "omega": omega,
             "particle": {"Q": q["Q"], "E": q["E"], "E_over_Q": q["E_over_Q"]},
             "kappa_predicted": math.sqrt(1 - omega ** 2), "runs": rows, "control": control}
+
+
+# ---------------------------------------------------------------- D: зависимость от частоты
+#
+# Протокол записан до расчёта (qball_freq_protocol.json). Вопрос: сохраняется ли картина этапа C
+# (знак задаёт фаза, разноимённые ≈ 0, радиус по κ = √(1 − ω²)) на других ω, или она — свойство
+# одного ω = 0,81.
+
+FREQ_PROTOCOL = {
+    "format": "delta-protocol@0.1",
+    "track": "E",
+    "stage": "E3-заряд, этап D: зависимость сил от частоты Q-шара",
+    "omegas": [0.6, 0.7, 0.9],
+    "omega_roles": {
+        "0.6": "устойчивый, E < Q (как кандидат), сильнее разнесён по κ",
+        "0.7": "устойчивый, E < Q (как кандидат)",
+        "0.9": "граница: E > Q, по критерию этапа A не элементарная частица; проверяет, что картина "
+               "не зависит от принадлежности к кандидатам",
+    },
+    "stage_B_check": "для каждого ω — живучесть при t_max = 5000 по протоколу этапа B; только живущие "
+                     "участвуют в выводах о силе",
+    "pairs": "те же случаи и расстояния, что C_pairs (same_in, same_anti, opposite; d = 10, 12, 14, 16; контроль 32)",
+    "predictions_before_run": {
+        "kappa": "κ = √(1 − ω²): 0,800; 0,714; 0,436",
+        "sign": "знак по фазе — тот же, что при ω = 0,81 (same_in притяжение, same_anti отталкивание)",
+        "opposite": "≈ 0 при d ≥ 12 — тот же механизм усреднения 2ω",
+        "boundary_0.9": "E > Q: ожидается, что живучесть окажется хуже",
+    },
+    "criterion_same_picture": "картина совпадает, если знак same_in/same_anti и ≈0 у opposite сохраняются "
+                              "при всех ω, а κ отклоняется от √(1 − ω²) не более чем на 10 %",
+    "comparison_after_run": "как в C_pairs: α = g/S с α_N = 0,355 и 1/137",
+}
+
+
+def freq_protocol_hash() -> str:
+    return "sha256:" + hashlib.sha256(json.dumps(FREQ_PROTOCOL, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
