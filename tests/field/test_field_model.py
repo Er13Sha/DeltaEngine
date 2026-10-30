@@ -356,3 +356,31 @@ class QBallLifetimeTests(unittest.TestCase):
         saved = json.loads((FIELD / "qball_family.json").read_text(encoding="utf-8"))
         self.assertAlmostEqual(saved["elementary_candidate"]["omega"], 0.81)
         self.assertLess(saved["elementary_candidate"]["E"], saved["elementary_candidate"]["Q"])
+
+
+class QBallPairTests(unittest.TestCase):
+    """E3-заряд, этап C: силы между Q-шарами по протоколу qball_protocol.json (C_pairs)."""
+
+    def test_protocol_registered(self):
+        from adapters.field_lattice.qball import protocol_hash
+
+        registered = json.loads((FIELD / "qball_protocol.json").read_text(encoding="utf-8"))
+        self.assertEqual(registered["hash"], protocol_hash())
+
+    def test_relative_phase_sets_sign(self):
+        saved = json.loads((FIELD / "qball_pair.json").read_text(encoding="utf-8"))
+        in_phase = [r for r in saved["runs"] if r["case"] == "same_in"]
+        anti = [r for r in saved["runs"] if r["case"] == "same_anti" and r["d"] >= 10]
+        self.assertTrue(all(r["force"] < 0 for r in in_phase))
+        self.assertTrue(all(r["force"] > 0 and not r["merged"] for r in anti))
+
+    def test_antiphase_range_matches_frequency_prediction(self):
+        saved = json.loads((FIELD / "qball_pair.json").read_text(encoding="utf-8"))
+        self.assertAlmostEqual(saved["post_hoc"]["same_anti"]["kappa_over_predicted"], 1.0, delta=0.05)
+
+    def test_control_and_opposite_are_small(self):
+        saved = json.loads((FIELD / "qball_pair.json").read_text(encoding="utf-8"))
+        strongest = max(abs(r["force"]) for r in saved["runs"])
+        self.assertTrue(all(abs(r["force"]) < strongest / 100 for r in saved["control"]))
+        opp = [r for r in saved["runs"] if r["case"] == "opposite" and r["d"] >= 12]
+        self.assertTrue(all(abs(r["force"]) < 1e-3 for r in opp))

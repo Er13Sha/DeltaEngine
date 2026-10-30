@@ -41,5 +41,7 @@
 - [track-e-unified.md](track-e-unified.md) — магнетизм и ядерные силы
 - [track-e-light.md](track-e-light.md) — свет в поле, часы, скорость света
 - [track-e-frequency.md](track-e-frequency.md) — одна сила, частоты колебания поля
+- [track-e-qball.md](track-e-qball.md) — Q-шар: сохраняющийся заряд, живёт при ω = 0,81
+- [track-e-qball-pair.md](track-e-qball-pair.md) — силы между Q-шарами: знак задаёт фаза, разноимённые не взаимодействуют
 - [track-e-oscillon.md](track-e-oscillon.md) — частица как колебание поля, собственная частота 0,96 F
 - [absolute-calculation-protocol.md](absolute-calculation-protocol.md) — правила абсолютного расчёта
