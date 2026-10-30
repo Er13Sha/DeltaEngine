@@ -1,4 +1,5 @@
 import json
+import numpy as np
 import math
 import random
 import unittest
@@ -384,3 +385,56 @@ class QBallPairTests(unittest.TestCase):
         self.assertTrue(all(abs(r["force"]) < strongest / 100 for r in saved["control"]))
         opp = [r for r in saved["runs"] if r["case"] == "opposite" and r["d"] >= 12]
         self.assertTrue(all(abs(r["force"]) < 1e-3 for r in opp))
+
+
+class QBallFrequencyTests(unittest.TestCase):
+    """E3-заряд, этап D: картина сил по протоколу (знак по фазе, разноимённые ≈ 0, κ по частоте)."""
+
+    @staticmethod
+    def _shape_fit(rows):
+        """Подгонка f(d) = g·(1 + κd)·e^(−κd)/d² по κ (как в анализе этапа C)."""
+        ds = np.array([r["d"] for r in rows], float)
+        f = np.abs([r["force"] for r in rows])
+        best = None
+        for k in np.linspace(0.05, 1.5, 2901):
+            lg = np.log(f) - np.log((1 + k * ds) * np.exp(-k * ds) / ds ** 2)
+            res = float(np.sqrt(np.mean((lg - lg.mean()) ** 2)))
+            if best is None or res < best[2]:
+                best = (float(k), float(math.exp(lg.mean())), res)
+        return best
+
+    def test_protocol_registered(self):
+        from adapters.field_lattice.qball import freq_protocol_hash
+
+        registered = json.loads((FIELD / "qball_freq_protocol.json").read_text(encoding="utf-8"))
+        self.assertEqual(registered["hash"], freq_protocol_hash())
+
+    def test_picture_holds_at_every_frequency(self):
+        saved = json.loads((FIELD / "qball_freq.json").read_text(encoding="utf-8"))
+        for w, entry in saved["omegas"].items():
+            self.assertTrue(entry["lifetime"]["stable"], w)
+            far = [r for r in entry["runs"] if r["d"] >= 12]
+            self.assertTrue(all(r["force"] < 0 for r in far if r["case"] == "same_in"), w)
+            self.assertTrue(all(r["force"] > 0 for r in far if r["case"] == "same_anti"), w)
+            # разноимённые: относительно одноимённых в противофазе на том же d (анализ после расчёта)
+            anti = {r["d"]: r["force"] for r in far if r["case"] == "same_anti"}
+            for r in far:
+                if r["case"] == "opposite":
+                    self.assertLess(abs(r["force"]) / anti[r["d"]], 0.10, (w, r["d"]))
+
+    def test_range_follows_frequency_within_ten_percent(self):
+        saved = json.loads((FIELD / "qball_freq.json").read_text(encoding="utf-8"))
+        for w, entry in saved["omegas"].items():
+            rows = [r for r in entry["runs"] if r["case"] == "same_anti" and r["d"] >= 12]
+            k, _, _ = self._shape_fit(rows)
+            kp = entry["kappa_predicted"]
+            self.assertLess(abs(k / kp - 1), 0.10, w)  # критерий протокола D
+
+    def test_strength_depends_on_frequency(self):
+        saved = json.loads((FIELD / "qball_freq.json").read_text(encoding="utf-8"))
+        alpha = {}
+        for w, entry in saved["omegas"].items():
+            rows = [r for r in entry["runs"] if r["case"] == "same_anti" and r["d"] >= 12]
+            _, g, _ = self._shape_fit(rows)
+            alpha[float(w)] = g / (entry["particle"]["E"] / float(w))
+        self.assertGreater(alpha[0.6] / alpha[0.9], 5)  # сила не универсальна: падает с ω

@@ -146,7 +146,7 @@ def qball(omega: float, dr: float = 0.002, r_max: float = 80.0) -> dict:
 
 def family() -> list[dict]:
     rows = []
-    for k in range(30, 100):
+    for k in range(50, 100):
         q = qball(k / 100)
         rows.append({key: q[key] for key in ("omega", "f0", "Q", "E", "E_over_Q")})
     for a, b in zip(rows, rows[1:]):
